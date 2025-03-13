@@ -1,0 +1,234 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}    % Mejor renderizado de fuentes
+\usepackage{upquote}        % Corrige la visualización de `~` y `` ` ``
+\usepackage{listings}       % Para mostrar código en un entorno controlado
+\usepackage{xcolor}         % Para colores (opcional)
+\usepackage{tabularx} 		  % Para tablas ajustables
+\usepackage{makecell} 		  % Para saltos de línea en celdas
+\usepackage[spanish]{babel} % Configura el idioma a español
+
+% Configuración del entorno para los comandos de terminal
+\lstset{
+  basicstyle=\ttfamily,    % Usa la tipografía de terminal
+  breaklines=true,         % Permite saltos de línea
+  frame=single,            % Añade un marco alrededor del código
+  backgroundcolor=\color{gray!10}, % Fondo gris claro (opcional)
+  literate={~}{{\textasciitilde}}1 % Corrige el carácter `~`
+}
+
+
+\author{natetas}
+\title{Sobre Git y GitHub}
+\date{}
+
+\begin{document}
+
+
+\maketitle
+
+\tableofcontents
+\newpage
+\begin{center}
+	\includegraphics[scale=0.3]{portada.jpg}  
+\end{center}
+\newpage
+\chapter{Definiciones}
+\newpage
+\section{Git}
+Es un sistema de control de versiones que te permite rastrear cambios en archivos a lo largo del tiempo. Te permite trabajar en diferentes versiones de un proyecto sin perder el historial de cambios.
+\section{GitHub}
+Es una plataforma en la nube que aloja \textbf{\textit{repositorios}} \textbf{\textit{Git}}. Permite almacenar proyectos en línea, colaborar con otros y acceder a los archivos desde cualquier computadora.
+\section{Repositorio (repo)}
+Es una carpeta que contiene todos los archivos del proyecto, junto con el historial de cambios. Puede estar de manera local o en \textbf{\textit{GitHub}} (remoto).
+\section{Commit}
+Es un \textit{"punto de guardado"} en el historial del proyecto. Cada vez que haces un \textbf{\textit{commit}}, guardas una versión de los archivos en ese momento.
+\section{Ramas (branches)}
+Es una línea de desarrollo independiente dentro de un \textbf{\textit{repositorio}}.
+
+Cada \textbf{\textit{rama}} tiene su propio historial de \textbf{\textit{commits}}, lo que permite trabajar en nuevas características, experimentos o correcciones de errores sin afectar la versión principal del proyecto.
+
+\subsection{Rama principal (main o master)}
+Es la \textbf{\textit{rama}} predeterminada y suele contener la versión estable y funcional del proyecto.
+
+Todos los cambios importantes (como nuevas versiones) se fusionan en esta \textit{\textbf{rama}}.
+
+\subsection{Ramas secundarias}
+Son \textbf{\textit{ramas}} que se crean a partir de la \textbf{\textit{rama principal}} (o de otra \textbf{\textit{rama}}) para trabajar en tareas específicas.
+
+\newpage
+
+\section{Clonar (clone)}
+Descargar un repositorio remoto (de \textbf{\textit{GitHub}}) a una computadora local.
+
+\section{Pull}
+Traer cambios desde un \textbf{\textit{repositorio remoto}} a un repositorio local.
+
+\section{Push}
+Enviar cambios desde un \textbf{\textit{repositorio local}} a un repositorio remoto.
+
+\section{Clave SSH}
+Una \textbf{\textit{clave SSH}} es un método de autenticación seguro que permite a una computadora comunicarse con servicios remotos (como GitHub) sin necesidad de usar contraseñas. Consiste en un par de archivos:
+\begin{itemize}
+	\item \textbf{Clave privada:} Es un archivo que se guarda solo en tu computadora. Nunca debes compartirla, ya que es como una llave maestra que da acceso a tus repositorios.
+	\item \textbf{Clave pública:} Es un archivo que puedes compartir con servicios como GitHub. GitHub usa esta clave para verificar que tienes la clave privada correspondiente.
+\end{itemize}
+
+\section{Archivo .md}
+Un \textbf{\textit{archivo .md}} es un archivo de texto plano que usa la \textbf{\textit{sintaxis Marrkdown}}
+
+\section{Sintaxis de Markdown}
+\textbf{\textit{Markdown}} es un lenguaje de marcado ligero que permite formatear texto de manera sencilla, como añadir títulos, listas, enlaces, imágenes, código, etc., sin necesidad de usar HTML o herramientas complejas.
+
+\newpage
+\chapter{Comandos}
+
+\section{Navegación y manejo de archivos.}
+\begin{tabularx}{\textwidth}{|l|X|} % Ajusta la tabla al ancho de la página
+\hline
+\textbf{Comando} & \textbf{Descripción} \\ \hline
+\texttt{pwd} & Muestra la ruta del directorio actual. \\ \hline
+\texttt{ls} & Lista los archivos y carpetas en el directorio actual. \\ \hline
+\texttt{ls -l} & \makecell[l]{Lista los archivos y carpetas en formato largo \\ (con detalles como permisos y tamaño).} \\ \hline
+\texttt{ls -a} & \makecell[l]{Lista todos los archivos, incluyendo los ocultos \\ (que empiezan con \texttt{.}).} \\ \hline
+\texttt{cd <carpeta>} & Cambia al directorio especificado. \\ \hline
+\texttt{cd ..} & Sube un nivel en la estructura de directorios. \\ \hline
+\texttt{cd \textasciitilde} & Cambia al directorio home del usuario. \\ \hline
+\texttt{mkdir <nombre>} & Crea una nueva carpeta con el nombre especificado. \\ \hline
+\texttt{rmdir <nombre>} & Elimina una carpeta vacía. \\ \hline
+\texttt{touch <archivo>} & \makecell[l]{Crea un archivo vacío o actualiza \\ su fecha de modificación.} \\ \hline
+\texttt{cp <origen> <destino>} & Copia un archivo o carpeta. \\ \hline
+\texttt{mv <origen> <destino>} & \makecell[l]{Mueve o renombra un archivo \\ o carpeta.} \\ \hline
+\texttt{rm <archivo>} & Elimina un archivo. \\ \hline
+\texttt{rm -r <carpeta>} & \makecell[l]{Elimina una carpeta y su contenido \\ de forma recursiva.} \\ \hline
+\texttt{cat <archivo>} & Muestra el contenido de un archivo. \\ \hline
+\texttt{less <archivo>} & \makecell[l]{Muestra el contenido de un archivo \\ página por página.} \\ \hline
+\texttt{echo "texto"} & \makecell[l]{Muestra texto en la terminal \\ o lo redirige a un archivo.} \\ \hline
+\texttt{echo "texto" > <archivo>} & \makecell[l]{Guarda el texto en un archivo \\ (sobrescribe).} \\ \hline
+\texttt{echo "texto" >> <archivo>} & \makecell[l]{Añade el texto al final \\ de un archivo.} \\ \hline
+\end{tabularx}
+\newpage
+\section{Manejo de repositorios de GitHub.}
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Comando} & \textbf{Descripción} \\ \hline
+\texttt{git init} & Inicializa un repositorio Git. \\ \hline
+\texttt{git clone <URL>} & Clona un repositorio remoto. \\ \hline
+\texttt{git status} & Muestra el estado del repositorio. \\ \hline
+\texttt{git add <archivo>} & Añade archivos al área de preparación. \\ \hline
+\texttt{git commit -m "Mensaje"} & Guarda los cambios en el historial. \\ \hline
+\texttt{git push origin <rama>} & Sube cambios al repositorio remoto. \\ \hline
+\texttt{git pull origin <rama>} & Trae cambios desde el repositorio remoto. \\ \hline
+\texttt{git branch <nombre>} & Crea una nueva rama. \\ \hline
+\texttt{git checkout <rama>} & Cambia a una rama específica. \\ \hline
+\texttt{git merge <rama>} & Fusiona una rama con la rama actual. \\ \hline
+\texttt{git log} & Muestra el historial de commits. \\ \hline
+\texttt{git diff} & Muestra diferencias entre cambios. \\ \hline
+\texttt{git remote add origin <URL>} & Añade un repositorio remoto. \\ \hline
+\texttt{git tag <nombre>} & Crea una etiqueta (tag). \\ \hline
+\texttt{git reset <archivo>} & Elimina un archivo del área de preparación. \\ \hline
+\texttt{git checkout -- <archivo>} & Descarta cambios en un archivo. \\ \hline
+\texttt{git remote -v} & Muestra los repositorios remotos configurados. \\ \hline
+\texttt{git branch -d <rama>} & Elimina una rama local. \\ \hline
+\end{tabular}
+\caption{Comandos útiles de Git}
+\label{tab:comandos-git}
+\end{table}
+
+\chapter{Para acceder a los repositorios.}
+\section{Antes de acceder.}
+Sigue estos pasos para generar una \textbf{clave SSH} en tu computadora y añadirla a GitHub:
+\begin{enumerate}
+	\item \textbf{Genera la clave SSH}
+	\begin{itemize}
+		\item Abre la terminal en tu laptop.
+
+		\item Ejecuta el siguiente comando para generar una \textbf{clave SSH}: 
+		\begin{lstlisting}
+ssh-keygen -t ed25519 -C "tu-email@ejemplo.com"
+		\end{lstlisting}
+		
+		\item Presiona \textbf{Enter} para aceptar la ubicación predeterminada de la clave.
+	\end{itemize}
+	\item \textbf{Añade la clave SSH a tu agente SSH}
+	\begin{itemize}
+		\item Ejecuta los siguientes comandos para asegurarte de que el agente SSH esté activo y añadir tu clave:
+		\begin{lstlisting}
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+		\end{lstlisting}
+	\end{itemize}
+	\item \textbf{Copia la clave pública}
+	\begin{itemize}
+		\item Usa el siguiente comando para mostrar tu clave pública en la terminal:
+		\begin{lstlisting}
+cat ~/.ssh/id_ed25519.pub
+		\end{lstlisting}
+	\end{itemize}
+	\item \textbf{Añade la clave pública a GitHub}
+	\begin{itemize}
+		\item Ve a la pestaña \textbf{SSH and GPG keys} en GitHub (dentro de Settings).
+
+		\item Haz clic en \textbf{New SSH key.}
+
+		\item Dale un título descriptivo (por ejemplo, "Mi Laptop").
+
+		\item Pega la clave pública en el campo \textbf{Key.}
+
+		\item Haz clic en \textbf{Add SSH key.}
+	\end{itemize}
+	\item \textbf{Verifica la conexión SSH}
+	\begin{itemize}
+		\item En la terminal, ejecuta:
+		\begin{lstlisting}
+ssh -T git@github.com
+		\end{lstlisting}
+		\item Si todo está configurado correctamente, verás un mensaje como:
+		\begin{lstlisting}
+Hi ElNatitis! You've successfully authenticated, but GitHub does not provide shell access.
+		\end{lstlisting}
+	\end{itemize}
+\end{enumerate}
+\newpage
+\section{Para clonar el repositorio.}
+Una vez que se configuró la \textbf{clave SSH} en tu computadora y esta se añadió a GitHub (Sección 3.1), puedes acceder a tus repositorios, usando SSH, siguiendo los siguientes pasos.
+
+
+\begin{enumerate}
+	\item \textbf{Obtén la URL SSH de tu repositorio}
+	\begin{itemize}
+		\item Ve a la página de tu repositorio en GitHub.
+
+		\item Haz clic en el botón verde "Code".
+
+		\item Selecciona la pestaña SSH y copia la URL. Se verá algo como esto:
+		\begin{lstlisting}
+git@github.com:ElNatitis/oach.git
+		\end{lstlisting}
+	\end{itemize}
+	\item \textbf{Clona de repositorio}
+	\begin{itemize}
+		\item Abre la terminal y ejecuta el siguiente comando:
+		\begin{lstlisting}
+git clone git@github.com:ElNatitis/oach.git
+		\end{lstlisting}
+		\item Esto descargará el repositorio en una carpeta con el nombre del repositorio (oach en este caso).
+	\end{itemize}
+	\item \textbf{Navega a la carpeta del repositorio}
+	\begin{itemize}
+		Usa el siguiente comando para entrar a la carpeta del repositorio:
+		\begin{lstlisting}
+cd oach
+		\end{lstlisting}
+	\end{itemize}
+\end{enumerate}
+
+
+
+\end{document}
