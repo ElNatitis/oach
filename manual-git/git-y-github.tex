@@ -11,10 +11,11 @@
 \usepackage{tabularx} 		  % Para tablas ajustables
 \usepackage{makecell} 		  % Para saltos de línea en celdas
 \usepackage[spanish]{babel} % Configura el idioma a español
+\usepackage{hyperref}       % Para hipervínculos en el PDF
 
 % Configuración del entorno para los comandos de terminal
 \lstset{
-  basicstyle=\ttfamily,    % Usa la tipografía de terminal
+  basicstyle=\ttfamily\footnotesize,    % Usa la tipografía de terminal
   breaklines=true,         % Permite saltos de línea
   frame=single,            % Añade un marco alrededor del código
   backgroundcolor=\color{gray!10}, % Fondo gris claro (opcional)
@@ -86,6 +87,7 @@ Un \textbf{\textit{archivo .md}} es un archivo de texto plano que usa la \textbf
 
 \newpage
 \chapter{Comandos}
+\newpage
 
 \section{Navegación y manejo de archivos.}
 \begin{tabularx}{\textwidth}{|l|X|} % Ajusta la tabla al ancho de la página
@@ -142,6 +144,7 @@ Un \textbf{\textit{archivo .md}} es un archivo de texto plano que usa la \textbf
 \end{table}
 
 \chapter{Para acceder a los repositorios.}
+\newpage
 \section{Antes de acceder.}
 Sigue estos pasos para generar una \textbf{clave SSH} en tu computadora y añadirla a GitHub:
 \begin{enumerate}
@@ -170,7 +173,13 @@ ssh-add ~/.ssh/id_ed25519
 		\begin{lstlisting}
 cat ~/.ssh/id_ed25519.pub
 		\end{lstlisting}
+		Verás algo como
+		\begin{lstlisting}
+ssh-ed25519 AAAAC3Nz...Z5Z5Z5Z5Z5  tu-email@ejemplo.com
+		\end{lstlisting}
+		Selecciona \textbf{el texto completo} (desde  \texttt{ssh-ed25519} hasta tu correo) y cópialo al portapapeles.
 	\end{itemize}
+	
 	\item \textbf{Añade la clave pública a GitHub}
 	\begin{itemize}
 		\item Ve a la pestaña \textbf{SSH and GPG keys} en GitHub (dentro de Settings).
@@ -222,7 +231,7 @@ git clone git@github.com:ElNatitis/oach.git
 	\end{itemize}
 	\item \textbf{Navega a la carpeta del repositorio}
 	\begin{itemize}
-		Usa el siguiente comando para entrar a la carpeta del repositorio:
+		\item Usa el siguiente comando para entrar a la carpeta del repositorio:
 		\begin{lstlisting}
 cd oach
 		\end{lstlisting}
