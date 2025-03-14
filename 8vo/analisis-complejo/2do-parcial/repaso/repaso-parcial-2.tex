@@ -1,0 +1,176 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{natetas}
+\title{	Análisis Complejo.
+		\\ 
+		\begin{small}
+			\textit{Lo que entiendo de lo que vimos en el segundo parcial} 
+		\end{small}
+		}
+		
+\newtheorem{theorem}{Teorema}[section]
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+
+\chapter{Diferenciación en el Plano Complejo}
+\section{La Derivada de una Función Compleja}
+
+\subsection{Derivadas complejas}
+
+Decimos que una función compleja $f(z)$ definida en un dominio $G$ es \textit{diferenciable} en un punto $z\in G$ si el límite
+
+\begin{equation}
+    \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}, \quad \text{con } (z, z + \Delta z) \in G
+\end{equation}
+
+existe y es finito. Este límite, denotado como $f'(z)$, se llama la \textit{derivada} de $f(z)$ en $z$.
+
+\subsection{Funciones analíticas}
+
+Una función $f(z)$ se dice que es \textit{analítica en un dominio} $G$ si $f(z)$ es \textit{diferenciable} en cada punto de $G$. 
+
+Se dice que es \textit{analítica en un punto} $z$ si $f(z)$ es analítica en algún vecindario de $z$. 
+
+\subsubsection*{Observación}
+Cualquier función analítica en un dominio $G$ es automáticamente analítica en cada punto de $G$. Sin embargo, diferenciabilidad en un punto no implica analiticidad en ese punto.\footnote{Me gusta pensar que, cuando una función es \textit{diferenciable, tanto en un punto $z$ como en puntos cercanos al rededor} (una vecindad centrada en $z$), entonces podemos \textit{analizar} la función en ese \textit{punto $z$}, y es por eso que es \textit{analítica en ese punto}. De la misma manera, cuando la función es \textit{diferenciable en todos los puntos de un conjunto}, entonces podemos \textit{analizarla} en todo el conjunto y es por eso que es \textit{analítica en ese dominio} }
+
+\subsection{Diferenciabilidad en \( \mathbb{R} \) vs. \( \mathbb{C} \)}
+
+La diferenciabilidad en el plano complejo es un concepto mucho más fuerte que en el caso real debido a la naturaleza bidimensional de los números complejos. En el caso real, la diferenciabilidad de una función $ f(x) $ en un punto $ x $ significa que existe el límite:
+
+\begin{equation}
+    f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+\end{equation}
+
+aquí, $ \Delta x $ solo puede tender a cero por dos direcciones posibles: desde la derecha ($ \Delta x > 0 $) o desde la izquierda ($ \Delta x < 0 $).  
+
+En el caso complejo, como trabajamos en el \textit{plano complejo}, $ \Delta z $ es un número complejo y puede tender a cero desde \textbf{infinitas direcciones}. El límite:
+
+\begin{equation}
+    f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}
+\end{equation}
+
+debe existir \textbf{independientemente de la dirección} en la que $ \Delta z $ se aproxime a cero.  
+
+El hecho de que el cociente de diferencias deba tener el mismo valor para cualquier dirección en la que nos acerquemos a $z$ significa que la función $f(z)$ debe cumplir con una condición mucho más estricta que en el caso real.\footnote{En términos matemáticos, esto se traduce en las \textbf{ecuaciones de Cauchy-Riemann.}}
+
+\subsection{Diferenciales Complejas}
+
+El concepto de la diferencial de una funci\'on compleja es formalmente id\'entico al de la diferencial de una funci\'on real. Supongamos que $ w = f(z) $ es \textit{diferenciable} en el punto $ z $ y definimos:
+
+\begin{equation}
+    \Delta w = f(z + \Delta z) - f(z),
+\end{equation}
+
+de modo que:
+
+\begin{equation}
+    \lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z} = f'(z).
+\end{equation}
+
+Entonces:
+
+\begin{equation}
+    \frac{\Delta w}{\Delta z} = f'(z) + \epsilon,
+\end{equation}
+
+donde $ \epsilon $ tiende a cero cuando $ \Delta z \to 0 $, o equivalentemente:
+
+\begin{equation}
+    \Delta w = f'(z) \Delta z + \epsilon \Delta z.
+\end{equation}
+
+El primer t\'ermino en la ecuaci\'on anterior se denomina la \textbf{diferencial} de la funci\'on $ w $ (o la \textit{parte lineal principal} del incremento $ \Delta w $) y se denota por:
+
+\begin{equation}
+    dw = f'(z) dz.
+\end{equation}
+
+En particular, al elegir $ w = z $, obtenemos:
+
+\begin{equation}
+    dz = 1 \cdot \Delta z = \Delta z,
+\end{equation}
+
+es decir, el incremento y la diferencial de la variable independiente coinciden. Sustituyendo $ \Delta z $ en la ecuaci\'on anterior, obtenemos:
+
+\begin{equation}
+    dw = f'(z) dz.
+\end{equation}
+
+Esto conduce a la f\'ormula:
+
+\begin{equation}
+    f'(z) = \frac{dw}{dz} = \frac{df(z)}{dz}.
+\end{equation}
+
+Las dos expresiones en el lado derecho pueden considerarse como notaciones alternativas para la derivada $ f'(z) $, as\'i como cocientes de diferenciales.
+\newpage
+\section{Las Ecuaciones de Cauchy-Riemann}
+
+\subsection{Diferenciabilidad de una funci\'on real}
+
+Se dice que una funci\'on real $ u(x, y) $ es \textbf{diferenciable} en el punto $ (x, y) $ si el incremento  
+
+\begin{equation}
+    \Delta u = u(x + \Delta x, y + \Delta y) - u(x, y)
+\end{equation}
+
+puede escribirse en la forma:
+
+\begin{equation}
+    \Delta u = A \Delta x + B \Delta y + \epsilon_1 \Delta x + \epsilon_2 \Delta y,
+\end{equation}
+
+donde $ A $ y $ B $ son independientes de $ \Delta x, \Delta y $, y los t\'erminos $ \epsilon_1, \epsilon_2 $ tienden a cero cuando $ \Delta x, \Delta y \to 0 $.  
+
+Es f\'acil ver que los coeficientes $ A $ y $ B $ son simplemente las derivadas parciales $ \partial u / \partial x $ y $ \partial u / \partial y $ de la funci\'on $ u $ en el punto $ (x, y) $. De hecho, eligiendo primero $ \Delta y = 0 $ y luego $ \Delta x = 0 $, obtenemos:
+
+\begin{equation}
+    \frac{\partial u}{\partial x} = \lim_{\Delta x \to 0} \frac{u(x + \Delta x, y) - u(x, y)}{\Delta x} = \lim_{\Delta x \to 0} \frac{A \Delta x + \epsilon_1 \Delta x}{\Delta x} = A + \lim_{\Delta x \to 0} \epsilon_1 = A.
+\end{equation}
+
+\begin{equation}
+    \frac{\partial u}{\partial y} = \lim_{\Delta y \to 0} \frac{u(x, y + \Delta y) - u(x, y)}{\Delta y} = \lim_{\Delta y \to 0} \frac{B \Delta y + \epsilon_2 \Delta y}{\Delta y} = B + \lim_{\Delta y \to 0} \epsilon_2 = B.
+\end{equation}
+
+\subsection{Diferenciabilidad en el plano complejo y las ecuaciones de Cauchy-Riemann}
+
+Como se mencion\'o en la Secci\'on 3.12, especificar una funci\'on $ w = f(z) = u + iv $ de una variable compleja $ z = x + iy $ es equivalente a especificar dos funciones reales $ u $ y $ v $ en t\'erminos de las variables reales $ x $ e $ y $.  
+
+La continuidad de $ u $ y $ v $ implica obviamente la continuidad de $ w $, pero la diferenciabilidad de $ u $ y $ v $ \textbf{no implica} la diferenciabilidad de $ w $
+
+Por lo tanto, las partes real e imaginaria de una funci\'on diferenciable $ w = u + iv $ \textbf{no pueden elegirse de manera independiente}. En su lugar, deben satisfacer ciertas condiciones conocidas como las \textbf{ecuaciones de Cauchy-Riemann}
+
+\begin{theorem}
+    La funci\'on $ w = f(z) = u + iv $ es diferenciable en el punto $ z = x + iy $ si y solo si las funciones $ u $ y $ v $ son diferenciables en el punto $ (x, y) $ y satisfacen las ecuaciones de Cauchy-Riemann:
+    
+    \begin{equation}
+        \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+    \end{equation}
+    
+    en el punto $ (x, y) $.
+\end{theorem}
+
+\subsection{Consecuencias del teorema anterior}
+
+Del teorema anterior se sigue que una funci\'on $ w = f(z) = u + iv $ es \textbf{anal\'itica} en un dominio $ G $ si y solo si sus partes real e imaginaria $ u $ y $ v $ son diferenciables y satisfacen las \textbf{ecuaciones de Cauchy-Riemann} en cada punto de $ G $. La derivada $ f'(z) $ se puede escribir en cualquiera de las siguientes formas:
+
+\begin{equation}
+    f'(z) = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y} = \frac{\partial v}{\partial y} + i \frac{\partial v}{\partial y} - i \frac{\partial u}{\partial y}.
+\end{equation}
+
+Como sabemos del c\'alculo, una \textbf{condici\'on suficiente} (pero \textbf{no necesaria}) para la diferenciabilidad de $ u $ y $ v $ en un punto $ (x,y) $ es que $ u $ y $ v $ tengan derivadas parciales \textbf{continuas} en $ (x,y) $. 
+
+\end{document}
