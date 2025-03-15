@@ -22,7 +22,61 @@
 \maketitle
 \newpage
 \tableofcontents
+\chapter{Funciones Complejas.}
+\section{Conceptos Básicos.}
+Sea $E$ cualquier conjunto de números complejos.
+$$
+	E \in \mathbb{C}
+$$
+\subsection{Variable compleja.}
+Le llamamos \textit{\textit{variable compleja}} a un número $z$ que pertenezca a $E$
 
+\subsection{Función compleja.}
+Con \textbf{\textit{Función compleja}} nos referimos a una regla que asigna un número complejo $w$ definido \textit{de manera única} a cada $z\in E$. Escribimos entonces $w=f(z)$
+\subsubsection{Dominio de definición de la función.}
+Sea $f$ una \textbf{\textit{Función compleja}} y $E$ el conjunto sobre el que se define la función entonces $E$ es el \textit{dominio de definición de la función.}
+\subsubsection{Rango de una función.}
+Al conjunto de todos los valores obtenidos por una función $f(z)$ evaluada en su \textbf{\textit{dominio de definción}} $E$, lo sombolizamos con $E'$ y le llamamos \textbf{\textit{rango}} 
+
+\subsection{Funciones multivaluadas.}
+Es conveniente ampliar la definición de una función, ya que existen reglas que asignan varios (incluso infinitos) números complejos $w$ para algunas (o todas) las \textbf{\textit{variables complejas}} de un conjunto $E$.
+Tales funciones se denominan \textit{\textbf{funciones multivaluadas}}. \footnote{Sin embargo, el término \textbf{\textit{función}} sin más calificativos siempre se entenderá como \textbf{\textit{función univaluada}}.}
+
+\subsection{Funciones inversas.}
+Sea $f(z)$ una \textbf{\textit{función compleja,}} le llamamos \textbf{\textit{función inversa}} $f^{-1}(x)$ a una regla\footnote{generalmente multivariada} que lleva cada número complejo $w\in E'$ a todos aquellos puntos $z\in E$ tales que $f(z)=w$. 
+
+\subsection*{Observaciones}
+$z=f^{-1}(z)$ si y solo si $f(z_1)\neq f(z_2)$ siempre que $z_1\neq z_2$
+
+\section{Cuvas y Dominios.}
+\subsection{Curvas Continuas}
+Sean \( x(t) \) y \( y(t) \) dos funciones reales continuas de una variable real \( t \) que toman todos los valores en un intervalo cerrado \( a \leq t \leq b \). Entonces, las ecuaciones paramétricas
+\begin{equation}
+	x = x(t), \quad y = y(t) \quad (a \leq t \leq b)  \label{curv_con}
+\end{equation}
+
+determinan una \textit{curva (continua)} \( C \), formada por todos los puntos \( (x(t), y(t)) \) con \( a \leq t \leq b \).
+
+Si definimos \( z = x + iy \) y \( z(t) = x(t) + iy(t) \), podemos escribir (\ref{curv_con}) como \textbf{una única ecuación paramétrica compleja}
+\begin{equation} 
+	z = z(t) \quad (a \leq t \leq b). \label{epc}
+\end{equation}
+
+A medida que el parámetro \( t \) varía desde \( a \) hasta \( b \), el punto \( z = z(t) \) traza la curva \( C \), comenzando en el \textit{punto inicial} \( z(a) \) y terminando en el \textit{punto final} \( z(b) \).
+
+De esta manera, (\ref{epc}) dota a \( C \) de una dirección natural de recorrido, llamada la \textit{dirección positiva} de \( C \). 
+
+\subsection{Curva Cerrada} 
+La curva \( C \) se dice que es \textit{cerrada} si su punto inicial y final coinciden, es decir, si \( z(a) = z(b) \).
+
+\subsection{Arco} 
+Si el punto inicial \( z(a) \) y el punto final \( z(b) \) no coinciden, la curva \( C \) se denomina \textit{arco}. Este término se utiliza para enfatizar que $C$ es no-cerrada.
+
+\section{Conjuntos Conexos}
+Un conjunto \( E \) de puntos en el plano complejo se dice que es \textit{Conexo} si cada par de puntos \( x, y \) en \( E \) puede unirse mediante una \textbf{curva} que consiste enteramente en puntos de \( E \), con \( x \) como su punto inicial y \( y \) como su punto final. En otras palabras, no hay \textit{"huecos"} en \( E \) que impidan conectar cualquier par de puntos dentro de él.
+
+\section{Continuidad de una Función Compleja.}
+\section{Continuidad uniforme.}
 \chapter{Diferenciación en el Plano Complejo}
 \section{La Derivada de una Función Compleja}
 
@@ -147,7 +201,7 @@ Es f\'acil ver que los coeficientes $ A $ y $ B $ son simplemente las derivadas 
 
 \subsection{Diferenciabilidad en el plano complejo y las ecuaciones de Cauchy-Riemann}
 
-Como se mencion\'o en la Secci\'on 3.12, especificar una funci\'on $ w = f(z) = u + iv $ de una variable compleja $ z = x + iy $ es equivalente a especificar dos funciones reales $ u $ y $ v $ en t\'erminos de las variables reales $ x $ e $ y $.  
+Sabemos que especificar una funci\'on $ w = f(z) = u + iv $ de una variable compleja $ z = x + iy $ es equivalente a especificar dos funciones reales $ u $ y $ v $ en t\'erminos de las variables reales $ x $ e $ y $.  
 
 La continuidad de $ u $ y $ v $ implica obviamente la continuidad de $ w $, pero la diferenciabilidad de $ u $ y $ v $ \textbf{no implica} la diferenciabilidad de $ w $
 
