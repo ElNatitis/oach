@@ -16,7 +16,7 @@
 \subject{Series de tiempo} 
 
 
-
+% Para tener un morado coqueto
 \definecolor{lightPurple}{RGB}{186, 146, 209} % Morado claro
 \definecolor{darkPurple}{RGB}{98, 54, 150}    % Morado oscuro
 \setbeamercolor{structure}{fg=darkPurple} % Color principal para estructuras
@@ -32,10 +32,98 @@
 \titlepage
 \end{frame}
 
+\begin{frame}{Para tener en cuenta.}
+\centeting
+\textit{Los procesos autoregresivos \textbf{extienden} el concepto de regresión.}
+\end{frame}
+
 \begin{frame}
 \tableofcontents
 \end{frame}
 
+\section{Procesos autorregresivos}
+\begin{frame}{Generalidades importantes.}
+\begin{block}{Premisa general.}
+	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Generalidades importantes.}
+\begin{block}{Premisa general.}
+	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
+\end{block}
+
+\begin{block}{Para cuantificar esa dependencia.}
+	\begin{itemize}
+		\item \textbf{Función de autocovarianza}
+		\item \textbf{Función de autocorrelación} 
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Generalidades importantes.}
+\begin{block}{Premisa general.}
+	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
+\end{block}
+
+\begin{block}{Para cuantificar esa dependencia.}
+	\begin{itemize}
+		\item \textbf{Función de autocovarianza:} mide la relación entre valores de la serie en distintos momentos del tiempo.
+		\item \textbf{Función de autocorrelación} 
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Generalidades importantes.}
+\begin{block}{Premisa general.}
+	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
+\end{block}
+
+\begin{block}{Para cuantificar esa dependencia.}
+	\begin{itemize}
+		\item \textbf{Función de autocovarianza:} mide la relación entre valores de la serie en distintos momentos del tiempo.
+		\item \textbf{Función de autocorrelación:} normaliza la autocovarianza para expresar la relación en términos de correlación, facilitando su interpretación.  
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{\textit{Extender}}
+\begin{block}{}
+	Ambas funciones \textit{extienden} los conceptos clásicos de covarianza y correlación.
+\end{block}
+
+\begin{block}{Pero}
+	En lugar de aplicarse entre dos variables diferentes, las utilizan para analizar la relación de una misma serie a lo largo del tiempo.
+\end{block}
+
+\end{frame}
+
+\subsection{Proceso autorregresivo de primer orden AR(1)}
+\begin{frame}{\textbf{AR(1)}}
+\begin{block}{Definición}
+Diremos que una serie sigue un \textit{Proceso autoregresivo de primer orden}, si su variabilidad puede describirse a través de: 
+\begin{equation}
+	z_t = c + \phi z_{t-1} + a_t
+\end{equation}
+con $-1 < \phi < 1$
+\end{block}
+
+\begin{block}{Donde:}
+\begin{itemize}
+	\item $c$: Captura el \textbf{efecto de la media en la serie.}
+	\item $\phi$: Coeficiente que determina \textbf{la influencia de los valores pasados en el valor presente.}
+	\item $a_t$: Término de \textbf{ruido blanco}
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+\subsection{Proceso autorregresivo de primer orden AR(2)}
+\subsection{Proceso autoregresivo general AR(p)}
+\section{Función de autoccorelación simple}
+\section{Funcion de autocorrelación parcial}
 \begin{frame}{•}
 
 \end{frame}
