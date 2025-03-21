@@ -6,12 +6,18 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\author{N.Perez-Medina}
-\title{Autocorrelación Parcial.}
+\author{N.Pérez-Medina}
+\title{\textbf{Autocorrelación Parcial.}}
 \setbeamercovered{transparent} 
 \setbeamertemplate{navigation symbols}{} 
-\logo{} 
-\institute{FING - UACH} 
+\logo{\includegraphics[scale=0.04]{logo_fing_uach_bn.png} } 
+\institute{\textbf{FING - UACH}
+	\\
+	\begin{small}
+	\textit{Series de tiempo}\\
+	\textbf{Catedrático:} M. C. Erick N. Grijalva 
+	\end{small}		
+	} 
 \date{\today} 
 \subject{Series de tiempo} 
 
@@ -32,29 +38,36 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Para tener en cuenta.}
-\centeting
-\textit{Los procesos autoregresivos \textbf{extienden} el concepto de regresión.}
-\end{frame}
-
 \begin{frame}
 \tableofcontents
 \end{frame}
 
-\section{Procesos autorregresivos}
-\begin{frame}{Generalidades importantes.}
-\begin{block}{Premisa general.}
+\section{Generalidades importantes.}
+\begin{frame} 
+\tableofcontents[currentsection] % Solo muestra la sección actual
+\end{frame}
+
+\begin{frame}{Definición}
+\begin{block}{}
+	Los \textbf{Modelos autorregresivos (AR)} son un tipo básico de \textit{modelos de procesos estacionarios.}
+\end{block}
+\end{frame}
+
+\begin{frame}{Definición}
+\begin{block}{}
+	Los \textbf{Modelos autorregresivos (AR)} son un tipo básico de \textit{modelos de procesos estacionarios.}\footnote{Series de tiempo cuyas \textit{propiedades estadísticas} (media, varianza y autocorrelación) se mantienen \textbf{constantes} en el tiempo.}
+\end{block}
+\end{frame}
+
+\begin{frame}{Premisa general.}
+\begin{block}{}
 	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
 \end{block}
 
 \end{frame}
 
-\begin{frame}{Generalidades importantes.}
-\begin{block}{Premisa general.}
-	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
-\end{block}
-
-\begin{block}{Para cuantificar esa dependencia.}
+\begin{frame}{Para cuantificar esa dependencia.}
+\begin{block}{}
 	\begin{itemize}
 		\item \textbf{Función de autocovarianza}
 		\item \textbf{Función de autocorrelación} 
@@ -62,12 +75,8 @@
 \end{block}
 \end{frame}
 
-\begin{frame}{Generalidades importantes.}
-\begin{block}{Premisa general.}
-	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
-\end{block}
-
-\begin{block}{Para cuantificar esa dependencia.}
+\begin{frame}{Para cuantificar esa dependencia.}
+\begin{block}{}
 	\begin{itemize}
 		\item \textbf{Función de autocovarianza:} mide la relación entre valores de la serie en distintos momentos del tiempo.
 		\item \textbf{Función de autocorrelación} 
@@ -75,11 +84,19 @@
 \end{block}
 \end{frame}
 
-\begin{frame}{Generalidades importantes.}
+\begin{frame}{Para cuantificar esa dependencia.}
+\begin{block}{}
+	\begin{itemize}
+		\item \textbf{Función de autocovarianza:} mide la relación entre valores de la serie en distintos momentos del tiempo.
+		\item \textbf{Función de autocorrelación:} normaliza la autocovarianza para expresar la relación en términos de correlación, facilitando su interpretación.  
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{En resumen.}
 \begin{block}{Premisa general.}
 	Los \textbf{valores actuales} dependen \textit{en cierta medida} de \textbf{valores previos.}
 \end{block}
-
 \begin{block}{Para cuantificar esa dependencia.}
 	\begin{itemize}
 		\item \textbf{Función de autocovarianza:} mide la relación entre valores de la serie en distintos momentos del tiempo.
@@ -88,15 +105,19 @@
 \end{block}
 \end{frame}
 
-\begin{frame}{\textit{Extender}}
+\begin{frame}{\textit{Observación}}
 \begin{block}{}
 	Ambas funciones \textit{extienden} los conceptos clásicos de covarianza y correlación.
 \end{block}
 
 \begin{block}{Pero}
-	En lugar de aplicarse entre dos variables diferentes, las utilizan para analizar la relación de una misma serie a lo largo del tiempo.
+	En lugar de aplicarse entre dos variables diferentes, estamos modelando la relación lineal entre valores pasados y presentes.
 \end{block}
+\end{frame}
 
+\section{Procesos autorregresivos}
+\begin{frame} 
+\tableofcontents[currentsection] % Solo muestra la sección actual
 \end{frame}
 
 \subsection{Proceso autorregresivo de primer orden AR(1)}
@@ -116,16 +137,234 @@ con $-1 < \phi < 1$
 	\item $a_t$: Término de \textbf{ruido blanco}
 \end{itemize}
 \end{block}
-
-
 \end{frame}
 
-\subsection{Proceso autorregresivo de primer orden AR(2)}
+\subsection{Proceso autorregresivo de segundo orden AR(2)}
+\begin{frame}{\textbf{AR(2)}}
+\begin{block}{Definición}
+Diremos que una serie sigue un \textit{Proceso autoregresivo de segundo orden}, si su variabilidad puede describirse a través de: 
+\begin{equation}
+	z_t = c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + a_t
+\end{equation}
+\end{block}
+
+\begin{block}{Donde:}
+\begin{itemize}
+	\item $c$: Captura el \textbf{efecto de la media en la serie.}
+	\item $\phi_1$ y $\phi_2$: Coeficientes que determinan \textbf{la influencia de los valores pasados en el valor presente.}
+	\item $a_t$: Término de \textbf{ruido blanco}
+\end{itemize}
+\end{block}
+\end{frame}
 \subsection{Proceso autoregresivo general AR(p)}
-\section{Función de autoccorelación simple}
-\section{Funcion de autocorrelación parcial}
-\begin{frame}{•}
+\begin{frame}{\textbf{AR(p)}}
+\begin{block}{Definición}
+Diremos que una serie sigue un \textit{Proceso autoregresivo de orden} $p$, si su variabilidad puede describirse a través de: 
+\begin{equation}
+	z_t = c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t
+\end{equation}
+\end{block}
+
+\begin{block}{Donde:}
+\begin{itemize}
+	\item $c$: Captura el \textbf{efecto de la media en la serie.}
+	\item $\phi_p$: Coeficientes que determinan \textbf{la influencia de los valores pasados en el valor presente.}
+	\item $a_t$: Término de \textbf{ruido blanco}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Para hacerlo más elegante.}
+\begin{block}{Tomamos la esperanza de ambos lados.}
+$$ E[z_t] = E[c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t] $$
+\end{block}
+\begin{block}{Usando la propiedad lineal de la esperanza.}
+$ E[z_t] = E[c] + \phi_1 E[z_{t-1}] + \phi_2 E[z_{t-2}] + \dots + \phi_p E[z_{t-p}] + E[a_t] $
+\end{block}
+\end{frame}
+
+\begin{frame}{Hay que tomar en cuenta que}
+\begin{block}{}
+Como $a_t$ es \textbf{ruido blanco} tenemos que:
+\begin{equation}
+	E[a_t] = 0
+\end{equation}
+Dado que la serie es \textbf{estacionaria} tenemos que:
+\begin{equation}
+	E[z_t] = E[z_{t-1}] + E[z_{t-2}] + \dots + E[z_{t-p}] = \mu
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Para hacerlo más elegante.}
+\begin{block}{Tomamos la esperanza de ambos lados.}
+$$ E[z_t] = E[c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t] $$
+\end{block}
+\begin{block}{Usando la propiedad lineal de la esperanza.}
+$ E[z_t] = E[c] + \phi_1 E[z_{t-1}] + \phi_2 E[z_{t-2}] + \dots + \phi_p E[z_{t-p}] + E[a_t] $
+\end{block}
+\begin{block}{Tomando en cuenta $(4)$ y $(5)$}
+$$ \mu = c + \phi_1 \mu + \phi_2 \mu + \dots + \phi_p \mu $$
+luego 
+\begin{equation}
+	c = \mu ( 1 - \phi_1 - \phi_2 - \dots - \phi_p )
+\end{equation}
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Volviendo a nuestra definición}
+\begin{block}{}
+	$$ z_t = c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t $$
+\end{block}
 
 \end{frame}
+
+\begin{frame}{Volviendo a nuestra definición}
+\begin{block}{}
+	$$ z_t = c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t $$
+\end{block}
+\begin{block}{Aplicando $\tilde{z_t}=z_t-\mu$}
+	$ \tilde{z_t} + \mu = c + \mu + \phi_1 (\tilde{z}_{t-1} + \mu) + \phi_2 (\tilde{z}_{t-2} + \mu) + \dots + \phi_p (\tilde{z}_{t-p} + \mu) + a_t $
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Volviendo a nuestra definición}
+\begin{block}{}
+	$$ z_t = c + \phi_1 z_{t-1} + \phi_2 z_{t-2} + \dots + \phi_p z_{t-p} + a_t $$
+\end{block}
+\begin{block}{Aplicando $\tilde{z_t}=z_t-\mu$}
+	$ \tilde{z_t} + \mu = c + \mu + \phi_1 (\tilde{z}_{t-1} + \mu) + \phi_2 (\tilde{z}_{t-2} + \mu) + \dots + \phi_p (\tilde{z}_{t-p} + \mu) + a_t $
+\end{block}
+\begin{block}{Reagrupando términos}
+	$ \tilde{z_t}  = \phi_1 \tilde{z}_{t-1} + \phi_2 \tilde{z}_{t-2} + \dots + \phi_p \tilde{z}_{t-p} + a_t + c - \mu ( 1 - \phi_1 - \phi_2 - \dots - \phi_p )$
+\end{block}
+\begin{block}{Recordando $(6)$}
+\begin{equation}
+\tilde{z_t}  = \phi_1 \tilde{z}_{t-1} + \phi_2 \tilde{z}_{t-2} + \dots + \phi_p \tilde{z}_{t-p} + a_t
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{\textbf{AR(p)}}
+\begin{block}{Definición}
+Diremos que una serie sigue un \textit{Proceso autoregresivo de orden} $p$, si su variabilidad puede describirse a través de: 
+$$ \tilde{z_t}  = \phi_1 \tilde{z}_{t-1} + \phi_2 \tilde{z}_{t-2} + \dots + \phi_p \tilde{z}_{t-p} + a_t $$
+\end{block}
+
+\begin{block}{Donde:}
+\begin{itemize}
+	\item $\tilde{z_t}=z_t-\mu$
+	\item $\phi_p$: Coeficientes que determinan \textbf{la influencia de los valores pasados en el valor presente.}
+	\item $a_t$: Término de \textbf{ruido blanco}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Función de autoccorelación simple}
+\begin{frame} 
+\tableofcontents[currentsection] % Solo muestra la sección actual
+\end{frame}
+
+\begin{frame}{¿Qué hace?}
+\begin{block}{}
+	Mide qué tan parecido es $z_t$​ con $z_{t - k}$ para distintos rezagos $k$.
+\end{block}
+\end{frame}
+
+\begin{frame}{¿Qué desventajas presenta?}
+\begin{block}{}
+	Esas medidas consideran tanto relaciones \textbf{directas} como \textbf{indirectas}.
+\end{block}
+\end{frame}
+
+\begin{frame}{Eso quiere decir...}
+\begin{block}{}
+Si $z_t$ está fuertemente correlacionado con $z_{t-1}$ y​ $z_{t-1}$ también está correlacionado con $z_{t-2}$, entonces $z_t$ y $z_{t-2}$ \textbf{pueden aparecer como correlacionados, aunque no haya una relación directa entre ellos.}
+\end{block}
+\end{frame}
+
+
+\section{Funcion de autocorrelación parcial}
+\begin{frame} 
+\tableofcontents[currentsection] % Solo muestra la sección actual
+\end{frame}
+\subsection{¿Qué hace?}
+\begin{frame}{¿Qué hace?}
+\begin{block}{}
+	Mide qué tan parecido es $z_t$​ con $z_{t - k}$ \textbf{eliminando la influencia de los rezagos intermedios.}
+\end{block}
+\end{frame}
+
+\begin{frame}{¿Qué ventajas presenta?}
+\begin{block}{}
+\begin{itemize}
+	\item Si el modelo real es \textbf{AR(2)}, la \textbf{\textit{PACF}} será \textbf{significativa solo en los rezagos 1 y 2}, y cercana a 0 para $k>2$.
+	\item En cambio, la \textbf{ACF} podría mostrar una correlación decreciente incluso para rezagos más grandes, porque incluye influencias indirectas.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{¿Cómo lo hace?}
+\begin{frame}{Con 3 sencillos pasos}
+\begin{block}{Para calcular la \textbf{ACP} entre un instante $z_t$ y uno $z_{t-k}$ }
+\begin{enumerate}
+	\item Regresión de $\tilde{z}_t$ contra sus valores intermedios
+	\item Regresión de $\tilde{z}_{t-k}$ contra sus valores intermedios
+	\item Correlación entre $u$ y $v$
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}{1. Regresión de $\tilde{z}_t$ contra sus valores intermedios}
+\begin{block}{Aplicando regresión encontraremos}
+$$ \tilde{z_t}  = \beta_1 \tilde{z}_{t-1} + \beta_2 \tilde{z}_{t-2} + \dots + \beta_{k-1} \tilde{z}_{t-k} + u_t $$
+\end{block}
+\begin{block}{¿Qué representa $u_t$?}
+	La parte de $\tilde{z_t}$ que no está explicada por los valores intermedios.
+\end{block}
+\end{frame}
+
+\begin{frame}{2. Regresión de $\tilde{z}_{t-k}$ contra sus valores intermedios}
+\begin{block}{Aplicando regresión encontraremos}
+$$ \tilde{z}_{t-k}  = \gamma_1 \tilde{z}_{t-1} + \gamma_2 \tilde{z}_{t-2} + \dots + \gamma_{k-1} \tilde{z}_{t-k+1} + v_t $$
+\end{block}
+\begin{block}{¿Qué representa $v_t$?}
+	La parte de $\tilde{z}_{t-k}$ que no está explicada por los valores intermedios.
+\end{block}
+\end{frame}
+
+\begin{frame}{Correlación entre $u$ y $v$}
+\begin{block}{Tomando en cuenta lo anterior}
+La correlación entre $u$ y $v$ mide \textbf{\textit{únicamente}} la relación directa entre $\tilde{z}_t$ y $\tilde{z}_{t-k}$, \textbf{eliminando la influencia de los valores intermedios.}
+\begin{equation}
+	\rho = Corr(u_t,v_t)
+\end{equation}
+$\rho$ es precisamente la autocorrelación parcial en el rezago $k$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Idea gráfica (1/2)}
+\centering
+\includegraphics[scale=0.5]{idea-grafica-1.png} 
+\end{frame}
+
+\begin{frame}{Idea gráfica (2/2)}
+\centering
+\includegraphics[scale=0.35]{idea-grafica-2.png} 
+\end{frame}
+
+\section*{Gracias.}
+\begin{frame} 
+\tableofcontents[currentsection] % Solo muestra la sección actual
+\end{frame}
+
+\begin{frame}{Por su atención:}
+\centering
+\Huge
+\textbf{Gracias y bonito vierneeees}
+\end{frame}
+
 
 \end{document}
