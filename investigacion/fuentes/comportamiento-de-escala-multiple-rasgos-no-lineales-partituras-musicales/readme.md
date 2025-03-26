@@ -56,4 +56,18 @@ Nos enfocamos en partituras musicales, interpretándolas como series de tiempo m
 
 - Finalmente, presentamos un primer intento de evaluar si tales características no lineales influyen en la percepción _estética de la música._
 
+## Métodos y materiales
 
+### Construcción de las series temporales
+
+Consideramos las partituras musicales como una secuencia de números enteros, cada uno de los cuales representa una nota distinta. 
+
+Los números fueron extraídos de archivos MIDI obtenidos de diferentes bases de datos en línea [17,18]. Procesamos los archivos MIDI utilizando **midicsv** [19], un software gratuito que _convierte archivos MIDI en archivos CSV_ (valores separados por comas).
+
+Tomando la nota de menor duración como unidad de tiempo, se puede generar una serie temporal como se muestra en la figura 1. Una mejor comprensión de esta representación se puede obtener en las figuras 2 y 3. 
+
+En la figura 3, los primeros ocho compases de la pieza mostrada en la figura 2 son traducidos en unidades de la nota más corta (en la figura subdividimos cada compás en corcheas, que representan la duración más corta de la pieza original y sirven como unidad de tiempo en este caso). 
+
+**La serie temporal es multivariada, y el número de variables depende del número de instrumentos o voces en la pieza.**
+
+### Análisis de fluctuación sin tendencia
