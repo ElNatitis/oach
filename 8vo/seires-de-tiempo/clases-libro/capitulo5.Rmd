@@ -227,4 +227,56 @@ En el ejemplo anterior, los errores estándar de los parámetros son considerabl
 
 \newpage
 
+### 5.4.2 Intervalo de confianza para la tendencia en la serie de temperatura
 
+Para calcular un intervalo de confianza aproximado del 95% para la tendencia en la serie de temperatura global (1970–2005), se utiliza el método GLS para estimar el error estándar considerando la autocorrelación en los residuos (Figura 5.4). En la función `gls`, la serie de residuos se aproxima mediante un proceso AR(1) con una autocorrelación de rezago 1 de 0.7, leída de la Figura 5.4. Este valor se utiliza como parámetro en la función `gls`:
+
+``` {r}
+temp.gls <- gls(temp ~ time(temp), cor = corAR1(0.7))
+confint(temp.gls)
+```
+
+Salida esperada:
+```
+               2.5 %      97.5 %
+(Intercept) -39.8057   -28.4966
+time(temp)   0.0144     0.0201
+```
+
+Aunque los intervalos de confianza anteriores son más amplios que los de la Sección 5.3, **el cero no está contenido en los intervalos**, lo que implica que las estimaciones son estadísticamente significativas, y en particular, que la tendencia lo es. Por tanto, existe evidencia estadística de una **tendencia creciente** en las temperaturas globales durante el período 1970–2005. Esto sugiere que, si las condiciones actuales persisten, es probable que las temperaturas continúen aumentando en el futuro.
+
+\newpage
+
+## 5.5 Modelos lineales con variables estacionales
+
+### 5.5.1 Introducción
+
+Dado que las series de tiempo son observaciones medidas secuencialmente en el tiempo, los efectos estacionales suelen estar presentes en los datos, especialmente los ciclos anuales causados directa o indirectamente por el movimiento de la Tierra alrededor del Sol. Ya se han observado efectos estacionales en varias de las series que hemos analizado, incluyendo la serie aérea (§1.4.1), la serie de temperatura (§1.4.5) y la serie de producción eléctrica (§1.4.3). En esta sección se consideran modelos de regresión lineal con variables predictoras que representan efectos estacionales.
+
+### 5.5.2 Variables indicadoras estacionales aditivas
+
+Supongamos que una serie de tiempo contiene \( s \) estaciones. Por ejemplo, si se mide cada mes del calendario, \( s = 12 \); si se mide cada seis meses (verano e invierno), entonces \( s = 2 \).
+
+Un modelo de indicadores estacionales para una serie \( \{x_t : t = 1, \dots, n\} \) que contiene \( s \) estaciones y una tendencia \( m_t \), se expresa como:
+
+\[ x_t = m_t + s_t + z_t \tag{5.6} \]
+
+donde \( s_t = \beta_i \) cuando \( t \) cae en la \( i \)-ésima estación (\( i = 1, \dots, n \); \( i = 1, \dots, s \)), y \( \{z_t\} \) es la serie de errores residuales, que puede estar autocorrelacionada.
+
+Este modelo tiene la misma forma que el modelo de descomposición aditiva (Ecuación 1.2), pero difiere en que la tendencia \( m_t \) se formula con parámetros. En la ecuación (5.6), \( m_t \) no es un término constante (intercepto), sino que puede ser un polinomio de orden \( p \) con parámetros \( \alpha_1, \dots, \alpha_p \). Entonces, la ecuación (5.6) se convierte en una tendencia polinómica donde el término constante depende de la estación, y los \( s \) parámetros estacionales (\( \beta_1, \dots, \beta_s \)) corresponden a \( s \) posibles términos constantes en la Ecuación (5.2). Por lo tanto, la ecuación (5.6) puede escribirse como:
+
+\[ x_t = m_t + \beta_{1+(t-1)\bmod s} + z_t \tag{5.7} \]
+
+Por ejemplo, con una serie \( \{x_t\} \) observada cada mes del calendario comenzando con \( t = 1 \) en enero, un modelo de indicador estacional con tendencia lineal se da por:
+
+\[
+x_t = \alpha_1 t + s_t + z_t =
+\begin{cases}
+\alpha_1 t + \beta_1 + z_t & t = 1, 13, \dots \\
+\alpha_1 t + \beta_2 + z_t & t = 2, 14, \dots \\
+\vdots \\
+\alpha_1 t + \beta_{12} + z_t & t = 12, 24, \dots
+\end{cases} \tag{5.8}
+\]
+
+Los parámetros del modelo en la ecuación (5.8) pueden estimarse mediante OLS o GLS, tratando la estación estacional \( s_t \) como un 'factor'. En R, el factor mensual puede aplicarse usando variables indicadoras extraídas con la función `cycle` (§1.4.1).
