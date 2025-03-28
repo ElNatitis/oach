@@ -1,0 +1,230 @@
+---
+title: "Regresión"
+output: pdf_document
+author: "natetas"
+date: "`r Sys.Date()`"
+---
+
+
+# 5. Regresión
+## 5.1 Propósito
+
+Las tendencias en series de tiempo pueden clasificarse como *estocásticas* o *determinísticas*. Consideramos que una tendencia es estocástica cuando muestra cambios inexplicables en su dirección y atribuimos las tendencias transitorias aparentes a una alta correlación serial con error aleatorio. Este tipo de tendencias, comunes en las series financieras, pueden simularse en R utilizando modelos como el paseo aleatorio o el proceso autorregresivo (Capítulo 4). En contraste, cuando existe una explicación física plausible para una tendencia, usualmente buscamos modelarla de manera determinista. Por ejemplo, una tendencia determinista creciente en los datos puede estar relacionada con un aumento poblacional, o un ciclo regular puede estar asociado a una frecuencia estacional conocida. Las tendencias deterministas y la variación estacional pueden modelarse mediante regresión.
+
+La diferencia práctica entre tendencias estocásticas y deterministas radica en que extrapolamos las segundas al hacer pronósticos. Justificamos la extrapolación a corto plazo al afirmar que las tendencias subyacentes generalmente cambian lentamente en comparación con el horizonte de pronóstico. Por la misma razón, la extrapolación a corto plazo debe basarse en una línea ajustada a los datos más recientes en lugar de un polinomio de alto orden.
+
+En este capítulo, se estudian modelos de regresión adecuados para el análisis de series de tiempo que contienen tendencias deterministas y variación estacional regular. Comenzamos con modelos lineales para tendencias y luego consideramos modelos que incorporan variables indicadoras y armónicas para capturar tendencias y variaciones estacionales. También se exploran modelos de regresión con variables explicativas y la transformación de Box-Cox, que se utiliza para estabilizar la varianza.
+
+El análisis de regresión en series de tiempo suele diferir del análisis estándar de regresión debido a que los errores tienden a estar correlacionados en el tiempo. Esto puede hacer que los errores estándar de los coeficientes estén subestimados y que los valores *p* sean más pequeños de lo que deberían, lo que puede llevar a atribuir significancia estadística excesiva a las pruebas en el software estadístico estándar. Es crucial presentar evidencia estadística correcta. Por ejemplo, un grupo de protección ambiental podría verse afectado por acusaciones de que está afirmando falsamente tendencias estadísticamente significativas. En este capítulo, se emplean los mínimos cuadrados generalizados para obtener estimaciones mejoradas del error estándar y corregir la autocorrelación en la serie residual.
+
+\newpage
+
+## 5.2 Modelos lineales
+### 5.2.1 Definición
+
+Un modelo para una serie de tiempo \( \{ x_t : t = 1, \dots, n \} \) es *lineal* si se puede expresar como:
+
+\[
+x_t = \alpha_0 + \alpha_1 u_{1,t} + \alpha_2 u_{2,t} + \dots + \alpha_m u_{m,t} + z_t
+\]
+
+donde \( u_{i,t} \) es el valor del predictor \( i \)-ésimo (o variable explicativa) en el tiempo \( t \) y \( z_t \) es el error en el tiempo \( t \). Los parámetros del modelo, \( \alpha_0, \alpha_1, \dots, \alpha_m \), pueden estimarse mediante mínimos cuadrados. Nótese que los errores \( z_t \) pueden tener media 0 pero no necesitan ser ruido blanco gaussiano.
+
+Un ejemplo de un modelo lineal es el polinomio de orden \( p \) de la forma:
+
+\[
+x_t = \alpha_0 + \alpha_1 t + \alpha_2 t^2 + \dots + \alpha_p t^p + z_t
+\]
+
+Las variables predictoras pueden escribirse como \( u_{i,t} = t^i \) para \( i = 1, \dots, p \). El término *lineal* hace referencia a la suma de los parámetros del modelo, cada uno multiplicado por una variable predictora única.
+
+Un caso especial de un modelo lineal es la tendencia lineal simple obtenida al poner \( p = 1 \) en la ecuación anterior:
+
+\[
+x_t = \alpha_0 + \alpha_1 t + z_t.
+\]
+
+En este caso, el valor de la línea en el tiempo \( t \) representa la tendencia \( m_t \). Para el polinomio general, la tendencia en \( t \) es simplemente el valor del polinomio subyacente evaluado en \( t \), es decir:
+
+\[
+m_t = \alpha_0 + \alpha_1 t + \alpha_2 t^2 + \dots + \alpha_p t^p.
+\]
+
+Muchos modelos no lineales pueden transformarse en modelos lineales. Por ejemplo, un modelo de la forma \( x_t = e^{\alpha_0 + \alpha_1 t + z_t} \) puede transformarse tomando logaritmos naturales para obtener un modelo lineal para la serie \( y_t \):
+
+\[
+y_t = \log x_t = \alpha_0 + \alpha_1 t + z_t.
+\]
+
+En la ecuación anterior, la regresión por mínimos cuadrados podría utilizarse para ajustar el modelo, es decir, estimar los parámetros \( \alpha_0 \) y \( \alpha_1 \), y hacer predicciones para \( x_t \). Para obtener una predicción de \( x_t \), la transformación inversa necesita aplicarse (es decir, la exponencial). Sin embargo, esto suele afectar los valores esperados de \( x_t \), por lo que se utilizan factores de corrección para obtener mejores resultados.
+
+Los modelos de series de tiempo reales no suelen ajustarse exactamente a los modelos lineales. Un ejemplo de modelo no lineal es el modelo de Bass (Sección 5.3), que se ajusta utilizando la función de mínimos cuadrados no lineales `nls` en R.
+
+\newpage
+
+## 5.2.2 Estacionariedad
+
+Los modelos lineales para series de tiempo no son estacionarios cuando incluyen funciones del tiempo. La diferenciación a menudo puede transformar una serie no estacionaria con una tendencia determinista en una serie estacionaria. Por ejemplo, si la serie de tiempo \( \{x_t\} \) está dada por una función lineal más un ruido blanco \( x_t = \alpha_0 + \alpha_1 t + z_t \), entonces las diferencias de primer orden están dadas por:
+
+\[
+\nabla x_t = x_t - x_{t-1} = z_t - z_{t-1} + \alpha_1
+\]
+
+Suponiendo que la serie de errores \( \{z_t\} \) es estacionaria, la serie \( \{\nabla x_t\} \) también será estacionaria, ya que no es función de \( t \). En la Sección 4.3.6 encontramos que la diferenciación de primer orden puede transformar una serie no estacionaria con tendencia estocástica (como un paseo aleatorio) en una serie estacionaria. Por lo tanto, la diferenciación puede eliminar tanto tendencias estocásticas como deterministas en las series de tiempo. Si la tendencia subyacente es un polinomio de orden \( m \), se requiere diferenciación de orden \( m \) para eliminar la tendencia.
+
+Nótese que diferenciar una función lineal más ruido blanco produce una serie estacionaria diferente que simplemente restar la tendencia. La segunda opción genera ruido blanco, mientras que la diferenciación genera una serie de términos de ruido blanco consecutivos (un proceso MA, descrito en el Capítulo 6).
+
+\newpage
+
+## 5.2.3 Simulación
+
+En la regresión de series de tiempo, es común que la serie de errores \( \{z_t\} \) en la Ecuación (5.1) esté autocorrelacionada. En el siguiente código se simula y grafica una serie de tiempo con una tendencia lineal creciente \((50 + 3t)\) con errores autocorrelacionados:
+
+``` {r}
+set.seed(1)
+z <- w <- rnorm(100, sd = 20)
+for (t in 2:100) z[t] <- 0.8 * z[t - 1] + w[t]
+Time <- 1:100
+x <- 50 + 3 * Time + z
+plot(x, xlab = "tiempo", type = "l")
+```
+
+El modelo correspondiente al código anterior se puede expresar como:
+
+\[
+x_t = 50 + 3t + z_t,
+\]
+
+donde \( \{z_t\} \) sigue un proceso AR(1):
+
+\[
+z_t = 0.8 z_{t-1} + w_t,
+\]
+
+y \( \{w_t\} \) es un ruido blanco gaussiano con desviación estándar \( \sigma = 20 \). Una gráfica temporal de una realización de \( \{x_t\} \) se muestra en la Figura 5.1.
+
+\newpage
+
+## 5.3 Modelos ajustados
+
+### 5.3.1 Modelo ajustado a datos simulados
+
+Los modelos lineales suelen ajustarse minimizando la suma de los errores cuadrados,
+
+\[
+\sum z_t^2 = \sum (x_t - \alpha_0 - \alpha_1 u_{1,t} - \dots - \alpha_m u_{m,t})^2,
+\]
+
+lo cual se logra en R utilizando la función `lm`:
+
+``` {r}
+x.lm <- lm(x ~ Time)
+coef(x.lm)
+```
+
+``` {r}
+sqrt(diag(vcov(x.lm)))
+```
+
+En el código anterior, los parámetros estimados del modelo lineal se extraen usando `coef`. Como era de esperarse, las estimaciones están cercanas a los valores subyacentes reales de 50 para la intersección y 3 para la pendiente. Los errores estándar se extraen utilizando la raíz cuadrada de los elementos diagonales obtenidos de `vcov`. Sin embargo, estos errores estándar tienden a estar subestimados debido a la autocorrelación en los residuos.
+
+La función `summary` también puede usarse para obtener esta información, pero tiende a proporcionar detalles adicionales, como pruebas t, que pueden no ser adecuadas para un análisis de regresión en series de tiempo debido a la autocorrelación en los residuos.
+
+Después de ajustar un modelo de regresión, es importante considerar diversos gráficos de diagnóstico. En el caso de la regresión de series de tiempo, un gráfico de diagnóstico clave es el **correlograma de los residuos**:
+
+``` {r}
+acf(resid(x.lm))
+pacf(resid(x.lm))
+```
+
+Como era de esperarse, la serie de residuos está autocorrelacionada (Figura 5.2). En la Figura 5.3, solo la autocorrelación parcial en el rezago 1 es significativa, lo que sugiere que la serie de residuos sigue un proceso AR(1). Esto es consistente con la simulación, ya que se usó un proceso AR(1) para generar estos residuos.
+
+\newpage
+
+### 5.3.2 Modelo ajustado a la serie de temperatura (1970–2005)
+
+En la Sección 1.4.5, se extrajeron datos de temperatura para el período 1970–2005. El siguiente modelo de regresión se ajusta a la temperatura global durante este período, y se presentan intervalos de confianza aproximados al 95% para los parámetros utilizando `confint`. La variable explicativa es el tiempo, por lo que la función `time` se usa para extraer los valores de tiempo del objeto de serie de temperatura.
+
+``` {r}
+# Realizado con el método del libro
+Global <- read.table("global.dat",header=T)
+Global.ts <- ts(Global, st = c(1856, 1), end = c(2005, 12), fr = 12)
+temp <- window(Global.ts, start = 1970)
+temp.lm <- lm(temp ~ time(temp))
+coef(temp.lm)
+confint(temp.lm)
+```
+\newpage
+
+``` {r}
+# Realizado con el método visto en clase
+Global <- read.table("global.dat",header=T)
+aux2 = as.numeric(Global[1,])
+for(i in 2:149)
+{
+	aux1=as.numeric(Global[i,])
+	aux2=c(aux2,aux1)
+}
+Global.ts <- ts(aux2,start=c(1856,1),end=c(2004,12),frequency=12)
+temp <- window(Global.ts, start = 1970)
+temp.lm <- lm(temp ~ time(temp))
+coef(temp.lm)
+confint(temp.lm)
+
+```
+
+\newpage
+
+``` {r}
+acf(resid(lm(temp ~ time(temp))))
+```
+
+
+
+
+El intervalo de confianza para la pendiente **no contiene el cero**, lo que proporciona evidencia estadística de una tendencia creciente en las temperaturas globales si la autocorrelación en los residuos es despreciable. Sin embargo, la serie de residuos muestra autocorrelación positiva en rezagos cortos (Figura 5.4), lo que lleva a una subestimación del error estándar y un intervalo de confianza demasiado estrecho para la pendiente.
+
+Intuitivamente, la correlación positiva entre valores consecutivos reduce la longitud efectiva del registro porque valores similares tienden a ocurrir juntos. La siguiente sección ilustra esta problemática, aunque puede omitirse para los lectores que no requieran detalles matemáticos.
+
+
+\newpage
+
+## 5.4 Mínimos Cuadrados Generalizados
+
+Hemos visto que en la regresión de series de tiempo es común y esperado que la serie de residuos esté autocorrelacionada. Si existe correlación serial positiva en los residuos, esto implica que los errores estándar de los parámetros de regresión estimados probablemente estén subestimados (Ecuación 5.5), y por lo tanto, deben corregirse.
+
+Un procedimiento de ajuste conocido como **mínimos cuadrados generalizados** (GLS, por sus siglas en inglés) puede utilizarse para obtener mejores estimaciones de los errores estándar de los parámetros de regresión y así corregir la autocorrelación en la serie de residuos. El procedimiento se basa esencialmente en maximizar la verosimilitud considerando la autocorrelación en los datos y está implementado en R mediante la función `gls` (dentro de la librería `nlme`, la cual deberá cargarse previamente).
+
+### 5.4.1 Ajuste de GLS a datos simulados
+
+El siguiente ejemplo ilustra cómo ajustar un modelo de regresión a la serie simulada de la Sección 5.2.3 utilizando mínimos cuadrados generalizados:
+
+``` {r}
+library(nlme)
+x.gls <- gls(x ~ Time, cor = corAR1(0.8))
+coef(x.gls)
+```
+
+Salida esperada:
+```
+(Intercept)    Time
+  58.23       3.04
+```
+
+``` {r}
+sqrt(diag(vcov(x.gls)))
+```
+
+Salida esperada:
+```
+(Intercept)    Time
+  11.925       0.202
+```
+
+En este caso, se utiliza una autocorrelación de rezago 1 de 0.8 porque este fue el valor utilizado para simular los datos (Sección 5.2.3). Para series históricas, la autocorrelación de rezago 1 debe estimarse a partir del correlograma de los residuos de un modelo lineal ajustado previamente.
+
+En el ejemplo anterior, los errores estándar de los parámetros son considerablemente mayores que los obtenidos mediante OLS en la Sección 5.3.3 y son más precisos, ya que toman en cuenta la autocorrelación. En general, las estimaciones de los parámetros mediante GLS suelen diferir ligeramente de las obtenidas con OLS debido al proceso de ponderación. Por ejemplo, la pendiente se estima como 3.06 usando `lm`, pero 3.04 usando `gls`. En principio, los estimadores GLS son preferibles porque tienen errores estándar más pequeños.
+
+\newpage
+
+
