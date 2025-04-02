@@ -1,0 +1,231 @@
+# 5 Integración en el plano complejo
+
+## 5.1. La Integral de una Función Compleja
+
+### 5.11. 
+
+Una curva \( C \) con ecuación paramétrica
+
+\[
+z = z(t) \qquad (a \leq t \leq b)
+\]
+
+se dice que es **suave** si \( z(t) \) tiene una derivada continua y no nula \( z'(t) \neq 0 \) en cada punto del intervalo \( a \leq t \leq b \).† Sea \( f(z) \) una función cualquiera de una variable compleja definida en un dominio \( G \) del plano-\( z \), y sea \( C \) una curva suave contenida en \( G \) con punto inicial \( z_0 \) y punto final \( Z \). Eligiendo puntos \( z_0, z_1, z_2, \dots, z_{n-1}, z_n = Z \) dispuestos consecutivamente a lo largo de \( C \) en la dirección positiva (la dirección de aumento de \( t \)), formamos la suma:
+
+\[
+\sum_{k=1}^{n} f(\zeta_k)\, \Delta z_k,
+\]
+
+donde \( \Delta z_k = z_k - z_{k-1} \) y \( \zeta_k \) es un punto arbitrario del arco \( z_{k-1}z_k \) (ver Figura 14). Sea \( l_k \) la longitud del arco \( z_{k-1}z_k \) (ver el Problema 2), y definimos:
+
+\[
+\lambda = \max \{ l_1, l_2, \dots, l_n \}.
+\]
+
+Supongamos que existe el límite:
+
+\[
+\lim_{\lambda \to 0} \sum_{k=1}^{n} f(\zeta_k)\, \Delta z_k
+\]
+
+ahora, independientemente de la elección de los puntos \( z_k, \zeta_k \). Entonces se dice que \( f(z) \) es **integrable a lo largo de \( C \)**, y el límite (2), denotado por
+
+\[
+\int_C f(z)\, dz,
+\]
+
+se llama **la integral de \( f(z) \) a lo largo de \( C \)**.
+
+### 5.12. Teorema
+
+*Si \( f(z) \) es continua en un dominio \( G \) que contiene una curva suave \( C \), entonces \( f(z) \) es integrable a lo largo de \( C \).*
+
+### 5.14
+
+Supongamos que \( C \) es una curva suave compuesta por arcos (suaves) \( C_1, C_2, \dots, C_r \) **"unidos extremo con extremo",** y que \( f(z) \) es continua en \( C \) (es decir, continua en un dominio que contiene a \( C \) o posiblemente solo a lo largo de \( C \) misma). Entonces, claramente:
+
+\[
+\int_C f(z)\, dz = \int_{C_1} f(z)\, dz + \int_{C_2} f(z)\, dz + \cdots + \int_{C_r} f(z)\, dz, \tag{6}
+\]
+
+como se ve de inmediato al elegir los puntos extremos de los arcos \( C_1, C_2, \dots, C_r \) entre los puntos \( z_k \) (\( k = 0, 1, \dots, n \)) que figuran en la suma (1). Una curva \( C \) compuesta por arcos suaves unidos extremo con extremo puede no ser suave en sí misma; en este caso, decimos que \( C \) es **suavemente por tramos** (*piecewise smooth*) y usamos (6) para **definir** la integral de \( f(z) \) a lo largo de \( C \) (ver también el Problema 6).
+
+Claramente, (6) sigue siendo válida incluso si algunos de los arcos \( C_k \) son solo suavemente por tramos en lugar de suaves. Para ver esto, simplemente necesitamos descomponer cada arco suavemente por tramos \( C_k \) en subarcos suaves.
+
+## 5.2. Propiedades Básicas de la Integral
+
+### 5.21. Teorema
+
+**Teorema.** *Sea \( f(z) \) continua sobre una curva suavemente por tramos \( C \). Entonces*
+
+\[
+\int_{C^-} f(z)\, dz = - \int_C f(z)\, dz,
+\]
+
+*donde \( C^- \) denota la curva \( C \) recorrida en la dirección negativa.*
+
+### 5.22. Teorema
+
+**Teorema.** *Sean \( f(z) \) y \( g(z) \) funciones continuas sobre una curva suavemente por tramos \( C \). Entonces*
+
+\[
+\int_C \left[ \alpha f(z) + \beta g(z) \right] dz = \alpha \int_C f(z)\, dz + \beta \int_C g(z)\, dz,
+\]
+
+*donde \( \alpha \) y \( \beta \) son números complejos arbitrarios.*
+
+### 5.23. Teorema
+
+**Teorema.** *Sea \( f(z) \) continua sobre una curva suavemente por tramos \( C \), y supongamos que \( |f(z)| \leq M \) para todo \( z \in C \). Entonces*
+
+\[
+\left| \int_C f(z)\, dz \right| \leq M l,
+\]
+
+*donde \( l \) es la longitud de la curva \( C \).*
+
+---
+
+† Cuando \( t = a \), \( z'(t) \) denota la derivada por la derecha y es continua por la derecha. Cuando \( t = b \), \( z'(t) \) denota la derivada por la izquierda y es continua por la izquierda.
+
+
+## 5.3. Integrales a lo Largo de Curvas Poligonales
+
+Las siguientes dos proposiciones sobre integrales a lo largo de curvas poligonales pueden parecer un poco especializadas en este punto, pero serán necesarias en la siguiente sección para demostrar uno de los teoremas clave del análisis complejo (el teorema integral de Cauchy).
+
+### 5.31. Lema
+
+**Lema.** *Sea \( f(z) \) continua en un dominio \( G \) que contiene una curva suavemente por tramos \( C \). Entonces, dado cualquier \( \varepsilon > 0 \), existe una curva poligonal \( L \) inscrita en \( C \) y contenida en \( G \) tal que*
+
+\[
+\left| \int_C f(z)\, dz - \int_L f(z)\, dz \right| < \varepsilon.
+\]
+
+### 5.32. Lema
+
+**Lema.** *Sea \( f(z) \) continua en un dominio simplemente conexo \( G \) que contiene una curva poligonal cerrada \( L \). Entonces*
+
+\[
+\int_L f(z)\, dz = \int_{\Delta_1} f(z)\, dz + \int_{\Delta_2} f(z)\, dz + \cdots + \int_{\Delta_n} f(z)\, dz, \tag{11}
+\]
+
+*donde las curvas \( \Delta_1, \Delta_2, \dots, \Delta_n \) son todos "contornos triangulares" contenidos en \( G \).*
+
+## 5.4. El Teorema Integral de Cauchy
+
+### 5.41
+
+Sea \( f(z) \) continua en un dominio \( G \), y sean \( C_1 \), \( C_2 \) dos curvas en \( G \) con los mismos puntos inicial y final. Entonces podemos tener:
+
+\[
+\int_{C_1} f(z)\, dz = \int_{C_2} f(z)\, dz \tag{13}
+\]
+
+para cada par de curvas \( C_1 \) y \( C_2 \), como en el Ejemplo 5.15 donde \( f(z) = z^n \). Sin embargo, esta igualdad puede no cumplirse, como en el Problema 9 donde \( f(z) = \text{Re}(z) \). Por tanto, esto nos lleva al problema de encontrar condiciones bajo las cuales la ecuación (13) se cumple para **todas** las curvas \( C_1, C_2 \) que conectan los mismos dos puntos, o equivalentemente, condiciones bajo las cuales:
+
+\[
+\int_C f(z)\, dz = 0 \tag{14}
+\]
+
+para **toda** curva cerrada \( C \) contenida en \( G \) (ver Problema 8). 
+
+En el primero de los dos casos recién considerados, la función \( f(z) \) es **analítica**, mientras que en el segundo **no lo es** (ver Ejemplo 4.13b). Esto sugiere que la *analiticidad* de \( f(z) \) es, de algún modo, responsable de la validez de (14), una conjetura que se confirma con el siguiente teorema fundamental del análisis complejo:
+
+### Teorema Integral de Cauchy
+
+**Teorema (Teorema Integral de Cauchy).** *Sea \( f(z) \) analítica en un dominio simplemente conexo \( G \). Entonces*
+
+\[
+\int_C f(z)\, dz = 0
+\]
+
+*para toda curva cerrada suavemente por tramos \( C \) contenida en \( G \).*
+
+### 5.42
+
+Sea \( C \) una curva de Jordan cerrada, suavemente por tramos, con interior \( I \), y sea \( f(z) \) analítica *"dentro y sobre"* \( C \), es decir, analítica en el dominio cerrado \( \overline{I} \). Entonces \( f(z) \) es analítica en un dominio simplemente conexo \( G \) que contiene \( \overline{I} \), y en particular contiene a \( C \), por lo tanto:
+
+\[
+\int_C f(z)\, dz = 0 \tag{21}
+\]
+
+por el Teorema Integral de Cauchy. De hecho, dado cualquier punto \( z \in \overline{I} \), \( f(z) \) es analítica en algún disco abierto \( K \), centrado en \( z \) (ver Sección 4.12). Pero como \( \overline{I} \) puede cubrirse con un número finito de estos discos, digamos \( K_1, \dots, K_n \), por el teorema de Heine-Borel, el conjunto de todos los puntos que pertenecen al menos a uno de los discos \( K_1, \dots, K_n \), siendo obviamente abierto y conexo, forma un dominio \( G \) que contiene a \( \overline{I} \).
+
+Además, \( G \) es simplemente conexo, ya que es el interior de una curva cerrada de Jordan.
+
+De hecho, puede demostrarse que la ecuación (21) sigue siendo válida si \( f(z) \) es analítica en \( I \) y solamente **continua** en \( \overline{I} \), un resultado conocido como el **Teorema Integral Generalizado de Cauchy**.†
+
+### 5.43
+
+Como se vio en la Sección 3.24d, sean \( C_0, C_1, \dots, C_r \) \( (r \geq 1) \) curvas de Jordan cerradas, suavemente por tramos, que no se intersectan entre sí, y tales que las curvas interiores \( C_1, \dots, C_r \) se encuentran **dentro** de \( C_0 \). El conjunto de puntos contenidos dentro de \( C_0 \) y fuera de las otras curvas \( C_1, \dots, C_r \) forma una región \( D \) **con \( (r+1) \) componentes en su frontera**, dadas por \( C_0, C_1, \dots, C_r \).
+
+Supongamos que \( f(z) \) es analítica en la clausura de \( D \), denotada \( \bar{D} \). Entonces se cumple:
+
+\[
+\int_{C_0} f(z)\, dz = \int_{C_1} f(z)\, dz + \int_{C_2} f(z)\, dz + \cdots + \int_{C_r} f(z)\, dz. \tag{22}
+\]
+
+Para ver esto, conectamos cada una de las curvas \( C_0, C_1, \dots, C_r \) a la siguiente mediante curvas auxiliares no intersectantes \( \gamma_0, \gamma_1, \dots, \gamma_r \), de forma que la región \( D \) se divide en dos dominios cerrados limitados por dos curvas de Jordan \( \Gamma \) y \( \Gamma' \), formadas por los arcos \( \gamma_0, \dots, \gamma_r \) y por partes de las curvas \( C_0, C_1, \dots, C_r \), como se ilustra en la Figura 18 (para el caso \( r = 2 \)).
+
+Dado que \( f(z) \) es analítica en \( \bar{D} \), y por tanto analítica dentro y sobre ambas curvas \( \Gamma \) y \( \Gamma' \), por el Teorema Integral de Cauchy se tiene:
+
+\[
+\int_{\Gamma} f(z)\, dz = 0, \qquad \int_{\Gamma'} f(z)\, dz = 0.
+\]
+
+Al sumar estas integrales y notar que cada arco \( \gamma_j \) aparece recorrido en direcciones opuestas (en \( \Gamma \) y \( \Gamma' \)), las contribuciones sobre estos arcos se cancelan mutuamente, y obtenemos:
+
+\[
+\int_{C_0} f(z)\, dz + \int_{C_1} f(z)\, dz + \cdots + \int_{C_r} f(z)\, dz = 0,
+\]
+
+lo cual equivale a la identidad:
+
+\[
+\int_{C_0} f(z)\, dz = \int_{C_1} f(z)\, dz + \cdots + \int_{C_r} f(z)\, dz. \tag{23}
+\]
+
+El caso particular donde solo hay dos curvas \( C_0 \) y \( C_1 \) (donde \( C_1 \) se encuentra dentro de \( C_0 \)) reduce la fórmula (22) a:
+
+\[
+\int_{C_0} f(z)\, dz = \int_{C_1} f(z)\, dz, \tag{22'}
+\]
+
+siempre que \( f(z) \) sea analítica en \( \bar{D} \), es decir, sobre las curvas \( C_0, C_1 \) y en la región comprendida entre ellas.
+
+
+
+# Panorama general del capítulo
+
+Las integrales en el plano complejo se manejan de forma diferente a las del plano real. En lugar de representar áreas bajo curvas, como ocurre en el cálculo real, en el plano complejo se relacionan con la **longitud y trayectoria** de una curva sobre la que se evalúa una función compleja.
+
+Estas curvas deben ser **suaves**, es decir, diferenciables en todo punto y con derivada distinta de cero. Este enfoque nos lleva a estudiar integrales a lo largo de curvas en lugar de áreas, y nos permite descubrir propiedades particulares que no aparecen en el análisis real.
+
+A partir de estas propiedades, el capítulo demuestra (o prepara el terreno para demostrar) los siguientes resultados clave:
+
+- La integral sobre una curva a trozos es la misma (pero con signo negativo) si se recorre la curva en sentido opuesto.
+- La **desigualdad ML**, que nos da una cota superior para el valor absoluto de una integral.
+- Cualquier curva poligonal inscrita en una curva suave por tramos tiene una longitud menor o igual que la curva original.
+- Una curva poligonal cerrada en un dominio simplemente conexo puede ser descompuesta en **contornos triangulares**, facilitando el cálculo de integrales.
+
+Con estas herramientas, el capítulo plantea un caso interesante: **dos curvas diferentes, con los mismos puntos inicial y final, dentro de un dominio**. Entonces surge una pregunta natural:
+
+> ¿Cuándo tienen estas curvas la **misma integral** para una función dada?
+
+Esto lleva al **Teorema Integral de Cauchy**, que establece que esto ocurre cuando la función es **analítica**, es decir, diferenciable (en el sentido complejo) en todo punto del dominio.
+
+Finalmente, el enunciado formal del teorema es:
+
+> Sea \( f(z) \) una función analítica en un dominio simplemente conexo \( G \). Entonces,
+>
+> \[
+> \int_C f(z)\, dz = 0
+> \]
+>
+> para **toda curva cerrada suavemente por tramos** contenida en \( G \).
+
+Este resultado es fundamental en el análisis complejo y es la base para muchos teoremas importantes que siguen, como el Teorema Integral de Cauchy generalizado, la fórmula integral de Cauchy, y el desarrollo en series de potencias (series de Laurent, de Taylor, etc.).
+
+
+
+
