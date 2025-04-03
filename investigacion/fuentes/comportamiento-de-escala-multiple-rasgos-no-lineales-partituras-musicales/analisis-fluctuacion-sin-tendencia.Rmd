@@ -6,7 +6,7 @@ Para una serie temporal dada $x(i)$, con $𝑖 = 1,\dots,N$ el método DFA-m est
 
 
 - La señal original se integra como
-$$ y(j) = \sum_{i=1}^{j} = [x(i) - ⟨x⟩] $$ 
+$$ y(j) = \sum_{i=1}^{j}  [x(i) - ⟨x⟩] $$ 
 donde $⟨x⟩$ denota el valor promedio
 - La serie integrada se divide en segmentos no superpuestos de tamaño $s$
 - Cada segmento de datos de longitud $s$ se ajusta usando un polinomio $y_m(j)$ de grado $m$

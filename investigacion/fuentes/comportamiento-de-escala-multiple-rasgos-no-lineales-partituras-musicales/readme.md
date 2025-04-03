@@ -9,7 +9,7 @@ Encontramos:
 - evidencia de la presencia de **autocorrelaciones no lineales** al _estimar el DFA de la serie de magnitudes_, resultado que fue validado mediante un estudio correspondiente con datos sustitutos apropiados. _(La cantidad y el tipo de correlaciones no lineales varían entre compositores.)_
 
 Finalmente, realizamos:
-- un experimento simple para evaluar _la agradabilidad de piezas musicales sustitutas en comparación con la música original_
+- un **experimento simple** para evaluar _la agradabilidad de piezas musicales sustitutas en comparación con la música original_
 
 encontramos que las **correlaciones no lineales** podrían desempeñar un papel importante en la _percepción estética de una pieza musical._
 
@@ -22,7 +22,7 @@ La música es una construcción compleja que involucra factores culturales, cara
 
 Uno de los trabajos pioneros en este contexto, utilizando técnicas de física estadística, fue publicado por **Voss y Clarke** [1]. Estimaron _la densidad espectral de las fluctuaciones de intensidad_ y encontraron un comportamiento de _ley de potencia_ cercano al _ruido 1/f._ 
 
-Este resultado inspiró a muchos investigadores a estudiar las **propiedades estadísticas de la música** coion enfoques como:
+Este resultado inspiró a muchos investigadores a estudiar las **propiedades estadísticas de la música** con enfoques como:
 - la identificación de **patrones temporales** o _leyes de potencia_
 - el desarrollo de algoritmos para la composición musical [2–11].
 
@@ -44,11 +44,11 @@ Se han encontrado con frecuencia comportamientos de escalamiento, en particular 
 
 ### En este trabajo 
 
-Nos enfocamos en partituras musicales, interpretándolas como series de tiempo multivariadas a las que aplicamos diferentes tipos de análisis de fluctuaciones. 
+Nos enfocamos en partituras musicales, interpretándolas como _series de tiempo multivariadas_ a las que aplicamos diferentes tipos de **análisis de fluctuaciones.** 
 
-- Proporcionamos una interpretación coherente de los perfiles de fluctuación, que son marcadamente distintos entre compositores. 
+- Proporcionamos una interpretación coherente de los _perfiles de fluctuación_, que son marcadamente distintos entre compositores. 
 
-- La estructura de las piezas musicales se refleja en parte en su autocorrelación, lo que proporciona elementos para caracterizar el proceso de composición. 
+- **La estructura de las piezas musicales se refleja en parte en su autocorrelación**, lo que proporciona elementos para caracterizar el proceso de composición. 
 
 - Tratamos de detectar y clasificar diferentes perfiles de autocorrelación en piezas musicales provenientes de distintos períodos de tiempo. Esta caracterización podría contribuir al desarrollo de modelos de composición. Además, 
 
