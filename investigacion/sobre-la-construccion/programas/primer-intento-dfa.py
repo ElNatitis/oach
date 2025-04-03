@@ -1,4 +1,6 @@
-# Para hacer un DFA con respecto a datos random
+"""
+Para hacer un DFA con respecto a datos random
+"""
 import random
 import numpy as np
 
@@ -29,5 +31,10 @@ for elemento in arreglo_int:
 print(f'arreglo integrado \n{arreglo_int}')
 
 # Para dividir el arreglo integrado en segmentos 
-segmentos = np.array([10,N/4])
-print(segmentos)
+longitud_segmentos = 16
+
+# Recortar los elementos que sobran
+arreglo_int_recortado = arreglo_int[:len(arreglo_int) - len(arreglo_int) % longitud_segmentos]
+segmentos = arreglo_int_recortado.reshape(-1, longitud_segmentos)
+print(f'Arreglo integrado dividido en segmentos de longitud {longitud_segmentos}\n{segmentos}')
+
