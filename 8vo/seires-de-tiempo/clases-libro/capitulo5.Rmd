@@ -62,7 +62,7 @@ Los modelos de series de tiempo reales no suelen ajustarse exactamente a los mod
 
 \newpage
 
-## 5.2.2 Estacionariedad
+### 5.2.2 Estacionariedad
 
 Los modelos lineales para series de tiempo no son estacionarios cuando incluyen funciones del tiempo. La diferenciación a menudo puede transformar una serie no estacionaria con una tendencia determinista en una serie estacionaria. Por ejemplo, si la serie de tiempo \( \{x_t\} \) está dada por una función lineal más un ruido blanco \( x_t = \alpha_0 + \alpha_1 t + z_t \), entonces las diferencias de primer orden están dadas por:
 
@@ -76,7 +76,7 @@ Nótese que diferenciar una función lineal más ruido blanco produce una serie 
 
 \newpage
 
-## 5.2.3 Simulación
+### 5.2.3 Simulación
 
 En la regresión de series de tiempo, es común que la serie de errores \( \{z_t\} \) en la Ecuación (5.1) esté autocorrelacionada. En el siguiente código se simula y grafica una serie de tiempo con una tendencia lineal creciente \((50 + 3t)\) con errores autocorrelacionados:
 
@@ -310,8 +310,6 @@ temp2.lm <- lm(temp ~ Time + factor(Seas))
 coef(temp2.lm)
 ```
 
-\newpage
-
 Se incluye un 0 en la fórmula para evitar que el modelo tenga intercepto. Si se incluye un intercepto, uno de los términos estacionales se omite automáticamente. Sin embargo, los modelos con o sin intercepto son equivalentes en cuanto a ajuste.
 
 También se pueden estimar los parámetros con GLS usando `gls` en lugar de `lm`.
@@ -324,25 +322,84 @@ alpha <- coef(temp.lm)[1]
 beta <- rep(coef(temp.lm)[2:13], 2)
 (alpha * new.t + beta)[1:4]  # primeros 4 meses
 ```
-
-Esto devuelve:
-```
-factor(Seas)1 factor(Seas)2 factor(Seas)3 factor(Seas)4
-      0.524         0.535         0.514         0.514
-```
+\newpage
 
 O bien, se puede usar la función `predict`:
 
 ``` {r}
+# Esto da las predicciones mes a mes para los 2 años siguientes:
 new.dat <- data.frame(Time = new.t, Seas = rep(1:12, 2))
 predict(temp.lm, new.dat)[1:24]
 ```
 
-Esto da las predicciones mes a mes para los 2 años siguientes:
+\newpage
+
+## 5.6 Modelos estacionales armónicos
+
+En la sección anterior, se utilizó un coeficiente distinto para cada estación. Sin embargo, los efectos estacionales pueden variar suavemente en lugar de hacerlo por saltos, por lo que a veces es más eficiente usar funciones suaves, como senos y cosenos, para representar la estacionalidad.
+
+Una onda sinusoidal con frecuencia \( f \), amplitud \( A \) y desfase \( \phi \) puede expresarse como:
+
+\[
+A \sin(2\pi f t + \phi) = \alpha_s \sin(2\pi f t) + \alpha_c \cos(2\pi f t) \tag{5.9}
+\]
+
+donde:
+- \( \alpha_s = A \cos(\phi) \)
+- \( \alpha_c = A \sin(\phi) \)
+
+Esta forma es lineal en los parámetros \( \alpha_s \) y \( \alpha_c \), lo que permite usar OLS para estimarlos. Para una serie \( \{x_t\} \) con \( s \) estaciones, se pueden incluir hasta \( \lfloor s/2 \rfloor \) ciclos armónicos. El modelo estacional armónico general es:
+
+\[
+x_t = m_t + \sum_{i=1}^{\lfloor s/2 \rfloor} \left[ s_i \sin\left(\frac{2\pi i t}{s}\right) + c_i \cos\left(\frac{2\pi i t}{s}\right) \right] + z_t \tag{5.10}
+\]
+
+donde \( m_t \) es la tendencia (por ejemplo, una constante o un polinomio), y \( s_i, c_i \) son parámetros desconocidos.
+
+Cuando \( s \) es par, el término con frecuencia \( i = s/2 \) siempre da cero para el seno, por lo que se puede omitir.
+
+A primera vista puede parecer que el modelo armónico incluye frecuencias más altas que la frecuencia estacional 1/\(s\), pero al sumar armónicos se logra una forma más realista de la estacionalidad, aunque se mantenga el periodo dominante de \( s \).
+
+### Ejemplo en R
+
+```{r}
+TIME <- seq(1, 12, len = 1000)
+plot(TIME, sin(2 * pi * TIME/12), type = "l")
+plot(TIME, sin(2 * pi * TIME/12) + 0.2 * sin(2 * pi * 2 * TIME/12) +
+     0.1 * sin(2 * pi * 4 * TIME/12) + 0.1 * cos(2 * pi * 4 * TIME/12), type = "l")
 ```
-1 2 3 4 5 6 7 8 9 10 11 12
-0.524 0.535 0.514 0.494 0.504 ... 0.507
-13 14 ... 24
-0.542 0.553 ... 0.507
+
+El segundo gráfico muestra una onda más compleja (pero más realista) que representa una combinación de varias ondas armónicas (frecuencias 2/12 y 4/12), simulando patrones estacionales más detallados.
+
+\newpage
+
+### 5.6.1 Simulación
+
+Es sencillo simular una serie basada en el modelo armónico descrito en la ecuación (5.10). Por ejemplo, supongamos que el modelo subyacente es:
+
+\[
+x_t = 0.1 + 0.005t + 0.001t^2 + \sin\left(\frac{2\pi t}{12}\right) + 0.2\sin\left(\frac{4\pi t}{12}\right) + 0.1\sin\left(\frac{8\pi t}{12}\right) + 0.1\cos\left(\frac{8\pi t}{12}\right) + w_t \tag{5.11}
+\]
+
+donde \( \{w_t\} \) es ruido blanco gaussiano con desviación estándar de 0.5. Este modelo contiene las mismas componentes armónicas estacionales que el mostrado en la Figura 5.5b, pero además incorpora una tendencia cuadrática subyacente.
+
+El siguiente código en R simula una serie de 10 años de longitud (120 datos mensuales):
+
+```{r}
+set.seed(1)
+TIME <- 1:(10 * 12)
+w <- rnorm(10 * 12, sd = 0.5)
+Trend <- 0.1 + 0.005 * TIME + 0.001 * TIME^2
+Seasonal <- sin(2 * pi * TIME/12) +
+            0.2 * sin(2 * pi * 2 * TIME/12) +
+            0.1 * sin(2 * pi * 4 * TIME/12) +
+            0.1 * cos(2 * pi * 4 * TIME/12)
+x <- Trend + Seasonal + w
+plot(x, type = "l")
 ```
+
+Esto genera una serie de tiempo con una tendencia cuadrática suave y un patrón estacional complejo pero periódico, dominado por un ciclo de 12 meses y armónicos adicionales que introducen irregularidades suaves.
+
+
+
 
