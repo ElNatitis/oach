@@ -1,0 +1,24 @@
+# Análisis de fluctuación sin tendencia (Detrended Fluctuation Analysis, DFA)
+
+El método DFA, desarrollado por Peng, fue introducido para evitar la detección de correlaciones espurias generadas por tendencias en series temporales. Se ha utilizado en otros trabajos de análisis musical, proporcionando resultados prometedores. Dado que no está claro si una pieza musical dada es estacionaria o no, el DFA parece ser un método adecuado para medir correlaciones de manera correcta.
+
+Para una serie temporal dada $x(i)$, con $𝑖 = 1,\dots,N$ el método DFA-m estándar consiste en los siguientes pasos:
+
+
+- La señal original se integra como
+$$ y(j) = \sum_{i=1}^{j} = [x(i) - ⟨x⟩] $$ 
+donde $⟨x⟩$ denota el valor promedio
+- La serie integrada se divide en segmentos no superpuestos de tamaño $s$
+- Cada segmento de datos de longitud $s$ se ajusta usando un polinomio $y_m(j)$ de grado $m$
+- Se calucla la fluctuación cuadrática media respecto al polinomio:
+	$$ F(s)= \sqrt{\sum_{j=1}^{N}[y(j) - y_m(j)^2]}$$
+
+Este procedimiento se repite variando $s$, de modo que se obtiene la función de fluctuación en términos de la longitud del segmento, lo cual representa la escala temporal donde pueden estar presentes las correlaciones. 
+
+Cuando las autocorrelaciones escalan como una ley de potencia, la función $F(s)$ se comporta como
+
+$$ F(s) ∼ s^\alpha $$
+
+donde $\alpha$ es el exponente de Hurst. Un valor $\alpha > 0.5$ indica la presencia de correlaciones persistentes (por ejemplo, $\alpha=1$ es el caso del ruido $1/f$-). En cambio, un valor $0<\alpha<0.5$ corresponde a anticorrelaciones y $\alpha=0.5$ a ruido blanco [2<
+0].
+
