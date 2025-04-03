@@ -145,9 +145,9 @@ Como era de esperarse, la serie de residuos está autocorrelacionada (Figura 5.2
 
 En la Sección 1.4.5, se extrajeron datos de temperatura para el período 1970–2005. El siguiente modelo de regresión se ajusta a la temperatura global durante este período, y se presentan intervalos de confianza aproximados al 95% para los parámetros utilizando `confint`. La variable explicativa es el tiempo, por lo que la función `time` se usa para extraer los valores de tiempo del objeto de serie de temperatura.
 
-``` {r}
+```r
 # Realizado con el método del libro
-Global <- read.table("global.dat",header=T)
+Global <- read.table("global.dat",header=F)
 Global.ts <- ts(Global, st = c(1856, 1), end = c(2005, 12), fr = 12)
 temp <- window(Global.ts, start = 1970)
 temp.lm <- lm(temp ~ time(temp))
@@ -158,9 +158,9 @@ confint(temp.lm)
 
 ``` {r}
 # Realizado con el método visto en clase
-Global <- read.table("global.dat",header=T)
+Global <- read.table("global.dat",header=F)
 aux2 = as.numeric(Global[1,])
-for(i in 2:149)
+for(i in 2:150)
 {
 	aux1=as.numeric(Global[i,])
 	aux2=c(aux2,aux1)
@@ -170,7 +170,7 @@ temp <- window(Global.ts, start = 1970)
 temp.lm <- lm(temp ~ time(temp))
 coef(temp.lm)
 confint(temp.lm)
-
+tail(aux2,14)
 ```
 
 \newpage
@@ -280,3 +280,69 @@ x_t = \alpha_1 t + s_t + z_t =
 \]
 
 Los parámetros del modelo en la ecuación (5.8) pueden estimarse mediante OLS o GLS, tratando la estación estacional \( s_t \) como un 'factor'. En R, el factor mensual puede aplicarse usando variables indicadoras extraídas con la función `cycle` (§1.4.1).
+
+\newpage
+
+### 5.5.3 Ejemplo: Modelo estacional para la serie de temperatura
+
+Los parámetros de una tendencia lineal con efectos estacionales aditivos pueden estimarse para la serie de temperatura (1970–2005) con el siguiente código:
+
+``` {r}
+Seas <- cycle(temp)
+Time <- time(temp)
+temp.lm <- lm(temp ~ 0 + Time + factor(Seas))
+coef(temp.lm)
+```
+
+Esto produce coeficientes para la pendiente (tendencia) y para cada mes del año (los efectos estacionales):
+```
+Time               0.0177
+factor(Seas)1     -34.9973
+factor(Seas)2     -34.9880
+factor(Seas)3     -35.0100
+...               ...
+factor(Seas)12    -35.0487
+```
+
+``` {r}
+# Variacion vista en clase
+temp2.lm <- lm(temp ~ Time + factor(Seas))
+coef(temp2.lm)
+```
+
+\newpage
+
+Se incluye un 0 en la fórmula para evitar que el modelo tenga intercepto. Si se incluye un intercepto, uno de los términos estacionales se omite automáticamente. Sin embargo, los modelos con o sin intercepto son equivalentes en cuanto a ajuste.
+
+También se pueden estimar los parámetros con GLS usando `gls` en lugar de `lm`.
+
+Para hacer una predicción a futuro de dos años (24 meses):
+
+```{r}
+new.t <- seq(2006, len = 2 * 12, by = 1/12)
+alpha <- coef(temp.lm)[1]
+beta <- rep(coef(temp.lm)[2:13], 2)
+(alpha * new.t + beta)[1:4]  # primeros 4 meses
+```
+
+Esto devuelve:
+```
+factor(Seas)1 factor(Seas)2 factor(Seas)3 factor(Seas)4
+      0.524         0.535         0.514         0.514
+```
+
+O bien, se puede usar la función `predict`:
+
+``` {r}
+new.dat <- data.frame(Time = new.t, Seas = rep(1:12, 2))
+predict(temp.lm, new.dat)[1:24]
+```
+
+Esto da las predicciones mes a mes para los 2 años siguientes:
+```
+1 2 3 4 5 6 7 8 9 10 11 12
+0.524 0.535 0.514 0.494 0.504 ... 0.507
+13 14 ... 24
+0.542 0.553 ... 0.507
+```
+
