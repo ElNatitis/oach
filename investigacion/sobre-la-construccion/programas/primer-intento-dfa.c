@@ -18,7 +18,7 @@ int main(void)
   int N = 100;
   float arreglo[N];
   float arreglo_int[N];
-
+  
   // Llenar el arreglo con números aleatorios del 0 al 99
   for(int i = 0; i < N; i++)
     arreglo[i] = rand() % 100;
@@ -31,12 +31,21 @@ int main(void)
   prom = promedio(arreglo,N);
   printf("El promedio de ese arreglo es\n%.2f\n",prom);
   
-  
   // Integrar el arreglo
   integrar_arreglo(arreglo,arreglo_int,prom,N);
   printf("Arreglo integrado\n");
   imprimir(arreglo_int,N);
   
+  // Segmentar el arreglo integrado 
+  int s = 16; // Tamaño de los segmentos 
+  int ns = N%s; // Número de sementos posibles dado el tamaño de s y el total de datos
+  int es = N - ns; // Número de elementos que habrá dado el número de segmentos posibles
+  float arreglo_int_seg[ns][]
+  
+  
+  
+  printf("\n\n----pruebas-----\n");
+  printf("%d\n",(8%5));
 }
 
 void imprimir(float arr[], int n)
