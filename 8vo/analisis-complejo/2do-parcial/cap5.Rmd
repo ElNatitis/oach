@@ -193,7 +193,33 @@ El caso particular donde solo hay dos curvas \( C_0 \) y \( C_1 \) (donde \( C_1
 
 siempre que \( f(z) \) sea analítica en \( \bar{D} \), es decir, sobre las curvas \( C_0, C_1 \) y en la región comprendida entre ellas.
 
+## 5.5. Integrales Complejas Indefinidas
 
+### 5.51. Teorema
+
+*Sea \( f(z) \) analítica en un dominio simplemente conexo \( G \). Entonces la integral*
+
+\[
+F(z) = \int_{z_0}^{z} f(\zeta)\, d\zeta \tag{25}
+\]
+
+*tomada a lo largo de cualquier curva cerrada suavemente por tramos contenida en \( G \), con punto inicial fijo \( z_0 \) y punto final variable \( z \), define una función analítica monovaluada en \( G \) cuya derivada es \( F'(z) = f(z) \).*
+
+## 5.6. La Fórmula Integral de Cauchy
+
+### 5.61. Teorema
+
+*Sea \( f(z) \) analítica en un dominio \( G \) que contiene una curva de Jordan cerrada suavemente por tramos \( C \) y su interior. Entonces*
+
+\[
+f(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{z - z_0}\, dz \tag{29}
+\]
+
+*si \( z_0 \) está dentro de \( C \).*
+
+#### Observación
+
+Esto es equivalente a afirmar que *el comportamiento de una función analítica dentro de una región está completamente determinado por su comportamiento en el borde.*
 
 # Panorama general del capítulo
 
