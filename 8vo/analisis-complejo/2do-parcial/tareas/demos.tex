@@ -1,0 +1,79 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\title{Tarea 2do Parcial\\Análisis Complejo}
+\author{N. Pérez Medina.}
+
+\begin{document}
+\maketitle
+\newpage
+\section*{Capítulo 4}
+
+\textbf{6.- }La transformación
+\begin{equation}
+    w = f(z) = az + b \quad (a \neq 0),
+\end{equation}
+donde \(a\) y \(b\) son números complejos arbitrarios (excepto por la condición \(a \neq 0\)), se llama una \textit{transformación lineal entera}. Demuestra que:
+
+\begin{enumerate}
+    \item[a)] \(f(z)\) es biunívoca (uno a uno) en el plano complejo extendido (mapeando \(\infty\) en \(\infty\));
+    \item[b)] \(f(z)\) es conforme en todo punto del plano finito;
+    \item[c)] Bajo la transformación \(f(z)\), las tangentes a todas las curvas en el plano finito se rotan en el mismo ángulo \(\arg a\) y la magnificación en cada punto es igual a \(|a|\);
+    \item[d)] Si \(a = 1\), entonces \(f(z)\) se reduce a un desplazamiento de todo el plano por el vector \(b\).
+\end{enumerate}
+
+\newpage
+
+\textbf{22.- }La transformación
+\begin{equation}
+    w = f(z) = \frac{az + b}{cz + d}
+\end{equation}
+donde \(a\), \(b\), \(c\) y \(d\) son números complejos arbitrarios (excepto que \(c\) y \(d\) no sean ambos cero), se llama una \textit{transformación lineal fraccionaria} (o \textit{transformación de Möbius}). Demuestra que:
+
+\begin{enumerate}
+    \item[a)] \(f(z)\) se reduce a una transformación lineal entera si \(c = 0\);
+    \item[b)] \(f(z)\) se reduce a una constante si \(ad - bc = 0\);
+    \item[c)] Si \(c \neq 0\) y \(ad - bc \neq 0\), entonces \(f(z)\) tiene una derivada no nula \(f'(z)\) para todo \(z\), excepto en \(z = \delta = -d/c\);
+    \item[d)] Si \(c \neq 0\) y \(ad - bc \neq 0\), entonces \(f(z)\) es conforme en todos los puntos finitos excepto posiblemente en \(\delta\) (ver también el problema 26), donde el ángulo \(\alpha\) en el cual las tangentes a las curvas son rotadas tiene el mismo valor:
+    \begin{equation}
+        \alpha = \arg f'(z) = \arg\left(\frac{ad - bc}{c^2}\right) - 2 \arg(z - \delta)
+    \end{equation}
+    a lo largo de cualquier rayo que emana de \(\delta\), y la magnificación tiene el mismo valor:
+    \begin{equation}
+        \mu = |f'(z)| = \left| \frac{ad - bc}{c^2} \right| \cdot \frac{1}{|z - \delta|^2}
+    \end{equation}
+    a lo largo de cualquier circunferencia centrada en \(\delta\).
+\end{enumerate}
+
+\newpage
+
+\section*{Capítulo 5}
+
+\textbf{6.-} Sea \(C\) una curva suavemente seccionada de longitud \(l\), con ecuación paramétrica dada por
+\begin{equation}
+    z = z(t),
+\end{equation}
+y sea \(s(t)\) la longitud del arco variable de \(C\) con punto inicial \(z(a)\) y punto final \(z(t)\). Demuestra que \(s = s(t)\) es continua y estrictamente creciente en el intervalo \(a \leq t \leq b\), con una inversa continua y estrictamente creciente \(t = t(s)\) en el intervalo \(0 \leq s \leq l\). Muestra que \(C\) tiene una representación paramétrica de la forma:
+\begin{equation}
+    z = \tilde{z}(s), \quad (0 \leq s \leq l) \tag{45'}
+\end{equation}
+usando la longitud de arco \(s\) como parámetro. Demuestra que la derivada \(\tilde{z}'(s)\) existe y tiene módulo 1 en todos los puntos del intervalo \(0 \leq s \leq l\), salvo un número finito de ellos.
+
+\newpage
+
+\textbf{13.- }Sea \( f(z) \) una función continua en una curva suavemente seccionada \( C \). Demuestre que
+
+\[
+\left| \int_C f(z) \, dz \right| \leq \int_C |f(z)| \, ds(t),
+\]
+
+donde \( s(t) \) es la misma función que en el Problema 6. Deduzca el Teorema 5.23 a partir de esta estimación más precisa.
+
+\end{document}
