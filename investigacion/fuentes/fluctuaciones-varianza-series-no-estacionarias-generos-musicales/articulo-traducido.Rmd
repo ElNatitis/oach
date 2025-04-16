@@ -1,0 +1,81 @@
+---
+title: "Fluctuaciones de varianza en series temporales no estacionarias: un estudio comparativo de géneros musicales"
+output: html_document
+author: "natits"
+date: "`r Sys.Date()`"
+---
+
+# Resumen
+
+Un problema importante en física es _el análisis de series temporales de audio generadas por fenómenos acústicos transducidos._ 
+
+En este trabajo, desarrollamos un **nuevo método** para _cuantificar las propiedades de escala de la varianza local en series temporales no estacionarias._ 
+
+Aplicamos este **nuevo método** para _analizar señales de audio obtenidas de géneros musicales seleccionados._ 
+
+Encontramos diferencias cuantitativas en las propiedades de correlación entre: 
+* la música culta (_high art_).
+* la música popular 
+* la música bailable
+    
+Discutimos la relevancia de estos hallazgos objetivos en relación con _la experiencia subjetiva de la música._
+
+# Introducción
+
+Un problema importante en física es _el estudio del sonido._ 
+
+La música consiste en _una superposición compleja de ondas sinusoidales (una combinación de Fourier)._ 
+
+Una persona con buen oído puede percibir tonos musicales continuos de frecuencia única ("monocromáticos") en el rango de 20 Hz a 20 kHz. Los reproductores de CD pueden reproducir música de alta fidelidad usando una frecuencia de muestreo de 44 kHz para dos canales de señales de audio de 16 bits, lo que corresponde a una frecuencia máxima audible de 22 kHz, de acuerdo con el teorema de muestreo de Nyquist. 
+
+En la práctica, filtros de paso de banda u otros filtros limitan el rango de frecuencias al espectro audible mencionado.
+
+Los estudios sistemáticos sobre la complejidad de la música se han centrado principalmente en técnicas espectrales basadas en **FFT** o **DFT**, que detectan _densidades de potencia en intervalos de frecuencia._ Por ejemplo, el ruido tipo 1/f en la música ha recibido considerable atención. 
+
+Otro enfoque a la complejidad musical involucra **estudios de entropía y de dimensión fractal en las variaciones de tono.** Estos análisis sistemáticos han mostrado que _la música tiene propiedades de escala interesantes y correlaciones de largo alcance._ Sin embargo, aún **sigue siendo un desafío cuantificar las diferencias entre categorías musicales cualitativamente distintas.**
+
+Aquí, _adaptamos métodos desarrollados recientemente en física estadística_ que han sido aplicados con éxito al estudio de: 
+
+* series financieras
+* secuencias de ADN
+* dinámica del ritmo cardíaco. 
+
+Específicamente, **desarrollamos una nueva adaptación del Análisis de Fluctuación Sin Tendencia (Detrended Fluctuation Analysis, DFA)** para _estudiar las fluctuaciones no estacionarias de la varianza local_ (en lugar de la serie temporal original) calculando una función α(t) que **cuantifica correlaciones en una escala de tiempo t.** 
+
+Este método puede _detectar desviaciones del escalamiento uniforme tipo ley de potencias, embebidas en patrones invariantes de escala de fluctuaciones de varianza local._ 
+
+Aplicamos este nuevo método para estudiar correlaciones en las _fluctuaciones de varianza local altamente no estacionarias que ocurren en series de audio._ Luego estudiamos la _relación entre estas correlaciones objetivamente medibles y aspectos musicales subjetivos y cualitativos que caracterizan a ciertos géneros musicales._ 
+
+---
+
+**Mostramos que las propiedades de correlación de la música popular, la música culta y la música bailable difieren cuantitativamente entre sí.**
+
+---
+
+# Métodos
+
+La **sonoridad de la música**, tal como la percibe el sistema auditivo humano, _crece como una función monótonamente creciente de la intensidad promedio._ 
+
+Usualmente, se mide la **intensidad** de las señales sonoras en decibelios (dB) [1,2,15]. Por lo tanto, también se mide convencionalmente la **sonoridad** en dB, aunque _la percepción subjetiva de la sonoridad sigue una función no lineal de la intensidad [15]._ 
+
+La percepción subjetiva de la sonoridad varía según la frecuencia y también depende de la sensibilidad auditiva, que a su vez puede depender de la edad, el sexo, el uso de medicamentos, etc. (ver, por ejemplo, Refs. [1,2,15]). 
+
+No obstante, para fines prácticos, **la medición objetiva de la intensidad del sonido proporciona un buen medio para cuantificar la sonoridad.** 
+
+En el resto del artículo, usaremos el término “sonoridad” para referirnos al valor instantáneo del promedio móvil de la intensidad.
+
+---
+
+Un hecho importante que merece una explicación detallada es _cómo el oído humano no puede percibir variaciones en la sonoridad (es decir, modulaciones de amplitud) que ocurren a frecuencias mayores a 20 Hz._ 
+
+---
+
+Los humanos oyen frecuencias en el rango audible de 20 Hz a 20 kHz y, por lo tanto, **no perciben modulaciones de amplitud ni fluctuaciones de intensidad instantánea dentro de este rango como cambios en la sonoridad**, sino más bien como de _sonoridad constante_. Explicamos este punto brevemente: 
+
+podemos considerar el sistema auditivo humano, en una aproximación límite, como un **transductor de tiempo a frecuencia que opera en el rango “audible” de 20 Hz a 20 kHz.**
+
+Cualquier señal monocromática en este rango será percibida como un tono audible con esa misma frecuencia, o “altura tonal”. Una combinación lineal de tales señales puede dar lugar a diferentes impresiones auditivas, dependiendo de su descomposición de Fourier exacta. 
+
+Específicamente, una combinación de señales monocromáticas puede sonar como si tuviera un “timbre” no trivial, y si las frecuencias tienen relaciones aritméticas especiales, pueden sonar como una “armonía”. También pueden surgir fenómenos de batido y heterodinaje cuando hay frecuencias muy cercanas. Lo más importante, una superposición lineal de señales monocromáticas puede sonar con sonoridad constante o con sonoridad variable. Discutimos este último punto con más detalle:
+
+
