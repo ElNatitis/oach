@@ -1,8 +1,10 @@
-// Para hacer un DFA con respecto a datos random
+// Para entender qué amerita operacionalmente hacer un DFA con respecto a datos random
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include "regla-de-cramer.h"
+
 
 
 void imprimir(float arr[], int n);
@@ -54,27 +56,9 @@ int main(void)
   
   // Ajustar cada segemento de datos usando un polinomio de grado 2
   printf("\n----Ajuste de cada segmento a un polinomio de grado 2----\n\n");
-  float x[s];
-  float sum_x,sum_x2,sum_x3,sum_x4,sum_y,sum_xy,sum_x2y;
-  for(int j=0;j<s;j++) x[j]=j; // Para generar un arreglo x = {1,2,..,s}
-  for(int i=0;i<s;i++)
-  {
-    printf("%.2f, ",x[i]);
-  }
-  printf("\n");
-  for (int l=0; l<s; l++) // Para calcular todas las sumas que vamos a necesitar para las matrices
-  {
-    sum_x  += x[l];
-    sum_x2 += pow(x[l],2);
-    sum_x3 += pow(x[l],3);
-    sum_x4 += pow(x[l],4);
-    sum_y   += arreglo_int[l];
-    sum_xy  += x[l] * arreglo_int[l];
-    sum_x2y += pow(x[l],2) * arreglo_int[l];
-  }
-  printf("\n##sumas calculadas\nsum_x=%.1f\nsum_x2=%.1f\nsum_x3=%.1f\nsum_x4=%.1f\nsum_y=%.1f\nsum_xy=%.1f\nsum_x2y=%.1f\n",sum_x,sum_x2,sum_x3,sum_x4,sum_y,sum_xy,sum_x2y);
-  
-  
+  ajustar_seg_a_pol2(arreglo_int_seg, s, st);
+
+
 }
 
 void imprimir(float arr[], int n)
