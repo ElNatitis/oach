@@ -46,6 +46,9 @@ Una vez construidas las series temporales, se les aplica el método **Detrended 
 - Se calcula el **exponente de Hurst α**, que indica si hay persistencia, aleatoriedad o alternancia en la estructura temporal.
 - En caso de series multivariadas, se emplea **n-DFA** para analizar simultáneamente las voces o instrumentos.
 
+---
+
+
 #### Generación de perfiles por género
 
 Se repite el análisis DFA para cada canción del corpus y se construyen **perfiles estadísticos promedio por género**. Estos perfiles pueden incluir:
