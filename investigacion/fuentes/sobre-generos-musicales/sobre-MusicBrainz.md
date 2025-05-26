@@ -39,3 +39,43 @@ MusicBrainz
 - **Área (Area)**: Define una región geográfica, como un país o ciudad, asociada a artistas, lanzamientos o eventos.
 - **Instrumento (Instrument)**: Representa instrumentos musicales utilizados en grabaciones o interpretaciones.
 - **Género (Genre)**: Clasifica la música según estilos o categorías, como "salsa", "rock" o "jazz".
+
+### Endpoints Principales de la API de MusicBrainz
+
+#### Busqueda `/ws/2/{entidad}?query=...`
+Permite buscar **entidades** específicas utilizando consultas basadas en _Lucene_. Las entidades disponibles incluyen:
+- `artist` (artista)
+- `recording` (grabación)
+- `release` (lanzamiento)
+- `release-group` (grupo de lanzamientos)
+- `work` (obra)
+- `label` (sello discográfico)
+- `area` (área geográfica)
+- `instrument` (instrumento)
+- `genre` (género)
+
+**Parámetros comunes**
+- `query`: Consulta de búsqueda en formato _Lucene_
+- `fmt`: Formato de respuesta (json o xml).
+- `limit`: Número máximo de resultados a devolver (hasta 100).
+- `offset`: Desplazamiento para paginación.
+
+**Sintaxis de Lucene usada por MusicBrainz**
+ __________________________________________________________________________
+| Elemento           | Descripción                                         |
+| ------------------ | --------------------------------------------------- |
+| `field:value`      | Busca en una _Campo_ específico (ej. `artist:TINI`) |
+| `AND`, `OR`, `NOT` | Operadores booleanos                                |
+| `"palabra exacta"` | Comillas para búsqueda exacta                       |
+| `field:[a TO b]`   | Rango (fechas, números, etc.)                       |
+| `*`                | Comodín (ej. `artist:"Juan *"`)                     |
+| `-`                | Negación (ej. `-tag:rock` para excluir)             |
+
+**Lista de Campos**
+- `artist`
+- `release`
+- `recording`
+- `releasegroup`
+- `isrc`, `barcode`, `date`
+- `tag`, `genre`
+- `country`, `status`, `format`
