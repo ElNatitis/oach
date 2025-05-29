@@ -9,7 +9,7 @@
 
 
 
-\title{Reporte de artículo\\Análisis Complejo}
+\title{Reporte de artículo\\Matemáticas Aplicadas}
 \author{N. Pérez Medina.}
 
 
@@ -17,10 +17,16 @@
 \maketitle
 \begin{center}
 	\textbf{Catedrático:} Haydey Alvarez Allende \\
-	\\
+·	\\
 	\includegraphics[scale=0.05]{fing-escudo-bw.png} 
 \end{center}
 \newpage
+\tableofcontents
+\newpage
+\section{Resumen}
+Se presenta una revisión y reflexión del artículo \textit{“A mathematical model for the corneal transparency problem”}, en el que se utiliza un modelo matemático y computacional para simular cómo la estructura de la córnea influye en la propagación de la luz y, por ende, en su transparencia. A través de las ecuaciones de Maxwell y su reducción al modo transversal eléctrico, se modela la interacción de la luz con el estroma corneal, considerando tanto una estructura sana como una afectada por alteraciones patológicas. Se emplean métodos numéricos como el método de Galerkin discontinuo y el esquema Runge-Kutta de bajo almacenamiento, para resolver el sistema.
+
+
 \section{Introducción.}
 
 La córnea contiene fibras de colágeno organizadas de forma muy precisa, lo que permite que la luz se propague con mínima dispersión y, en consecuencia, que podamos ver con claridad. Sin embargo, ciertas patologías corneales alteran esta estructura, provocando un aumento en la dispersión de la luz, lo cual reduce la transparencia de la córnea y afecta la calidad de la visión.
@@ -29,7 +35,7 @@ El artículo aborda este fenómeno desde un enfoque matemático y computacional.
 
 Para simplificar el problema, se considera una representación de dos dimenciones de la córnea. El modelo incluye condiciones iniciales y de frontera que simulan la entrada de un pulso de luz, y se resuelve mediante métodos numéricos. En particular, se utiliza una combinación del método de Galerkin discontinuo para discretización espacial y Runge-Kutta para la evolución temporal de la solución.
 
-\section{Contexto físico del problema}
+\subsection{Contexto físico del problema}
 
 \begin{center}
 	\includegraphics[scale=0.5]{partes-ojo.png} 
@@ -45,7 +51,9 @@ Comprender cómo y en qué medida estas alteraciones estructurales afectan la pr
 
 \newpage
 
-\section{Formulación matemática del modelo}
+
+\section{Desarrollo}
+\subsection{Formulación matemática del modelo}
 
 Para estudiar cómo se comporta la luz al pasar por la córnea, el artículo utiliza las ecuaciones de Maxwell, que son un conjunto de ecuaciones diferenciales que describen cómo cambian en el tiempo y en el espacio los campos eléctricos y magnéticos. 
 \[
@@ -76,7 +84,7 @@ Otro punto importante es que el modelo toma en cuenta que la córnea no responde
 
 Finalmente, para resolver el problema se definen condiciones iniciales (en este caso, sin campos presentes), y condiciones de frontera, que sirven para que la onda que se simula no se refleje artificialmente en los bordes del dominio. Estas últimas se conocen como condiciones de Silver-Müller.
 
-\section{Métodos numéricos utilizados}
+\subsection{Métodos numéricos utilizados}
 
 Como el sistema de ecuaciones diferenciales que se plantea en el modelo no se puede resolver de forma exacta, se utilizan métodos numéricos para aproximar su solución. En el artículo se aplican dos técnicas que nunca había visto, pero se relacionan con algunas cosas que sí hemos visto en la carrera.
 
@@ -84,11 +92,45 @@ Primero, para resolver el problema en el espacio, se usa el método de Galerkin 
 
 Para resolver el problema en el tiempo, se utiliza un método de Runge-Kutta de bajo almacenamiento, también llamado LSERK por sus siglas en inglés (Low-Storage Explicit Runge-Kutta). Por lo que entendí, este es un tipo de Runge-Kutta que está optimizado para usar menos memoria en las simulaciones. Aunque es una técnica que no hemos visto, cumple la misma función básica que los Runge-Kutta que sí conocemos: aproximar soluciones paso a paso en el tiempo.
 
-\section{Simulaciones y resultados}
+\subsection{Simulaciones y resultados}
 \begin{center}
 	\includegraphics[scale=1]{resultados-corneas.png} 
 \end{center}
 En las imágenes presentadas en el artículo, se puede observar claramente la diferencia entre una córnea sana (lado izquierdo) y una córnea con alteraciones patológicas (lado derecho). En el caso de la córnea sana, la simulación muestra que, a lo largo del tiempo, la luz mantiene una propagación uniforme y con una dispersión mínima. En contraste, el lado derecho, que representa una córnea donde algunas fibras han aumentado su diámetro, se nota cómo la dispersión de la luz cambia con el tiempo.
  
 En este caso, se muestra cómo una modificación aparentemente pequeña puede tener un impacto visual importante, algo que sería muy difícil de analizar sin un modelo matemático que relacione todas estas variables.
+
+\newpage
+
+\section{Conclusiones}
+
+\subsection{Reflexión sobre el artículo}
+
+Como primera aproximación a este tipo de publicaciones con análisis más robustos, comprendo mejor por qué existen tantas variaciones en los métodos de resolución de ecuaciones diferenciales parciales. De hecho, ahora me parecen incluso más complejos los comportamientos físicos que intentamos modelar que los propios modelos matemáticos que aplicamos para simularlos.
+
+Intentar entender este artíclo me ha llevado a replantear lo que entiendo por \textit{pensamiento matemático}. Antes lo entendía principalmente como una capacidad de análisis, pero ahora veo que dicho análisis necesita estar respaldado por una formulación formal y bien adaptada al contexto específico del problema que se está abordando.
+
+Aunque reconozco que cuento con las \textit{bases} necesarias para identificar los elementos mencionados en el artículo, también me doy cuenta de que aún me falta formalidad y profundidad conceptual para poder interpretar correctamente lo que se plantea y, sobre todo, comprender por qué se plantea de esa manera.
+
+
+\subsection{Reflexión del curso y la carrera}
+
+Este curso me hizo darme cuenta de la profundidad con la que se pueden comprender los comportamientos físicos cuando se utilizan correctamente las herramientas matemáticas. Me gustó sentir que todos los temas que hemos visto hasta ahora en la carrera se combinan para, no solo reconocer los símbolos y ecuaciones, sino también para poder interpretarlos, darles un significado y relacionarlos con el fenómeno que se está estudiando.
+
+Me dió mucho gusto reencontrarme con las ecuaciones de Maxwell, después de no haberlas visto desde mi último curso de física, y descubrir que ahora podía entender lo que intentaban expresar\footnote{Tampoco crea que tanto.}. Gracias a las bases que he desarrollado a lo largo de la carrera, fue muy gratificante aplicar directamente los conceptos de los operadores diferenciales y visualizar cómo un pequeño cambio en una dirección del campo eléctrico puede afectar de manera precisa a otras componentes del campo magnético. Esa conexión me ayudó a comprender con mayor claridad la dinámica entre ambos campos, y entender que justamente esa interacción es lo que, en términos generales, conocemos como luz.
+
+Fue algo que en su momento no dimensioné completamente, pero que ahora me resultó muy orgánico. Aunque tardé en asimilarlo, eventualmente todo fue encajando, y eso me dio una sensación muy distinta, más profunda y conectada con lo que implica hacer matemáticas aplicadas.
+
+\newpage
+
+\section{Referencias}
+
+\begin{itemize}
+    \item Sadiku, M. N. O. (2014). \textit{Elementos de electromagnetismo} (5.ª ed.). McGraw-Hill.
+    \item Boas, M. L. (2005). \textit{Mathematical Methods in the Physical Sciences} (3rd ed.). Wiley.
+    \item Araújo, A., Barbeiro, S., Bernardes, R., Morgado, M., \& Sakić, S. (2022). \textit{A mathematical model for the corneal transparency problem}. Journal of Mathematics in Industry, 12(10). \url{https://doi.org/10.1186/s13362-022-00125-y}
+\end{itemize}
+
+
+
 \end{document}
