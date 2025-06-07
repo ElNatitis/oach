@@ -1,5 +1,5 @@
 """
-Lo que intento hacer cone sto es relaizar busquedas simples y terminar de dimencionar cómo funcionan las consultas
+Lo que intento hacer con esto es relaizar busquedas simples y terminar de dimencionar cómo funcionan las consultas
 A futuro busco generar un buscador de canciones pertenecientes a ciertos generos en un intervalo de años especifico
 """
 
@@ -13,9 +13,9 @@ headers = {'User-Agent': 'buscador-natits/1.0 (a357417@uach.mx)'}
 
 # parametros de la consulta
 params = {
-    'query': 'tag:salsa', 
+    'query': 'tag:salsa AND primarytype:Single', 
     'fmt': 'json',
-    'limit': 20
+    'limit': 10
 }
 
 # url a visitar
@@ -24,5 +24,8 @@ url = f'{base_url}/release-group'
 respuesta = requests.get(url, headers=headers, params=params).json()['release-groups']
 
 for i in respuesta:
-    print(f'{i}\n')
+    try: 
+        print(f'{i["title"],i["artist-credit"][0]["name"],i["first-release-date"]}\n')
+    except:
+        print("Alguno de los campos está vacío\n")
 

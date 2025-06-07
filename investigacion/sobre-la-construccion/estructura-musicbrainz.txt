@@ -1,0 +1,72 @@
+{
+	'id': 'bc11b3c3-49e2-3c5d-bec3-7cfc75851e54', 
+	'type-id': 'f529b476-6e62-324f-b0aa-1f3e33d313fc', 
+	'score': 100, 
+	'primary-type-id': 'f529b476-6e62-324f-b0aa-1f3e33d313fc', 
+	'artist-credit-id': '77e21b4f-c3cc-30c0-bfc5-736e8fc64d77', 
+	'count': 3, 
+	'title': 'Comedia', 
+	'first-release-date': '1978', 
+	'primary-type': 'Album', 
+	'artist-credit': [{
+		'name': 'Héctor Lavoe', 
+		'artist': {
+			'id': '2cf18512-c129-482b-aff1-7430a1a7850b', 
+			'name': 'Héctor Lavoe', 
+			'sort-name': 'Lavoe, Héctor', 
+			'aliases': [{
+					'sort-name': 'Avoe, Hector', 
+					'name': 'Hector Avoe', 
+					'locale': None, 
+					'type': None, 
+					'primary': None, 
+					'begin-date': None, 
+					'end-date': None}, 
+				   {
+				  	'sort-name': 'Hector Lavoe', 
+				  	'name': 'Hector Lavoe', 
+				  	'locale': None, 
+				  	'type': None, 
+				  	'primary': None, 
+				  	'begin-date': None, 
+				  	'end-date': None}, 
+				   {
+				   	'sort-name': 'Héctor Lavoé', 
+				   	'name': 'Héctor Lavoé', 
+				   	'locale': None, 
+				   	'type': None, 
+				   	'primary': None, 
+				   	'begin-date': None, 
+				   	'end-date': None}, 
+				   {
+				   	'sort-name': 'Martínez, Héctor Juan Pérez', 
+				   	'type-id': 'd4dcd0c0-b341-3612-a332-c0ce797b25cf', 
+				   	'name': 'Héctor Juan Pérez Martínez', 
+				   	'locale': None, 
+				   	'type': 'Legal name', 
+				   	'primary': None, 
+				   	'begin-date': None, 
+				   	'end-date': None}
+				   ]}
+			 }],
+	'releases': [{
+		'id': '1657aa43-c8d3-49c6-a1ab-86674358acbe', 
+		'status-id': '4e304316-386d-3409-af2e-78857eec5cfe', 
+		'title': 'Comedia', 
+		'status': 'Official'}, 
+		{
+		'id': 'a667b055-5e13-4183-92f3-ccea3b34ce5e', 
+		'status-id': '4e304316-386d-3409-af2e-78857eec5cfe', 
+		'title': 'Comedia', 
+		'status': 'Official'}, 
+		{
+		'id': '93804f12-5c3a-462e-9852-4dc3b0aa0e34', 
+		'status-id': '4e304316-386d-3409-af2e-78857eec5cfe', 
+		'title': 'Comedia', 
+		'status': 'Official'}
+		], 
+	'tags': [{
+		'count': 2, 
+		'name': 'salsa'}]
+}
+
