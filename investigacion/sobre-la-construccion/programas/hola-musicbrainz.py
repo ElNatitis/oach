@@ -13,7 +13,7 @@ headers = {'User-Agent': 'buscador-natits/1.0 (a357417@uach.mx)'}
 
 # parametros de la consulta
 params = {
-    'query': 'tag:salsa AND primarytype:Single', 
+    'query': 'tag:cumbia AND primarytype:Single', 
     'fmt': 'json',
     'limit': 10
 }
