@@ -7,6 +7,8 @@ import requests
 import pandas as pd
 import time
 
+genero = 'cumbia'
+
 base_url = "https://musicbrainz.org/ws/2"
 url = f'{base_url}/release-group'
 headers = {'User-Agent': 'buscador-natits/1.0 (a357417@uach.mx)'}
@@ -16,7 +18,7 @@ datos = []
 # Cíclo para tener un total de 1000 canciones, recopilando de 100 en 100
 for offset in range(0, 1000, 100):  # 0, 100, ..., 900
     params = {
-        'query': 'tag:cumbia',
+        'query': f'tag:{genero}',
         'fmt': 'json',
         'limit': 100,
         'offset': offset
@@ -53,4 +55,4 @@ bd = pd.DataFrame(datos) # crear dataframe
 print(f'Total canciones guardadas: {len(bd)}')
 bd.drop_duplicates() # eliminar duplicados
 print(f'Total canciones sin duplicados: {len(bd)}')
-bd.to_csv('1000-lanzamientos-de-cumbia.csv', index=False)
+bd.to_csv(f'1000-lanzamientos-{genero}.csv', index=False)
