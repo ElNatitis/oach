@@ -20,9 +20,9 @@ El buscador realiza los siguientes procesos:
 import pandas as pd
 import requests, time, os
 
-genero = 'bolero' # genero a buscar
+genero = 'tex-mex' # genero a buscar
 
-# carpeta para guardar los archivos csv resultantes ------
+# 1 carpeta para guardar los archivos csv resultantes ------
 os.makedirs(f'{genero}', exist_ok=True) 
 # archivo .txt que tendrá el resumen
 resumen_path = os.path.join(f'{genero}', f'resumen-{genero}.txt')
