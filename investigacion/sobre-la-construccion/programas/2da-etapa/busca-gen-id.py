@@ -21,7 +21,7 @@ El buscador realiza los siguientes procesos:
 import pandas as pd
 import requests, time, os
 
-genero = 'cumbia' # genero a buscar
+genero = 'salsa' # genero a buscar
 
 # 1 carpeta para guardar los archivos csv resultantes ------
 os.makedirs(f'{genero}', exist_ok=True) 
@@ -45,18 +45,26 @@ for offset in range(0, 1000, 100):
     }
     print(f'Consultando offset {offset}...') # para saber en qué parte de las solicitudes vamos
     # realizamos la solicitud
-    canciones = requests.get(url, headers=headers, params=params).json().get('release-groups', [])
+    lanzamientos = requests.get(url, headers=headers, params=params).json().get('release-groups', [])
     
     # de los datos encontrados, guardamos unicamente los que necesitamos
-    for cancion in canciones:
+    for lanzamiento in lanzamientos:
         try:
+            # Buscar el primer id catalogado como oficial
+            realizaciones = lanzamiento.get('releases', [])
+            id_oficial = ''
+            for ids in realizaciones:
+                if ids.get('status') == 'Official':
+                    id_oficial = ids.get('id')
+                    break
+                    
             datos.append({
-                'titulo': cancion['title'],
-                'tipo': cancion['primary-type'],
-                'artista': cancion['artist-credit'][0]['name'],
-                'fecha-lanzamiento': cancion.get('first-release-date', ''),
-                'generos':', '.join([tag['name'] for tag in cancion.get('tags', [])]),
-                'id': cancion['id']
+                'titulo': lanzamiento['title'],
+                'tipo': lanzamiento['primary-type'],
+                'artista': lanzamiento['artist-credit'][0]['name'],
+                'fecha-lanzamiento': lanzamiento.get('first-release-date', ''),
+                'generos':', '.join([tag['name'] for tag in lanzamiento.get('tags', [])]),
+                'id': id_oficial
             })
         except Exception as e:
             print(f'Error al procesar canción: {e}')
@@ -87,26 +95,32 @@ for i, fecha in bd['fecha-lanzamiento'].items(): # iteramos en la columna fecha-
         if len(fecha_str) != 4: 
             bd.at[i, 'fecha-lanzamiento'] = fecha_str[:4 ]
 
+print(f'separando lanzamientos sin fecha...\n')
 print(f'{errores}')
 bd_errores = bd.loc[errores] # creamos un csv para los erroes
 bd_errores.to_csv(os.path.join(f'{genero}', f'errores-{genero}.csv'), index=False) # lo guardamos en la carpeta
 bd.drop(index=errores, inplace=True) # eliminamos los errores de la base original
+
 print(f'ordenando cronológicamente los lanzamientos...\n')
 bd.sort_values('fecha-lanzamiento', inplace=True) # ordenamos de menor a mayor
-print(f'separando lanzamientos sin fecha...\n')
+
 print(f'generando carpeta {genero}...\n')
 print(f'guardando archivo carpeta 1000-lanzamientos-{genero}.csv ...\n')
 bd.to_csv(os.path.join(f'{genero}', f'1000-lanzamientos-{genero}.csv'), index=False) # guardamos el csv en la carpeta
-bd_unicos = bd[bd['generos'].apply(lambda x: ',' not in str(x))]
 
-# escribimos en el resumen
+print(f'guardando un archivo csv con lanzamientos "unicos" de salsa...')
+bd_unicos = bd[bd['generos'].apply(lambda x: ',' not in str(x))]
+bd_unicos.to_csv(os.path.join(f'{genero}', f'lanzamientos-unicos-{genero}.csv'), index=False) 
+
+
+
 print(f'generando archivo resumen-{genero}.txt ...\n')
 with open(resumen_path, 'a', encoding='utf-8') as f:
     f.write(f'----- reusmen {genero} -----\n')
     f.write(f'se recolectaron un total de \t{len(bd)} lanzamientos\n')
     f.write(f'que incluyen:\n')
     
-# se generan y guardan archivos .csv para cada tipo de lanzamiento
+
 print(f'generando archivos csv para cada tipo de lanzamiento ...\n')
 tdl = bd.groupby('tipo').size() # tdl := tipos de lanzamientos
 for tipo, n in tdl.items(): # creamos un csv para cada tipo de lanzamiento
@@ -119,10 +133,11 @@ for tipo, n in tdl.items(): # creamos un csv para cada tipo de lanzamiento
     ruta = os.path.join(f'{genero}', f'{tipo}-{genero}.csv') 
     bd_tipo.to_csv(ruta, index=False)
 
-
-
 with open(resumen_path, 'a', encoding='utf-8') as f:
     f.write(f'además de {len(bd_errores)} lanzamientos sin fechas registradas\n')
+    f.write(f'y {len(bd_unicos)} lanzamientos únicos\n')
+
+
 
 print(f'Listo.\n')
 
