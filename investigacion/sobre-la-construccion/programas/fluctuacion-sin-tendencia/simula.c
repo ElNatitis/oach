@@ -29,14 +29,59 @@ donde: sₙ  = tamaño de el segmento
 #include <time.h>
 #include <math.h>
 
+#define N 1024
+
+struct instrumento {
+  float* tono; 
+  float* volumen; 
+  float* duracion; 
+};
+
+void imprimir(struct instrumento x);
 
 int main(void)
 {
   srand(time(NULL)); // Inicializar la semilla para obtener números aleatorios distintos cada vez
   
+  // Generamos el tipo de variable
+  struct instrumento tuba;
+  // Asignar memoria a cada arreglo
+  tuba.tono = calloc(N, sizeof(float));
+  tuba.volumen = calloc(N, sizeof(float));
+  tuba.duracion = calloc(N, sizeof(float));
   
-  int N = 1024; // Número de datos
-  float* x = calloc(N, sizeof(float)); // Arreglo
-  for(int i=0;i<N;i++) x[i] = rand() % 599;// Llenar el arreglo con números aleatorios del 0 al 599
+  // Simulamos su comportamiento
+  for(int i=0;i<N;i++)// Llenar el arreglo con números aleatorios del 0 al 599
+  {
+    tuba.tono[i] = rand() % 100;
+    tuba.volumen[i] = rand() % 100;
+    tuba.duracion[i] = rand() % 100;
+  }
+    
+    
+  imprimir(tuba);
   
 }
+
+
+void imprimir(struct instrumento x)
+{
+  printf("--- tono ---\n");
+  printf("[");
+  for(int i=0;i<N;i++) 
+    printf("%.2f, ", x.tono[i]);
+  printf("]\n");
+  
+  printf("--- volumen ---\n");
+  printf("[");
+  for(int i=0;i<N;i++) 
+    printf("%.2f, ", x.volumen[i]);
+  printf("]\n");
+  
+  printf("--- duracion ---\n");
+  printf("[");
+  for(int i=0;i<N;i++) 
+    printf("%.2f, ", x.duracion[i]);
+  printf("]\n");
+}
+

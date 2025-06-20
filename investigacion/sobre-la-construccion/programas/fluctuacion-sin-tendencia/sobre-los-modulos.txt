@@ -1,0 +1,22 @@
+# simula.c
+
+La intencion es que este modulo se encargue de generar el tipo de dato sobre el cual se haran los analisis aft y poder mandar la estructura completa de modulo en modulo
+
+
+# modulo1.c
+
+Recibe un instrumento y regresa el instrumento_int
+
+# modulo2.c
+
+recibe instrumento_int y regresa seg_instrumento_int
+
+# modulo3.c
+
+recibe seg_instrumento_int y regresa sim_seg_instrumento
+
+# modulo4.c
+
+recibe sim_seg_instrumento y regresa flucxseg
+
+
