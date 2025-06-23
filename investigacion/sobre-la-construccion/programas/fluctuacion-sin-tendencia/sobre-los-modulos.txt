@@ -1,3 +1,16 @@
+# instrumento.c \ instrumento.h
+
+Define la estructura central de los datos a tratar de la siguiente manera 
+
+struct instrumento {
+    float* tono; 
+    float* volumen; 
+    float* duracion; 
+};
+
+Teniendo una funcion para inicializar un instrumento, otra para imprimir y otra para librar espacio
+
+
 # simula.c
 
 La intencion es que este modulo se encargue de generar el tipo de dato sobre el cual se haran los analisis aft y poder mandar la estructura completa de modulo en modulo

@@ -1,12 +1,10 @@
 /* MODULO 1 - INTEGRAR LA SERIE
 
-Se recibe una serie de tiempo con el formato
+Se recibe un 'instrumento' que es un dato con la siguiente estructura
 
-serie = { [s₁,...,sₙ] }
+instrumento = { [t₁,...,tₙ], [v₁,...,vₙ], [d₁,...,dₙ] }
 
-donde serie puede corresponder a: tono, volumen o duración
-
-y se realizan los siguientes procedimientos sobre cada una de las series
+y se realizan los siguientes procedimientos sobre cada una de las series que componen el instrumento
 
 1 - Se calcula el promedio 
 2 - "integramos" la serie
@@ -14,7 +12,9 @@ y se realizan los siguientes procedimientos sobre cada una de las series
 
 El programa regresa la serie integrada con el formato
 
-serie_int = { [s_int₁,...,s_intₙ] }
+instrumento_int = { [t_int₁,...,t_intₙ], [v_int₁,...,v_intₙ], [d_int₁,...,d_intₙ] }
+
+todo lo anterior sucede usando la funcion declarada en instrumento.h llamada 'integrar_instrumento'
 
 */ 
 
@@ -22,24 +22,47 @@ serie_int = { [s_int₁,...,s_intₙ] }
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include "instrumento.h"
 
-float* integrar_x(float* x, int N)
+
+struct instrumento integrar_instrumento(struct instrumento* inst)
 {
-  float* x_int = calloc(N, sizeof(float)); // Arreglo que devolveremos
+  // decalramos el arreglo que vamos a regresar
+  struct instrumento x_int;
+  declarar_instrumento(&x_int);
   
-  // 1 - Se calcula el promedio 
-  float sum = 0;
-  for(int i=0;i<N;i++) sum += x[i];
-  float prom = (sum/N); 
-  
-  // 2 - "integramos" la serie
-  for(int j=0;j<N;j++)  
+  // inicializamos las variables para los promedios
+  float prom_tono = 0, prom_volumen = 0, prom_duracion = 0;
+
+  // calculamos promedios
+  for (int i = 0; i < N; i++) 
   {
-    sum=0; // reiniciamos la variable
-    for(int i=0;i<=j;i++) sum += x[i]-prom;      
-    x_int[j]=sum;
+      prom_tono += inst->tono[i];
+      prom_volumen += inst->volumen[i];
+      prom_duracion += inst->duracion[i];
   }
+  prom_tono /= N;
+  prom_volumen /= N;
+  prom_duracion /= N;
   
-  // 3 - regresamos la serie integrada en un arreglo diferente
+  
+  // "integramos" cada serie del instrumento
+  for (int i = 0; i < N; i++) 
+  {
+      float suma_tono = 0, suma_volumen = 0, suma_duracion = 0;
+      for (int j = 0; j <= i; j++) 
+      {
+          suma_tono += inst->tono[j] - prom_tono;
+          suma_volumen += inst->volumen[j] - prom_volumen;
+          suma_duracion += inst->duracion[j] - prom_duracion;
+      }
+      x_int.tono[i] = suma_tono;
+      x_int.volumen[i] = suma_volumen;
+      x_int.duracion[i] = suma_duracion;
+  }
   return x_int;
 }
+
+
+
+
