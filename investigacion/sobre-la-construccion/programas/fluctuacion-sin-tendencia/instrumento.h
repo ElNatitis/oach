@@ -5,7 +5,7 @@
 Se define el formato del dato 'instrumento'
 
 */ 
-#define N 500
+#define N 1064
 
 struct instrumento {
     float* tono; 
@@ -15,14 +15,17 @@ struct instrumento {
 
 //  funciones básicas
 void declarar_instrumento(struct instrumento* inst);
-void declarar_instrumento_segmentado(struct instrumento* inst, int s);
+void declarar_instrumento_segmentado(struct instrumento* inst, int s, int st);
 void liberar_instrumento(struct instrumento* inst);
 void imprimir_instrumento(struct instrumento inst);
+void imprimir_instrumento_segmentado(struct instrumento inst, int s);
 
 
 // funciones para el aft
 struct instrumento integrar_instrumento(struct instrumento* inst);
 struct instrumento segmentar_instrumento(struct instrumento* inst, int s);
+struct instrumento simular_segmentos(struct instrumento inst, int s);
+
 
 #endif
 

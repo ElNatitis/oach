@@ -14,10 +14,8 @@ void declarar_instrumento(struct instrumento* inst)
     inst->duracion = calloc(N, sizeof(float));
 }
 
-void declarar_instrumento_segmentado(struct instrumento* inst, int s)
+void declarar_instrumento_segmentado(struct instrumento* inst, int s, int st)
 {
-    int st = ((N-(N%s))/s); // número de segmentos que habrá en el arreglo de segmentos
-    
     // arreglos en el que cada elemento es un segmento 
     inst->tono = calloc(st*s, sizeof(float)); 
     inst->volumen = calloc(st*s, sizeof(float)); 
@@ -49,3 +47,39 @@ void imprimir_instrumento(struct instrumento inst)
     printf("]\n");
 }
 
+void imprimir_instrumento_segmentado(struct instrumento inst, int s)
+{
+    int st = ((N-(N%s))/s); // número de segmentos que habrá en el arreglo de segmentos
+    printf("---- segmentos de tono ----\n");
+    for (int i = 0; i < st; i++) {
+        printf("s %d: [", i+1);
+        for (int j = 0; j < s; j++) {
+            int index = i * s + j;
+            printf("%.2f", inst.tono[index]);
+            if (j < s - 1) printf(", ");
+        }
+        printf("]\n");
+    }
+
+    printf("---- segmentos de volumen ----\n");
+    for (int i = 0; i < st; i++) {
+        printf("s %d: [", i+1);
+        for (int j = 0; j < s; j++) {
+            int index = i * s + j;
+            printf("%.2f", inst.volumen[index]);
+            if (j < s - 1) printf(", ");
+        }
+        printf("]\n");
+    }
+
+    printf("---- segmentos de duración ----\n");
+    for (int i = 0; i < st; i++) {
+        printf("s %d: [", i+1);
+        for (int j = 0; j < s; j++) {
+            int index = i * s + j;
+            printf("%.2f", inst.duracion[index]);
+            if (j < s - 1) printf(", ");
+        }
+        printf("]\n");
+    }
+}

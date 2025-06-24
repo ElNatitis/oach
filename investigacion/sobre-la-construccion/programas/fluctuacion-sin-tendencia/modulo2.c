@@ -13,7 +13,7 @@ y se realizan los siguientes procedimientos sobre cada una de las series que com
 
 El programa regresa la serie segmentada con el formato
 
-instrumento_int = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
+seg_instrumento_int = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
 */ 
 
 #include <stdio.h>
@@ -25,10 +25,24 @@ instrumento_int = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)�
 
 struct instrumento segmentar_instrumento(struct instrumento* inst, int s)
 {
+  int st = ((N-(N%s))/s); // número de segmentos que habrá en el arreglo de segmentos
+  
   // decalramos el arreglo que vamos a regresar
   struct instrumento seg_x_int;
-  declarar_instrumento_segmentado(&seg_x_int,s);
-
-  imprimir_instrumento(seg_x_int); 
-
+  declarar_instrumento_segmentado(&seg_x_int,s,st);
+  
+  // visitamos cada espacio de cada segmento para almacenar lo que hay en el arreglo original 
+  int aux = 0;
+  for (int i = 0; i < st; i++) 
+  {
+    for (int j = 0; j < s; j++) 
+    {
+      int index = i * s + j;
+      seg_x_int.tono[index] = inst->tono[aux];
+      seg_x_int.volumen[index] = inst->volumen[aux];
+      seg_x_int.duracion[index] = inst->duracion[aux];
+      aux++;
+    }
+  }
+  return seg_x_int;
 }

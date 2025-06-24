@@ -57,7 +57,14 @@ int main(void)
     // segmentamos la serie
     printf("\n------- TUBA SEGMENTADA ------- \n\n");
     int s = 16; //tamaño del segmento
-    segmentar_instrumento(&tuba_int,s);
+    struct instrumento seg_tuba_int = segmentar_instrumento(&tuba_int,s);
+    imprimir_instrumento_segmentado(seg_tuba_int,s); 
+    
+    // calculamos los coeficientes de un polinomio de grado 2 ajustado
+    printf("\n------- COEFICIENTES ------- \n\n");
+    simular_segmentos(seg_tuba_int,s);
+    
+    
     
 }
 
