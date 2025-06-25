@@ -12,6 +12,10 @@ y se realizan los siguientes procedimientos sobre cada una de las series
 
 2 - segmentamos la serie
 
+3 - simulamos cada segmento
+
+4 - calculamos la magnitud promedio de fluctuaciones para ese tamaño de segmento
+
 
 
 
@@ -54,17 +58,30 @@ int main(void)
     struct instrumento tuba_int = integrar_instrumento(&tuba);
     imprimir_instrumento(tuba_int);
     
-    // segmentamos la serie
-    printf("\n------- TUBA SEGMENTADA ------- \n\n");
-    int s = 16; //tamaño del segmento
-    struct instrumento seg_tuba_int = segmentar_instrumento(&tuba_int,s);
-    imprimir_instrumento_segmentado(seg_tuba_int,s); 
+    int* segmentos;
+    segmentos = calloc(3,sizeof(int));
+    segmentos[0] = 16;
+    segmentos[1] = 32;
+    segmentos[2] = 64;
     
-    // calculamos los coeficientes de un polinomio de grado 2 ajustado
-    printf("\n------- COEFICIENTES ------- \n\n");
-    simular_segmentos(seg_tuba_int,s);
-    
-    
-    
+    for(int u=0; u<3; u++)
+    {
+      printf("\n### PARA EL SEGMENTOS DE TAMAÑO %d ###\n",segmentos[u]);
+      // segmentamos la serie
+      printf("\n------- TUBA SEGMENTADA ------- \n\n");
+      int s = segmentos[u]; //tamaño del segmento
+      struct instrumento seg_tuba_int = segmentar_instrumento(&tuba_int,s);
+      imprimir_instrumento_segmentado(seg_tuba_int,s); 
+      
+      // simulamos los segmentos de la serie
+      printf("\n------- TUBA SIMULADA ------- \n\n");
+      struct instrumento sim_seg_tuba = simular_segmentos(seg_tuba_int,s);
+      imprimir_instrumento_segmentado(sim_seg_tuba,s);
+      
+      // magnitud promedio de fluctuaciones
+      printf("\n------- RESULTADOS ------- \n\n");
+      float* resulatos = fluctuaciones(seg_tuba_int,sim_seg_tuba,s);    
+    }
+        
 }
 

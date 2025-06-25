@@ -22,8 +22,7 @@ sim_seg_instrumento = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_i
 #include "instrumento.h"
 
 float* coeficientes(float* x_seg, int st, int s);
-void llenar_columnas(float* c1, float* c2, float* c3,float* cb, float* y, float* x,int N);
-void prn(float* arr, int n);
+void llenar_columnas(float* c1, float* c2, float* c3,float* cb, float* y, float* x,int s);
 float det(float* c1, float* c2, float* c3);
 struct instrumento simular_segmentos(struct instrumento inst, int s);
 
@@ -35,6 +34,7 @@ float* coeficientes(float* x_seg, int st, int s)
     float* seg = x_seg+i*s; // para trabajar con el i-ésiumo segmento 
     float* ind = calloc(s, sizeof(int)); // Arreglo índice
     for(int i=0;i<(s);i++) ind[i] = i; // Llenar el indice 
+    
     // Los arreglos que cumplirán la función de columnas
     float* c1 = calloc(3, sizeof(float));
     float* c2 = calloc(3, sizeof(float)); 
@@ -42,10 +42,6 @@ float* coeficientes(float* x_seg, int st, int s)
     float* cb = calloc(3, sizeof(float)); 
     
     llenar_columnas(c1,c2,c3,cb,seg,ind,s);
-    //printf("\ncolumna 1\n"); prn(c1,3);
-    //printf("columna 2\n"); prn(c2,3);
-    //printf("columna 3\n"); prn(c3,3);
-    //printf("columna B\n"); prn(cb,3);
     
     // Determinantes de las matrices que formamos con las columnas
     float dete, det0, det1, det2;
@@ -53,27 +49,26 @@ float* coeficientes(float* x_seg, int st, int s)
     det0 = det(cb,c2,c3);
     det1 = det(c1,cb,c3);
     det2 = det(c1,c2,cb);
-    //printf("\nDeterminantes calculados.\ndet\t%.2f\ndet0\t%.2f\ndet1\t%.2f\ndet2\t%.2f",dete,det0,det1,det2);
+    
     // Coeficientes que determinan el polinomio de grado 2
     float a0,a1,a2;
     a0 = det0 / dete;
     a1 = det1 / dete;
     a2 = det2 / dete;
-    //printf("\n----- Coeficientes determinados para el segmento %d\na0\t%.2f\na1\t%.2f\na2\t%.2f\n",i,a0,a1,a2);
+    
     coef[3*i+0] = a0; 
     coef[3*i+1] = a1; 
     coef[3*i+2] = a2; 
   }
-  return coef;
-  
+  return coef; 
 }
 
-void llenar_columnas(float* c1, float* c2, float* c3,float* cb, float* y, float* x,int N)
+void llenar_columnas(float* c1, float* c2, float* c3,float* cb, float* y, float* x,int s)
 {
   float sum_x = 0, sum_x2 = 0, sum_x3 = 0, sum_x4 = 0;
   float sum_y = 0, sum_xy = 0, sum_x2y = 0;
-
-  for (int i=0; i<N; i++) // Para calcular todas las sumas que vamos a necesitar para las matrices
+  // Para calcular todas las sumas que vamos a necesitar para las matrices
+  for (int i=0; i<s; i++) 
   {
     sum_x  += x[i];
     sum_x2 += x[i]*x[i];
@@ -83,10 +78,9 @@ void llenar_columnas(float* c1, float* c2, float* c3,float* cb, float* y, float*
     sum_xy  += x[i]*y[i];
     sum_x2y += x[i]*x[i]*y[i];
   }
-  //printf("\n##sumas calculadas\nsum_x\t=%.1f\nsum_x2\t=%.1f\nsum_x3\t=%.1f\nsum_x4\t=%.1f\nsum_y\t=%.1f\nsum_xy\t=%.1f\nsum_x2y\t=%.1f\n",sum_x,sum_x2,sum_x3,sum_x4,sum_y,sum_xy,sum_x2y);
-  
+
   // Columna 1
-  c1[0] = N; c1[1] = sum_x; c1[2] = sum_x2;
+  c1[0] = s; c1[1] = sum_x; c1[2] = sum_x2;
 
   // Columna 2
   c2[0] = sum_x; c2[1] = sum_x2; c2[2] = sum_x3;
@@ -103,23 +97,50 @@ float det(float* c1, float* c2, float* c3)
   return ( c1[0]*(c2[1]*c3[2] - c2[2]*c3[1]) ) - ( c2[0]*(c1[1]*c3[2] - c1[2]*c3[1]) ) + ( c3[0]*(c1[1]*c2[2] - c1[2]*c2[1]) );
 }
 
-void prn(float* arr, int n)
-{
-  for(int i=0;i<n;i++) printf("%.2f, ", arr[i]);
-  printf("\n");
-}
-
 struct instrumento simular_segmentos(struct instrumento inst, int s)
 {
-  float* seg_tono = inst.tono;
-  float* seg_volumen = inst.volumen; 
-  float* seg_duracion = inst.duracion;
-  int st = ((N-(N%s))/s); // número de segmentos que habrá en el arreglo de segmentos
-  float* coef = coeficientes(seg_tono,st,s);
-  
+    int st = ((N - (N % s)) / s); // número de segmentos
+    struct instrumento simulado;
+    simulado.tono = calloc(st * s, sizeof(float));
+    simulado.volumen = calloc(st * s, sizeof(float));
+    simulado.duracion = calloc(st * s, sizeof(float));
 
-  
-  
-  
+    // Simulación para TONO
+    float* coef_tono = coeficientes(inst.tono, st, s);
+    for (int i = 0; i < st; i++) {
+        float a0 = coef_tono[3*i];
+        float a1 = coef_tono[3*i + 1];
+        float a2 = coef_tono[3*i + 2];
+        for (int j = 0; j < s; j++) {
+            int idx = i * s + j;
+            simulado.tono[idx] = a0 + a1 * j + a2 * j * j;
+        }
+    }
 
+    // Simulación para VOLUMEN
+    float* coef_volumen = coeficientes(inst.volumen, st, s);
+    for (int i = 0; i < st; i++) {
+        float a0 = coef_volumen[3*i];
+        float a1 = coef_volumen[3*i + 1];
+        float a2 = coef_volumen[3*i + 2];
+        for (int j = 0; j < s; j++) {
+            int idx = i * s + j;
+            simulado.volumen[idx] = a0 + a1 * j + a2 * j * j;
+        }
+    }
+
+    // Simulación para DURACIÓN
+    float* coef_duracion = coeficientes(inst.duracion, st, s);
+    for (int i = 0; i < st; i++) {
+        float a0 = coef_duracion[3*i];
+        float a1 = coef_duracion[3*i + 1];
+        float a2 = coef_duracion[3*i + 2];
+        for (int j = 0; j < s; j++) {
+            int idx = i * s + j;
+            simulado.duracion[idx] = a0 + a1 * j + a2 * j * j;
+        }
+    }
+
+    return simulado;
 }
+

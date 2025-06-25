@@ -25,6 +25,7 @@ void imprimir_instrumento_segmentado(struct instrumento inst, int s);
 struct instrumento integrar_instrumento(struct instrumento* inst);
 struct instrumento segmentar_instrumento(struct instrumento* inst, int s);
 struct instrumento simular_segmentos(struct instrumento inst, int s);
+float* fluctuaciones(struct instrumento inst, struct instrumento inst_sim, int s);
 
 
 #endif
