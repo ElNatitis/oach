@@ -58,8 +58,10 @@ int main(void)
     struct instrumento tuba_int = integrar_instrumento(&tuba);
     imprimir_instrumento(tuba_int);
     
-    int* segmentos;
+    int* segmentos; 
+    float* final;
     segmentos = calloc(3,sizeof(int));
+    final = calloc(12,sizeof(float));
     segmentos[0] = 16;
     segmentos[1] = 32;
     segmentos[2] = 64;
@@ -80,7 +82,20 @@ int main(void)
       
       // magnitud promedio de fluctuaciones
       printf("\n------- RESULTADOS ------- \n\n");
-      float* resulatos = fluctuaciones(seg_tuba_int,sim_seg_tuba,s);    
+      float* resulatos = fluctuaciones(seg_tuba_int,sim_seg_tuba,s);
+      int index = u*4;
+      final[index] = resulatos[0];
+      final[index+1] = resulatos[1];
+      final[index+2] = resulatos[2];
+      final[index+3] = resulatos[3];
+    }
+    printf("\n--- RESUMEN DE RESULTADOS ---\n");
+    
+    printf("s\tft\tfv\tfd\n");
+    for(int y=0;y<3;y++)
+    {
+      int ind = y*4;
+      printf("%.0f\t%.2f\t%.2f\t%.2f\n",final[ind],final[ind+1],final[ind+2],final[ind+3]);
     }
         
 }
