@@ -1,12 +1,14 @@
 /* MODULO 4 - CALCULAR LA FLUCTUACIÓN CUADRÁTICA MEDIA
 
-Se reciben los arreglos un
- - 'seg_instrumento_int' 
- - 'sim_seg_instrumento'
-que comparten la siguiente estructura la siguiente estructura:
-  { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
+Se reciben 2 arreglos:
+ 1 - 'seg_instrumento_int' 
+ 2 - 'sim_seg_instrumento'
+ 
+que comparten la siguiente estructura:
+ { [(t_int_1,...,t_int_s)₁,...,()ₙ], [(v_int_1,...,v_int_s)₁,...,()ₙ], [(d_int_1,...,d_int_s)₁,...,()ₙ] }  
 
-y se realizan los siguientes procedimientos
+también se recibe 's', la variable que indica el tamaño de los segmentos del arreglo. 
+luego, se realizan los siguientes procedimientos
 
 1 - para cada segmento, se suman las diferecnias al cuadrado de los i-ésimos términos de 'seg_instrumento_int' y ' sim_seg_instrumento'
 2 - se suman esas sumas en una variable llamada F
@@ -18,7 +20,7 @@ f_s = { [s], [F_t,F_v,F_d] }
 
 donde
   s := tamaño de los segementos
-  F_ := "magnitud promedio de fluctuaciones" de tono, volumen y duración con respecto a ese tamaño de segmento
+  F_s := "magnitud promedio de fluctuaciones" de tono, volumen y duración con respecto a ese tamaño de segmento
 */ 
 
 #include <stdio.h>

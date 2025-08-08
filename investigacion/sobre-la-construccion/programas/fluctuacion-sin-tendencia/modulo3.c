@@ -2,7 +2,7 @@
 
 Se recibe un 'seg_instrumento_int' que es un dato con la siguiente estructura
 
-seg_instrumento_int = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
+seg_instrumento_int = { [(t_int_1,...,t_int_s)₁,...,()ₙ], [(v_int_1,...,v_int_s)₁,...,()ₙ], [(d_int_1,...,d_int_s)₁,...,()ₙ] }
 
 y se realizan los siguientes procedimientos sobre cada una de los segmentos de las series que componen el instrumento
 
@@ -10,9 +10,7 @@ y se realizan los siguientes procedimientos sobre cada una de los segmentos de l
 2 - se simula el comportamiento a partir de esos coeficientes
 3 - guardamos los datos simulados en un arreglo llamado 'sim_seg_instrumento'
 
-El programa regresa la serie segmentada simulada con el formato
-
-sim_seg_instrumento = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
+El programa regresa la serie segmentada simulada con el mismo formato que el arreglo 'seg_instrumento_int'
 */ 
 
 #include <stdio.h>

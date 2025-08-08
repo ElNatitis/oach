@@ -6,14 +6,14 @@ instrumento_int = { [t_int₁,...,t_intₙ], [v_int₁,...,v_intₙ], [d_int₁,
 
 y se realizan los siguientes procedimientos sobre cada una de las series que componen el instrumento
 
-1 - se calcula, con resdpecto al tamaño de segmento, el número de segmetnos posibles 
+1 - se calcula, con respecto al tamaño de segmento, el número de segmetnos posibles 
 2 - se crea una variable 'seg_instrumento_int' que tiene la estructura de instrumento_int pero sus arreglos están segmentados
 3 - guardamos los datos correspondientes en cada espacio de los segmentos
 4 - regresamos la variable 'seg_instrumento_int'
 
 El programa regresa la serie segmentada con el formato
 
-seg_instrumento_int = { [(d1,...,ds)₁,...,()], [(),...,()ₙ], [()₁,...,(d_int)ₙ] }
+seg_instrumento_int = { [(t_int_1,...,t_int_s)₁,...,()ₙ], [(v_int_1,...,v_int_s)₁,...,()ₙ], [(d_int_1,...,d_int_s)₁,...,()ₙ] }
 */ 
 
 #include <stdio.h>
