@@ -1,0 +1,146 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\title{}
+\author{}
+\begin{document}
+\maketitle
+\newpage
+\subsection*{Definiciones elementales}
+
+El objetivo básico de la teoría de sistemas dinámicos es comprender el comportamiento eventual o asintótico de un proceso iterativo. Si este proceso es una ecuación diferencial cuya variable independiente es el tiempo, entonces la teoría intenta predecir el comportamiento último de las soluciones de la ecuación tanto en el futuro lejano ($t \to \infty$) como en el pasado lejano ($t \to -\infty$).  
+
+Si el proceso es discreto, como la iteración de una función, entonces la teoría busca comprender el comportamiento eventual de los puntos 
+\[
+x,\; f(x),\; f^{2}(x),\; \dots,\; f^{n}(x)
+\]
+cuando $n$ crece mucho. Es decir, los sistemas dinámicos plantean la pregunta —un tanto no matemática en apariencia—: ¿hacia dónde se mueven los puntos y qué hacen cuando llegan allí?  
+
+En este capítulo intentaremos responder, al menos parcialmente, esta pregunta para una de las clases más simples de sistemas dinámicos:las funciones de una sola variable real. Las funciones que determinan sistemas dinámicos también se llaman \emph{mapeos}, o en inglés \emph{mappings} o \emph{maps}, para abreviar. Esta terminología denota el proceso geométrico de llevar un punto a otro. Dado que gran parte de lo que sigue tendrá, de hecho, un carácter geométrico, utilizaremos todos estos términos como sinónimos.
+\\
+
+\textbf{Conjunto de deefiniciones 3.1.} 
+\begin{enumerate}
+	\item \textit{La órbita hacia adelante de} $x$ es el conjunto de puntos 
+\[
+x,\; f(x),\; f^{2}(x),\; \dots
+\]
+y se denota por $O^{+}(x)$.  
+
+	\item Si $f$ es un homeomorfismo, podemos definir la \textit{órbita completa de }$x$, 
+\[
+O(x) = \{ f^{n}(x) \;|\; n \in \mathbb{Z} \},
+\]
+como el conjunto de puntos $f^{n}(x)$ para $n \in \mathbb{Z}$,  
+
+y \textit{la órbita hacia atrás de} $x$,
+\[
+O^{-}(x) = \{x,\; f^{-1}(x),\; f^{-2}(x),\; \dots \}.
+\]
+\end{enumerate}
+
+
+Así, \textbf{nuestro objetivo básico es comprender todas las órbitas de un mapeo.} Las órbitas y órbitas hacia adelante de los puntos pueden ser conjuntos bastante complicados, incluso para mapeos no lineales muy simples. Sin embargo, existen algunas órbitas que son especialmente simples y que desempeñarán un papel 
+central en el estudio de todo el sistema.
+\\
+
+\textbf{Conjunto de definiciones 3.2.} 
+\begin{enumerate}
+	\item El punto $x$ es un \emph{punto fijo} de $f$ si $f(x)=x$.  
+	\item El punto $x$ es un \emph{punto periódico de período $n$} si $f^{n}(x)=x$.  
+	\item El menor $n$ positivo para el cual $f^{n}(x)=x$ se llama el \emph{período primo} de $x$.  
+	\item Denotamos el conjunto de puntos periódicos de período $n$ (no necesariamente primo) por $\mathrm{Per}_{n}(f)$, y el conjunto de puntos fijos por $\mathrm{Fix}(f)$. 
+	\item El conjunto de todas las iteraciones de un punto periódico forma una \emph{órbita periódica}.  
+\end{enumerate}
+
+Los mapeos pueden tener muchos puntos fijos.  
+Por ejemplo, la aplicación identidad $id(x)=x$ fija todos los puntos en $\mathbb{R}$,  
+mientras que el mapeo $f(x)=-x$ fija el origen, y todos los demás puntos tienen período $2$.  
+
+Sin embargo, estos son sistemas dinámicos atípicos;  
+los mapeos con intervalos de puntos fijos o periódicos son raros en un sentido que se precisará más adelante.  
+La mayoría de los sistemas dinámicos que encontraremos tendrán puntos periódicos aislados.
+
+
+\newpage
+
+\textbf{Ejemplo 3.3.} El mapreo $f(x) = x^{3}$ tiene $0,\,1$ y $-1$ como puntos fijos 
+y ningún otro punto periódico.  
+El mapeo $P(x) = x^{2}-1$ tiene puntos fijos en $(1 \pm \sqrt{5})/2$, 
+mientras que los puntos $0$ y $-1$ pertenecen a una órbita periódica de período $2$.
+
+\medskip
+
+\textbf{Ejemplo 3.4.} Sea $S^{1}$ el círculo unitario en el plano. Denotamos un punto en $S^{1}$ por su ángulo $\theta$ medido en radianes de la manera estándar. Así, un punto queda determinado por cualquier ángulo de la forma $\theta + 2k\pi$ para un entero $k$.  
+
+Definamos $f(\theta)=2\theta$. \textit{(Nótese que $f(\theta + 2\pi) = f(\theta)$ en el círculo, por lo que este mapeo está bien definido).  }
+
+Ahora, $f^{n}(\theta) = 2^{n}\theta$, de modo que $\theta$ es periódico de período $n$ si y solo si $2^{n}\theta = \theta + 2k\pi$ para algún entero $k$, es decir, si y solo si $\theta = 2k\pi/(2^{n}-1)$, donde $- \frac{1}{2}(2^{n}-1) < k \le \frac{1}{2}(2^{n}-1)$ es un entero. De este modo, los puntos periódicos de período $n$ para $f$ son las raíces $(2^{n}-1)$-ésimas de la unidad. Se sigue que el conjunto de puntos periódicos es denso en $S^{1}$. \textit{(Véase el Ejercicio 10).}
+
+
+\newpage
+
+\textbf{Definición 3.5.} Un punto $x$ es \emph{eventualmente periódico} de período $n$ si $x$ no es periódico, 
+pero existe un $m>0$ tal que 
+\[
+f^{n+i}(x) = f^{i}(x) \quad \text{para todo } i \geq m.
+\]
+Es decir, $f^{i}(x)$ es periódico para $i \geq m$.
+\\
+
+\textbf{Ejemplo 3.6.} Sea $f(x) = -x^{2}$. Entonces $f(1) = -1$ es un punto fijo, mientras que 
+$f(-1) = -1$ es eventualmente fijo.
+
+\medskip
+
+\textbf{Ejemplo 3.7.} Sea $f(\theta) = 2\theta$ en el círculo.  
+Nótese que $f(0)=0$ es un punto fijo.  
+Si $\theta = 2k\pi/2^{n}$, entonces $f^{n}(\theta) = 2k\pi$, por lo que $\theta$ es eventualmente fijo.  
+
+Se sigue que los puntos eventualmente fijos también son densos en $S^{1}$.  
+(Véase el Ejercicio 11).
+
+\medskip
+
+\textit{Observamos que los puntos eventualmente periódicos no pueden ocurrir si la aplicación es un homeomorfismo.}
+
+\newpage
+
+\textbf{Conjunto de definiciones 3.8.} Sea $p$ un punto periódico de período $n$. 
+\begin{enumerate}
+	\item Un punto $x$ es \emph{asintótico hacia adelante} a $p$ si 
+\[
+\lim_{i \to \infty} f^{in}(x) = p.
+\]
+	\item El conjunto estable de $p$, denotado por $W^{s}(p)$, consiste en todos los puntos asintóticos hacia adelante a $p$.
+	\item Si $p$ no es periódico, aún podemos definir puntos asintóticos hacia adelante exigiendo que 
+\[
+|f^{i}(x) - f^{i}(p)| \to 0 \quad \text{cuando } i \to \infty.
+\]
+	\item Si $f$ es invertible, podemos considerar puntos \emph{asintóticos hacia atrás} dejando que $i \to -\infty$ en la definición anterior. 
+	
+	\item El conjunto de puntos asintóticos hacia atrás a $p$ se llama \emph{conjunto inestable} de $p$ y se denota por $W^{u}(p)$.
+\end{enumerate}
+
+\textbf{Ejemplo 3.9.} Sea $f(x) = x^{3}$. Entonces 
+\[
+W^{s}(0) = \{\, x \in \mathbb{R} : -1 < x < 1 \,\}
+\]
+es el intervalo abierto $-1 < x < 1$.  
+
+Además, $W^{u}(1)$ es el eje real positivo, mientras que $W^{u}(-1)$ es el eje real negativo.
+
+
+
+
+
+
+
+
+\end{document}

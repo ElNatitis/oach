@@ -1,0 +1,67 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\title{\textbf{Dinámica de sistemas físicos}\\Ejercicios: Capítulo 1}
+\author{N. Pérez Medina.}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+\section*{Ejercicio 1}
+Decide si cada una de las siguientes funciones es \textbf{inyectiva} (\textit{one-to-one}), 
+\textbf{sobreyectiva} (\textit{onto}), \textbf{homeomorfismo} o \textbf{difeomorfismo} 
+en su \textbf{dominio de definición}:
+
+\begin{enumerate}
+    \item $f(x) = x^{5/3}$
+    \newpage
+    \item $f(x) = x^{4/3}$
+    \newpage
+    \item $f(x) = 3x + 5$
+    \newpage
+    \item $f(x) = e^{x}$
+    \newpage
+    \item $f(x) = \dfrac{1}{x}$
+    \newpage
+    \item $f(x) = \dfrac{1}{x^{2}}$
+\end{enumerate}
+\newpage
+
+\section*{Ejercicio 4}
+El objetivo de los siguientes ejercicios es construir funciones especiales que serán útiles
+más adelante cuando \emph{perturbemos} o modifiquemos ligeramente una función dada.
+A estas funciones se les llama \textit{funciones “bump”}.
+
+Defina
+\[
+B(x)=
+\begin{cases}
+\exp\!\left(-\dfrac{1}{x^{2}}\right), & \text{si } x>0,\\[6pt]
+0, & \text{si } x\le 0.
+\end{cases}
+\]
+
+\begin{enumerate}
+	\item Traza (esboza) la gráfica de $B(x)$.
+\end{enumerate}
+\newpage
+
+\section*{Ejercicio 7}
+Modifica $C(x)$ para construir una \emph{función bump} $C^\infty$ $D(x)$ en el intervalo $[a,b]$, es decir, $D(x)$ satisface:
+
+\begin{enumerate}
+    \item $D(x)=1$ para $a \le x \le b$.
+    \item $D(x)=0$ para $x<\alpha$ y $x>\beta$, donde $\alpha<a$ y $\beta>b$.
+    \item $D'(x)\neq 0$ en los intervalos $(\alpha,a)$ y $(b,\beta)$.
+\end{enumerate}
+
+
+
+\end{document}

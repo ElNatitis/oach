@@ -21,7 +21,7 @@
 	\end{small}		
 	} 
 \date{\today} 
-\subject{Series de tiempo} 
+
 
 
 % Para tener un morado coqueto
@@ -45,6 +45,68 @@
 \tableofcontents
 \end{frame}
 
+\section{Objetivos}
+\subsection{Generales}
+\begin{frame}{Objetivo general.}
+	\begin{block}{}
+		Caracterizar géneros musicales mediante el análisis estadístico de sus propiedades musicales (pitch, ritmo e intensidad), aplicando técnicas de análisis de series temporales como el Análisis de Fluctuaciones sin Tendencia (DFA) y sus variantes, con el fin de generar una base cuantitativa que permita, en un futuro, determinar la pertenencia de una canción a un género específico.
+	\end{block}
+\end{frame}
+\subsection{Específicos}
+\begin{frame}{Objetivos específicos. (1/2)}
+	\begin{block}{1 - Desarrollar herramientas automatizadas}
+		Interactuar con la API de \textit{MusicBrainz} para recopilar listas de canciones clasificadas de forma fiable por género musical.
+	\end{block}
+	\begin{block}{2 - Extraer y construir series temporales multivariadas.}
+		Una canción, a nivel de datos, es un conjunto de series de tiempo multivaluadas (instrumentos) con 3 variables (pitch, ritmo y volumen). Se construye a partir de archivos MIDI.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Objetivos específicos. (2/2)}
+	\begin{block}{3 - Aplicar y adaptar la metodología de Gustavo Mekler}
+		Análisis de flutuación sin tendencia para medir autocorrelaciones lineales y no lineales en dichas series temporales.
+	\end{block}
+	\begin{block}{4 - Diseñar un procedimiento replicable.}
+		Para extender el análisis a múltiples géneros musicales más allá del caso inicial (salsa).
+	\end{block}
+\end{frame}
+
+
+\section{Avances}
+\subsection{Sobre los datos y la base musical.}
+\begin{frame}{\textit{MusicBrainz}}
+	\begin{block}{En general}
+		\begin{itemize}
+			\item Es una enciclopedia musical de código abierto creada en 2000 por Robert Kaye.
+			\item Contiene los metadatos de más de 4.7 millones de lanzamientos, entre ellos su género.
+			\item Los géneros se asignan por sistema de etiquetas y votación comunitaria.
+			\item Permite consultar esos datos mediante su API.
+		\end{itemize}
+	\end{block}
+\end{frame} 
+
+\begin{frame}{\textit{MusicBrainz}}
+	\begin{block}{busca-gen-id.py}
+		genero -> carpeta que, entre otras cosas, contiene:
+		\begin{itemize}
+			\item un archivo csv con 1000 lanzamientos de ese genero
+			\item un archivo csv con los \textit{lanzamientos únicos}
+		\end{itemize}
+	\end{block}
+	\begin{block}{traksxid.py}
+		\textit{lanazamientos únicos} -> canciones-de-lanzamientos-unicos.csv
+	\end{block}
+\end{frame}
+
+\begin{frame}{}
+
+\end{frame}
+\subsection{Sobre la construcción de las series temporales.}
+\subsection{Sobre la metodología estadística.}
+\subsection{Sobre la validación estadística.}
+\subsection{Sobre la organización y planeación.}
+\section{Retos o dificultades}
+\section{Próximos pasos}
 \begin{frame}{¿Apoco sí?}
 
 \end{frame}
