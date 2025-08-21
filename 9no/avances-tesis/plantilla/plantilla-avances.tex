@@ -98,11 +98,60 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{}
+
+\subsection{Sobre la construcción de las series temporales.}
+\begin{frame}{Proceso de construcción}
+	\begin{block}{}
+		En esta parte de la presentación nati va proyectar los códigos correspondientes a la conversiond e archivos .MIDI a .csv estandarizados para el análisis de fluctuación sin tendencia
+	\end{block}
+\end{frame}
+
+
+
+\subsection{Sobre la metodología estadística.}
+\begin{frame}{Funcionamiento de los programas}
 
 \end{frame}
-\subsection{Sobre la construcción de las series temporales.}
-\subsection{Sobre la metodología estadística.}
+
+\begin{frame}{Funcionamiento de los programas}
+\begin{block}{Módulo 1 – Integración de la serie}
+\begin{itemize}
+    \item Se calcula el promedio de cada serie (tono, volumen, duración).
+    \item Se construye la serie integrada restando el promedio y acumulando valores.
+    \item Transforma los datos originales en una caminata acumulada (base del DFA).
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Funcionamiento de los programas}
+\begin{block}{Módulo 2 – Segmentación}
+\begin{itemize}
+    \item Se divide la serie integrada en segmentos de tamaño $s$.
+    \item Cada segmento se guarda para ser comparado más adelante.
+    \item Prepara los datos para analizar fluctuaciones locales a distintas escalas.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Funcionamiento de los programas}
+\begin{block}{Módulo 3 – Simulación de segmentos}
+\begin{itemize}
+    \item Para cada segmento, se ajusta un polinomio de grado 2 (usando Cramer).
+    \item Se genera una versión suavizada o simulada del comportamiento del segmento.
+    \item Representa la tendencia local de los datos.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Funcionamiento de los programas}
+\begin{block}{Módulo 4 – Cálculo de fluctuaciones}
+\begin{itemize}
+    \item Se compara cada segmento real con su versión simulada.
+    \item Se suman las diferencias cuadráticas medias.
+    \item Se obtiene la magnitud promedio de las fluctuaciones $F(s)$ para cada escala $s$.
+\end{itemize}
+\end{block}
+\end{frame}
 \subsection{Sobre la validación estadística.}
 \subsection{Sobre la organización y planeación.}
 \section{Retos o dificultades}
