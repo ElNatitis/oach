@@ -38,7 +38,7 @@ La estructura no lineal que conduce a la predictibilidad a corto plazo en este c
 
 \subsection*{Ejemplo 1.2 (Frecuencia respiratoria humana)}
 
-Uno de los conjuntos de datos utilizados para la competencia de series temporales del Instituto Santa Fe en 1991--92 \citep{WeigendGershenfeld1993} fue proporcionado por A.~Goldberger del Beth Israel Hospital en Boston \citep{Rigney1993}; véase también el Apéndice B.5. De entre varios canales seleccionamos un registro de 16 minutos del flujo de aire a través de la nariz de un sujeto humano. Un gráfico de este segmento de datos se muestra en la Fig.~1.4.
+Uno de los conjuntos de datos utilizados para la competencia de series temporales del Instituto Santa Fe en 1991 92 \textit{WeigendGershenfeld1993} fue proporcionado por A.~Goldberger del Beth Israel Hospital en Boston \textit{Rigney1993}; véase también el Apéndice B.5. De entre varios canales seleccionamos un registro de 16 minutos del flujo de aire a través de la nariz de un sujeto humano. Un gráfico de este segmento de datos se muestra en la Fig.~1.4.
 
 En este caso se sabe muy poco sobre el origen de las fluctuaciones de la frecuencia respiratoria. El único indicio de que el comportamiento no lineal desempeña un papel proviene de los propios datos: la señal no es compatible con el supuesto de que haya sido generada por un proceso aleatorio gaussiano con solo correlaciones lineales (posiblemente distorsionado por una función de medición no lineal). Mostramos esto creando un conjunto de datos artificial que tiene exactamente las mismas propiedades \emph{lineales}, pero sin ningún determinismo adicional incorporado. Este conjunto de datos consiste en números aleatorios que han sido reescalados para que la distribución de los valores coincida con la del original (por lo tanto, la media y la varianza también son idénticas) y filtrados de modo que el espectro de potencias sea el mismo. (Cómo se hace esto, y otros aspectos adicionales, se discuten en el Capítulo~4 y la Sección~7.1). Si los datos medidos se describieran adecuadamente mediante un proceso lineal, no deberíamos encontrar diferencias significativas respecto a los artificiales.
 
@@ -64,7 +64,7 @@ Obviamente, en un campo tan diverso como el análisis de series temporales no li
 
 Aunque creemos que algunos enfoques presentados en la literatura son efectivamente inútiles para el trabajo científico (como determinar exponentes de Lyapunov a partir de tan solo 16 puntos de datos), queremos enfatizar que otros métodos que mencionamos solo brevemente o no mencionamos en absoluto, pueden ser muy útiles para un problema concreto de series temporales. A continuación listamos algunas omisiones importantes (aparte de las que fueron dejadas de lado por ignorancia nuestra). Generalizaciones no lineales de los modelos ARMA y otros métodos populares entre los estadísticos se presentan en Tong (1990). Generalizando la función usual de autocorrelación de dos puntos se llega al \emph{bispectrum}. Este y modelos de series temporales relacionados se discuten en Subba Rao \& Gabr (1984). Dentro de la teoría de sistemas dinámicos, el análisis de órbitas periódicas inestables juega un papel importante. Por un lado, las órbitas periódicas son importantes para el estudio de la topología de un atractor. Se han obtenido resultados muy interesantes sobre la estructura plantilla, números de enlace, etc., pero el enfoque se limita a aquellos atractores de dimensión dos o mayor que pueden ser embebidos en un espacio de fases tridimensional. (Las variedades unidimensionales, es decir, trayectorias de sistemas dinámicos, no forman nudos en más de tres dimensiones). Remitimos al lector interesado a Tufillaro \emph{et al.} (1992). Por otro lado, las expansiones de órbitas periódicas constituyen una manera poderosa de calcular cantidades características que se definen como promedios sobre la medida natural, tales como dimensiones, entropías y exponentes de Lyapunov. 
 
-En el caso de que un sistema sea \emph{hiperbólico}, es decir, que las direcciones de expansión y contracción no sean tangentes entre sí en ningún punto, se pueden derivar expresiones con convergencia exponencial para tales cantidades. Sin embargo, cuando la hiperbolicidad falta (el caso genérico), es necesario un número muy grande de órbitas periódicas para las expansiones de ciclo. Hasta ahora no se ha demostrado que este tipo de análisis sea factible con datos experimentales de series temporales. La teoría se explica en Artuso \emph{et al.} (1990) y en \emph{The Webbook} \citep{Cvitanovic2001}.
+En el caso de que un sistema sea \emph{hiperbólico}, es decir, que las direcciones de expansión y contracción no sean tangentes entre sí en ningún punto, se pueden derivar expresiones con convergencia exponencial para tales cantidades. Sin embargo, cuando la hiperbolicidad falta (el caso genérico), es necesario un número muy grande de órbitas periódicas para las expansiones de ciclo. Hasta ahora no se ha demostrado que este tipo de análisis sea factible con datos experimentales de series temporales. La teoría se explica en Artuso \emph{et al.} (1990) y en \emph{The Webbook} \textit{Cvitanovic2001}.
 
 Después de una breve revisión de los conceptos básicos del análisis lineal de series temporales en el Capítulo~2, se introducirán las ideas más fundamentales del enfoque de la dinámica no lineal en los capítulos sobre el espacio de fases (Capítulo~3) y sobre predictibilidad (Capítulo~4). Estos dos capítulos son esenciales para la comprensión del resto del texto; de hecho, el concepto de una representación en espacio de fases, en lugar de una en el dominio del tiempo o de la frecuencia, es la característica distintiva del análisis de series temporales dinámicas no lineales. Otro concepto fundamental de la dinámica no lineal es la sensibilidad de los sistemas caóticos a los cambios en las condiciones iniciales, lo cual se discute en el capítulo sobre inestabilidad dinámica y el exponente de Lyapunov (Capítulo~5). Para que un sistema disipativo sea simultáneamente acotado e inestable, su trayectoria debe residir en un conjunto con propiedades geométricas inusuales. El estudio de cómo se investigan estas series temporales se aborda en el capítulo sobre la geometría de atractores y dimensiones fractales (Capítulo~6). Cada uno de estos dos últimos capítulos contiene los fundamentos de su tema, mientras que material adicional se presentará más adelante en el Capítulo~11. Relajaremos el requisito de determinismo en el Capítulo~7 (y más tarde en el Capítulo~12). Propondremos ideas generales para inspeccionar y estudiar datos complejos, incluyendo enfoques visuales y simbólicos. Además, estableceremos métodos estadísticos para caracterizar datos que carecen de evidencia sólida de determinismo, como el escalamiento o la autosimilitud. Finalmente, situaremos nuestras consideraciones dentro del contexto más amplio de la teoría de sistemas dinámicos no lineales en el Capítulo~8.
 
@@ -88,6 +88,309 @@ Existen varios libros que cubren el análisis de series temporales caóticas, ca
 
 Para un estadístico interesado en la visión de las series temporales no lineales, véanse los libros de Priestley (1988) o de Tong (1990). Además, ha habido una serie de talleres en los que especialistas de diferentes campos se reúnen. Las actas de estos encuentros también contienen valiosos artículos de referencia.
 
+\newpage
+\chapter{Herramientas lineales y consideraciones generales}
+
+\section{Estacionariedad y muestreo}
+
+De manera general, una medición científica de cualquier tipo es en principio más útil cuanto más reproducible sea. Necesitamos saber que los números que medimos corresponden a propiedades del objeto estudiado, hasta cierto margen de error de medición. En el caso de las mediciones de series temporales, la reproducibilidad está estrechamente vinculada a dos nociones diferentes de estacionariedad.
+
+La forma más débil pero más evidente de \emph{estacionariedad} requiere que todos los parámetros relevantes para la dinámica de un sistema sean fijos y constantes durante el periodo de medición (y que dichos parámetros se mantengan iguales cuando se reproduce el experimento). Este requisito debe cumplirse no solo por el diseño experimental, sino también por el propio proceso que tiene lugar en este entorno fijo. En un inicio esto puede parecer desconcertante, ya que uno suele suponer que parámetros externos constantes inducen un proceso estacionario, pero de hecho veremos en este libro varios casos donde esto no se cumple.  
+
+Si el proceso bajo observación es probabilístico, se caracterizará mediante distribuciones de probabilidad para las variables involucradas. En un proceso estacionario, estas probabilidades no deben depender del tiempo. Lo mismo ocurre si el proceso se describe mediante un conjunto de \emph{probabilidades de transición} entre distintos estados. Si existen reglas deterministas que gobiernan la dinámica, estas reglas no deben cambiar durante el intervalo de tiempo cubierto por una serie temporal.
+
+En algunos casos, podemos manejar un cambio simple de un parámetro una vez que este cambio ha sido detectado. Si, por ejemplo, la calibración del aparato de medición deriva, podemos intentar reescalar los datos continuamente para mantener constante la media y la varianza. Sin embargo, esto puede ser peligroso, a menos que estemos \emph{seguros} de que solo la escala de medición, y no la dinámica, se está modificando. Una modulación estrictamente periódica de un parámetro puede interpretarse como una variable dinámica más bien que como un parámetro, y no destruye la estacionariedad.
+
+\bigskip
+
+Desafortunadamente, en la mayoría de los casos no tenemos acceso directo al sistema que produce una señal y no podemos establecer evidencia de que sus parámetros sean efectivamente constantes. Por ello debemos formular un segundo concepto de \emph{estacionariedad}, basado en los propios datos disponibles. Este concepto debe ser distinto, ya que existen muchos procesos que son formalmente estacionarios en el límite de tiempos de observación infinitamente largos, pero que se comportan efectivamente como procesos no estacionarios cuando se estudian en intervalos finitos. Un fenómeno destacado que pertenece a esta clase se denomina \emph{intermitencia}, y será discutido en la Sección~8.4.
+
+Una serie temporal, al igual que cualquier otra medición, debe aportar suficiente información para determinar de manera inequívoca la cantidad de interés. Todos los algoritmos que se presentarán más adelante tienen ciertos requisitos mínimos sobre la duración de la serie temporal, su precisión y la frecuencia con que deben realizarse las mediciones, de modo que el resultado sea significativo. Si esto no puede lograrse, debe considerarse un subfenómeno más reducido para su estudio.
+
+\newpage
+
+\subsubsection*{Ejemplo 2.1}
+
+Supongamos que deseas estudiar cómo cambia la temperatura en el techo de tu casa. ¿Cuántas mediciones individuales necesitarás? La respuesta es: depende. Si lo que quieres es estudiar lo que ocurre en el transcurso de un día, puedes subir al techo para medir una vez cada hora durante una semana, y así obtener un promedio razonable del perfil de temperatura. Si te interesan las fluctuaciones estacionales, quizá subas al techo solo una vez al día, siempre a la misma hora, pero lo harás durante todo un año. Si lo que quieres es hacer una afirmación sobre cómo fluctúa la temperatura de un año a otro, tendrás que realizar un par de mediciones cada año. Y, finalmente, si tu objetivo es una descripción completa del fenómeno, necesitarás subir al techo una vez por hora todos los días del año durante un par de años. Nótese que el requisito de que el fenómeno bajo estudio deba ser muestreado lo suficiente no es exclusivo del análisis de series temporales, sino que es de carácter general.  
+
+\bigskip
+
+De manera más formal, una señal se denomina estacionaria si todas las probabilidades conjuntas de encontrar al sistema en un estado en cierto momento y más tarde en otro estado son independientes del tiempo \emph{dentro del periodo de observación}, es decir, cuando se calculan a partir de los datos. Esto incluye la constancia de los parámetros relevantes, pero también exige que los fenómenos pertenecientes a la dinámica estén contenidos en la serie temporal con suficiente frecuencia, de manera que las probabilidades u otras reglas puedan inferirse adecuadamente. Si la señal observada es bastante regular la mayor parte del tiempo, pero contiene algún evento muy irregular de forma ocasional, entonces la serie temporal debe considerarse no estacionaria para nuestros propósitos, incluso si todos los parámetros relevantes permanecieron constantes: la señal es intermitente. Solo si los eventos raros (por ejemplo, los brotes irregulares mencionados antes) también aparecen varias veces en la serie temporal, podemos hablar de una independencia efectiva de las probabilidades conjuntas observadas y, por tanto, de estacionariedad.
+
+\bigskip
+
+Las señales no estacionarias son muy comunes, en particular al observar fenómenos naturales o culturales. Tales señales pueden ser valiosas de estudiar e, incluso, se puede ganar dinero prediciendo los precios de las acciones en situaciones que no tienen paralelo en la historia. En este libro adoptamos el punto de vista de que una serie temporal es solo una forma especial de medición científica (es decir, reproducible), la cual se produce para mejorar nuestro conocimiento sobre cierto fenómeno. Ten en cuenta que casi todos los métodos y resultados del análisis de series temporales que se presentarán más adelante asumen la validez de dos condiciones: que los parámetros del sistema permanecen constantes y que el fenómeno se encuentra suficientemente muestreado. Como discutiremos en el Capítulo~13, el requisito de estacionariedad es una consecuencia del hecho de que intentamos aproximarnos a un fenómeno dinámico a través de una serie temporal finita, y por ello constituye un requisito para casi todas las herramientas estadísticas de análisis de series temporales, incluidas las lineales. 
+
+Claramente, dado que los métodos de análisis de series temporales en última instancia se reducen a algoritmos que comprimen los datos en un conjunto de pocos números, se pueden aplicar a cualquier secuencia de datos, incluso a datos no estacionarios. Sin embargo, los resultados no pueden asumirse como caracterización del sistema subyacente. Por tanto, desaconsejamos firmemente ignorar una no estacionariedad conocida. Una salida posible es la segmentación de la serie temporal en segmentos casi estacionarios (véase más adelante para métodos). Somos muy conscientes del problema de que muchas (quizá las más) señales interesantes son no estacionarias. Por ello, en el Capítulo~13 volveremos sobre el problema de la no estacionariedad a un nivel más avanzado y propondremos extensiones del concepto de reconstrucción del espacio de fases para procesos deterministas y estocásticos con parámetros que derivan lentamente.
+
+Debemos mencionar que no consideramos la noción de \emph{estacionariedad débil}, la cual puede encontrarse en la literatura sobre análisis lineal de series temporales. La estacionariedad débil solo requiere que cantidades estadísticas hasta segundo orden sean constantes. En un contexto no lineal, esto es claramente inadecuado.
+
+\newpage
+
+\section{Pruebas de estacionariedad}
+
+Después de haber puesto tanto énfasis en el problema de la estacionariedad, debemos abordar la cuestión de cómo puede detectarse la no estacionariedad en un conjunto de datos dado. Obviamente, la estacionariedad es una propiedad que nunca puede establecerse de manera completamente positiva. Resulta que el asunto es aún más complicado, ya que el requisito de estacionariedad difiere según la aplicación. Por lo tanto, en esta sección solo daremos algunos conceptos generales y discutiremos técnicas particulares en los lugares apropiados dentro del contexto de las aplicaciones. En el Capítulo~13 discutiremos algunas formas de tratar con series temporales provenientes de procesos no estacionarios específicos. Véase también la sección de “Lecturas adicionales” al final de este capítulo para referencias.
+
+Como primer requisito, la serie temporal debe cubrir un intervalo de tiempo mucho mayor que la escala de tiempo característica más larga que sea relevante para la evolución del sistema.
+
+\bigskip
+
+Por ejemplo, la concentración de azúcar en la sangre de un ser humano está impulsada por el consumo de alimentos y, por tanto, sigue aproximadamente un ciclo de 24 horas. Si esta cantidad se registra durante 24 horas o menos, el proceso debe considerarse no estacionario, sin importar cuántos puntos de datos se hayan tomado durante ese tiempo. Información cuantitativa puede obtenerse a partir del espectro de potencia, que se introducirá más adelante. La escala de tiempo relevante más larga puede estimarse como el inverso de la frecuencia más baja que aún contiene una fracción significativa de la potencia total de la señal. Una serie temporal solo puede considerarse estacionaria en escalas de tiempo mucho mayores. Véase también la Sección~2.3.1.
+
+Violaciones fuertes del requisito básico de que las propiedades dinámicas del sistema subyacente a una señal no deben cambiar durante el período de observación pueden comprobarse simplemente midiendo tales propiedades en varios segmentos de los datos. Probabilidades de transición, correlaciones, etc., calculadas, por ejemplo, para la primera y segunda mitad de los datos disponibles, no deben diferir más allá de sus fluctuaciones estadísticas. Para este propósito se prefieren características con fluctuaciones estadísticas conocidas o despreciables. Las cantidades estadísticamente más estables son la media y la varianza. Cantidades más sutiles, como los componentes espectrales, correlaciones o estadísticas no lineales, pueden ser necesarias para detectar formas menos evidentes de no estacionariedad.
+
+\subsubsection*{Ejemplo 2.2 (Varianza móvil de datos de voz)}
+
+Realizamos una prueba muy simple de estacionariedad en la fonación de un paciente que sufría de \emph{laringitis aguda}. Calculamos la media y la varianza muestral para 50 segmentos consecutivos del conjunto de datos, cada uno con 2048 puntos de datos. Dentro de cada segmento, el error estándar de la media estimada $\langle s \rangle = \sum_{n=1}^N s_n / N$ está dado por\footnote{La desviación estándar dividida por un $\sqrt{N}$ adicional se conoce como el error al estimar el valor medio de números no correlacionados distribuidos gausianamente, mientras que la desviación estándar en sí misma describe la dispersión típica de los valores individuales respecto a su media.}
+
+\begin{equation}
+	\sqrt{ \frac{\sum_{n=1}^N (s - \langle s \rangle)^2}{N(N-1)} }
+\end{equation}
+
+
+omitiendo el hecho de que las muestras en la serie temporal no son independientes. Las fluctuaciones observadas de la media móvil de los 50 segmentos estaban dentro de estos errores. Sin embargo, la varianza móvil mostró variabilidad más allá de las fluctuaciones estadísticas, como puede verse en la Fig.~2.1. En general, es casi imposible obtener registros estacionarios de seres vivos. Aunque se debería tratar de mantener las condiciones experimentales lo más constantes posible, los cambios temporales en la dinámica espontánea son inevitables y, después de todo, muy naturales. Esta grabación se realizó con el fin de estudiar trastornos del sistema fonatorio. Dado que en este contexto la amplitud (instantánea) no es la cantidad más interesante, uno podría decidir que un cambio lento no tiene mayor importancia. Es entonces necesario utilizar métodos de análisis de series temporales que sean robustos frente a cambios en la amplitud, como el espectro de potencia. 
+
+Sin embargo, puede ser preferible realizar un análisis dependiente del tiempo para evitar artefactos y aprovechar la información sobre el sistema contenida en estos cambios. Más adelante en este capítulo retomaremos este ejemplo y calcularemos un \emph{espectrograma}, es decir, un \emph{espectro de potencia móvil}, que proporciona información mucho más interesante sobre los cambios que ocurren en las frecuencias dominantes.
+
+En sistemas caóticos experimentales, no es raro que una deriva de un parámetro no produzca un cambio visible en la media o en la distribución de valores. Las correlaciones lineales y el espectro también pueden permanecer sin alteraciones. Solo las relaciones dinámicas no lineales y las probabilidades de transición cambian apreciablemente. Esto puede detectarse comparando los errores de predicción con respecto a un modelo no lineal en diferentes secciones del conjunto de datos. Esta posibilidad se discute en el contexto de predicciones no lineales en la Sección~4.4.
+
+La cuestión de si un conjunto de datos es una muestra suficiente para una aplicación particular, como la estimación de una cantidad característica, puede comprobarse observando la convergencia de esa cantidad cuando se utilizan fracciones cada vez mayores de los datos disponibles en el cálculo. Una dimensión de atractor obtenida a partir de la primera mitad de los datos no debe diferir sustancialmente del valor determinado usando la segunda mitad, y debería coincidir con el valor calculado para todo el conjunto de datos dentro de los errores estadísticos estimados. Un ejemplo de esta estrategia se presenta en el Ejemplo~7.6 de la Sección~7.2. Nótese que esta prueba es bastante burda, ya que la convergencia de estadísticas no lineales puede ser muy lenta y, de hecho, se sabe poco sobre su velocidad.
+
+Una cantidad que sufre considerablemente por la no estacionariedad en los datos es la \emph{dimensión de correlación} (que se introducirá en el Capítulo~6). Mientras que una simple deriva de calibración suele aumentar la dimensión (pues elimina cualquier estructura fractal), la mayoría de otros tipos de no estacionariedad y de muestreo insuficiente producen estimaciones de dimensión espuriamente bajas. Por ejemplo, si el proceso no es recurrente, como ciertos procesos de ruido coloreado con un espectro $f^{-\alpha}$ con $1 < \alpha < 3$ (el espectro de potencia en función de la frecuencia diverge como una ley de potencia a bajas frecuencias), la dimensión debería ser infinita, mientras que los algoritmos estándar de dimensión arrojan valores finitos. Los detalles se discutirán en la Sección~6.5, donde introduciremos el \emph{diagrama de separación temporal} \textit{Provenzale1992}, que es una prueba de estacionariedad particularmente útil para estimar la suma de correlación. Sin duda, esta prueba también puede usarse en aplicaciones más generales para distinguir correlaciones geométricas de temporales.
+
+\newpage
+
+\section{Correlaciones lineales y el espectro de potencia}
+
+La inferencia estadística lineal es un campo extremadamente bien desarrollado. Además de la definición de varias herramientas estadísticas para caracterizar los datos, su principal valor reside en el hecho de que los conceptos pueden derivarse de una manera rigurosa. Por ejemplo, es relevante distinguir entre una cantidad como un valor medio y la forma en que se obtiene un número para representarlo a partir de una muestra finita. A esto se le llama una \emph{estimación}, y puede haber diferentes estimaciones de la misma cantidad en el mismo conjunto de datos, dependiendo de los supuestos realizados. Así, distinguiremos las estimaciones de cualquier cantidad colocando un “sombrero” sobre el símbolo. A diferencia de la teoría lineal, las estimaciones de cantidades no lineales que haremos más adelante usualmente no pueden estudiarse lo suficiente como para demostrar rigurosamente su corrección y convergencia. En este libro introduciremos únicamente los conceptos de procesos estadísticos lineales y del espectro de potencia y funciones de correlación; cualquier otro aspecto de los métodos lineales de series temporales no será considerado explícitamente.
+
+Las soluciones de ecuaciones de movimiento deterministas lineales estables con coeficientes constantes son superposiciones lineales de oscilaciones armónicas amortiguadas exponencialmente (la estabilidad aquí implica que las soluciones permanecen acotadas; de lo contrario, también son posibles soluciones en crecimiento exponencial). Por lo tanto, los sistemas lineales siempre necesitan entradas irregulares para producir señales irregulares. El sistema más simple que produce señales no periódicas es un \emph{proceso estocástico lineal}. Por esta razón, supondremos momentáneamente que el observable es una variable aleatoria. Sin embargo, este punto de vista también será razonable si hablamos de sistemas deterministas, por varias razones. En primer lugar, el ruido de medición siempre introduce algo de aleatoriedad. En segundo lugar, la condición inicial desconocida del sistema convierte la observación actual en un evento aleatorio. Finalmente, la inestabilidad de los sistemas caóticos sugiere una descripción probabilística en términos de medidas invariantes (teoría ergódica). Así, una medición $s_n$ del estado en el tiempo $n$ de un proceso estocástico puede considerarse como tomada de una distribución de probabilidad subyacente para observar diferentes valores o secuencias de valores.
+
+Un proceso estocástico se denomina \emph{estacionario} si estas probabilidades son constantes en el tiempo: $p(s_n) = p(s)$
+
+Dado que no se conoce de antemano de qué distribución de probabilidad $p(s)$ se extraen las mediciones, la información sobre $p(s)$ solo puede inferirse a partir de la serie temporal. La \emph{media} de la distribución de probabilidad $p(s)$, definida como
+
+\begin{equation}
+\langle s \rangle := \int_{-\infty}^{\infty} ds' \, s' \, p(s'), 
+\end{equation}
+
+puede estimarse mediante la media de la serie temporal finita
+
+\begin{equation}
+\langle \hat{s} \rangle_N = \frac{1}{N} \sum_{n=1}^N s_n ,
+\end{equation}
+
+donde $\langle \cdot \rangle_n$ denota el promedio en el tiempo y $N$ es el número total de mediciones en la serie temporal. La \emph{varianza} de la distribución de probabilidad se estimará mediante la varianza de la serie temporal:
+
+\begin{equation}
+\sigma^2 := \langle (s - \langle s \rangle)^2 \rangle = \int_{-\infty}^{\infty} ds' \, (s' - \langle s \rangle)^2 p(s'),
+\end{equation}
+
+\begin{equation}
+\hat{\sigma}^2 = \frac{1}{N-1} \sum_{n=1}^N (s_n - \langle \hat{s} \rangle_N)^2 
+= \frac{1}{N-1} \left( \sum_{n=1}^N s_n^2 - N (\langle \hat{s} \rangle_N)^2 \right).
+\end{equation}
+
+Nos referiremos a $\sigma$ como la desviación estándar o la amplitud rms (\emph{root mean squared}), en contraste con la \emph{varianza} $\sigma^2$.
+
+Para estas dos cantidades, el orden temporal de las mediciones es irrelevante y, por lo tanto, no pueden aportar información sobre la evolución temporal de un sistema. Dicha información puede obtenerse a partir de las \emph{autocorrelaciones} de una señal. La autocorrelación con retardo $\tau$ está dada por
+
+\begin{equation}
+c_{\tau} = \frac{1}{\sigma^2} \langle (s_n - \langle s \rangle)(s_{n-\tau} - \langle s \rangle) \rangle 
+= \frac{\langle s_n s_{n-\tau} \rangle - \langle s \rangle^2}{\sigma^2}.
+\tag{2.5}
+\end{equation}
+
+La estimación de las autocorrelaciones a partir de una serie temporal es sencilla siempre que el retardo $\tau$ sea pequeño en comparación con la longitud total de la serie. Por lo tanto, las estimaciones $\hat{c}_\tau$ son razonables únicamente para $\tau \ll N$.  
+
+Si graficamos los valores $s_n$ frente a los correspondientes valores con un retardo fijo $\tau$, es decir, $s_{n-\tau}$, la autocorrelación $c_\tau$ cuantifica cómo se distribuyen estos puntos. Si se dispersan uniformemente en el plano, entonces $c_\tau = 0$. Si tienden a agruparse a lo largo de la diagonal $s_n = s_{n-\tau}$, entonces $c_\tau > 0$, y si están más cerca de la recta $s_n = -s_{n-\tau}$ tenemos $c_\tau < 0$. Estos dos últimos casos reflejan cierta tendencia de $s_n$ y $s_{n-\tau}$ a ser proporcionales entre sí, lo que hace plausible que la función de autocorrelación refleje únicamente correlaciones lineales.
+
+Si la señal se observa en tiempo continuo, se puede introducir la \emph{función de autocorrelación} $c(\tau)$, y las correlaciones de la Ec.~(2.5) son estimaciones de $c(\tau = \tau \Delta t)$. Obviamente, $c_{\tau} = c_{-\tau}$ y $c_0 = 1$.
+
+Un caso particular se presenta si las mediciones provienen de una distribución gaussiana:
+
+\begin{equation}
+p(s) = \frac{1}{\sigma \sqrt{2\pi}} \, e^{-(s - \langle s \rangle)^2 / 2\sigma^2},
+\tag{2.6}
+\end{equation}
+
+y, además, las distribuciones conjuntas de múltiples mediciones también son gaussianas. Como consecuencia, sus segundos momentos están dados por las autocorrelaciones. Dado que una distribución gaussiana multivariada está completamente especificada por sus primeros y segundos momentos, tal proceso aleatorio se describe estadísticamente de manera completa mediante la media, la varianza $\sigma^2$ y la función de autocorrelación $c_\tau$, y se denomina un \emph{proceso gaussiano lineal aleatorio}.
+
+Obviamente, si una señal es periódica en el tiempo, entonces la función de autocorrelación es periódica en el retardo $\tau$. Los procesos estocásticos tienen autocorrelaciones decrecientes, pero la tasa de decaimiento depende de las propiedades del proceso. Las autocorrelaciones de señales provenientes de sistemas caóticos deterministas típicamente también decaen de forma exponencial con el incremento del retardo. Las autocorrelaciones no son lo suficientemente características como para distinguir señales aleatorias de señales caóticas deterministas.
+
+\bigskip
+
+En lugar de describir las propiedades estadísticas de una señal en el espacio real, se pueden estudiar sus propiedades en el espacio de Fourier. La \emph{transformada de Fourier} establece una correspondencia uno a uno entre la señal en ciertos instantes de tiempo (\emph{dominio temporal}) y cómo ciertas frecuencias contribuyen a la señal, así como la forma en que las fases de las oscilaciones se relacionan con las fases de otras oscilaciones (\emph{dominio frecuencial}). Aparte de diferentes convenciones respecto a la normalización, la transformada de Fourier de una función $s(t)$ está dada por
+
+\begin{equation}
+\tilde{s}(f) := \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} s(t) e^{2\pi i f t} dt,
+\tag{2.7}
+\end{equation}
+
+y la de una serie temporal discreta y finita por
+
+\begin{equation}
+\tilde{s}_k = \frac{1}{\sqrt{N}} \sum_{n=1}^N s_n e^{2\pi i k n / N}.
+\tag{2.8}
+\end{equation}
+
+Aquí, las frecuencias en unidades físicas son $f_k = k / (N \Delta t)$, donde $k = -N/2, \ldots, N/2$ y $\Delta t$ es el intervalo de muestreo. La normalización de ambas transformadas es tal que la transformada inversa solo implica un cambio de signo en el exponente y un intercambio de $f$ (o, respectivamente, $k$) y $t$ (respectivamente $n$). Ambas operaciones son por tanto invertibles y constituyen transformaciones lineales.
+
+El \emph{espectro de potencia} de un proceso se define como el módulo al cuadrado de la transformada de Fourier continua, $S(f) = |\tilde{s}(f)|^2$. Es el cuadrado de la amplitud, por el cual la frecuencia $f$ contribuye a la señal. Si queremos estimarlo a partir de una serie temporal discreta, podemos usar el \emph{periodograma}, $S_k = |\tilde{s}_k|^2$. Este no es el estimador más útil para $S(f)$ por dos razones. Primero, la resolución de frecuencia finita de la transformada de Fourier discreta conduce a \emph{fugas} (\emph{leakage}) hacia bins de frecuencia adyacentes. Por ejemplo, en el caso de una señal armónica pura, donde la transformada continua arroja una $\delta$-distribución, la transformada discreta solo produce un pico finito que se ensancha para longitudes de serie finitas. Segundo, sus fluctuaciones estadísticas son del mismo orden que $S(f)$ mismo. Esto puede remediarse promediando sobre bins de frecuencia adyacentes o, más eficientemente, promediando sobre ventanas en el dominio temporal.  
+
+Si no se utiliza un paquete para la estimación del espectro de potencia, se recomienda consultar el \emph{Numerical Recipes} de Press et al.~(1992), o textos similares para más detalles sobre estimación numérica del espectro de potencia y técnicas de ventana (y rutinas). El paquete de software TISEAN contiene una rutina relativamente sencilla para la estimación espectral, además de otras herramientas lineales. Para series temporales largas de tamaño finito, puede usarse software especializado como el \emph{toolbox} de procesamiento de señales de Matlab.
+
+La relación importante entre el espectro de potencia y la función de autocorrelación es conocida como el \emph{teorema de Wiener–Khinchin} y establece que la transformada de Fourier de la función de autocorrelación es igual al espectro de potencia. La potencia total crece linealmente con la longitud de la serie temporal y puede calcularse tanto en el dominio temporal como en el frecuencial, mediante el \textit{teorema de Parseval}
+\begin{equation}
+S = \sum_{n=1}^N |s_n|^2 = \sum_{k=-N/2}^{N/2} |\tilde{s}_k|^2 
+\end{equation}
+
+
+
+El espectro de potencia es particularmente útil para estudiar la oscilación de un sistema. Habrá picos más nítidos o más anchos en las frecuencias dominantes y en sus múltiplos enteros, los armónicos. El ruido de medición añade un piso continuo al espectro: cuanto más intensa la señal, más visibles son las líneas espectrales. Los sistemas deterministas caóticos también pueden mostrar líneas espectrales nítidas incluso en ausencia de un piso continuo en el espectro. Esto es una consecuencia inmediata de una función de autocorrelación exponencialmente decreciente. Sin información adicional, no es posible decidir a partir del espectro si la señal continua proviene de ruido puro o de un sistema (casi) periódico o caótico. Un ejemplo es el mapa de Golub \& Swinney (1975), que muestra cómo la amplitud continua en el espectro de potencia aumenta a medida que la dinámica cambia de cuasi-periódica a caótica.
+
+\subsubsection*{Ejemplo 2.3 (Láser de realimentación no lineal)}
+Veamos un espectro típico de potencia de un sistema caótico continuo en el tiempo, el láser óptico de realimentación no lineal descrito en el Apéndice B.10. Estimamos el espectro de potencia de los 128 000 puntos de datos deslizando una ventana cuadrada de longitud del 40\% sobre los datos y promediando el módulo al cuadrado de las transformadas de Fourier de todas las ventanas (Fig.~2.2).
+
+Cuando estudiamos una señal en el dominio de la frecuencia promediando en el tiempo, como en las autocorrelaciones, perdemos toda la información temporal. A veces, en particular cuando las propiedades del sistema pueden cambiar con el tiempo (lo cual conduce a señales no estacionarias), queremos preservar esta información. En este caso, el análisis espectral puede realizarse en segmentos consecutivos de una serie temporal más larga para rastrear cambios temporales. Esto se denomina usualmente un \emph{espectrograma}.
+
+\subsubsection*{Ejemplo 2.4 (Espectrograma de datos de voz)}
+Usemos el espectro de potencia para el análisis de la fonación de un paciente (Apéndice B.8) que en el Ejemplo 2.2 se mostró que es no estacionaria. Primero, calculamos un espectro de potencia promedio de todo el conjunto de datos. Aparecen picos más nítidos en frecuencias discretas, en su mayoría múltiplos enteros: este fenómeno se denomina \emph{bifonación}; véase Herzel \& Reuter (1996).  
+
+Luego calculamos espectros de potencia para 100 segmentos de 2048 puntos de datos cada uno. El traslape de segmentos consecutivos es ahora de 1024 puntos. Tal espectro dependiente del tiempo se denomina habitualmente \emph{espectrograma} y se utiliza de manera rutinaria en la investigación de la voz. En la Fig.~2.3, para cada uno de los segmentos colocamos un símbolo en las frecuencias donde la potencia alcanza un valor relativo máximo. A la izquierda también mostramos las frecuencias que contribuyen al espectro de potencia total, promediado en toda la serie. Además, trazamos líneas de puntos en las dos frecuencias fundamentales, 306 Hz y 426 Hz. Hacia el final del registro aparecen subarmónicos de la mitad o un tercio de la frecuencia fundamental más baja.
+
+\newpage
+
+\subsubsection{Estacionariedad y el componente de baja frecuencia en el espectro de potencia}
+
+Como mencionamos en la Sección 2.1, la no estacionariedad efectiva de una serie temporal finita está relacionada con el hecho de que las escalas de tiempo de la dinámica son del orden del tiempo total de observación. El espectro de potencia refleja la contribución de todos los posibles periodos, desde el intervalo de muestreo hasta el tiempo total cubierto por la serie, y por lo tanto debería contener la información relevante.  
+
+Si hay demasiada potencia en las bajas frecuencias, la serie temporal debe considerarse no estacionaria, ya que los modos de Fourier correspondientes solo tienen muy pocas oscilaciones durante el tiempo de observación. Lo que no está del todo claro es qué significa exactamente “demasiada” potencia. Recordemos que el ruido blanco (o mejor dicho, en tiempo discreto, un proceso \emph{iid}: números aleatorios independientes e idénticamente distribuidos), que es un prototipo de proceso estacionario, tiene potencia igual en todos los bins de frecuencia.  
+
+\bigskip
+
+Además, la potencia para la frecuencia $f=0$ puede modificarse arbitrariamente mediante un simple desplazamiento en los datos, y está además relacionada con la integral sobre la función de autocorrelación (una consecuencia del teorema de Wiener–Khinchin). Por lo tanto, debemos esperar un problema real solo si el espectro de potencia diverge alrededor de cero, como $f^{-\alpha}$ con $\alpha$ positivo. En particular, el movimiento browniano tiene un espectro $f^{-2}$ y se sabe que no es recurrente en dos o más dimensiones.  
+
+La decisión sobre si los datos son estacionarios o no es mucho más difícil si el espectro de potencia se aproxima a una constante distinta de cero para frecuencias pequeñas, lo cual es mucho mayor que el fondo. Solo podemos sugerir que esto se interprete como una advertencia.
+
+\newpage
+
+\section{Filtros lineales}
+
+Aunque la teoría de la Sección 2.3 fue desarrollada a partir de procesos estocásticos lineales —los cuales generan oscilaciones amortiguadas irregularmente distorsionadas—, aquí reinterpretaremos algunos aspectos del tratamiento de señales (casi) periódicas que son distorsionadas por ruido de medición. Es decir, para una situación donde el espectro de potencia de la señal no perturbada consiste en picos pronunciados en ciertas frecuencias. Mostraremos cómo una \emph{señal} y un \emph{ruido aleatorio} pueden distinguirse sobre la base del espectro de potencia.  
+
+Debido a la linealidad de la transformada de Fourier, el espectro de potencia $S_k^{(s)}$ de una superposición aditiva de una señal $x$ y un ruido $\eta$ es la superposición del espectro de la señal $S_k^{(x)}$ y del ruido $S_k^{(\eta)}$:
+
+\begin{equation}
+S_k^{(s)} = S_k^{(x)} + S_k^{(\eta)}.
+\end{equation}
+
+Esto puede transformarse fácilmente en un filtro en el dominio de Fourier. Es decir, asumimos que la secuencia observada también es tal superposición, $s_n = x_n + \eta_n$, y queremos estimar la señal pura, $\hat{x}_n \approx x_n$, filtrando la secuencia medida de manera apropiada: $\hat{x}_k = \phi_k \tilde{s}_k$.  
+
+Si requerimos que la distancia cuadrática media $e^2$ entre $\hat{x}_n$ y $x_n$ sea mínima, el \emph{filtro óptimo} puede construirse resolviendo un problema de minimización. En el dominio de Fourier debemos minimizar:
+
+\begin{equation}
+e^2 = \sum_{k=-N/2}^{N/2} |\hat{x}_k - \tilde{x}_k|^2
+= \sum_{k=-N/2}^{N/2} |\phi_k(\tilde{x}_k + \tilde{\eta}_k) - \tilde{x}_k|^2
+= \sum_{k=-N/2}^{N/2} \Big[ (\phi_k - 1)^2 |\tilde{x}_k|^2 + \phi_k^2 |\tilde{\eta}_k|^2 \Big]
+\end{equation}
+
+(asumiendo independencia estadística de $x$ y $\eta$), lo cual puede hacerse anulando la derivada respecto a $\phi_k$. La solución es
+
+\begin{equation}
+\phi_k = \frac{S_k^{(x)}}{S_k^{(s)}}
+\end{equation}
+
+Esto se denomina el \emph{filtro de Wiener} (\emph{Wiener filter}). Obviamente, no podemos calcular $S_k^{(x)}$ directamente, pero podemos intentar estimarlo mediante la inspección del espectro de potencia total.  
+
+Aquí es donde necesitamos un criterio para distinguir la señal del ruido a partir de sus propiedades respectivas. Como hemos mencionado, esto es posible con frecuencia para señales con oscilaciones dominantes. Sin embargo, para señales con espectros de banda ancha intrínsecos, como aquellas provenientes de sistemas caóticos deterministas, esto suele ser imposible.
+
+\newpage
+
+\subsubsection*{Ejemplo 2.5 (Fracaso en la reducción de ruido en electrocardiogramas usando un filtro de Wiener)}
+
+La Fig.~2.4 muestra un electrocardiograma (ECG) humano relativamente ruidoso. Los paneles superior e inferior muestran las gráficas antes y después del filtrado de Wiener, respectivamente. (Véase el Apéndice B.7 para más información sobre los datos). $S_k^{(x)}$ ha sido estimado mediante $S_k^{(s)} - \bar{S}^{(\eta)}$, donde la potencia del ruido $S_k^{(\eta)}$ se ha supuesto independiente de $k$ (ruido blanco) e idéntica al piso de ruido $\bar{S}^{(\eta)}$, que persiste hasta altas frecuencias. Observamos que el filtro de Wiener es incapaz de limpiar el ECG, lo cual está relacionado con el hecho de que el espectro de potencia del ECG libre de ruido también es de banda ancha debido a los picos pronunciados. Véase Schreiber \& Kaplan (1996a, b) y la Sección 10.4 para un método de filtrado de ECGs con técnicas no lineales.
+
+\bigskip
+
+Existen situaciones, sin embargo, en las que contamos con información externa acerca de la contribución de la señal o del ruido al espectro de potencia. Un ejemplo es la contaminación por corriente alterna de 50 Hz (o 60 Hz en EE.\,UU.) en señales registradas con circuitos electrónicos.  
+
+En este caso sabemos que la mayor parte de la potencia en 50 Hz se debe a esta contaminación y podemos construir un filtro interpolando entre los bins de frecuencia adyacentes no afectados.
+
+\subsubsection*{Ejemplo 2.6 (Eliminación de la contaminación de 50 Hz AC con un filtro de Wiener)}
+
+Un ejemplo en el que los filtros lineales son completamente adecuados incluso para señales no lineales es el ruido de 50 Hz (o 60 Hz) en la salida de amplificadores eléctricos. La contaminación está bien localizada en el dominio de Fourier y el espectro de la señal puede estimarse fácilmente interpolando sobre el pico espurio en el espectro de potencia.   La Fig.~2.5 muestra un electrocardiograma humano (ECG) antes y después del filtrado. (Véase el Apéndice B.7 para más información sobre los datos). Un filtro que elimina esencialmente un solo componente de frecuencia se denomina en la literatura \emph{filtro notch}. Para detalles técnicos puede consultarse la literatura estándar, por ejemplo, Hamming (1983).
+
+\bigskip
+
+Vale la pena mencionar que ciertos filtros lineales, que a veces están incorporados en el hardware de adquisición de datos, pueden añadir un grado de libertad determinista y, por lo tanto, aumentar la dimensión del atractor. La razón es que, para el suavizado de datos en línea, se puede utilizar un filtro con realimentación que introduce otro grado de libertad en el sistema. Véanse Badii \& Politi (1986), Badii \emph{et al.} (1988), Mitschke \emph{et al.} (1988), Mitschke (1990), Broomhead \emph{et al.} (1992), Sauer \& Yorke (1993), Theiler \& Eubank (1993), y la nota al pie en la página 231.
+
+\newpage
+
+\section{Predicciones lineales}
+
+Estrechamente relacionado con el filtrado óptimo está el problema de la predicción. Para esta discusión será más natural trabajar en el dominio del tiempo. Supongamos que tenemos una secuencia de mediciones $s_n$, $n = 1, \ldots, N$, y queremos predecir el resultado de la siguiente medición, $s_{N+1}$.  A menudo se desea encontrar la predicción $\hat{s}_{N+1}$ que minimiza el valor esperado del error cuadrático de predicción $\langle (\hat{s}_{N+1} - s_{N+1})^2 \rangle$.  
+
+\bigskip
+
+Cuando asumimos estacionariedad, podemos estimar este valor esperado mediante el promedio sobre los valores medidos disponibles. Si restringimos aún más la minimización a modelos lineales de series temporales que incorporan las últimas $m$ mediciones, podemos expresar esto como:
+
+\begin{equation}
+\hat{s}_{N+1} = \sum_{j=1}^{m} a_j s_{n-m+j}
+\end{equation}
+
+y minimizar
+
+\begin{equation}
+\sum_{n=m}^{N-1} \left( \hat{s}_{n+1} - s_{n+1} \right)^2
+\end{equation}
+
+respecto a los parámetros $a_j$, $j=1,\ldots,m$.  
+
+\bigskip
+
+Aquí hemos supuesto que la media de la serie temporal ya ha sido restada de las mediciones. Exigiendo que las derivadas respecto a todos los $a_j$ sean cero, obtenemos la solución resolviendo el siguiente sistema lineal de ecuaciones:
+
+\begin{equation}
+\sum_{j=1}^{m} C_{ij} a_j = \sum_{n=m}^{N-1} s_{n+1} s_{n-m+i}, 
+\quad i = 1, \ldots, m.
+\end{equation}
+
+Aquí $C_{ij}$ es la matriz de autocovarianza de tamaño $m \times m$:
+
+\begin{equation}
+C_{ij} = \sum_{n=m}^{N-1} s_{n-m+i} s_{n-m+j}.
+\end{equation}
+
+La relación lineal, Ec.~(2.12), está justificada tanto para el movimiento armónico como para procesos estocásticos lineales. Aunque pospondremos la discusión de los distintos modelos lineales de series temporales a la Sección 12.1.1, queremos señalar aquí que todos estos modelos requieren entradas aleatorias que no observamos. Así, la llamada \textit{media móvil} de estos modelos, que describe la respuesta al ruido externo, debe ser reemplazada aquí por la \textit{respuesta media}, la cual se asume nula ya que el ruido tiene media cero. Además, nótese que el modelo de la Ec.~(2.12) no puede esperarse que sea estable bajo iteración. Realizar predicciones a más pasos mediante iteración significaría usar los coeficientes $a_j$, que han sido optimizados para predicciones basadas en las mediciones (ruidosas), en predicciones basadas en los mejores estimadores $\hat{s}_n$. Sus errores poseen propiedades diferentes a las del ruido $\eta_n$. La manera más sencilla de evitar este problema es modificar la Ec.~(2.12) para hacer predicciones más allá del futuro inmediato en una única iteración.  
+
+\bigskip
+
+Un ejemplo de predicción lineal de series temporales se da en el Ejemplo 1.1, donde se compara también con un método no lineal sencillo. Un segundo ejemplo será presentado en el Capítulo 4, Ejemplo 4.2. Es siempre importante reportar los logros de un nuevo enfoque en comparación con los métodos estándar. Así, si logras predecir algunas series temporales con un algoritmo no lineal, debes asegurarte de que no solo has capturado las autocorrelaciones lineales en los datos, las cuales pueden ser mejor explotadas por un predictor lineal. Todavía no hemos dicho nada sobre cómo elegir el orden correcto $m$ de la relación lineal, Ec.~(2.12). Algunos comentarios generales se darán en la Sección 12.5; sin embargo, remitimos al lector a la literatura especializada sobre análisis lineal de series temporales para afirmaciones más rigurosas. Por ahora, solo sugerimos que aunque el modelo ha sido construido sobre el error promediado sobre los datos disponibles, no debemos citar este error como un error de predicción ya que ha sido determinado \textit{in-sample}. En su lugar, debemos retener parte de los datos mientras construimos el modelo para poder calcular el error relevante \textit{out-of-sample} una vez que se ha establecido un modelo.
+
+\newpage
+
+\subsection*{Lecturas adicionales}
+
+Material práctico sobre análisis lineal de series temporales, filtrado y predicción, incluyendo los programas esenciales, puede encontrarse en el famoso \textit{Numerical Recipes}, Press \textit{et al.} (1992). Existen muchos libros de texto sobre análisis espectral de series temporales; ejemplos clásicos son Box \& Jenkins (1976), Priestley (1988), Jenkins \& Watts (1986) y Brockwell \& Davis (1987). Los filtros digitales se tratan, por ejemplo, en Hamming (1983). Las pruebas clásicas de estacionariedad se describen en Priestley (1992). El Capítulo 13 aborda series temporales no estacionarias y ofrece más referencias. Otras referencias incluyen Isliker \& Kurths (1993), Kennel (1997), así como Schreiber (1997).
+
+\newpage
+
+\section{Ejercicios}
+
+\begin{enumerate}
+    \item[2.1] Crea una muestra $\{x_n\}$ de números aleatorios gaussianos no correlacionados. Puedes usar una rutina de algún paquete de software [por ejemplo, \textit{Numerical Recipes}, Press \textit{et al.} (1992)] o la rutina \texttt{makenoise} de TISEAN. Ahora aplica el \textit{filtro de media móvil}
+    \[
+    s_n = \frac{1}{15} \sum_{j=-7}^{7} x_{n+j}
+    \]
+    para obtener 1024 variables gaussianas correlacionadas. Obtén una rutina de algún paquete de software (por ejemplo, TISEAN) que estime el espectro de potencia de un conjunto de datos. Aplica la rutina a las secuencias $\{x_n\}$ y $\{s_n\}$. ¿Qué diferencia observas?
+	\newpage
+    \item[2.2] Crea dos series temporales artificiales. La primera, $\{\eta_n, \; n = 1, \dots, 4096\}$, contiene números aleatorios distribuidos uniformemente (usa tu generador favorito de números aleatorios) en el intervalo $[0,1]$. La segunda serie, $\{s_n, \; n = 1, \dots, 4096\}$, se basa en la evolución determinista de $x_n$, que sigue las reglas $x_0 = 0.1$ y $x_{n+1} = 1 - 2x_n^2$ (el \textit{mapa de Ulam}, un caso especial de la \textit{ecuación logística}). Los valores $x_n$ no se miden directamente, sino a través de la función de observación no lineal
+    \[
+    s_n = \arccos(-x_n)/\pi.
+    \]
+    Compara la media, la varianza y los espectros de potencia de las dos series temporales.
+\end{enumerate}
 
 
 
