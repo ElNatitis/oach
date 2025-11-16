@@ -1,0 +1,26 @@
+---
+title: "Más clases porque las librerias no funcinoan"
+output: pdf_document
+author: "natetas"
+date: "`r Sys.Date()`"
+---
+
+# Revisando normalidad multivariada
+
+Opciones de pruebas (test) para comprobar normalidad multivariada y univariada;
+- Prueba de media: media, prueba de Hanze-Zirkler hz
+- Prueba de Royston: royston, prueba de Soornik-Hansen: dh
+- Para E-estadística: energy:    
+
+```{r}
+data('iris')
+install.packages('MVN')
+library(MVN)
+
+mvn(data=iris[1:4],mvnTest = 'royston')
+mvn(data=iris[1:4],mvnTest = 'hz')
+mvn(data=iris[1:4],mvnTest = 'mardia')
+mvn(data=iris[1:4],mvnTest = 'dh')
+mvn(data=iris[1:4],mvnTest = 'energy')
+
+```

@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Dependencia sensible de las condiciones iniciales}{3}{0}{1}
+\beamer@sectionintoc {2}{Divergencia exponencial}{7}{0}{2}
+\beamer@sectionintoc {3}{Medición del exponente máximo a partir de datos}{13}{0}{3}

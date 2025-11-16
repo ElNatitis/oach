@@ -1,0 +1,546 @@
+	* instrumento -1 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 8.198886 
+	f_volumen = 12.604260 
+	f_duraciones = 0.084188
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 26.652603 
+	f_volumen = 42.306427 
+	f_duraciones = 0.244271
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 45.447910 
+	f_volumen = 80.334465 
+	f_duraciones = 0.814810
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 70.964684 
+	f_volumen = 121.853859 
+	f_duraciones = 2.202754
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 101.815514 
+	f_volumen = 174.675858 
+	f_duraciones = 6.813687
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 171.105637 
+	f_volumen = 304.015686 
+	f_duraciones = 23.629723
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 271.640167 
+	f_volumen = 481.454987 
+	f_duraciones = 49.950363
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 451.782806 
+	f_volumen = 776.891846 
+	f_duraciones = 139.176331
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 843.588013 
+	f_volumen = 1403.185913 
+	f_duraciones = 535.758240
+
+	* instrumento 0 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 7.167708 
+	f_volumen = 9.091182 
+	f_duraciones = 0.063894
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 27.401386 
+	f_volumen = 34.782177 
+	f_duraciones = 0.209451
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 54.721985 
+	f_volumen = 77.212250 
+	f_duraciones = 0.512453
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 72.725288 
+	f_volumen = 103.684540 
+	f_duraciones = 1.690255
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 120.630882 
+	f_volumen = 157.305038 
+	f_duraciones = 6.023440
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 196.964005 
+	f_volumen = 277.179565 
+	f_duraciones = 20.159653
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 308.913422 
+	f_volumen = 453.675140 
+	f_duraciones = 45.699051
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 565.394775 
+	f_volumen = 830.396484 
+	f_duraciones = 124.016289
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 2171.644043 
+	f_volumen = 3192.452637 
+	f_duraciones = 522.052490
+
+	* instrumento 33 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 3.762815 
+	f_volumen = 10.770305 
+	f_duraciones = 0.115890
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 12.598158 
+	f_volumen = 36.105808 
+	f_duraciones = 0.259397
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 27.919836 
+	f_volumen = 80.470482 
+	f_duraciones = 0.512058
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 39.868423 
+	f_volumen = 113.702850 
+	f_duraciones = 0.756602
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 60.436821 
+	f_volumen = 170.719788 
+	f_duraciones = 8.764924
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 106.592606 
+	f_volumen = 298.808411 
+	f_duraciones = 33.936440
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 165.476547 
+	f_volumen = 488.899109 
+	f_duraciones = 65.520912
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 277.168610 
+	f_volumen = 878.193848 
+	f_duraciones = 114.228607
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 943.007446 
+	f_volumen = 2816.853516 
+	f_duraciones = 552.365112
+
+	* instrumento 56 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 5.129075 
+	f_volumen = 7.195174 
+	f_duraciones = 0.224570
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 16.300110 
+	f_volumen = 23.589132 
+	f_duraciones = 0.753100
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 30.460159 
+	f_volumen = 42.888020 
+	f_duraciones = 2.272404
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 56.812786 
+	f_volumen = 78.554245 
+	f_duraciones = 5.380549
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 155.724472 
+	f_volumen = 205.642944 
+	f_duraciones = 15.566601
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 402.365173 
+	f_volumen = 559.880615 
+	f_duraciones = 52.534653
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 737.833984 
+	f_volumen = 1088.761353 
+	f_duraciones = 144.513489
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 1484.274292 
+	f_volumen = 2138.321777 
+	f_duraciones = 427.468658
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 3258.854492 
+	f_volumen = 4240.844727 
+	f_duraciones = 1273.367920
+
+	* instrumento 57 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 4.503292 
+	f_volumen = 8.024813 
+	f_duraciones = 0.158588
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 14.376635 
+	f_volumen = 25.915792 
+	f_duraciones = 0.683142
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 29.770208 
+	f_volumen = 53.401157 
+	f_duraciones = 2.345607
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 59.509079 
+	f_volumen = 106.481194 
+	f_duraciones = 4.697579
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 128.128220 
+	f_volumen = 227.181747 
+	f_duraciones = 15.526771
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 307.859070 
+	f_volumen = 534.769165 
+	f_duraciones = 54.067497
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 536.623169 
+	f_volumen = 936.237244 
+	f_duraciones = 142.080994
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 992.546692 
+	f_volumen = 1695.507568 
+	f_duraciones = 457.114990
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 2266.319580 
+	f_volumen = 3978.012939 
+	f_duraciones = 1293.395874
+
+	* instrumento 69 *
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 8.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 2.270090 
+	f_volumen = 2.983102 
+	f_duraciones = 0.541632
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 16.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 5.797779 
+	f_volumen = 7.615733 
+	f_duraciones = 1.617955
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 32.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 12.411829 
+	f_volumen = 16.687626 
+	f_duraciones = 5.994981
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 64.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 31.247665 
+	f_volumen = 42.285099 
+	f_duraciones = 19.514994
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 128.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 96.500084 
+	f_volumen = 135.011246 
+	f_duraciones = 67.972252
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 256.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 196.646805 
+	f_volumen = 270.119965 
+	f_duraciones = 142.464645
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 512.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 348.566681 
+	f_volumen = 486.904510 
+	f_duraciones = 356.630096
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 1024.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 745.336182 
+	f_volumen = 974.320923 
+	f_duraciones = 983.137207
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- RESULTADOS ------- 
+
+
+para segmentos de 2048.00 elementos tenemos las siguientes magnitudes promedio de fluctuaciones 
+	f_tono = 2148.187500 
+	f_volumen = 2719.025391 
+	f_duraciones = 3632.728271
+

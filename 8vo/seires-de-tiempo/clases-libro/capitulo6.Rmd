@@ -1,0 +1,269 @@
+---
+title: "cap 6"
+output: pdf_document
+author: "natetas"
+date: "`r Sys.Date()`"
+---
+
+## 6.1 Propósito
+
+Como se vio en los capítulos anteriores, una serie temporal a menudo presenta componentes bien definidos, como una tendencia y un patrón estacional. Una regresión lineal bien elegida puede explicar estos componentes no estacionarios, en cuyo caso los residuos del modelo ajustado no deberían contener tendencias ni patrones estacionales notorios. Sin embargo, los residuos usualmente estarán correlacionados en el tiempo, ya que esto no se explica en el modelo de regresión ajustado.
+
+Valores similares pueden agruparse en el tiempo; por ejemplo, los valores mensuales del Índice de Oscilación del Sur, que está estrechamente asociado con El Niño, tienden a cambiar lentamente y pueden dar lugar a patrones climáticos persistentes. Alternativamente, observaciones adyacentes pueden estar negativamente correlacionadas; por ejemplo, un valor inusualmente alto de ventas mensuales puede ser seguido por un valor inusualmente bajo debido a que los clientes aún cuentan con existencias del mes anterior.
+
+En este capítulo, se consideran modelos estacionarios que pueden ser adecuados para series residuales que no contienen tendencias ni ciclos estacionales evidentes. Los modelos estacionarios ajustados pueden combinarse con el modelo de regresión para mejorar los pronósticos. Los modelos autorregresivos presentados en la sección §4.5 suelen proporcionar modelos satisfactorios para la serie temporal residual, y en este capítulo se amplía ese repertorio. El término *estacionario* ya fue discutido en capítulos anteriores; ahora se proporciona una definición más rigurosa.
+
+## 6.2 Series estrictamente estacionarias
+
+Un modelo de series temporales \(\{x_t\}\) es *estrictamente estacionario* si la distribución estadística conjunta de \(x_t, \ldots, x_{t_n}\) es la misma que la distribución conjunta de \(x_{t_1+m}, \ldots, x_{t_n+m}\) para todos los \(t_1, \ldots, t_n\) y para cualquier \(m\), de modo que la distribución no cambia tras un desplazamiento arbitrario en el tiempo.
+
+Nótese que la estacionariedad estricta implica que la media y la varianza son constantes en el tiempo, y que la autocovarianza \(\text{Cov}(x_t, x_s)\) solo depende del desfase \(k = |t - s|\), y puede escribirse como \(\gamma(k)\). Si una serie no es estrictamente estacionaria pero su media y varianza son constantes en el tiempo y la autocovarianza depende únicamente del desfase, entonces se dice que la serie es *estacionaria de segundo orden*.
+
+En este capítulo nos enfocamos en las propiedades de segundo orden, aunque los procesos estocásticos que se discuten son estrictamente estacionarios. Además, si el ruido blanco es gaussiano, el proceso estocástico queda completamente definido por su media y estructura de covarianza, del mismo modo que cualquier distribución normal está definida por su media y matriz de varianza-covarianza.
+
+La estacionariedad es una idealización que se considera una propiedad de los modelos. Si ajustamos un modelo estacionario a los datos, asumimos que los datos son una realización de un proceso estacionario. Por ello, el primer paso en un análisis debe ser comprobar si hay evidencia de una tendencia o de efectos estacionales y, en caso de haberlos, eliminarlos. La regresión puede descomponer una serie no estacionaria en una tendencia, componentes estacionales y una serie residual. A menudo es razonable tratar la serie temporal de residuos como una realización de un proceso de error estacionario. Por tanto, los modelos en este capítulo se ajustan con frecuencia a series residuales provenientes de análisis de regresión.
+
+## 6.3 Modelos de media móvil
+
+### 6.3.1 Proceso MA(q): Definición y propiedades
+
+Un proceso de media móvil (MA) de orden \( q \) es una combinación lineal del término de ruido blanco actual y de los \( q \) términos pasados más recientes de ruido blanco, y está definido por:
+
+\[
+x_t = w_t + \beta_1 w_{t-1} + \dots + \beta_q w_{t-q}
+\]
+
+donde \(\{w_t\}\) es ruido blanco con media cero y varianza \(\sigma^2_w\). La ecuación anterior puede reescribirse usando el operador de retraso hacia atrás \(\mathbf{B}\) como:
+
+\[
+x_t = (1 + \beta_1 \mathbf{B} + \beta_2 \mathbf{B}^2 + \dots + \beta_q \mathbf{B}^q) w_t = \phi_q(\mathbf{B}) w_t
+\]
+
+donde \(\phi_q\) es un polinomio de orden \( q \). Como los procesos MA consisten en una suma finita de términos de ruido blanco estacionario, entonces son estacionarios, lo que implica que su media y autocovarianza son invariantes en el tiempo.
+
+La media y varianza de \(\{x_t\}\) son fáciles de derivar. La media es simplemente cero porque se trata de una suma de términos con media cero. La varianza es \(\sigma^2_w (1 + \beta_1^2 + \dots + \beta_q^2)\) porque cada término de ruido blanco tiene la misma varianza y los términos son mutuamente independientes. La función de autocorrelación, para \(k \geq 0\), está dada por:
+
+\[
+\rho(k) = 
+\begin{cases}
+1 & k = 0 \\
+\sum_{i=0}^{q-k} \beta_i \beta_{i+k} / \sum_{i=0}^{q} \beta_i^2 & k = 1, \dots, q \\
+0 & k > q
+\end{cases}
+\]
+
+donde se toma \(\beta_0 = 1\). Nótese que cuando \(k > q\), los valores \(x_t\) y \(x_{t+k}\) no comparten términos en común dentro del ruido blanco y por lo tanto no tienen correlación.
+
+La derivación de la función de autocorrelación queda como ejercicio 1. Un proceso MA se dice *invertible* si puede expresarse como un proceso autorregresivo estacionario de orden infinito sin un término de error. Por ejemplo, el proceso MA
+
+\[
+x_t = (1 - \beta \mathbf{B}) w_t
+\]
+
+puede expresarse como:
+
+\[
+w_t = (1 - \beta \mathbf{B})^{-1} x_t = x_t + \beta x_{t-1} + \beta^2 x_{t-2} + \dots
+\]
+
+siempre que \(|\beta| < 1\), lo cual es necesario para la convergencia.
+
+En general, un proceso MA(q) es invertible cuando las raíces de \(\phi_q(\mathbf{B})\) tienen módulo mayor que uno (véase el ejercicio 2). La función de autocovarianza solo identifica un proceso MA(q) único si se impone la condición de invertibilidad. El procedimiento de estimación descrito en la sección §6.4 lleva naturalmente a modelos invertibles
+
+\newpage
+
+### 6.3.2 Ejemplos en R: Correlograma y simulación
+
+La función de autocorrelación para un proceso MA(q) (Ecuación (6.3)) puede implementarse fácilmente en R. A continuación, se presenta una versión simple, sin validaciones detalladas de errores. Nótese que la función recibe como entrada el desfase \(k\) y los parámetros del modelo \(\beta_i\) para \(i = 1, \ldots, q\), con \(\beta_0 = 1\).
+
+Para valores distintos de cero (es decir, dentro de la parte `else` del `if`), la función de autocorrelación se calcula en dos etapas utilizando un bucle `for`. El primer bucle genera una suma (`s1`) correspondiente a la autocovarianza, mientras que el segundo genera una suma (`s2`) correspondiente a la varianza. El cociente de estas dos sumas da como resultado la autocorrelación (ACF) retornada.
+
+```{r}
+rho <- function(k, beta) {
+  q <- length(beta) - 1
+  if (k > q) ACF <- 0 else {
+    s1 <- 0; s2 <- 0
+    for (i in 1:(q-k+1)) s1 <- s1 + beta[i] * beta[i+k]
+    for (i in 1:(q+1)) s2 <- s2 + beta[i]^2
+    ACF <- s1 / s2}
+  ACF}
+```
+El siguiente código puede utilizarse para generar correlogramas de una gama de procesos MA(q) graficando la función de autocorrelación en función del desfase. El código que se muestra a continuación proporciona un ejemplo para un proceso MA(3) con parámetros \(\beta_1 = 0.7\), \(\beta_2 = 0.5\) y \(\beta_3 = 0.2\) (Fig. 6.1a).
+
+```{r}
+beta <- c(1, 0.7, 0.5, 0.2)
+rho.k <- rep(1, 10)
+for (k in 1:10) rho.k[k] <- rho(k, beta)
+plot(0:10, c(1, rho.k), pch = 4, ylab = expression(rho[k]))
+abline(0, 0)
+```
+
+La gráfica en la Figura 6.1(b) muestra la función de autocovarianza para un proceso MA(3) con parámetros \(\beta_1 = -0.7\), \(\beta_2 = 0.5\) y \(\beta_3 = -0.2\), lo cual genera correlaciones negativas en los desfases 1 y 3. La función `expression` se utiliza para mostrar el símbolo griego \(\rho\) en el eje vertical.
+
+El siguiente código puede usarse para simular un proceso MA(3) y graficar el correlograma de la serie simulada. Un ejemplo de la serie y su correlograma se muestran en la Figura 6.2. Como era de esperarse, las tres primeras autocorrelaciones son significativamente distintas de cero (Fig. 6.2b); otras correlaciones estadísticamente significativas se deben a variación aleatoria por muestreo.
+
+Nótese que en el correlograma (Fig. 6.2b), uno de cada 20 desfases (5 %) muestra una correlación muestral significativa para desfases mayores que 3, aun cuando la correlación poblacional subyacente es cero. Esto se espera debido a la aplicación de múltiples pruebas t, cuyos resultados se muestran en la gráfica.
+
+```{r}
+set.seed(1)
+b <- c(0.8, 0.6, 0.4)
+x <- w <- rnorm(1000)
+for (t in 4:1000) {
+  for (j in 1:3) x[t] <- x[t] + b[j] * w[t - j]
+}
+plot(x, type = "l")
+acf(x)
+```
+\newpage
+
+## 6.4 Modelos MA ajustados
+
+### 6.4.1 Modelo ajustado a una serie simulada
+
+Un modelo MA(q) puede ajustarse a datos en R usando la función `arima` con el parámetro `order` definido como `c(0, 0, q)`. A diferencia de la función `ar`, la función `arima` no sustrae la media por defecto y estima un término de intersección. Los modelos MA no pueden expresarse en forma de regresión múltiple y, en general, sus parámetros se estiman mediante un algoritmo numérico. La función `arima` minimiza la suma condicional de cuadrados para estimar los valores de los parámetros, devolviéndolos si se especifica `method = c("CSS")`, o utilizándolos como valores iniciales para una estimación por máxima verosimilitud.
+
+A continuación, se describe el algoritmo de suma condicional de cuadrados para ajustar un proceso MA(q). Para cualquier conjunto de parámetros, la suma de los residuos al cuadrado puede calcularse de forma iterativa reescribiendo la Ecuación (6.1) y reemplazando los errores \( w_t \) con sus estimaciones (es decir, los residuos), denotados por \( \hat{w}_t \):
+
+\[
+S(\hat{\beta}_1, \ldots, \hat{\beta}_q) = \sum_{t=1}^n \hat{w}_t^2 = \sum_{t=1}^n \left\{ x_t - (\hat{\beta}_1 \hat{w}_{t-1} + \cdots + \hat{\beta}_q \hat{w}_{t-q}) \right\}^2
+\]
+
+donde \( \hat{w}_0, \ldots, \hat{w}_{t-q} \) se inicializan en 0 para comenzar la iteración. Se utiliza una búsqueda numérica para encontrar los valores de parámetros que minimizan esta suma condicional de cuadrados.
+
+En el siguiente código, se ajusta un modelo de media móvil a la serie simulada de la sección anterior. Observando los parámetros estimados (los coeficientes en la salida), se puede ver que los intervalos de confianza al 95 % (aproximadamente `coef. ± 2 * s.e. de coef.`) contienen los valores reales subyacentes (0.8, 0.6 y 0.4) utilizados en la simulación. Además, como se esperaba, el intercepto no es significativamente distinto de su valor subyacente, que es cero.
+
+```{r}
+x.ma <- arima(x, order = c(0, 0, 3))
+x.ma
+```
+
+Es posible fijar el valor de la media en cero, en lugar de estimar el intercepto, utilizando `include.mean = FALSE` dentro de la función arima. Esta opción debe usarse con precaución y solo sería apropiada si se desea que 
+${x_t}$ represente desplazamientos respecto a una media fija conocida.
+
+\newpage
+
+### 6.4.2 Serie de tipo de cambio: Modelo MA ajustado
+
+En el siguiente código, se ajusta un modelo MA(1) a una serie de tipo de cambio. Si se consulta la sección §4.6.2, una comparación con la salida mostrada a continuación indica que el modelo AR(1) ofrece un mejor ajuste, ya que tiene una desviación estándar menor en la serie de residuos: 0.031 frente a 0.042. Además, el correlograma de los residuos indica que un modelo MA(1) no proporciona un ajuste satisfactorio, ya que la serie de residuos claramente no se comporta como una realización realista de ruido blanco (ver Fig. 6.3).
+
+```{r}
+x <- read.table("pounds_nz.dat", header = TRUE)
+x.ts <- ts(x, start = 1991, frequency = 4)
+x.ma <- arima(x.ts, order = c(0, 0, 1))
+x.ma
+acf(x.ma$res[-1], lag.max=60)
+```
+
+\newpage
+
+## 6.5 Modelos mixtos: El proceso ARMA
+
+### 6.5.1 Definición
+
+Recordando el Capítulo 4, una serie \(\{x_t\}\) es un proceso autorregresivo de orden \(p\), un proceso AR(\(p\)), si
+
+\[
+x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \dots + \alpha_p x_{t-p} + w_t \tag{6.6}
+\]
+
+donde \(\{w_t\}\) es ruido blanco y los \(\alpha_i\) son los parámetros del modelo.
+
+Una clase útil de modelos se obtiene al combinar términos AR y MA en una sola expresión. Una serie temporal \(\{x_t\}\) sigue un proceso autorregresivo de media móvil (ARMA) de orden \((p, q)\), denotado ARMA(\(p, q\)), cuando
+
+\[
+x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \dots + \alpha_p x_{t-p} + w_t + \beta_1 w_{t-1} + \beta_2 w_{t-2} + \dots + \beta_q w_{t-q} \tag{6.7}
+\]
+
+donde \(\{w_t\}\) es ruido blanco. La ecuación (6.7) puede representarse en términos del operador de retraso hacia atrás \(\mathbf{B}\) y reescribirse en una forma polinómica más concisa como:
+
+\[
+\theta_p(\mathbf{B}) x_t = \phi_q(\mathbf{B}) w_t \tag{6.8}
+\]
+
+Los siguientes puntos deben considerarse sobre un proceso ARMA(\(p, q\)):
+
+- **(a)** El proceso es estacionario cuando las raíces de \(\theta\) tienen módulo mayor que uno.
+- **(b)** El proceso es invertible cuando las raíces de \(\phi\) tienen módulo mayor que uno.
+- **(c)** El modelo AR(\(p\)) es un caso especial de ARMA(\(p, 0\)).
+- **(d)** El modelo MA(\(q\)) es el caso especial ARMA(\(0, q\)).
+- **(e)** Cuando se ajusta un modelo ARMA a los datos, un modelo ARMA más parsimonioso (es decir, con menos parámetros) se prefiere si el ajuste es similar al de un modelo más complejo.
+- **(f)** *Redundancia de parámetros.* Cuando los polinomios \(\theta\) y \(\phi\) comparten un factor común,
+
+
+\newpage
+
+### 6.6.3 Serie de producción de electricidad
+
+Considera la serie de producción eléctrica australiana presentada en la sección §1.4.3. Los datos exhiben una tendencia positiva clara y un patrón estacional regular. Además, la varianza aumenta con el tiempo, lo que sugiere que puede ser apropiada una transformación logarítmica (ver Fig. 1.5). En el siguiente código se ajusta un modelo de regresión a los logaritmos de la serie original:
+
+```{r}
+CBE <- read.table("cbe.dat", header = TRUE)
+Elec.ts <- ts(CBE[, 3], start = 1958, freq = 12)
+Time <- 1:length(Elec.ts)
+Imth <- cycle(Elec.ts)
+Elec.lm <- lm(log(Elec.ts) ~ Time + I(Time^2) + factor(Imth))
+acf(resid(Elec.lm))
+```
+El correlograma de los residuos parece oscilar con un período de 12 meses, lo que sugiere que las variables indicadoras mensuales no son suficientes para capturar adecuadamente la estacionalidad en la serie (ver Fig. 6.5). En el próximo capítulo se muestra que este comportamiento puede explicarse utilizando un modelo no estacionario con un componente estacional estocástico.
+
+Mientras tanto, se observa que el mejor modelo ARMA(\(p, q\)) puede seleccionarse utilizando el menor valor del AIC, ya sea probando combinaciones de \(p\) y \(q\) dentro de un rango dado, o mediante un bucle `for` con límites superiores establecidos para ambos (en el código siguiente se toman como 2). En cada iteración del bucle, si el AIC del nuevo modelo ajustado es menor que el del modelo previamente almacenado, se reemplaza dicho modelo. Al finalizar el bucle, el mejor modelo queda guardado en `best.order`, y en este caso se encuentra que el modelo más adecuado es un AR(2).
+
+\newpage
+
+```{r}
+best.order <- c(0, 0, 0)
+best.aic <- Inf
+for (i in 0:2) for (j in 0:2) {
+  fit.aic <- AIC(arima(resid(Elec.lm), order = c(i, 0, j)))
+  if (fit.aic < best.aic) {
+    best.order <- c(i, 0, j)
+    best.arma <- arima(resid(Elec.lm), order = best.order)
+    best.aic <- fit.aic
+  }
+}
+best.order
+acf(resid(best.arma))
+```
+
+La función `predict` puede utilizarse tanto para pronosticar valores futuros del modelo de regresión ajustado, como para estimar los errores futuros asociados a dicho modelo usando un modelo ARMA ajustado a los residuos. Estas dos proyecciones pueden sumarse para obtener un valor pronosticado del logaritmo de la producción eléctrica, el cual posteriormente puede deshacerse del logaritmo (mediante la exponencial) y, si es necesario, corregirse por sesgo utilizando un factor de ajuste.
+
+Dado que `predict` es una función genérica en R, su comportamiento varía según el tipo de objeto y clase del modelo al que se le aplique. Para un modelo de regresión ajustado mediante `lm`, la función `predict` requiere que los nuevos datos se proporcionen en forma de un `data.frame`. En cambio, para un modelo ARMA ajustado con la clase `arima`, la función `predict` solamente necesita que se especifique el número de pasos hacia adelante que se desea pronosticar.
+
+En este último caso, `predict` produce un objeto que contiene tanto los valores pronosticados como sus errores estándar, los cuales pueden extraerse utilizando las funciones `pred` y `se`, respectivamente. En el ejemplo mostrado, se ilustra cómo puede realizarse la predicción para cada uno de los tres años siguientes.
+
+```{r}
+new.time <- seq(length(Elec.ts), length = 36)
+new.data <- data.frame(Time = new.time, Imth = rep(1:12, 3))
+
+predict.lm <- predict(Elec.lm, new.data)
+predict.arma <- predict(best.arma, n.ahead = 36)
+
+elec.pred <- ts(exp(predict.lm + predict.arma$pred), start = 1991, freq = 12)
+ts.plot(cbind(Elec.ts, elec.pred), lty = 1:2)
+```
+
+\newpage
+
+### 6.6.4 Datos del tanque de olas
+
+Los datos en el archivo `wave.dat` corresponden a la altura superficial del agua (en milímetros), medida en relación con el nivel de agua en reposo, utilizando una sonda de capacitancia ubicada en el centro de un tanque de olas. La señal de voltaje continua proveniente de esta sonda fue muestreada cada 0.1 segundos durante un período de 39.6 segundos.
+
+El objetivo es ajustar un modelo ARMA(\(p, q\)) adecuado que pueda utilizarse para generar una entrada realista de olas hacia un modelo matemático de un remolcador oceánico dentro de una simulación computacional. Los resultados de esta simulación por computadora serán comparados con pruebas usando un modelo físico del remolcador en el tanque de olas.
+
+El gráfico de correlación parcial (`pacf`) sugiere que el valor de \(p\) debería ser al menos 2 (ver Fig. 6.8). El modelo ARMA(\(p, q\)) con mejor ajuste, basado en la varianza mínima de los residuos, se obtuvo con \(p = 4\) y \(q = 4\). El ACF y el PACF de los residuos de este modelo son consistentes con la hipótesis de que los residuos se comportan como una realización de ruido blanco (ver Fig. 6.9).
+
+```{r}
+wave.dat <- read.table("wave.dat", header = TRUE)
+attach(wave.dat)
+layout(1:3)
+
+plot(as.ts(waveht), ylab = 'Wave height')
+acf(waveht)
+pacf(waveht)
+
+wave.arma <- arima(waveht, order = c(4, 0, 4))
+
+acf(wave.arma$res[-(1:4)])
+pacf(wave.arma$res[-(1:4)])
+hist(wave.arma$res[-(1:4)], xlab = 'height / mm', main = "")
+```

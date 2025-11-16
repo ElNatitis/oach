@@ -1,0 +1,68 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+
+\title{\textbf{Dinámica de sistemas físicos.}\\Ejercicios capitulo 1}
+\author{Natividad Pérez Medina.}
+
+
+\begin{document}
+\maketitle
+\begin{center}
+	\includegraphics[scale=0.05]{fing-escudo-bw.png}  \\
+	\\
+	\begin{small}
+		\textbf{Catedrático:} Dr.José Luis Herrera Águilar
+	\end{small}
+\end{center}
+\newpage
+
+\textbf{Ejercicio 1.-} Decide si cada una de las siguientes funciones es \textbf{inyectiva} (\textit{one-to-one}), 
+\textbf{sobreyectiva} (\textit{onto}), \textbf{homeomorfismo} o \textbf{difeomorfismo} 
+en su \textbf{dominio de definición}:
+
+\begin{enumerate}
+    \item $f(x) = x^{5/3}$
+    \newpage
+    \item $f(x) = x^{4/3}$
+    \newpage
+    \item $f(x) = 3x + 5$
+    \newpage
+    \item $f(x) = e^{x}$
+    \newpage
+    \item $f(x) = \dfrac{1}{x}$
+    \newpage
+    \item $f(x) = \dfrac{1}{x^{2}}$
+    \newpage
+\end{enumerate}
+
+El objetivo de los siguientes ejercicios es construir funciones especiales que serán útiles
+más adelante cuando \emph{perturbemos} o modifiquemos ligeramente una función dada.
+A estas funciones se les llama \textit{funciones “bump”}.
+
+Defina
+\[
+B(x)=
+\begin{cases}
+\exp\!\left(-\dfrac{1}{x^{2}}\right), & \text{si } x>0,\\[6pt]
+0, & \text{si } x\le 0.
+\end{cases}
+\]
+
+\textbf{Ejercicio 5.-} Demuestre que $B'(0)=0$.
+
+\newpage
+
+\textbf{Ejercicio 9.-} Utiliza una función \textit{bump} para construir un difeomorfismo 
+\( f:[a,b]\to[c,d] \) que satisfaga \( f'(a)=f'(b)=1 \) y \( f(a)=c,\; f(b)=d \).
+
+
+
+\end{document}

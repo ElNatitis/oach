@@ -1,0 +1,22 @@
+# NONLINEAR TIME SERIES ANALYSIS
+
+---
+
+## Capitulo 1 Temas básicos
+
+### La idea clave del capítulo
+
+Kantz y Schreiber explican que los **métodos lineales** asumen que _cualquier irregularidad en los datos es atribuible a ruido o entrada aleatoria._ Pero los **métodos NO lineales** permiten detectar _estructura interna determinista_ incluso en señales muy irregulares, como las que parecen caóticas o complejas.
+
+### Aporte: Música y secciones estructuradas
+En una canción, aunque pueda haber transiciones y cambios impredecibles en apariencia, **la estructura musical (verso, coro, puente, etc.) sugiere una lógica interna.** Esto indica que no es un sistema puramente aleatorio, _como lo asumiría un análisis lineal básico_, sino que hay una dinámica _compleja pero no necesariamente caótica._
+
+## Capitulo 2 Herramientas lineales y consideraciones generales
+
+### Conceptos clave para el capítulo
+
+- **Estacionariedad** Una serie de tiempo estacionaria es _aquella cuyas propiedades estadísticas no cambian con el tiempo._ Esto significa que **su comportamiento es estable a lo largo del tiempo en un sentido probabilístico.**
+
+### 2.1 Estacionariedad y muestreo
+
+

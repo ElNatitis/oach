@@ -1,0 +1,152 @@
+---
+title: "Segundo parcial"
+output: html_document
+author: "Natividad Oswaldo Pérez Medina"
+date: "`r Sys.Date()`"
+---
+
+# Series de tiempo
+
+## Segundo parcial
+
+### Problema 1
+
+Dados los siguientes modelos:
+
+- **Modelo 1** $x_t = −2x_{t−2} + w_t$ 
+- **Modelo 2** $x_t = −16x_{t−2} − 2x_{t−1} + w_t$ 
+
+determine si son estacionarios o no estacionarios, explíque cómo lo hace.
+
+#### Respuesta
+
+- **Modelo 1**
+
+Entendiendolo como un *proceso autorregresivo de orden 2* donde el coeficiente de $x_{t-1}$ es 0, podemos plantearlo de la siguiente forma
+
+$$ x_t + 0x_{t-1} + 2x_{t−2} = w_t $$
+
+Por lo que, para calcular las raíces de su *polinomio característico* tenemos:
+
+$$ 1 + 2B^2 = 0 $$
+
+Esto significa que $B^2=-\frac{1}{2}$ por lo que $B=±\frac{i}{\sqrt2}$, estas son raíces complejas con modulo $|B| = \frac{1}{\sqrt2}$, que es aproximadamente 0.707. Dado que este valor no excede la unidad, entonces estamos hablando de un *proceso no estacionario*
+
+- **Modelo 2**
+
+Entendiendolo como un *proceso autorregresivo de orden 2*, podemos plantearlo de la siguiente forma
+
+$$ x_t + 2x_{t-1} + 16x_{t−2} = w_t $$
+
+Por lo que, para calcular las raíces de su *polinomio característico* tenemos:
+
+$$ 1 + 2B + 16B^2 = 0 $$
+
+Que tiene la siguiente solución:
+
+$$ B = \frac{-1±i\sqrt{15}}{16} $$
+
+Cuando calculamos el modulo del resultado obtenido llegamos al valor $0.25$, el cual nuevamente no excede la unidad, por lo que podemos decir que este es un *proceso no estacionario*
+
+### Problema 2
+
+Simule un proceso autorregresivo de orden 2 con los valores alfa que usted quiera, grafíquelo y calcule sus correlogramas simple y parcial.
+
+#### Respuesta 
+
+``` {r}
+set.seed(1) 	      # Para fijar una semilla
+x <- w <- rnorm(100) 
+for (t in 3:100) 
+{
+  x[t] <- 0.5 * x[t - 1] - 0.3 * x[t - 2] + w[t] 
+}
+plot(x, type = "l", main = "Simulación de un AR(2)")   # Gráfica de la serie
+acf(x, main = "Correlograma Simple")                # Correlograma simple
+pacf(x, main = "Correlación Parcial")               # Correlograma parcial
+```
+
+### Problema 3
+
+Para los datos dados ajuste a un modelo autorregresivo, encuentre su orden, los valores de las alfas y diga si el ajuste es correcto y porque.
+
+#### Respuesta
+
+``` {r}
+# Aplicando el método "mle" en el proceso AR(2) del ejercicio anterior
+x.ar <- ar(x, method = "mle")
+
+# Para saber el orden que estima el método
+x.ar$order   
+
+# Para saber el valor de los coeficientes estimados
+x.ar$ar         
+```
+
+##### Sobre el ajuste del modelo
+
+Para saber si el modelo el adecuado observamos su función de autocorrelación parcial
+
+``` {r}
+pacf(x,main="Función de autocorrelación parcial.")
+```
+
+Únicamente vemos 2 valores significativamente diferentes de 0, fuera de las líneas azules, lo que apunta a que un modelo de *segundo grado* es apropiado para los datos, esto concuerda con el orden encontrado por `ar()`, por lo que podemos decir que el ajuste es correcto.
+
+### Problema 4 
+
+Simule una serie de tiempo con una tendencia cuadrática, es decir, escoja una función para la pendiente y agregue un proceso autorregresivo. Gráfique la serie de tiempo y el correlograma de los residuos.
+
+#### Respuesta
+
+``` {r}
+# Simulación de una serie con tendencia cuadrática y ruido AR(1)
+n <- 100
+Time <- 1:n
+
+# Simulamos componente AR(1)
+w <- rnorm(n, sd = 2)
+z <- numeric(n)
+z[1] <- w[1]
+for (t in 2:n) {
+  z[t] <- 0.7 * z[t - 1] + w[t]   
+}
+
+# Tendencia cuadrática
+Trend <- 10 + 0.5 * Time - 0.01 * Time^2
+
+# Serie total: tendencia + componente AR(1)
+x <- Trend + z
+
+# Gráfica de la serie
+plot(Time, x, type = "l", main = "Serie con tendencia cuadrática + AR(1)", ylab = "x_t", xlab = "Tiempo")
+
+# Para el correlograma de los residuos
+xres <- x.ar$res
+acf(xres[3:100],main="Correlograma de los residuos")
+```
+
+### Problema 5
+
+Ajuste la serie anterior por medio de mínimos cuadrados ordinarios y después con mínimos cuadrados generalizados. Asegúrese de que la correlación que tome es la correcta.
+
+#### Respuesta
+
+``` {r}
+# Por el método de mínimos cuadrados ordinarios
+modelo_ols <- lm(x ~ Time + I(Time^2))
+summary(modelo_ols)
+
+# Para ver la autocorrelación 
+acf(resid(modelo_ols))
+```
+
+``` {r}
+# Por el método de mínimos cuadrados generalizados 
+library(nlme)
+modelo_gls <- gls(x ~ Time + I(Time^2), correlation = corAR1(0.7))
+summary(modelo_gls)
+
+# Para ver la autocorrelación 
+acf(resid(modelo_gls))
+```

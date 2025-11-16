@@ -1,0 +1,7 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Contextualización}{3}{0}{1}
+\beamer@sectionintoc {2}{Introducción}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Idea central}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Especificaciones}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Proceso ideal y real}{12}{0}{2}
+\beamer@subsectionintoc {2}{4}{Interpolación local y \textit {spline}}{16}{0}{2}

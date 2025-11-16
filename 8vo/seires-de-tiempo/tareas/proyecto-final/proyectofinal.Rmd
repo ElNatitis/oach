@@ -1,0 +1,291 @@
+---
+title: "Proyecto Final"
+output: pdf_document
+author: "N. Pérez - Medina"
+date: "`r Sys.Date()`"
+---
+# Introducción
+
+El presente análisis se centra en estudiar la evolución temporal de las calificaciones de la crítica a películas tomando en cuenta como factor la duración de las películas. Se busca identificar tendencias, patrones y posibles cambios estructurales a lo largo del tiempo, con el fin de proponer un modelo que describa correctamente la variabilidad de los datos y permita predecir tanto las calificaciones en fechas futuras.
+
+# Contextualización de la base de datos
+
+La base de datos `16k_Movies` contiene información sobre más de 16,000 películas estrenadas entre los años 1910 y 2024. Entre las variables disponibles se incluyen el título de la película, fecha de estreno, descripción, calificación promedio en _Metacritic_, número de personas que votaron, así como datos sobre la dirección, guión, duración y géneros asociados a cada película. 
+
+Su estructura permite aplicar modelos estadísticos y técnicas de análisis para buscar posibles patrones en el comportamiento de las variables a lo largo del tiempo.
+
+\newpage
+
+# Construcción de series de tiempo
+##  Rating de las películas de 1910 a 2024
+```{r}
+# Cargamos la base de datos
+pelis <- read.csv("16k_Movies.csv")
+
+# Subconjunto: título, calificación y fecha de estreno
+pelis_rating <- pelis[, c("Title", "Rating", "Release.Date")]
+head(pelis_rating, 1)
+
+# Creamos columna con formato correcto de fecha
+pelis_rating$Fecha <- as.Date(pelis_rating$Release.Date, format = "%b %d, %Y")
+head(pelis_rating, 1)
+
+# Extraemos los datos
+pelis_rating$Año <- as.numeric(format(pelis_rating$Fecha, "%Y"))
+pelis_rating$Mes <- as.numeric(format(pelis_rating$Fecha, "%m"))
+
+# Agrupamos y ordenamos por año y mes
+rating_mensual <- aggregate(Rating ~ Año + Mes, data = pelis_rating, FUN = mean)
+rating_mensual <- rating_mensual[order(rating_mensual$Año, rating_mensual$Mes), ]
+
+# Lo hacemos serie de tiempo
+pelis_rating.ts <- ts(rating_mensual$Rating,
+                    start = c(min(rating_mensual$Año), min(rating_mensual$Mes)),
+                    frequency = 12)
+```                   
+\newpage
+
+
+## Duración de las películas de 1910 a 2024
+```{r}
+# Subconjunto: título, fecha de estreno y duración
+pelis_duracion <- pelis[, c("Title", "Duration", "Release.Date")]
+head(pelis_duracion, 1)
+
+# Creamos columna con formato correcto de fecha
+pelis_duracion$Fecha <- as.Date(pelis_duracion$Release.Date, format = "%b %d, %Y")
+head(pelis_duracion, 1)
+
+# Función para tener la duracion total en minutos
+convertir_a_minutos <- function(duracion) {
+  if (is.na(duracion) || duracion == "") return(0)
+  
+  # Si no contiene ni horas ni minutos válidos
+  if (!grepl("\\d+\\s*h|\\d+\\s*m", duracion)) return(0)
+ 
+  # Extraer horas
+  if (grepl("\\d+\\s*h", duracion)) {
+    h <- as.numeric(sub(".*?(\\d+)\\s*h.*", "\\1", duracion))
+  } else { h <- 0 }
+  # Extraer minutos
+  if (grepl("\\d+\\s*m", duracion)) {
+    m <- as.numeric(sub(".*?(\\d+)\\s*m.*", "\\1", duracion))
+  } else { m <- 0 }
+
+  return(h * 60 + m)
+}
+
+# Aplicamos la función a cada fila y creamos una nueva columna con la duración correcta
+pelis_duracion$Duracion <- sapply(pelis_duracion$Duration, convertir_a_minutos)
+head(pelis_duracion, 1)
+
+# Extraemos los datos
+pelis_duracion$Año <- as.numeric(format(pelis_duracion$Fecha, "%Y"))
+pelis_duracion$Mes <- as.numeric(format(pelis_duracion$Fecha, "%m"))
+
+# Agrupamos y ordenamos por año y mes
+duracion_mensual <- aggregate(Duracion ~ Año + Mes, data = pelis_duracion, FUN = mean)
+duracion_mensual <- duracion_mensual[order(duracion_mensual$Año, duracion_mensual$Mes), ]
+
+# Lo hacemos serie de tiempo
+pelis_duracion.ts <- ts(duracion_mensual$Duracion,
+                    start = c(min(duracion_mensual$Año), min(duracion_mensual$Mes)),
+                    frequency = 12)
+```
+
+
+\newpage
+# Análisis de datos
+```{r}
+# Graficamos los datos
+plot(pelis_rating.ts, main="Rating promedio de películas de 1910 a 2024",
+	ylab="Raiting",
+	xlab="Tiempo(Mes.Año)")
+```
+
+**Comentario** Se aprecia una tendencia general decreciente a lo largo del tiempo. Aunque la serie presenta cierta variabilidad mensual y picos irregulares, la trayectoria global sugiere que el valor promedio del rating ha ido disminuyendo conforme avanza el tiempo. Esto podria indicar que incorporar una variable de tendencia podría mejorar el poder explicativo del modelo que buscamos.
+
+\newpage
+
+## Autocorrelaciones
+
+```{r}
+acf(pelis_rating.ts, main = "ACF - Raiting promedio mensual")
+```
+
+**Comentario** Se observa un comportamiento con aparente patrón regular. Esto motiva a considerar que el mes del año podría tener un efecto sobre la duración de las películas. 
+
+\newpage
+
+## Autocorrlaciones parciales
+
+```{r}
+pacf(pelis_rating.ts, main = "PACF - Rating promedio mensual")
+```
+
+**Comentario** Se observa un pico claramente significativo en el rezago 2, el cual excede visiblemente las bandas de confianza. Este comportamiento sugiere la presencia de una dependencia lineal directa entre el valor actual del rating y su valor dos meses atrás.
+
+\newpage
+
+# Propuestas de modelos
+## Modelo 1: AR(2) con tendencia y duración 
+```{r}
+# Asegura sincronización
+min_length <- min(length(pelis_rating.ts), length(pelis_duracion.ts))
+
+# Extrae valores sin NA (ajustado para rezago 2)
+rating_vec <- as.numeric(pelis_rating.ts)[1:min_length]
+duracion_vec <- as.numeric(pelis_duracion.ts)[1:min_length]
+
+# Construcción de variables con rezago 2
+raiting_df_ar <- data.frame(
+  rating = rating_vec[3:min_length],
+  duracion = duracion_vec[3:min_length],
+  t = 3:min_length,
+  rating_lag2 = rating_vec[1:(min_length - 2)]
+)
+
+modelo_rating_trend_lag2 <- lm(rating ~ t + duracion + rating_lag2, data = raiting_df_ar)
+# Resumen del Modelo 1
+summary(modelo_rating_trend_lag2)
+```
+
+**Comentario** La tendencia muestra una caída constante y significativa del rating a lo largo del tiempo. La duración también influye negativamente en el rating. Por otro lado, el coeficiente asociado al rating con rezago 2 no resulta significativo, lo que indica que, a pesar de lo sugerido visualmente por la PACF, su efecto no aprecia una vez incluidos los otros factores. En conjunto, el modelo presenta un ajuste razonable ($R^2$ ajustado = 16.5%). No obstante, la falta de significancia del rezago 2 sugiere que un modelo diferente podría resultar más adecuado.
+
+\newpage
+## Modelo 2: ARIMA(2,0,0) con regresores (tendencia y duración)
+```{r}
+library(forecast)
+
+# Ajustar modelo ARIMA(2, 0, 0) con tendencia y duración
+modelo_arima_p2 <- Arima(
+  raiting_df_ar$rating,
+  order = c(2, 0, 0),
+  xreg = as.matrix(raiting_df_ar[, c("t", "duracion")])
+)
+# Resumen del Modelo 2
+summary(modelo_arima_p2)
+```
+
+**Comentario** Se utilizó la función `Arima()` del paquete `forecast`, que estima automáticamente los coeficientes de los términos autoregresivos a partir de los datos, facilitando incorporar una estructura temporal adecuada (en este caso ARIMA(2,0,0) con regresores externos). El modelo confirma una tendencia decreciente significativa a lo largo del tiempo y un efecto negativo débil pero significativo de la duración promedio de las películas. Aunque el análisis exploratorio con la PACF sugería incluir un rezago 2, el coeficiente AR(2) no resultó estadísticamente relevante, lo que sugiere que la principal dependencia temporal es de corto plazo (AR(1)).
+
+\newpage
+## Modelo 3: AR(1) con tendencia y duración
+```{r}
+# Sincroniza longitud
+min_length <- min(length(pelis_rating.ts), length(pelis_duracion.ts))
+
+# Vectores
+rating_vec <- as.numeric(pelis_rating.ts)[1:min_length]
+duracion_vec <- as.numeric(pelis_duracion.ts)[1:min_length]
+
+# Construcción de dataset con rezago 1
+raiting_df_ar1 <- data.frame(
+  rating = rating_vec[2:min_length],
+  rating_lag1 = rating_vec[1:(min_length - 1)],
+  duracion = duracion_vec[2:min_length],
+  t = 2:min_length
+)
+
+modelo_trend_lag1 <- lm(rating ~ t + duracion + rating_lag1, data = raiting_df_ar1)
+# Resumen del Modelo 3
+summary(modelo_trend_lag1)
+```
+
+**Comentario** Considerando los resultados anteriores, se ajustó un modelo de regresión lineal para explicar el rating mensual promedio a partir de una tendencia temporal, la duración promedio mensual de las películas y el valor del rating en el mes anterior (rezago 1). El modelo muestra una tendencia claramente decreciente en el tiempo, un posible efecto negativo de la duración y una dependencia estadísticamente significativa del rating anterior. El ajuste global es razonable ($R^2$ ajustado = 16.7%), en sentido en que es el mejor de los 3 propuestos.
+
+\newpage
+
+# Evaluación del modelo
+
+## Gráfico de líneas
+
+```{r}
+valores_ajustados <- fitted(modelo_trend_lag1)
+valores_reales <- raiting_df_ar1$rating
+plot(valores_reales, type = "l", col = "black", lwd = 2,
+     ylab = "Rating", xlab = "Tiempo", main = "Valores reales vs ajustados")
+lines(valores_ajustados, col = "red", lwd = 2)
+legend("topright", legend = c("Reales", "Ajustados"),
+       col = c("black", "red"), lty = 1, lwd = 2)
+```
+
+## Diagrama de dispersión
+
+```{r}
+plot(valores_reales, valores_ajustados,
+     xlab = "Rating real", ylab = "Rating ajustado",
+     main = "Dispersión: reales vs ajustados")
+abline(0, 1, col = "blue", lty = 2)  # Línea identidad
+
+```
+
+\newpage
+
+# Predicciones
+
+```{r}
+# Últimos valores conocidos
+ultimo_t <- max(raiting_df_ar1$t)
+ultimo_rating <- tail(raiting_df_ar1$rating, 1)
+ultima_duracion <- tail(raiting_df_ar1$duracion, 1)
+
+# Número de predicciones
+n_pred <- 24
+
+# Inicializa predicciones
+t_futuro <- (ultimo_t + 1):(ultimo_t + n_pred)
+
+# Suponemos que la duración promedio se mantiene constante
+dur_futuro <- rep(ultima_duracion, n_pred)
+
+# Inicializa vector de predicciones
+predicciones <- numeric(n_pred)
+rating_lag1 <- ultimo_rating  # el primer rating_lag1 es el último rating real
+
+# Genera predicciones recursivas
+for (i in 1:n_pred) {
+  new_data <- data.frame(
+    t = t_futuro[i],
+    duracion = dur_futuro[i],
+    rating_lag1 = rating_lag1
+  )
+  
+  pred <- predict(modelo_trend_lag1, newdata = new_data)
+  predicciones[i] <- pred
+  rating_lag1 <- pred  # se usa como rezago para el siguiente
+}
+
+
+# Datos reales
+valores_reales <- raiting_df_ar1$rating
+
+# Unimos
+serie_completa <- c(valores_reales, predicciones)
+
+# Eje de tiempo
+Time <- 1:length(serie_completa)
+
+plot(Time, serie_completa, type = "l", col = "black", lwd = 2,
+     ylab = "Rating", xlab = "Tiempo (meses)", main = "Serie real + predicción (2025-2026)")
+abline(v = length(valores_reales), col = "blue", lty = 2)  # separa real de predicción
+lines((length(valores_reales) + 1):length(serie_completa), predicciones, col = "red", lwd = 2)
+legend("bottomleft", legend = c("Real", "Predicción"),
+       col = c("black", "red"), lty = 1, lwd = 2)
+```
+
+\newpage
+
+# Conslusiones
+
+- Una de las observaciones más claras en el Raiting de las películas fue la presencia de una tendencia decreciente en el tiempo, la cual resultó ser estadísticamente significativa en todos los modelos probados. Esto sugiere que el paso del tiempo tiene un efecto directo sobre la calificación promedio de las películas.
+
+- Aunque el análisis de la función de autocorrelación parcial (PACF) sugería una posible dependencia en el rezago 2, al incluirlo explícitamente en los modelos se observó que su coeficiente no resultó significativo. En cambio, el rezago 1 mostró una influencia más clara y consistente, lo que condujo a proponer finalmente un modelo AR(1) con tendencia y duración.
+
+- Adicionalmente, se experimentó con la inclusión de efectos estacionales mediante variables dummy para meses y trimestres, pero no se observaron mejoras sustanciales en la significancia general del modelo ni aumentos relevantes en el poder explicativo. Por razones de claridad y brevedad del informe, se optó por no incluir dichos modelos en el cuerpo principal del análisis.
+
+- En cuanto a la duración promedio de las películas, su efecto sobre el rating fue negativo y marginalmente significativo. Esto sugiere que, si bien puede influir, no es el principal determinante de la calificación mensual.
+
+En resumen, el modelo propuesto logra capturar algunos de los componentes sistemáticos del comportamiento del rating, en particular su tendencia y autocorrelación inmediata, pero no explica la totalidad de su variabilidad, lo que sugiere que podrían incorporarse en el futuro otras variables externas o estructurales para enriquecer el análisis.
+
+

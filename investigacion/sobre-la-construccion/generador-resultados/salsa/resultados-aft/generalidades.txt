@@ -1,0 +1,36 @@
+*frankie-ruiz---la-cura-(karaoplay.com)-norm.csv                     				24573                  7
+*the-latin-brothers---patrona-de-los-reclusos-(midi)-(karaoplay.com)-norm.csv                   24303                  5
+*comprendelo---luis-enrique-(karaoplay.com)-norm.csv                     			22589                  6
+*richie-ray---aguzate-(karaoplay.com)-norm.csv                     				22200                  4
+
+*the-latin-brothers---la-guayaba-(karaoplay.com)-norm.csv                     			20736                  3
+*celia-cruz---toro-mata-(karaoplay.com)-norm.csv                     				19283                  5
+
+
+*hector-lavoe---déjala-que-siga-(karaoplay.com)-norm.csv                     			18242                  6
+*gran-combo---la-loma-del-tamarindo-(karaoplay.com)-norm.csv                     		16847                  8
+
+
+*orquesta-guayacán---un-vestido-bonito-(karaoplay.com)-norm.csv                     		16257                  7
+
+
+*rubén-blades---pedro-navaja-(karaoplay.com)-norm.csv                     			14490                  6
+*jerry-rivera---amores-como-el-nuestro-(karaoplay.com)-norm.csv                     		14458                  6
+*frankie-ruiz---amor-de-un-momento-(karaoplay.com)-norm.csv                     		14348                  7
+*el-gran-combo-de-puerto-rico---me-libere-(karaoplay.com)-norm.csv                     		13810                  6
+*frankie-ruiz---quiero-llenarte-(karaoplay.com)-norm.csv                     			13751                  6
+*the-latin-brothers---sobre-las-olas-(karaoplay.com)-norm.csv                     		13744                  7
+
+
+|   Seg  | Compases | Semidifusas |
+| :----: | :------: | :---------: |
+|    1   |     1    |      8      |
+|    2   |     2    |      16     |
+|    3   |     4    |      32     |
+|    4   |     8    |      64     |
+|    5   |    16    |     128     |
+|    6   |    32    |     256     |
+|    7   |    64    |     512     |
+|    8   |    128   |     1024    |
+|    9   |    256   |     2048    |
+

@@ -1,0 +1,67 @@
+-------------------------- Inicio de reportes
+Durante el primer mes de servicio social, me familiaricé con el proyecto de investigación en el que se desarrolla un modelo predictivo para estimar la probabilidad de deserción estudiantil con base en datos académicos, demográficos y del entorno social. Para ello, realicé la lectura y análisis de la documentación existente, lo que me permitió comprender la estructura y objetivos del proyecto. Además, documenté y comenté códigos ya desarrollados con el fin de mejorar su claridad y mantenimiento, facilitando su uso y comprensión para futuros colaboradores.
+
+Adicionalmente, colaboré en el mantenimiento del espacio de trabajo, asegurando que los pizarrones del laboratorio estuvieran limpios al final de cada jornada y reabasteciendo los garrafones de agua cuando era necesario, contribuyendo así a un ambiente ordenado y funcional para las actividades académicas y de investigación.
+
+-------------------------
+
+Durante este periodo, trabajé en el desarrollo de un ejecutable destinado a servir como etapa intermedia en el procesamiento de datos antes de su integración en el modelo predictivo. Este ejecutable se conformó a partir de una combinación de programas preexistentes y nuevos desarrollos, por lo que dediqué tiempo a analizar y comprender el funcionamiento de los códigos previos, documentándolos de manera estructurada para orientarlos hacia la nueva implementación. Esta documentación permitió optimizar la integración de los programas y mejorar la coherencia del flujo de datos dentro del sistema.
+
+Asimismo, continué colaborando en el mantenimiento del laboratorio, asegurando la limpieza de los pizarrones al finalizar las jornadas y reponiendo los garrafones de agua cuando era necesario, contribuyendo al buen funcionamiento del espacio de trabajo.
+
+-----------------------------
+
+Durante este periodo, me enfoqué en el desarrollo de nuevos códigos orientados a la creación de una interfaz de usuario que facilitara la interacción con el ejecutable y optimizara el tratamiento de futuras bases de datos. Dado que era la primera vez que trabajaba en la implementación de un ejecutable con interfaz gráfica, dediqué tiempo a investigar y leer documentación sobre bibliotecas especializadas en la creación de interfaces en Python, centrándome específicamente en CustomTkinter. Esto me permitió comprender su funcionamiento y aplicarlo de manera efectiva en el desarrollo del proyecto.
+
+Además del aprendizaje técnico, esta etapa me ayudó a dimensionar la estructura que debe tener una investigación cuando involucra un equipo de trabajo, comprendiendo la importancia de la documentación, la comunicación y la coordinación entre los distintos miembros para asegurar el buen desarrollo
+
+------------------
+
+
+Durante este periodo, terminé de desarrollar el ejecutable, integrando los códigos que había realizado junto con los códigos de mis compañeros. Realizamos un "empaquetado" para tener un archivo .exe, que es al que llamamos ejecutable.
+
+Asimismo, continué colaborando en el mantenimiento del laboratorio, asegurando la limpieza de los pizarrones al finalizar las jornadas y reponiendo los garrafones de agua cuando era necesario, contribuyendo al buen funcionamiento del espacio de trabajo.
+
+------------------
+
+Durante este periodo, con todos los ejecutables ya terminados e integrados en el sistema, me enfoqué en la etapa de ejecución y análisis de resultados. Al inicio del semestre recibimos los datos actualizados de los estudiantes. Mi principal tarea consistió en ejecutar los programas desarrollados para procesar adecuadamente los datos dentro del flujo del modelo predictivo de deserción estudiantil.
+Asimismo, continué colaborando en el mantenimiento del laboratorio, procurando que los pizarrones se mantuvieran limpios al finalizar las jornadas y reponiendo los garrafones de agua cuando era necesario, contribuyendo así al orden y al adecuado funcionamiento del espacio de trabajo.
+
+-------------------
+
+
+Durante este periodo, participé en el desarrollo y aplicación de actividades didácticas dirigidas a estudiantes de la Academia de Matemáticas y Ciencias de Chihuahua (AMCCh), con el propósito de que interactuaran de manera práctica con los temas vistos durante su ciclo escolar. En una primera ocasión, once alumnos visitaron el laboratorio, donde realizaron ejercicios relacionados con programación y análisis de datos; posteriormente, nosotros acudimos a las instalaciones de la Academia para continuar con actividades orientadas a reforzar conceptos científicos y matemáticos mediante la experimentación y la participación activa.
+
+De la misma forma que los meses anteriores, colaboré con el manteniemiento del laboratorio
+
+-------------- fin de reportes
+
+
+Con respecto a todos los informes que te adjunto, ayudame a realizar el iunforme final para mi servicio social, en general, necesito redactar los siguientes campos, pára cada uno te dejo ideas centrales para que las desarrolles acorde a un contexto de infrome de servicio social y que concuerdenc on lo presentado en los reportes
+
+\section{Introducción}
+% Resumir el contenido del proyecto de servicio social
+- El proyecto es sobre descercion escolar y pretende predecir la probabilidad de que un alumno decerte de su educacion tomando com referencia sus datos historicos academicos asi como el contexto socail en el que se desenvuelve, entendiendo ese contexto atravezx de su grado de marginacion registrado por instituciones publicas y sus datos academicos en dos secciones: 1 los recabados por la universidad a la hora de la inscripcion y 2:el historial de calificaciones que lleve en al misma uach. Con esto se pueden identificar de manera mas presisa a qué estudiantes debemnos enfocar programas de apoyo y en qué condiciones se encuentran esos estudiantes
+\section{Justificación}
+% Explicar la razón del porque se desarrolla el proyecto
+- utiliza ideas de lo anterior para redactar esta parte, solo emcniona de alguna amnera que brinda a estudiantes una aplicaicon directa real y profecional de lo que hace alguien que se desempeña proceaiconalmente en amtemtagicas
+\section{Objetivos}
+% DEscribir los objetivos del proyecto de servicio social
+\section{Metodología}
+% Describir el proyecto, acciones desarrolladas y recursos utilizados
+- En general, se recibe la base de datos academicos proprocionada por kla misma uach de todas las facultades de la misma. Estos datos pasan por diversos porcesos tanto de tratamiento como de ciencia de datos, con al finalidad de, una vez normalizados, alimentar una red neuronal que a travez de iteraciones de epocas pueda entrenarse y descreibir correctametne la probablidad de deserciona a prtir de como se ha comportadol adesercion a lio largo de los años 
+- Cada estudainte se mapea en el estado de chihuahua apra poder determinar su grado de marginacion, luego se analizan y estandarizan sus promedios y calificaciones poasadas 
+- se utilizan computadoras del mismo laboratorio con sistema linux integrado, se implkementan herramientas de programacion tante de manera local con scripts de python como en linea en google colaboratory 
+- todo el tratamiento de los datos y programas necesarios apra que el modelo funcione ya están desarrollados, es un trabajo de investigacion que lleva elaborando el dr jose luis herrera desde hace ya tiempo, mucho de la labor de los serviicons sociales tiene que ver con optimizar el proyecto realizado, realizar corecciones para ajilizar la metodologia y elaborar ejecutables (empaquetados de programas que permiten que la manipulacion de los datos se realice de manera automatizada) 
+\section{Resultados}
+% Detallar los logros alcanzados cuantitativamente y cualitativamente en el impacto social y académico 
+- En mi caso, me tocó desarrollar el ejecutable que, una vez que se han determiando los grados de amrginacion apra cada estudainte perteneciente a una generacion seleccionada (Puede hacerlo para varias generaciones), realiza los calculos y concatenciones necesariuas para elaborar una base de datos que ocntiene, para cada estudainte: sus datos cademicos, sus promedios por semestre en la uach e indices de avance con respecto a esos promedios y su grado de marginacion. Este documetno es el que alimenta despues otros programas que permiten determniar el nuemro entre 0 y 1 que descrube la probabilidad de dese4rcion del estudainte en cuestion 
+
+\section{Conclusiones}
+% Apreciaciones o percepciones acerca del proyecto del servicio social
+
+- Es gratificante poder desenvolverme enc osas tan apegadas a el area de un amtematico que me permitan tenr un panorama general de que hace realmetne alguien que estudia mi carrera cunando se desempela en un ambito profecional
+
+- Me brindó una plataforma fimre y segura para desarrolalr nuevos concoimentos enfocados a el area profecional en el que me gustai adesempeñarme, ademas de que me permitio formalizar loq ue me gustaria hacer cmo tesis e incluso me oporineto para mis gfururos estudios de maestria
+
+- El proyecto que se desarorola en el alboratorio de ciecnia de datos es una oprotunidad unica para estudiantes que tienen interes en la cincia de datos y la aplicacion fromal de amtematicas en el ambito de la investigacion

@@ -1,0 +1,2222 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{listings}
+\usepackage{xcolor} % Opcional, para colorear el código
+
+\lstset{
+  language=C,              % Lenguaje del código
+  basicstyle=\ttfamily\small, % Fuente monoespaciada y tamaño pequeño
+  keywordstyle=\color{blue}, % Palabras clave en azul
+  commentstyle=\color{gray}, % Comentarios en gris
+  stringstyle=\color{red},   % Cadenas de texto en rojo
+  numbers=left,              % Numeración de líneas a la izquierda
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,              % Número de líneas entre numeración
+  numbersep=5pt,
+  showstringspaces=false,   % No mostrar símbolos por espacios en strings
+  breaklines=true,          % Romper líneas largas automáticamente
+  frame=single              % Cuadro alrededor del código
+}
+
+
+\title{\textbf{RECETAS NÚMERICAS EN C}}
+\author{EL ARTE DE LA COMPUTACIÓN CIENTÍFICA\\\textit{traducido por \textbf{natits}}}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\chapter{Preliminares}
+
+\section{Introducción}
+
+Este libro, al igual que su predecesor, tiene como objetivo enseñarte métodos de computación numérica que sean prácticos, eficientes y, en la medida de lo posible, elegantes. Suponemos a lo largo de este libro que tú, el lector, tienes tareas específicas que quieres resolver. Nuestro trabajo es educarte sobre cómo proceder. A veces podríamos redirigirte brevemente hacia un sendero particularmente bello pero poco útil; sin embargo, en general, te guiaremos por caminos principales que te lleven a destinos prácticos.A lo largo del libro encontrarás opiniones firmes: te diremos qué deberías hacer y qué no. Este tono prescriptivo refleja decisiones conscientes de nuestra parte, y esperamos que no lo encuentres molesto. No afirmamos que nuestros consejos sean infalibles; más bien, respondemos a una tendencia común en la literatura académica de computación, que suele presentar cada método posible sin ofrecer juicios prácticos sobre su mérito relativo. Nosotros, por el contrario, sí emitimos juicios cuando podemos. Con la experiencia, tú mismo formarás tu propia opinión sobre qué tan confiables son nuestros consejos.
+
+\medskip
+
+Suponemos también que sabes programar en C, ya que ese es el lenguaje de esta versión de \textit{Numerical Recipes} (Segunda Edición). 
+Existe también una versión separada en \texttt{FORTRAN} (Segunda Edición), si prefieres programar en ese lenguaje. Versiones anteriores de \textit{Numerical Recipes} en \texttt{Pascal} y ejemplos en \texttt{BASIC} también están disponibles; aunque no contienen el material adicional de la segunda edición en C y \texttt{FORTRAN}, siguen siendo útiles si tu lenguaje de preferencia es \texttt{Pascal} o \texttt{BASIC}.
+
+Cuando incluimos programas en el texto, se ven así:
+
+\begin{lstlisting}[language=C,caption={Cálculo de las fases lunares}]
+#include <math.h>
+#define RAD (3.14159265/180.0)
+
+void flmoon(int n, int nph, long *jd, float *frac)
+/*
+Nuestros programas comienzan con un comentario introductorio que resume su propósito
+y explica cómo debe llamarse. Esta rutina calcula las fases de la luna. Dados un entero
+n y un código nph para la fase deseada (nph = 0 para luna nueva, 1 para cuarto creciente,
+2 para luna llena, 3 para cuarto menguante), la rutina devuelve el número juliano jd y
+la fracción del día frac que se le suma, correspondiente a la enésima aparición de dicha
+fase desde enero de 1900. Se asume la hora media de Greenwich.
+*/
+{
+    void nrerror(char error_text[]);
+    int i;
+    float am,as,c,t,t2,xtra;
+
+    c = n + nph/4.0;      // Así es como comentamos una línea individual.
+    t = c / 1236.85;
+    t2 = t * t;
+    as = 359.2242 + 29.105356 * c;     // No estás realmente obligado a entender
+    am = 306.0253 + 385.816918 * c     // este algoritmo, ¡pero funciona!
+         + 0.010730 * t2;
+    *jd = 2415020 + 28 * n + 7 * nph;
+    xtra = 0.75933 + 1.53058868 * c + ((1.178e-4) - (1.55e-7) * t) * t2;
+
+    if (nph == 0 || nph == 2)
+        xtra += (0.1734 - 3.93e-4 * t) * sin(RAD * as) - 0.4068 * sin(RAD * am);
+    else if (nph == 1 || nph == 3)
+        xtra += (0.1721 - 4.0e-4 * t) * sin(RAD * as) - 0.6280 * sin(RAD * am);
+    else nrerror("nph is unknown in flmoon"); // Así es como indicamos condiciones de error.
+
+    i = (int)(xtra >= 0.0 ? floor(xtra) : ceil(xtra - 1.0));
+    *jd += i;
+    *frac = xtra - i;
+}
+\end{lstlisting}
+
+\medskip
+
+Si la sintaxis de la definición de funciones mostrada arriba te resulta extraña, entonces probablemente estés acostumbrado a la sintaxis antigua de Kernighan y Ritchie ("K\&R"), en lugar de la más reciente ANSI C. En esta edición adoptamos ANSI C como nuestro estándar. Podrías revisar la Sección \S1.2, donde se discuten con más detalle los prototipos de funciones en ANSI C.
+
+\medskip
+
+Observa nuestra convención para manejar todos los errores y casos excepcionales con una instrucción como \texttt{nrerror("some error message");}. La función \texttt{nrerror()} forma parte de un pequeño archivo de utilidades, \texttt{nrutil.c}, listado en el Apéndice B al final del libro. Este apéndice incluye varias otras utilidades que describiremos más adelante en este capítulo. La función \texttt{nrerror()} imprime el mensaje de error indicado en tu dispositivo \texttt{stderr} (usualmente la pantalla del terminal), y luego invoca la función \texttt{exit()}, que termina la ejecución. La función \texttt{exit()} está en todas las bibliotecas de C que conocemos; pero si la encuentras ausente, puedes modificar \texttt{nrerror()} para que haga cualquier otra cosa que detenga la ejecución. Por ejemplo, puedes hacer que haga una pausa para recibir entrada desde el teclado, y luego interrumpir la ejecución manualmente. En algunas aplicaciones, querrás modificar \texttt{nrerror()} para manejar errores de forma más sofisticada, por ejemplo para transferir el control a otro punto, con una bandera de error o un código de error establecido.
+
+\medskip
+
+Tendremos más que decir sobre el lenguaje de programación C, sus convenciones y estilo, en \S1.1 y \S1.2.
+
+\subsection{Entorno computacional y validación de programas}
+
+Nuestro objetivo es que los programas de este libro sean lo más portables posible, entre diferentes plataformas (modelos de computadora), diferentes sistemas operativos y diferentes compiladores de C. El lenguaje C fue diseñado con este tipo de portabilidad en mente. Sin embargo, hemos descubierto que no hay sustituto para comprobar todos los programas en una variedad de compiladores, en el proceso revelando diferencias en la estructura o contenido de las bibliotecas, e incluso diferencias ocasionales en la sintaxis permitida. Como sustitutos de la gran cantidad de combinaciones posibles, hemos probado todos los programas de este libro en las combinaciones de máquinas, sistemas operativos y compiladores que se muestran en la tabla adjunta. Más generalmente, los programas deberían ejecutarse sin modificaciones en cualquier compilador que implemente el estándar ANSI C, como se describe por ejemplo en el excelente libro de Harbison y Steele~\cite{harbison}. Con pequeñas modificaciones, nuestros programas deberían ejecutarse en cualquier compilador que implemente el estándar \textit{de facto} K\&R~\cite{kr_standard}. Un ejemplo del tipo de incompatibilidad trivial a tener en cuenta es que ANSI C requiere que las funciones de asignación de memoria \texttt{malloc()} y \texttt{free()} se declaren mediante la cabecera \texttt{stdlib.h}; algunos compiladores más antiguos requieren que se declaren con el archivo de cabecera \texttt{malloc.h}, mientras que otros las consideran como funciones inherentes al lenguaje y no requieren cabecera alguna.
+
+\medskip
+
+Al validar los programas, hemos tomado el código fuente directamente de la versión legible por máquina del manuscrito del libro, para disminuir la posibilidad de errores tipográficos. Los programas “driver” o de demostración que usamos como parte de nuestras validaciones están disponibles por separado como el \textit{Numerical Recipes Example Book (C)}, así como en formato legible por máquina. Si planeas usar más de unos pocos programas de este libro, o si planeas usar programas de este libro en más de una computadora diferente, entonces podrías encontrar útil obtener una copia de estos programas de demostración.
+
+\medskip
+
+Por supuesto, sería ingenuo afirmar que no hay errores en nuestros programas, y no hacemos tal afirmación. Hemos sido muy cuidadosos y nos hemos beneficiado de la experiencia de muchos lectores que nos han escrito. Si encuentras un nuevo error, ¡por favor documéntalo y háznoslo saber!
+
+\subsection{Compatibilidad con la Primera Edición}
+
+Si estás acostumbrado a las rutinas de \textit{Numerical Recipes} de la Primera Edición, ten la seguridad de que casi todas ellas siguen aquí, con los mismos nombres y funcionalidades, a menudo con mejoras importantes en el propio código. Además, esperamos que pronto te familiarices igualmente con las capacidades añadidas de las más de 100 rutinas que son nuevas en esta edición.
+
+\medskip
+
+Hemos retirado un pequeño número de rutinas de la Primera Edición, aquellas que creemos que han sido claramente superadas por métodos mejores implementados en esta edición. Una tabla, a continuación, enumera las rutinas retiradas y sugiere reemplazos.
+
+\medskip
+
+Los usuarios de la Primera Edición también deben saber que algunas rutinas comunes a ambas ediciones han sufrido cambios en sus interfaces de llamada, por lo que no son directamente “compatibles sin modificaciones”. Una lista bastante completa es: \texttt{chsone}, \texttt{chstwo}, \texttt{covsrt}, \texttt{dfpmin}, \texttt{laguer}, \texttt{lfit}, \texttt{memcof}, \texttt{mrqcof}, \texttt{mrqmin}, \texttt{pzextr}, \texttt{ran4}, \texttt{realft}, \texttt{rzextr}, \texttt{shoot}, \texttt{shootf}. Puede que haya otras (dependiendo en parte de qué impresión de la Primera Edición se tome para la comparación). Si has escrito software de complejidad apreciable que depende de rutinas de la Primera Edición, \textit{no} recomendamos reemplazarlas ciegamente por las rutinas correspondientes en este libro. Recomendamos que cualquier nuevo esfuerzo de programación utilice las nuevas rutinas.
+
+\subsection{Acerca de las referencias}
+
+Encontrarás referencias y sugerencias para lecturas adicionales al final de la mayoría de las secciones de este libro. Las referencias se citan en el texto mediante números entre corchetes como este: [3].
+
+\medskip
+
+Dado que los algoritmos computacionales a menudo circulan de forma informal durante bastante tiempo antes de aparecer en una publicación formal, la tarea de descubrir la “literatura primaria” es a veces bastante difícil. No hemos intentado hacer esto, y no pretendemos alcanzar ningún grado de exhaustividad bibliográfica en este libro. Para temas en los que existe una cantidad considerable de literatura secundaria (discusión en libros de texto, revisiones, etc.), hemos limitado conscientemente nuestras referencias a unas pocas fuentes secundarias útiles, especialmente aquellas con buenas referencias a la literatura primaria. Cuando la literatura secundaria existente es insuficiente, damos referencias a algunas fuentes primarias que están destinadas a servir como punto de partida para lecturas adicionales, no como bibliografías completas del área.
+
+\medskip
+
+El orden en que se listan las referencias no es necesariamente significativo. Refleja un compromiso entre listar las referencias citadas en el orden en que aparecen y listar sugerencias para lecturas adicionales en un orden aproximadamente priorizado, comenzando con las fuentes más útiles.
+
+\medskip
+
+Las tres secciones restantes de este capítulo repasan algunos conceptos básicos de programación (estructuras de control, etc.), discuten un conjunto de convenciones específicas de C que hemos adoptado en este libro, e introducen algunos conceptos fundamentales en análisis numérico (error de redondeo, etc.). Luego, entramos en el material sustantivo del libro.
+
+\newpage
+
+\section{Organización de programas y estructuras de control}
+
+A veces nos gusta señalar las analogías estrechas entre los programas de computadora, por un lado, y la poesía escrita o las partituras musicales, por el otro. Todos ellos se presentan como medios visuales, símbolos en una página bidimensional o en una pantalla de computadora. Sin embargo, en los tres casos, la representación visual bidimensional, \textit{congelada en el tiempo}, comunica (o se supone que comunica) algo bastante diferente: es decir, un proceso que \textit{se despliega en el tiempo}. Un poema está destinado a ser leído; la música, a ser interpretada; un programa, a ser ejecutado como una serie secuencial de instrucciones.
+
+\medskip
+
+En los tres casos, el objetivo de la comunicación, en su forma visual, es un ser humano. El objetivo es transmitirle, tan eficientemente como sea posible, el mayor grado de comprensión anticipada sobre cómo se desplegará el proceso. En la poesía, este objetivo humano es el lector. En la música, es el intérprete. En la programación, es el usuario del programa.
+
+\medskip
+
+Ahora bien, podrías objetar que el objetivo de la comunicación de un programa no es un humano sino una computadora, que el usuario del programa es solo un intermediario irrelevante, alguien que alimenta a la máquina. Este es quizá el caso cuando un ejecutivo introduce un disquete en una computadora y carga un programa opaco en formato binario ejecutable. A esa computadora, en ese caso, no le importa si el programa fue escrito con “buenas prácticas de programación” o no.
+
+\medskip
+
+Sin embargo, nuestra visión para ti, lector de este libro, es bastante diferente. Necesitas saber, o querer saber, no solo \textit{qué} hace un programa, sino también \textit{cómo} lo hace, para que puedas modificarlo y adaptarlo a tu aplicación particular. Necesitas que otros puedan ver lo que has hecho, para que puedan criticarlo o mejorarlo. Por tanto, el objetivo deseado de una buena práctica de programación es que el código sea \textit{mantenible} o \textit{reutilizable}, no el éxito de la ejecución del programa en sí, que seguramente lo es gracias a la máquina, no al humano.
+
+\medskip
+
+Esto también implica reconocer que la poesía, la música y la programación —las tres construcciones simbólicas del lenguaje— tienen estructuras jerárquicas con muchos niveles diferentes. (Estas jerarquías) van desde unidades pequeñas (morfemas) hasta unidades más grandes. En los programas, estas unidades van desde caracteres hasta líneas; las líneas se agrupan en frases, las frases en sentencias; las sentencias en bloques; y los bloques en módulos o funciones de nivel superior. Las notas musicales forman compases, luego frases, luego secciones, sinfonías, etc. 
+
+\medskip
+
+Entonces las sentencias de programa, como \texttt{k=(a[j+1]=b+c/3.0);} pueden escribirse. Aquí, el mejor consejo de programación es simplemente \textit{sé claro}, o (de forma correspondiente) \textit{no seas demasiado astuto}. Podrías estar momentáneamente orgulloso de ti mismo al escribir la línea:
+
+\begin{lstlisting}[language=C]
+k=(2-3)+(1+3+4)/2;
+\end{lstlisting}
+
+si quieres permutar cíclicamente uno de los valores \texttt{j = (0, 1, 2)} en \texttt{k = (1, 2, 0)}. Luego te arrepentirás, cuando intentes entender esa línea. Mejor —y probablemente más rápido— es:
+
+\begin{lstlisting}[language=C]
+k+=1;
+if (k == 3) k=0;
+\end{lstlisting}
+
+Muchos estilistas de programación incluso argumentarían a favor de la versión literalmente detallada:
+
+\begin{lstlisting}[language=C]
+switch (j) {
+  case 0: k=1; break;
+  case 1: k=2; break;
+  case 2: k=0; break;
+  default: {
+    fprintf(stderr,"unexpected value for j");
+    exit(1);
+  }
+}
+\end{lstlisting}
+
+porque es tanto más clara como además protegida contra suposiciones erróneas sobre los posibles valores de \texttt{j}. Nuestra preferencia entre las implementaciones es la del medio.
+
+\medskip
+
+En este ejemplo simple, de hecho hemos recorrido varios niveles de jerarquía: las sentencias frecuentemente vienen en “grupos” o “bloques” que tienen sentido solo cuando se toman como un todo. El fragmento del medio anterior es un ejemplo. Otro es:
+
+\begin{lstlisting}[language=C]
+swap=a[i];
+a[i]=b[j];
+b[j]=swap;
+\end{lstlisting}
+
+lo cual tiene sentido inmediato para cualquier programador como el intercambio de dos variables, mientras que:
+
+\begin{lstlisting}[language=C]
+ans=sum=0.0;
+n=1;
+\end{lstlisting}
+
+es muy probable que sea una inicialización de variables antes de un proceso iterativo. Este nivel de jerarquía en un programa suele ser evidente a simple vista. Es una buena práctica de programación agregar comentarios a este nivel, por ejemplo, “inicializar” o “intercambiar variables”.
+
+\medskip
+
+El siguiente nivel es el de \textit{estructuras de control}. Estas son cosas como la construcción \texttt{switch} del ejemplo anterior, bucles \texttt{for}, y demás. Este nivel es suficientemente importante, relacionado con la estructura jerárquica del código de este libro, que volveremos a él más adelante en este capítulo.
+
+\medskip
+
+Aún más alto en la jerarquía, tenemos funciones y módulos, y la visión global de la organización del código. En el análogo musical, estamos ahora en el nivel de movimientos y obras completas. En estos niveles, \textit{modularización} y \textit{encapsulamiento} se convierten en conceptos importantes de programación, el objetivo siendo que los programas interactúen unos con otros solo mediante interfaces claramente definidas. Una buena práctica de modularización es esencial para el éxito de proyectos grandes y complicados, especialmente aquellos que requieren esfuerzos de más de un programador. También es útil (aunque no tan esencial) en las tareas menos masivas de programación que se encuentran en otras partes de este libro.
+
+\medskip
+
+Algunos lenguajes de computadora, como Modula-2 y C++, promueven una buena modularización en formas que están ausentes en C. En Modula-2, por ejemplo, funciones, definiciones de tipo y estructuras de datos pueden encapsularse en “módulos” que se comunican mediante interfaces públicas declaradas, y cuyos funcionamientos internos están ocultos del resto del programa~\cite{modula2}. En el lenguaje C++, el concepto clave es la \textit{clase}, una generalización definida por el usuario de tipos de datos que proporciona ocultamiento de datos, inicialización automática, manejo de memoria, gestión dinámica de tipos, y sobrecarga de operadores (es decir, la extensión definida por el usuario de operadores como \texttt{+} y \texttt{-} para que actúen en estructuras definidas por el usuario)~\cite{cppclasses}. Definir apropiadamente las estructuras de datos que se pasan entre unidades de programa, las clases, puede clarificar y delimitar las interfaces públicas de estas unidades, reduciendo las posibilidades de errores de programación y también permitiendo un grado considerable de verificación tanto en tiempo de compilación como en tiempo de ejecución.
+
+\medskip
+
+Más allá de la modularización, aunque basándose en ella, están los conceptos de \textit{programación orientada a objetos}. Aquí, un lenguaje de programación como C++ o Turbo Pascal 5.5~\cite{oop} permite que la interfaz pública de un módulo acepte redefiniciones de tipos o acciones, y que estas redefiniciones se compartan desde el nivel más alto del módulo hasta el más bajo (lo que se llama \textit{polimorfismo}). Por ejemplo, una rutina escrita para invertir una matriz de números reales podría —dinámicamente, en tiempo de ejecución— manejar matrices complejas también, usando tipos de datos con componentes reales e imaginarios y sus definiciones correspondientes.
+
+\medskip
+
+Conceptos adicionales como \textit{herencia} (la habilidad de definir un tipo de datos que “hereda” toda la estructura de otro tipo de datos, más funcionalidad adicional), y \textit{extensibilidad de objetos} (la habilidad de añadir funcionalidad a un módulo sin acceso a su código fuente, por ejemplo, en tiempo de ejecución), también entran en juego.
+
+\medskip
+
+Aunque no pretendemos introducirte en los objetivos más amplios de la programación modular y orientada a objetos, los fragmentos de código de este libro no son módulos, por al menos dos razones. Primero, el lenguaje C realmente no realiza este tipo de encapsulamiento. Segundo, como sabes, el lector necesita ver cómo se implementan cosas como funciones, no solo una declaración estándar o un encabezado. Si el lector no puede ver la implementación, inevitablemente se perdería el control de alto nivel del flujo del programa. Por tanto, mostramos fragmentos funcionales completos, no módulos encapsulados o definidos por clases.
+
+\subsection{Estructuras de control}
+
+La ejecución de un programa ocurre en el tiempo, pero no estrictamente en el orden lineal en que las sentencias están escritas. Las sentencias de programa que afectan el orden en que se ejecutan otras sentencias, o que afectan si se ejecutan o no, se llaman \textit{sentencias de control}. Las sentencias de control nunca tienen mucho sentido por sí solas. Solo tienen sentido en el contexto de los grupos o bloques de sentencias que a su vez controlan. Si piensas en esos bloques como párrafos que contienen oraciones, entonces las sentencias de control pueden pensarse como la sangría del párrafo y la puntuación entre oraciones, no como las palabras dentro de las oraciones.
+
+\medskip
+
+Ahora podemos decir cuál es el objetivo de la programación estructurada. Es: \textit{hacer que el control del programa sea manifiestamente visible en la presentación visual del programa}. Puedes ver que este objetivo no tiene nada que ver con cómo la computadora ve el programa. Como ya se dijo, a las computadoras no les importa si usas programación estructurada o no. Sin embargo, a los lectores humanos \textit{sí} les importa. A ti mismo también te importará, una vez que descubras lo mucho más fácil que es perfeccionar y depurar un programa bien estructurado que uno cuya estructura de control es oscura.
+
+\medskip
+
+Logras el objetivo de la programación estructurada de dos maneras complementarias. Primero, te familiarizas con el pequeño número de estructuras de control esenciales que aparecen una y otra vez en programación, y que por tanto tienen representaciones convenientes en la mayoría de los lenguajes de programación. Deberías aprender a pensar tus tareas de programación, en la medida de lo posible, exclusivamente en términos de estas estructuras de control estándar. Al escribir programas, deberías adquirir el hábito de representar esas estructuras estándar de forma coherente y convencional.
+
+\medskip
+
+\textit{“¿Esto no inhibe la creatividad?”}, preguntan a veces nuestros estudiantes. Sí, igual que la creatividad de Mozart fue inhibida por la forma sonata, o la de Shakespeare por los requerimientos métricos del soneto. El punto es que la creatividad, cuando se pretende comunicar, ama vivir bajo las inhibiciones de restricciones apropiadas de formato.
+
+\medskip
+
+Segundo, deberías evitar, en la medida de lo posible, sentencias de control que hagan difícil ver el flujo del programa de un vistazo. Esto significa, en la práctica, que \textit{deberías evitar las sentencias con saltos y las instrucciones \texttt{goto}}. Es el \texttt{goto} lo que interrumpe el flujo (aunque también interrumpa la lectura de un programa); la sentencia nombrada también lo hace, pero en menor grado. De hecho, cada vez que encuentres una sentencia nombrada en un programa, pronto desarrollarás una sensación de desagrado y una pregunta en tu mente: \textit{¿por qué está esto aquí?} Porque el flujo se está rompiendo.
+
+\medskip
+
+Entonces, ¿de dónde viene el control del flujo en una rama a esta línea, y bajo qué circunstancias esa interrupción del flujo era inevitable?
+
+\section{Algunas convenciones de C para la computación científica}
+
+El lenguaje C fue diseñado originalmente para programación de sistemas, no para computación científica. En comparación con otros lenguajes de programación de alto nivel, C sitúa al programador “muy cerca de la máquina” en varios aspectos. Es rico en operadores, dando acceso directo a la mayoría de las capacidades de un conjunto de instrucciones en lenguaje ensamblador. Tiene una gran variedad de tipos de datos intrínsecos (enteros cortos y largos, con y sin signo; números reales en precisión simple y doble; tipos puntero; etc.) y una sintaxis concisa para efectuar conversiones e indirectas. Define una aritmética sobre punteros (direcciones) que se adapta elegantemente al direccionamiento por arreglos y es altamente compatible con la estructura de registros de índice de muchas computadoras.
+
+\medskip
+
+La portabilidad siempre ha sido otro punto fuerte del lenguaje C. C es el lenguaje subyacente del sistema operativo UNIX; tanto el lenguaje como el sistema operativo han sido ahora implementados en literalmente cientos de arquitecturas diferentes. La universalidad, portabilidad y flexibilidad del lenguaje han atraído a números crecientes de científicos e ingenieros. Es comúnmente usado para controlar instrumentos científicos y hardware en tiempo real, a menudo en parte debido al hecho de que el núcleo estándar de UNIX es menos costoso que un sistema operativo completo para este propósito.
+
+\medskip
+
+El uso de C para cálculos científicos de alto nivel como análisis de datos, modelado y trabajo numérico en punto flotante ha evolucionado de forma más lenta. Esto se debe en parte a la posición histórica favorecida del FORTRAN como la lengua materna de casi todos los científicos e ingenieros nacidos antes de 1960, y la mayoría de los nacidos poco después. En parte, también, la lentitud con la que la generación de científicos formada en C ha ingresado a la computación científica se debe a deficiencias en el lenguaje que los científicos computacionales han sido (creemos, tercamente) lentos en reconocer. Ejemplos son la falta de una forma adecuada para elevar números a potencias enteras pequeñas, y la “conversión implícita de \texttt{float} a \texttt{double}”, que se discute más adelante. Muchas, aunque no todas, estas deficiencias han sido corregidas en la norma ANSI C. Algunas deficiencias restantes sin duda desaparecerán con el tiempo.
+
+\medskip
+
+Otra inhibición notable para la conversión masiva de científicos al culto de C ha sido, hasta el momento de escribir este texto, la falta de una biblioteca bien desarrollada de rutinas científicas o numéricas. Esta es la carencia que pretendemos abordar en esta edición de \textit{Numerical Recipes}. Ciertamente no pretendemos ser una solución completa al problema. Esperamos inspirar otros esfuerzos, y presentar mediante el ejemplo un conjunto sensato y práctico de convenciones para la programación científica en C.
+
+\medskip
+
+La necesidad de convenciones de programación en C es muy grande. Lejos de ser un problema de limitación impuesto por el lenguaje (nuestra experiencia repetida con Pascal lo prueba), el problema en C es escoger las mejores y más naturales técnicas entre múltiples posibilidades, y luego usar esas técnicas de forma completamente coherente y clara en todo el programa. En el resto de esta sección, exponemos algunas de estas técnicas, y describimos las convenciones adoptadas que se usan en todas las rutinas de este libro.
+
+\section{Error, precisión y estabilidad}
+
+Aunque no asumimos entrenamiento previo del lector en análisis numérico formal, necesitaremos asumir una comprensión común de algunos conceptos clave. Los definiremos brevemente en esta sección.
+
+\medskip
+
+Las computadoras almacenan números no con precisión infinita, sino más bien en una aproximación que puede empacarse en un número fijo de \textit{bits} (dígitos binarios) o \textit{bytes} (grupos de 8 bits). Casi todas las computadoras permiten al programador elegir entre varias representaciones o tipos de datos. Los tipos de datos pueden diferir en el número de bits utilizados (el \textit{wordlength}), pero también en el aspecto más fundamental de si el número almacenado se representa en formato \textit{entero fijo} (\texttt{int} o \texttt{long}) o \textit{punto flotante} (\texttt{float} o \texttt{double}).
+
+\medskip
+
+Un número en representación entera es exacto. La aritmética entre números en representación entera también es exacta, con la salvedad de que (i) el resultado no esté fuera del rango de enteros (usualmente con signo) que pueden representarse, y (ii) que la división se interprete como produciendo un resultado entero, descartando cualquier residuo entero.
+
+\medskip
+
+En la representación de punto flotante, un número se representa internamente mediante un bit de signo \( s \) (interpretado como positivo o negativo), un exponente entero exacto \( E \), y una mantisa entera exacta \( M \). Juntos representan el número:
+
+\[
+s \times M \times B^{-E} \tag{1.3.1}
+\]
+
+donde \( B \) es la base de la representación (usualmente \( B = 2 \), pero a veces \( B = 16 \)), y \( E \) es el sesgo del exponente, una constante fija para cualquier máquina y representación dada. Un ejemplo se muestra en la Figura 1.3.1.
+
+\medskip
+
+Varios patrones de bits de punto flotante pueden representar el mismo número. Si \( B = 2 \), por ejemplo, una mantisa con ceros en los bits más significativos puede desplazarse a la izquierda, es decir, multiplicarse por una potencia de \( 2 \), si el exponente se incrementa por una cantidad compensatoria. Pero los patrones de bits que están “tan desplazados a la izquierda como sea posible” se denominan \textit{normalizados}. La mayoría de las computadoras producen resultados normalizados, ya que entonces no se desperdician bits de mantisa, y permiten un mayor rango de precisión expresable. Esta normalización es parte de la especificación precisa de la representación.
+
+\medskip
+
+La aritmética entre números en representación de punto flotante no es exacta, incluso si los operandos están exactamente representados (es decir, tienen valores exactos en la forma de la ecuación 1.3.1). Por ejemplo, dos números de punto flotante se suman primero desplazando a la derecha (dividiendo entre dos) la mantisa del operando menor (en magnitud), incrementando simultáneamente su exponente, hasta que ambos operandos tengan el mismo exponente. Los bits de orden inferior (menos significativos) del operando más pequeño se pierden por este desplazamiento. Si los dos operandos difieren demasiado en magnitud, entonces el operando más pequeño es reemplazado efectivamente por cero, ya que es desplazado a la derecha hasta desaparecer.
+
+\medskip
+
+El número de punto flotante más pequeño (en magnitud) que, al ser sumado al número 1.0, produce un resultado de punto flotante distinto de 1.0, se denomina \textit{precisión de máquina} \( \epsilon_m \). Una computadora típica con \( B = 2 \) y una palabra de 32 bits tiene \( \epsilon_m \) alrededor de \( 3 \times 10^{-8} \). (Una discusión más detallada de las características de la máquina, y un programa para determinarlas, se da en la \S20.1.)
+
+\medskip
+
+En términos generales, la precisión de máquina \( \epsilon_m \) es el error fraccional en el cual los números de punto flotante pueden ser representados, correspondiente al bit de mayor orden de la mantisa. Prácticamente cualquier operación aritmética entre números de punto flotante debe considerarse como introduciendo un error fraccional adicional de al menos \( \epsilon_m \). Este tipo de error se llama \textit{error de redondeo}.
+
+\medskip
+
+Es importante entender que \( \epsilon_m \) no es el número de punto flotante más pequeño que puede representarse en una máquina. Ese número depende de cuántos bits hay en el exponente, mientras que \( \epsilon_m \) depende de cuántos bits hay en la mantisa.
+
+\medskip
+
+Los errores de redondeo se acumulan con el número de operaciones de cálculo. Si, durante el cálculo de un valor, realizas \( N \) operaciones aritméticas, podrías tener la suerte de que el error total por redondeo sea del orden de \( \sqrt{N} \epsilon_m \), si los errores de redondeo ocurren al azar hacia arriba o hacia abajo. (Esta estimación proviene de una caminata aleatoria). Sin embargo, esta estimación puede fallar de forma grave por dos razones:
+
+\begin{enumerate}
+  \item Muy frecuentemente sucede que las regularidades de tu cálculo, o las peculiaridades de tu computadora, hacen que los errores de redondeo se acumulen preferentemente en una dirección. En este caso, el error total será del orden de \( N \epsilon_m \).
+  \item Algunas situaciones especialmente desfavorables pueden aumentar enormemente el error de redondeo de operaciones individuales. Generalmente, esto puede rastrearse hasta la sustracción de dos números casi iguales, dando un resultado cuyos bits significativos son esos pocos bits de menor orden en los que difieren. Podrías pensar que tal “sustracción coincidente” es poco probable. No siempre es así. Algunas expresiones matemáticas aumentan enormemente su probabilidad de ocurrencia. Por ejemplo, en la fórmula conocida para la solución de una ecuación cuadrática,
+\end{enumerate}
+
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \tag{1.3.2}
+\]
+
+la suma o resta se vuelve delicada y propensa al error por redondeo siempre que \( ac \ll b^2 \). (En la \S5.6 aprenderemos cómo evitar este problema en particular).
+
+\newpage
+
+\chapter{Solución de ecuaciones algebraicas lineales}
+
+\section{Introducción}
+
+Un sistema de ecuaciones algebraicas lineales luce así:
+
+\begin{align}
+  a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + \cdots + a_{1N}x_N &= b_1 \notag \\
+  a_{21}x_1 + a_{22}x_2 + a_{23}x_3 + \cdots + a_{2N}x_N &= b_2 \notag \\
+  a_{31}x_1 + a_{32}x_2 + a_{33}x_3 + \cdots + a_{3N}x_N &= b_3 \tag{2.0.1} \\
+  \vdots \hspace{3cm} & \vdots \notag \\
+  a_{M1}x_1 + a_{M2}x_2 + a_{M3}x_3 + \cdots + a_{MN}x_N &= b_M \notag
+\end{align}
+
+Aquí las \( N \) incógnitas \( x_j \), \( j = 1, 2, \dots, N \) están relacionadas por \( M \) ecuaciones. Los coeficientes \( a_{ij} \) con \( i = 1, 2, \dots, M \) y \( j = 1, 2, \dots, N \) son números conocidos, al igual que los valores del lado derecho \( b_i \), \( i = 1, 2, \dots, M \).
+
+\section{Conjuntos de ecuaciones no singulares versus singulares}
+
+Si \( N = M \), entonces hay tantas ecuaciones como incógnitas, y hay una buena posibilidad de resolver un conjunto único de soluciones para los \( x_j \). Analíticamente, puede no haber una solución única si una o más de las \( M \) ecuaciones son combinaciones lineales de las otras, una condición llamada \textit{degeneración por filas}, o si todas las ecuaciones contienen ciertas variables únicamente en exactamente la misma combinación lineal, llamada \textit{degeneración por columnas}. (Para matrices cuadradas, una degeneración por filas implica una por columnas, y viceversa.) Un conjunto de ecuaciones que es degenerado se llama \textit{singular}. Consideraremos matrices singulares en más detalle en la \S2.6.
+
+\medskip
+
+Numéricamente, al menos dos cosas adicionales pueden salir mal:
+
+\begin{itemize}
+  \item Aunque no sean combinaciones lineales exactas entre sí, algunas de las ecuaciones pueden ser tan cercanas a ser linealmente dependientes que los errores de redondeo en la máquina las hacen depender linealmente en alguna etapa del proceso de solución. En este caso, tu procedimiento numérico fallará, y puede indicarte que ha fallado.
+  
+  \item Errores de redondeo acumulados durante el proceso de solución pueden ocultar la verdadera solución. Este problema ocurre especialmente si \( N \) es muy grande. El procedimiento numérico puede no fallar algorítmicamente. Sin embargo, devuelve un conjunto de \( x \)'s que son erróneos, como puede descubrirse al sustituir directamente de nuevo en las ecuaciones originales. Cuanto más cercano esté un conjunto de ecuaciones a ser singular, más probable es que esto suceda, ya que se producirán cancelaciones cada vez más precisas durante la solución. De hecho, el ítem anterior puede verse como el caso especial donde la pérdida de significado es puramente total.
+\end{itemize}
+
+\medskip
+
+Gran parte de la sofisticación de los “paquetes de solución de ecuaciones lineales” complicados está dedicada a detectar y/o corregir estas dos patologías. A medida que trabajas con conjuntos grandes de ecuaciones, desarrollarás un sentido de cuándo se requiere tal sofisticación. Es difícil dar directrices firmes, ya que no existe tal cosa como un “problema lineal típico”. Pero aquí hay una regla general aproximada: conjuntos lineales con \( N \) tan grandes como 20 o 50 pueden resolverse rutinariamente en precisión simple (representaciones en punto flotante de 32 bits), sin recurrir a métodos sofisticados, si las ecuaciones no son demasiado singulares. Con precisión doble (60 o 64 bits), este número puede razonablemente extenderse hasta \( N \) tan grande como varios cientos, antes de que la precisión de la máquina imponga el límite, no el tiempo de cómputo.
+
+\medskip
+
+Incluso conjuntos más grandes, \( N \) en los miles o más, pueden resolverse cuando los coeficientes son dispersos (es decir, en su mayoría cero), mediante métodos que aprovechan la estructura de dispersión. Discutimos esto con más detalle en la \S2.7.
+
+\medskip
+
+En el otro extremo del espectro, uno a veces encuentra problemas lineales donde, aunque el problema subyacente no es singular, está cerca de serlo. En este caso, puedes necesitar recurrir a métodos sofisticados incluso para el caso de \( N = 10 \) (aunque rara vez para \( N = 5 \)). La descomposición en valores singulares (\S2.6) es una técnica que puede convertir problemas singulares en no singulares, en los cuales el caso adicional de cercanía a la singularidad se vuelve innecesario.
+
+\section{Tareas del álgebra lineal computacional}
+
+Consideraremos las siguientes tareas como parte del enfoque general de este capítulo:
+
+\begin{itemize}
+  \item Solución de la ecuación matricial \( A \cdot x = b \) para un vector incógnita \( x \), donde \( A \) es una matriz cuadrada de coeficientes, el punto denota multiplicación matricial, y \( b \) es un vector conocido del lado derecho (\S2.1–\S2.10).
+  
+  \item Solución de más de una ecuación matricial \( A \cdot x_j = b_j \) para un conjunto de vectores \( x_j \), \( j = 1, 2, \dots \), cada uno correspondiente a un diferente vector conocido del lado derecho \( b \). En esta tarea, la clave es que la matriz \( A \) se mantiene constante, mientras que los lados derechos, los \( b \)'s, cambian (\S2.1–\S2.10).
+  
+  \item Cálculo de la matriz \( A^{-1} \), que es la inversa de una matriz cuadrada \( A \), es decir, \( A \cdot A^{-1} = A^{-1} \cdot A = I \), donde \( I \) es la matriz identidad (todas las diagonales en uno, el resto en cero). Esta tarea es equivalente, para una matriz \( N \times N \), a la tarea anterior con \( N \) vectores \( b_j \) (\( j = 1, 2, \dots, N \)), que son los vectores unitarios (los \( b \)'s tienen ceros excepto por un 1 en la componente \( j \)-ésima). Los \( x \)'s correspondientes son entonces las columnas de la matriz inversa de \( A \) (\S2.1 y \S2.3).
+  
+  \item Cálculo del determinante de una matriz cuadrada \( A \) (\S2.3).
+\end{itemize}
+
+\medskip
+
+Si \( M < N \), o si \( M = N \) pero las ecuaciones son degeneradas, entonces efectivamente hay menos ecuaciones independientes que incógnitas. En este caso puede no haber solución, o puede haber más de una solución para el vector \( x \). En el segundo caso, el espacio de soluciones consiste en una solución particular \( x_0 \), sumada a cualquier combinación lineal de (típicamente) \( N - M \) vectores (los cuales se dice que pertenecen al núcleo de la matriz \( A \)). La tarea de encontrar el espacio de soluciones de \( A \) involucra:
+
+\begin{itemize}
+  \item Descomposición en valores singulares de una matriz \( A \).
+\end{itemize}
+
+Este tema se trata en la \S2.6.
+
+\medskip
+
+En el caso opuesto, donde hay más ecuaciones que incógnitas, \( M > N \). Cuando esto ocurre, en general no hay solución exacta \( x \) para la ecuación (2.0.1), y el conjunto de ecuaciones se dice que está \textit{sobredeterminado}. Sin embargo, sucede con frecuencia que la “mejor” solución de compromiso es aquella que más se aproxima a satisfacer todas las ecuaciones simultáneamente. La proximidad se define en el sentido de mínimos cuadrados, es decir, la suma de los cuadrados de las diferencias entre los lados izquierdo y derecho de la ecuación (2.0.1) se minimiza. Entonces, el problema sobredeterminado lineal se reduce a un problema de mínimos cuadrados, que se llama:
+
+\begin{itemize}
+  \item Problema de mínimos cuadrados lineales.
+\end{itemize}
+
+\medskip
+
+Las ecuaciones reducidas a resolver pueden escribirse como el conjunto \( N \times N \) de ecuaciones:
+
+\[
+A^T \cdot A \cdot x = A^T \cdot b \tag{2.0.4}
+\]
+
+donde \( A^T \) denota la traspuesta de la matriz \( A \). Las ecuaciones (2.0.4) se llaman las \textit{ecuaciones normales} del problema de mínimos cuadrados lineales. Existe una conexión estrecha entre la descomposición en valores singulares y el problema de mínimos cuadrados lineales, y este último también se discute en la \S2.6. Debes tener en cuenta que la solución directa de las ecuaciones normales (2.0.4) no es, en general, la mejor manera de encontrar soluciones de mínimos cuadrados.
+
+\medskip
+
+\noindent Otros temas de este capítulo incluyen:
+
+\begin{itemize}
+  \item Mejora iterativa de una solución (\S2.5)
+  \item Diversas formas especiales: simétrica definida positiva (\S2.9), tridiagonal (\S2.4), diagonal por bandas (\S2.4), Toeplitz (\S2.8), Vandermonde (\S2.8), dispersa (\S2.7)
+  \item “Inversión rápida de matrices” de Strassen (\S2.11).
+\end{itemize}
+
+\newpage
+
+\section{Matrices de Vandermonde y Matrices de Toeplitz}
+
+En la Sección §2.4 se trató especialmente el caso de una matriz tridiagonal, porque ese tipo particular de sistema lineal admite una solución en solo orden \(N\) operaciones, en lugar de orden \(N^3\) como en el problema lineal general. Cuando existen tales tipos particulares, es importante conocerlos. Tus ahorros computacionales, en caso de que alguna vez te toque trabajar en un problema que involucre el tipo correcto de matriz, pueden ser enormes.
+
+Esta sección trata dos tipos especiales de matrices que pueden resolverse en orden \(N^2\) operaciones, no tan buenas como las tridiagonales, pero mucho mejores que el caso general. (Aparte del conteo de operaciones, estos dos tipos no tienen nada en común.) Las matrices del primer tipo, llamadas \textit{matrices de Vandermonde}, aparecen en algunos problemas relacionados con el ajuste de polinomios, la reconstrucción de distribuciones a partir de sus momentos, y otros contextos. En este libro, por ejemplo, un problema de Vandermonde aparece en la §3.5. Las matrices del segundo tipo, llamadas \textit{matrices de Toeplitz}, tienden a aparecer en problemas que involucran deconvolución y procesamiento de señales. En este libro, un problema de Toeplitz se encuentra en la §13.7.
+
+Estas no son las \textit{únicas} matrices especiales que vale la pena conocer. Las \textit{matrices de Hilbert}, cuyos componentes son de la forma \(a_{ij} = 1/(i + j - 1), \quad i,j = 1, \ldots, N\), pueden invertirse mediante un algoritmo exacto entero, y son \textit{muy difíciles} de invertir de cualquier otra forma, ya que son notoriamente mal condicionadas (ver [1] para más detalles). Las fórmulas de Sherman-Morrison y Woodbury, discutidas en la §2.7, a veces pueden usarse para convertir algunos sistemas nuevos en otros viejos. La referencia [2] da otros nombres de matrices especiales. El lector encontrará que los nombres de matrices tienden a aparecer con frecuencia.
+
+\subsection{Matrices de Vandermonde}
+
+Una matriz de Vandermonde de tamaño \(N \times N\) está completamente determinada por \(N\) números arbitrarios \(x_1, x_2, \ldots, x_N\), en términos de los cuales sus \(N^2\) componentes son las potencias enteras \(x_i^{j-1},\quad i,j = 1, \ldots, N\). Evidentemente hay dos formas posibles, dependiendo de si vemos los \(i\) como filas, \(j\) como columnas, o viceversa. En el primer caso, obtenemos un sistema lineal de ecuaciones que luce así:
+
+\[
+\begin{bmatrix}
+1 & x_1 & x_1^2 & \cdots & x_1^{N-1} \\
+1 & x_2 & x_2^2 & \cdots & x_2^{N-1} \\
+\vdots & \vdots & \vdots & & \vdots \\
+1 & x_N & x_N^2 & \cdots & x_N^{N-1}
+\end{bmatrix}
+\begin{bmatrix}
+c_1 \\ c_2 \\ \vdots \\ c_N
+\end{bmatrix}
+=
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_N
+\end{bmatrix}
+\tag{2.8.1}
+\]
+
+Realizando la multiplicación matricial, se verá que esta ecuación resuelve los coeficientes desconocidos \(c_i\), que ajustan un polinomio a los \(N\) pares de abscisas y ordenadas \((x_j, y_j)\). Justamente este problema aparecerá en la sección §3.5, y la rutina dada allí resolverá (2.8.1) mediante el método que estamos por describir.
+
+La identificación alternativa de filas y columnas conduce al conjunto de ecuaciones
+
+\[
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+x_1 & x_2 & \cdots & x_N \\
+x_1^2 & x_2^2 & \cdots & x_N^2 \\
+\vdots & \vdots & & \vdots \\
+x_1^{N-1} & x_2^{N-1} & \cdots & x_N^{N-1}
+\end{bmatrix}
+\begin{bmatrix}
+w_1 \\ w_2 \\ \vdots \\ w_N
+\end{bmatrix}
+=
+\begin{bmatrix}
+q_1 \\ q_2 \\ \vdots \\ q_N
+\end{bmatrix}
+\tag{2.8.2}
+\]
+
+Escriba esto y verá que también está relacionado con el \textit{problema de los momentos}: Dado el valor de \(N\) puntos \(x_i\), los pesos desconocidos \(w_i\) se asignan para que igualen los valores dados \(q_j\) de los primeros \(N\) momentos. (Para más sobre este problema, consulte [3].) La rutina que se da en esta sección resuelve (2.8.2).
+
+El método de solución de ambas ecuaciones (2.8.1) y (2.8.2) está estrechamente relacionado con la fórmula de interpolación polinomial de Lagrange, que formalmente no trataremos hasta §3.1. No obstante, la siguiente derivación debería ser comprensible:
+
+Sea \(P_j(x)\) el polinomio de grado \(N-1\) definido por
+
+\[
+P_j(x) = \prod_{\substack{i=1 \\ i \ne j}}^N \frac{x - x_i}{x_j - x_i} = \sum_{k=1}^N A_{jk} x^{k-1}
+\tag{2.8.3}
+\]
+
+Aquí la igualdad del lado derecho define los componentes de la matriz \(A_{jk}\) como los coeficientes que surgen cuando se multiplica el producto y se recogen términos semejantes.
+
+El polinomio \(P_j(x)\) es una función de \(x\) en general. Pero se notará que está diseñado cuidadosamente para tomar el valor cero en todos \(x_i\) con \(i \ne j\), y tener valor unidad en \(x = x_j\). En otras palabras,
+
+\[
+P_j(x_i) = \delta_{ij} = \sum_{k=1}^N A_{jk} x_i^{k-1}
+\tag{2.8.4}
+\]
+
+Pero (2.8.4) dice que \(A_{jk}\) es exactamente la inversa de la matriz de componentes \(x_i^{k-1}\), que aparece en (2.8.2), con el subíndice como índice de columna. Por tanto, la solución de (2.8.2) usando esa matriz inversa da el siguiente lado derecho,
+
+\[
+w_j = \sum_{k=1}^N A_{jk} q_k
+\tag{2.8.5}
+\]
+
+Para el sistema transpuesto (2.8.1), podemos usar el hecho de que la inversa de la transpuesta es la transpuesta de la inversa, así
+
+\[
+c_j = \sum_{k=1}^N A_{kj} y_k
+\tag{2.8.6}
+\]
+
+La rutina en la §3.5 implementa esto.
+
+Resta encontrar una buena manera de multiplicar los términos monomiales en (2.8.3), para obtener los componentes de \(A_{jk}\). Esto es esencialmente un problema de contabilidad, y te permitiremos leer la rutina tú mismo para ver cómo puede resolverse. Un truco es definir un polinomio maestro \(P(x)\) mediante
+
+\[
+P(x) \equiv \prod_{n=1}^{N} (x - x_n)
+\tag{2.8.7}
+\]
+
+calcular sus coeficientes, y luego obtener los numeradores y denominadores de los \(P_j\) específicos mediante división sintética por el único término supernumerario. (Ver §5.3 para más sobre la división sintética.) Dado que cada división es solo un proceso de orden \(N\), el procedimiento total es de orden \(N^2\).
+
+Debe advertirse que los sistemas de Vandermonde son notoriamente mal condicionados, por su propia naturaleza. (Como una anticipación lateral a §5.8, la razón es la misma que hace que el ajuste de Chebyshev sea tan impresionantemente preciso: existen polinomios de alto orden que se ajustan uniformemente a cero. Por lo tanto, errores de redondeo pueden introducir coeficientes sustanciales en los términos principales de estos polinomios.) Es una buena idea calcular siempre los problemas de Vandermonde en doble precisión.
+
+\newpage
+
+La rutina para (2.8.2) que sigue es debida a G.B. Rybicki.
+
+\begin{lstlisting}[language=C,caption=Rutina para resolver el sistema de Vandermonde (2.8.2)]
+#include "nrutil.h"
+
+void vander(double x[], double w[], double q[], int n)
+/* Resuelve el sistema lineal de Vandermonde 
+   \sum_{i=1}^{N} x_i^{k-1} w_i = q_k \quad (k = 1, \ldots, N).
+   La entrada consiste en los vectores x[1..n] y q[1..n];
+   el vector w[1..n] es la salida. */
+{
+    int i,j,k;
+    double b,s,t,xx;
+    double *c;
+
+    c=dvector(1,n);
+    if (n == 1) w[1]=q[1];
+    else {
+        for (i=1;i<=n;i++) c[i]=0.0;            // Inicializa el arreglo.
+        c[n] = -x[1];                           // Los coeficientes del polinomio maestro
+                                               // se encuentran por recurrencia.
+        for (i=2;i<=n;i++) {
+            xx = -x[i];
+            for (j=(n+1-i);j<=(n-1);j++) c[j] += xx*c[j+1];
+            c[n] += xx;
+        }
+
+        for (i=1;i<=n;i++) {                    // Cada subfactor a su vez
+            xx=x[i];
+            t=b=1.0;
+            s=q[n];
+            for (k=n;k>2;k--) {                 // se divide sintéticamente,
+                b=c[k]+xx*b;
+                s = q[k-1]*b;                   // se multiplica por el lado derecho,
+                t=xx*t+b;                       // y se suministra un denominador.
+            }
+            w[i]=s/t;
+        }
+    }
+    free_dvector(c,1,n);
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Matrices de Toeplitz}
+
+Una matriz de Toeplitz de tamaño $N \times N$ se especifica dando $2N - 1$ números $R_k$, $k = -N + 1, \ldots, -1, 0, 1, \ldots, N - 1$. Esos números se colocan entonces como elementos de matriz constantes a lo largo de las diagonales (de la esquina superior izquierda a la inferior derecha) de la matriz:
+
+\[
+\begin{bmatrix}
+R_0 & R_{-1} & R_{-2} & \cdots & R_{-(N-2)} & R_{-(N-1)} \\
+R_1 & R_0 & R_{-1} & \cdots & R_{-(N-3)} & R_{-(N-2)} \\
+R_2 & R_1 & R_0 & \cdots & R_{-(N-4)} & R_{-(N-3)} \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+R_{N-2} & R_{N-3} & R_{N-4} & \cdots & R_0 & R_{-1} \\
+R_{N-1} & R_{N-2} & R_{N-3} & \cdots & R_1 & R_0
+\end{bmatrix}
+\tag{2.8.8}
+\]
+
+El problema lineal de Toeplitz puede entonces escribirse como
+
+\[
+\sum_{j=1}^{N} R_{i-j} x_j = y_i \qquad (i = 1, \ldots, N)
+\tag{2.8.9}
+\]
+
+donde las $x_j$, $j = 1, \ldots, N$, son las incógnitas que deben resolverse.
+
+La matriz de Toeplitz es simétrica si $R_k = R_{-k}$ para todo $k$. Levinson \cite{4} desarrolló un algoritmo para la solución rápida del problema de Toeplitz simétrico, mediante un \emph{método de ampliación}, es decir,
+
+\[
+\sum_{j=1}^{M} R_{i-j} x_j^{(M)} = y_i \qquad (i = 1, \ldots, M)
+\tag{2.8.10}
+\]
+
+una vez para $M = 1, 2, \ldots$ hasta que $M = N$, el resultado deseado, finalmente se alcanza. El vector $x^{(M)}$ es el resultado en la etapa $M$, y se convierte en la respuesta deseada sólo cuando se alcanza $N$.
+
+El método de Levinson está bien documentado en textos estándar (por ejemplo, \cite{5}). El hecho útil de que el método generaliza al caso no simétrico parece ser menos conocido. A riesgo de exceso de detalle, por lo tanto damos una derivación aquí, debida a G.B. Rybicki.
+
+Al seguir una recurrencia del paso $M$ al paso $M + 1$ encontramos que nuestra solución en desarrollo $x^{(M)}$ cambia de esta manera:
+
+\[
+\sum_{j=1}^{M} R_{i-j} x_j^{(M)} = y_i \qquad i = 1, \ldots, M
+\tag{2.8.11}
+\]
+
+se convierte en
+
+\[
+\sum_{j=1}^{M} R_{i-j} x_j^{(M+1)} + R_{i-(M+1)} x_{M+1}^{(M+1)} = y_i \qquad i = 1, \ldots, M + 1
+\tag{2.8.12}
+\]
+
+Al eliminar $y_i$ encontramos
+
+\[
+\sum_{j=1}^{M} R_{i-j} \left(x_j^{(M)} - \frac{x_j^{(M+1)}}{x_{M+1}^{(M+1)}} x_{M+1}^{(M)}\right) = R_{i - (M+1)} \qquad i = 1, \ldots, M
+\tag{2.8.13}
+\]
+
+o dejando que $i \rightarrow M + 1 - i$ y $j \rightarrow M + 1 - j$,
+
+\[
+\sum_{j=1}^{M} R_{1-j} G_j^{(M)} = R_{-i}
+\tag{2.8.14}
+\]
+
+donde
+
+\[
+G_j^{(M)} = \frac{x_{M+1-j}^{(M)} - x_{M+1-j}^{(M+1)}}{x_{M+1}^{(M+1)}}
+\tag{2.8.15}
+\]
+
+Para expresarlo de otra manera,
+
+\[
+x_j^{(M+1)} = x_j^{(M)} - \frac{x_{M+1-j}^{(M)} - G_j^{(M)}}{x_{M+1}^{(M+1)}} \qquad j = 1, \ldots, M
+\tag{2.8.16}
+\]
+
+Así, si podemos usar recursión para encontrar las cantidades de orden $M$ $x_j^{(M)}$ y $G_j^{(M)}$ y la única cantidad de orden $M+1$ $x_{M+1}^{(M+1)}$, todas las otras cantidades de orden $M+1$ seguirán. Afortunadamente, la cantidad $x_{M+1}^{(M+1)}$ se sigue de la ecuación (2.8.12) con $i = M + 1$,
+
+\[
+\sum_{j=1}^{M} R_{M+1-j} x_j^{(M)} + R_0 x_{M+1}^{(M+1)} = y_{M+1}
+\tag{2.8.17}
+\]
+
+Para las cantidades de orden $M+1$ desconocidas $x_j^{(M+1)}$ podemos sustituir las cantidades de orden anterior en $G$ así
+
+\[
+G_j^{(M+1)} = \frac{x_{M+1-j}^{(M)} - x_{M+1-j}^{(M+1)}}{x_{M+1}^{(M+1)}}
+\tag{2.8.18}
+\]
+
+El resultado de esta operación es
+
+\[
+x_{M+1}^{(M+1)} = \frac{\sum_{j=1}^{M} R_{M+1-j} x_j^{(M)} - y_{M+1}}{\sum_{j=1}^{M} R_{M+1-j} G_j^{(M)} - R_0}
+\tag{2.8.19}
+\]
+
+El único problema restante es desarrollar una relación de recurrencia para $G$. Antes de hacerlo, debemos señalar que en realidad existen dos conjuntos distintos de soluciones para el problema lineal original de una matriz no simétrica, a saber, las soluciones por la derecha (que hemos estado discutiendo) y las soluciones por la izquierda $z_i$. El formalismo para las soluciones por la izquierda difiere sólo en que tratamos con las ecuaciones
+
+\[
+\sum_{j=1}^{M} R_{j-i} z_j^{(M)} = y_i \qquad i = 1, \ldots, M
+\tag{2.8.20}
+\]
+
+Entonces, la misma secuencia de operaciones en este conjunto conduce a
+
+\[
+\sum_{j=1}^{M} R_{i-j} H_j^{(M)} = R_i
+\tag{2.8.21}
+\]
+
+donde
+
+\[
+H_j^{(M)} = \frac{z_{M+1-j}^{(M)} - z_{M+1-j}^{(M+1)}}{z_{M+1}^{(M+1)}}
+\tag{2.8.22}
+\]
+
+(compárese con 2.8.14 – 2.8.15). La razón para mencionar las soluciones por la izquierda ahora es que, por la ecuación (2.8.21), los $H_j$ satisfacen exactamente la misma ecuación que los $x_j$ excepto por la sustitución $y_i \rightarrow R_i$ en el lado derecho. Por lo tanto podemos deducir rápidamente de la ecuación (2.8.19) que
+
+\[
+H_{M+1}^{(M+1)} =
+\frac{\sum_{j=1}^{M} R_{M+1-j} H_j^{(M)} - R_{M+1}}
+{\sum_{j=1}^{M} R_{M+1-j} G_j^{(M)} - R_0}
+\tag{2.8.23}
+\]
+
+De la misma forma, $G$ satisface la misma ecuación que $z$, excepto por la sustitución $y_i \rightarrow -R_{i-1}$. Esto da
+
+\[
+G_{M+1}^{(M+1)} =
+\frac{\sum_{j=1}^{M} R_{j-M-1} G_j^{(M)} - R_{-M-1}}
+{\sum_{j=1}^{M} R_{j-M-1} H_j^{(M)} - R_0}
+\tag{2.8.24}
+\]
+
+El mismo “morfismo” también convierte las ecuaciones (2.8.16), y su contraparte para $z$, en las ecuaciones finales
+
+\[
+G_j^{(M+1)} = G_{M+1-j}^{(M)} - G_{M+1}^{(M+1)} H_{M+1-j}^{(M)}
+\tag{2.8.25}
+\]
+
+\[
+H_j^{(M+1)} = H_j^{(M)} - H_{M+1}^{(M+1)} G_{M+1-j}^{(M)}
+\tag{2.8.26}
+\]
+
+Ahora, comenzando con los valores iniciales
+
+\[
+x_1^{(1)} = y_1 / R_0, \qquad
+G_1^{(1)} = R_{-1} / R_0, \qquad
+H_1^{(1)} = R_1 / R_0,
+\tag{2.8.26}
+\]
+
+podemos continuar recursivamente. En cada etapa $M$ usamos las ecuaciones (2.8.23) y (2.8.24) para encontrar
+$H_{M+1}^{(M+1)}$, $G_{M+1}^{(M+1)}$, y luego la ecuación (2.8.25) para encontrar los otros componentes de $H^{(M+1)}$, $G^{(M+1)}$.
+
+A partir de ahí los vectores $x^{(M+1)}$ y/o $z^{(M+1)}$ son fácilmente calculados.
+
+El programa siguiente hace esto. Incorpora las ecuaciones (2.8.25) en
+
+\[
+H_{M+1-j}^{(M+1)} = H_{M+1-j}^{(M)} - H_{M+1}^{(M+1)} G_j^{(M)}
+\tag{2.8.27}
+\]
+
+de modo que la computación pueda hacerse “en el lugar”.
+
+Nótese que el programa anterior falla si $R_0 = 0$. De hecho, porque el método de ampliación no permite pivotaje, el algoritmo fallará si alguno de los menores principales diagonales de la matriz de Toeplitz original se desvía. (Compárese con la discusión del algoritmo tridiagonal en §2.4.) Si el algoritmo falla, su mezcla puede estar seriamente desbalanceada — usted podría necesitar simplemente pivotar o introducir métodos más generales tales como descomposiciones $LU$.
+
+\newpage
+
+La rutina que implementa las ecuaciones (2.8.23)--(2.8.27) también es de Rybicki. Nótese que en la rutina, \texttt{r[n+j]} es igual a $R_j$ como arriba, de modo que los subíndices en el arreglo \texttt{r} varían de $1$ a $2N-1$.
+
+\begin{lstlisting}[language=C, caption={Implementación del algoritmo de Toeplitz}]
+#include "nrutil.h"
+#define FREERETURN {free_vector(h,1,n);free_vector(g,1,n);return;}
+
+void toeplz(float r[], float x[], float y[], int n)
+/* Resuelve el sistema de Toeplitz $\sum_{j=1}^{N} R_{(N+i-j)} x_j = y_i$ $(i = 1,\ldots,N)$. 
+   La matriz de Toeplitz no necesita ser simétrica. y[1..n] y r[1..2*n-1] son los arreglos de entrada; 
+   x[1..n] es el arreglo de salida. */
+{
+    int j,k,m,m1,m2;
+    float pp,pt1,pt2,qq,qt1,qt2,sd,sgd,sgn,shn,sxn;
+    float *g,*h;
+
+    if (r[n] == 0.0) nrerror("toeplz-1 menor principal singular");
+    g=vector(1,n);
+    h=vector(1,n);
+    x[1]=y[1]/r[n];     /* Inicializar la recurrencia. */
+    if (n == 1) FREERETURN
+    g[1]=r[n-1]/r[n];
+    h[1]=r[n+1]/r[n];
+    
+    for (m=1;m<n;m++) {     /* Bucle principal de la recurrencia. */
+        m1=m+1;
+        sxn = -y[m1];       /* Calcular numerador y denominador para x, */
+        sd = -r[n];
+        for (j=1;j<=m;j++) {
+            sxn += r[n+m1-j]*x[j];
+            sd += r[n+m1-j]*g[m+1-j];
+        }
+        if (sd == 0.0) nrerror("toeplz-2 menor principal singular");
+        x[m1]=sxn/sd;       /* de donde x. */
+        for (j=1;j<=m;j++) x[j] -= x[m1]*g[m+1-j];
+        if (m1 == n) FREERETURN
+        sgn = -r[n-m1];     /* Calcular numerador y denominador para G y H, */
+        shn = -r[n+m1];
+        sgd = -r[n];
+        for (j=1;j<=m;j++) {
+            sgn += r[n+j-m1]*g[j];
+            shn += r[n-m1-j]*h[j];
+            sgd += r[n+j-m1]*h[m+1-j];
+        }
+        if (sgd == 0.0) nrerror("toeplz-3 menor principal singular");
+        g[m1]=sgn/sgd;      /* de donde G y H. */
+        h[m1]=shn/sd;
+        k=m;
+        m2=(m+1) >> 1;
+        pp=g[m1];
+        qq=h[m1];
+        for (j=1;j<=m2;j++) {
+            pt1=g[j];
+            pt2=g[k];
+            qt1=h[j];
+            qt2=h[k];
+            g[j]=pt1-pp*qt2;
+            g[k--]=pt2-pp*qt1;
+            h[j]=qt1-qq*pt2;
+            h[k--]=qt2-qq*pt1;
+        }
+    }   /* Volver para otra recurrencia. */
+    nrerror("toeplz - no debería llegar aquí!");
+}
+\end{lstlisting}
+
+Si te dedicas a resolver sistemas de Toeplitz \textit{muy} grandes, deberías informarte sobre los llamados algoritmos “nuevos y rápidos”, que requieren solo del orden de $N (\log N)^2$ operaciones, en comparación con los $N^2$ del método de Levinson. Estos métodos son demasiado complicados para incluirse aquí.
+
+
+\chapter{Interpolación y extrapolación}
+\section{Introducción}
+
+A veces conocemos el valor de una función \( f(x) \) en un conjunto de puntos \( x_1, x_2, \dots, x_N \) (digamos, con \( x_1 < \dots < x_N \)), pero no tenemos una expresión analítica para \( f(x) \) que nos permita calcular su valor en un punto arbitrario. Por ejemplo, los valores \( f(x_i) \) podrían provenir de una medición física o de un cálculo numérico prolongado que no puede expresarse en una fórmula funcional simple. A menudo los \( x_i \) están equiespaciados, aunque no necesariamente.
+
+\medskip
+
+La tarea ahora es estimar \( f(x) \) para un \( x \) arbitrario, trazando en algún sentido una curva suave a través (y quizá más allá) de los \( x_i \). Si el \( x \) deseado se encuentra entre el menor y el mayor de los \( x_i \), el problema se llama \textit{interpolación}; si está fuera de ese rango, se llama \textit{extrapolación}, lo cual es considerablemente más arriesgado (como muchos ex-analistas del mercado de valores pueden atestiguar).
+
+\medskip
+
+Los esquemas de interpolación y extrapolación deben modelar la función, entre y más allá de los puntos conocidos, mediante alguna forma funcional plausible. Esta forma debe ser lo suficientemente general como para poder aproximar clases amplias de funciones que puedan surgir en la práctica. Con mucho, las más comunes entre las formas funcionales utilizadas son los polinomios (\S3.1). Las funciones racionales (cocientes de polinomios) también resultan ser extremadamente útiles (\S3.2). Las funciones trigonométricas, senos y cosenos, dan lugar a la \textit{interpolación trigonométrica} y a métodos de Fourier relacionados, que abordaremos en los Capítulos 12 y 13.
+
+\medskip
+
+Existe una amplia literatura matemática dedicada a teoremas sobre qué tipos de funciones pueden aproximarse bien mediante funciones de interpolación. Estos teoremas son, lamentablemente, casi completamente inútiles en el trabajo cotidiano: si conocemos lo suficiente sobre nuestra función como para aplicar un teorema con poder, por lo general no estamos en el triste estado de tener que interpolar en una tabla de valores.
+
+\medskip
+
+La interpolación está relacionada con, pero es distinta de, la \textit{aproximación de funciones}. Esta última tarea consiste en encontrar una función aproximada (pero fácilmente computable) para usar en lugar de una más complicada. En el caso de la interpolación, se te dan los valores de la función en puntos que \textit{no has elegido tú mismo}. En el caso de la aproximación de funciones, puedes calcular \( f \) en cualquier conjunto de puntos deseado para el propósito de construir tu aproximación. Tratamos la aproximación de funciones en el Capítulo 5.
+
+\medskip
+
+Es fácil encontrar funciones patológicas que se burlan de cualquier esquema de interpolación. Considera, por ejemplo, la función
+
+\[
+f(x) = 3x^2 + \frac{1}{\pi^4} \ln \left[ (\pi - x)^2 \right] + 1 \tag{3.0.1}
+\]
+
+que es bien comportada en todo lugar excepto en \( x = \pi \), donde es muy levemente singular, y toma solo valores negativos en ese punto. Cualquier interpolación basada en los valores \( x = 3.13, 3.14, 3.15, 3.16 \), seguramente dará una muy mala respuesta para el valor \( x = 3.1416 \), ¡aunque una gráfica de esos cinco puntos parezca muy suave! (Pruébalo en tu calculadora.)
+
+\medskip
+
+Dado que pueden esconderse patologías en cualquier parte, es altamente deseable que toda rutina de interpolación o extrapolación proporcione una estimación de su propio error. Tal estimación nunca puede ser infalible, por supuesto. Podríamos tener una función que, por razones conocidas solo por su creador, se desvía de forma salvaje e inesperada entre dos puntos tabulados. La interpolación siempre presupone cierto grado de suavidad para la función interpolada, pero dentro de ese marco de suposiciones, pueden detectarse desviaciones de la suavidad.
+
+\medskip
+
+Conceptualmente, el proceso de interpolación tiene dos etapas: (1) Ajustar una función de interpolación a los datos tabulados proporcionados. (2) Evaluar esa función en el punto objetivo \( x \).
+
+\medskip
+
+Sin embargo, este método de dos etapas generalmente no es el mejor en la práctica. Típicamente es computacionalmente menos eficiente, y más susceptible a errores de redondeo, que los métodos que construyen una estimación funcional \( f(x) \) directamente desde los \( N \) valores tabulados cada vez que se desea un nuevo valor. La mayoría de los esquemas prácticos comienzan con un valor cercano \( f(x_i) \), luego agregan una secuencia de correcciones (esperablemente decrecientes), conforme se incorpora la información de otros valores \( f(x_i) \). El procedimiento típicamente toma \( \mathcal{O}(N^2) \) operaciones. Si todo se comporta bien, la última corrección será la más pequeña, y puede usarse como una cota informal (aunque no rigurosa) del error.
+
+\medskip
+
+En el caso de la interpolación polinómica, a veces sucede que los coeficientes del polinomio interpolador son de interés, aunque su uso al \textit{evaluar} la función interpolada debe ser desaconsejado. Abordamos este tema explícitamente en la \S3.5.
+
+\medskip
+
+La interpolación local, usando un número finito de puntos “vecinos más cercanos”, proporciona valores interpolados \( f(x) \) que, en general, no tienen derivadas continuas de primer o mayor orden. Esto sucede porque, a medida que \( x \) cruza los valores tabulados \( x_i \), el esquema de interpolación cambia de cuáles puntos tabulados son los “más cercanos”. (A menudo, estas interpolaciones locales se implementan como esquemas de “por tramos”). Habrá una discontinuidad en la derivada cada vez que el punto interpolado cruce el dominio de una de estas regiones.
+
+En situaciones donde la continuidad de las derivadas es importante, debe utilizarse la interpolación “más rígida” proporcionada por una función llamada \textit{spline}. Un spline es un polinomio entre cada par de puntos tabulados, pero cuyos coeficientes se determinan de forma “ligeramente” no local. Esta no localidad está diseñada para garantizar suavidad global en la función interpolada hasta cierto orden de derivada. Los splines cúbicos (\S3.3) son los más populares. Producen una función interpolada que es continua hasta la segunda derivada. Los splines tienden a ser más estables que los polinomios, con menor posibilidad de oscilaciones salvajes entre los puntos tabulados.
+
+\medskip
+
+El número de puntos (menos uno) utilizados en un esquema de interpolación se llama el \textit{orden} de la interpolación. Aumentar el orden no necesariamente mejora la precisión, especialmente en la interpolación polinómica. Si los puntos añadidos están alejados del punto de interés \( x \), el polinomio de orden superior resultante, con sus puntos adicionales de restricción, tiende a oscilar ampliamente entre los valores tabulados. Esta oscilación puede no tener relación alguna con el comportamiento de la “verdadera” función (véase Figura 3.0.1). Por supuesto, añadir puntos \textit{cercanos} al punto deseado suele ayudar, pero una malla más fina implica una tabla de valores más extensa, lo cual no siempre está disponible.
+
+\medskip
+
+A menos que exista evidencia sólida de que la función interpolada es similar en forma a la función verdadera \( f \), es buena idea ser cauteloso con la interpolación de orden alto. Recomendamos con entusiasmo interpolaciones con 3 o 4 puntos, quizá toleramos 5 o 6; pero rara vez vamos más allá de eso, a menos que haya un monitoreo bastante riguroso del error estimado.
+
+\medskip
+
+Cuando tu tabla de valores contiene muchos más puntos que el orden deseable de interpolación, debes comenzar cada interpolación con una búsqueda de la ubicación “local” correcta en la tabla. Aunque no es estrictamente parte del tema de interpolación, esta tarea es lo suficientemente importante (y suficientemente mal hecha con frecuencia) como para que le dediquemos la \S3.4.
+
+Las rutinas dadas para interpolación son también rutinas para extrapolación. Una aplicación importante, en el Capítulo 16, es su uso en la integración de ecuaciones diferenciales ordinarias. Allí, se tiene un cuidado considerable con el monitoreo de errores. De lo contrario, los peligros de la extrapolación no pueden ser exagerados: Una función de interpolación, que por fuerza es también una función de extrapolación, típicamente se volverá loca cuando el argumento $x$ esté fuera del rango de valores tabulados por más de la separación típica entre puntos tabulados.
+
+La interpolación puede hacerse en más de una dimensión, por ejemplo, para una función $f(x, y, z)$. La interpolación multidimensional se logra a menudo mediante una secuencia de interpolaciones unidimensionales. Discutimos esto en §3.6.
+
+\newpage
+
+\section{Interpolación y Extrapolación Polinomial}
+
+Por dos puntos pasa una única línea. Por tres puntos pasa una única parábola. Etcétera. El polinomio interpolante de grado $N - 1$ que pasa por los $N$ puntos $y_1 = f(x_1),\ y_2 = f(x_2),\ \ldots,\ y_N = f(x_N)$ está dado explícitamente por la fórmula clásica de Lagrange,
+
+\begin{align}
+P(x) &= \frac{(x - x_2)(x - x_3)\ldots(x - x_N)}{(x_1 - x_2)(x_1 - x_3)\ldots(x_1 - x_N)} y_1 
++ \frac{(x - x_1)(x - x_3)\ldots(x - x_N)}{(x_2 - x_1)(x_2 - x_3)\ldots(x_2 - x_N)} y_2 \notag \\
+&\quad + \cdots + 
+\frac{(x - x_1)(x - x_2)\ldots(x - x_{N-1})}{(x_N - x_1)(x_N - x_2)\ldots(x_N - x_{N-1})} y_N \tag{3.1.1}
+\end{align}
+
+Hay $N$ términos, cada uno un polinomio de grado $N - 1$ y cada uno construido para ser cero en todos los $x_i$ excepto uno, en el cual está construido para ser igual a $y_i$.
+
+No está muy mal implementar directamente la fórmula de Lagrange, pero tampoco es lo más correcto. El algoritmo resultante no da una estimación de error, y también es algo incómodo de programar. Un algoritmo mucho mejor (para construir el mismo polinomio interpolante único) es el \textit{algoritmo de Neville}, estrechamente relacionado y a veces confundido con el \textit{algoritmo de Aitken}, este último considerado ahora obsoleto.
+
+Sea $P_1$ el valor en $x$ del único polinomio de grado cero (es decir, una constante) que pasa por el punto $(x_1, y_1)$; así que $P_1 = y_1$. Igualmente definimos $P_2, P_3, \ldots, P_N$. Ahora sea $P_{12}$ el valor en $x$ del único polinomio de grado uno que pasa por $(x_1, y_1)$ y $(x_2, y_2)$. Igualmente $P_{23}, P_{34}, \ldots, P_{(N-1)N}$. Similarmente, para polinomios de orden superior, hasta $P_{123\ldots N}$, que es el valor del polinomio interpolante único evaluado en $x$ con todos los $N$ puntos, i.e., el valor deseado.
+
+Los diversos $P$ forman una ``tabla'' con ``antecesores'' a la izquierda que conducen a un solo ``descendiente'' en el extremo derecho. Por ejemplo, con $N = 4$,
+
+\begin{center}
+\begin{tabular}{llll}
+$x_1$ : & $y_1 = P_1$ \\
+$x_2$ : & $y_2 = P_2$ & $P_{12}$ \\
+$x_3$ : & $y_3 = P_3$ & $P_{23}$ & $P_{123}$ \\
+$x_4$ : & $y_4 = P_4$ & $P_{34}$ & $P_{234}$ & $P_{1234}$
+\end{tabular}
+\end{center}
+
+\begin{equation}
+\tag{3.1.2}
+\end{equation}
+
+El algoritmo de Neville es una forma recursiva de llenar los números en la tabla una columna a la vez, de izquierda a derecha. Está basado en la relación entre un ``hijo'' $P$ y sus dos ``padres,''
+
+\begin{equation}
+P_{i(i+1)\ldots(i+m)} = 
+\frac{(x - x_{i+m}) P_{i(i+1)\ldots(i+m-1)} + (x_i - x) P_{(i+1)(i+2)\ldots(i+m)}}{x_i - x_{i+m}}
+\tag{3.1.3}
+\end{equation}
+
+Esta recurrencia funciona porque los dos padres ya concuerdan en los puntos $x_{i+1} \ldots x_{i+m-1}$.
+
+Una mejora a la recurrencia (3.1.3) es llevar un control de las pequeñas 
+\textit{diferencias} entre padres e hijos, a saber, definir (para $m = 1, 2, \ldots, N - 1$),
+
+\begin{equation}
+C_{m,i} \equiv P_{i\ldots(i+m)} - P_{i\ldots(i+m-1)} \\
+\quad D_{m,i} \equiv P_{i\ldots(i+m)} - P_{(i+1)\ldots(i+m)} 
+\tag{3.1.4}
+\end{equation}
+
+Entonces, se pueden derivar fácilmente a partir de (3.1.3) las siguientes relaciones:
+
+\begin{equation}
+D_{m+1,i} = \frac{(x_{i+m+1} - x)(C_{m,i+1} - D_{m,i})}{x_i - x_{i+m+1}} \\
+\quad C_{m+1,i} = \frac{(x_i - x)(C_{m,i+1} - D_{m,i})}{x_i - x_{i+m+1}} 
+\tag{3.1.5}
+\end{equation}
+
+En cada nivel $m$, los $C$'s y $D$'s son las correcciones que hacen que el polinomio sea de orden superior. La respuesta final $P_{1\ldots N}$ es igual a la suma de algún $y_i$ más un conjunto de $C$'s y/o $D$'s que forman un camino desde la familia hasta el hijo derecho.
+
+Nota: Hay una rutina para interpolación polinomial o extrapolación desde $N$ puntos de entrada. Nota que las matrices de entrada deben comenzar desde el índice unitario. Si utilizas arreglos con índice cero, asegúrate de reajustar (véase §1.2).
+\newpage
+\begin{lstlisting}[language=C]
+#include <math.h>
+#include "nrutil.h"
+
+void polint(float xa[], float ya[], int n, float x, float *y, float *dy)
+// Dados los arreglos xa[1..n] y ya[1..n], y un valor x,
+// esta rutina devuelve un valor y, y una estimación de error dy.
+// Si P(x) es el polinomio de grado N-1 tal que P(xa_i) = ya_i, i = 1,...,n,
+// entonces el valor retornado y = P(x).
+{
+    int i, m, ns = 1;
+    float den, dif, dift, ho, hp, w;
+    float *c, *d;
+
+    dif = fabs(x - xa[1]); // Aquí encontramos el índice ns del punto tabulado más cercano
+    c = vector(1, n);
+    d = vector(1, n);
+    for (i = 1; i <= n; i++) {
+        dift = fabs(x - xa[i]);
+        if (dift < dif) {
+            ns = i;
+            dif = dift;
+        }
+        c[i] = ya[i]; // inicializamos el "tablaeu" de los c’s y d’s
+        d[i] = ya[i];
+    }
+    *y = ya[ns--]; // Esta es la aproximación inicial a y.
+
+    for (m = 1; m < n; m++) { // Para cada columna del tableau
+        for (i = 1; i <= n - m; i++) { // recorremos los c’s y d’s y los actualizamos
+            ho = xa[i] - x;
+            hp = xa[i + m] - x;
+            w = c[i + 1] - d[i];
+            if ((den = ho - hp) == 0.0) nrerror("Error en la rutina polint");
+            // Este error solo puede ocurrir si dos valores de xa son (dentro del redondeo) idénticos
+            den = w / den;
+            d[i] = hp * den; // Aquí se actualizan los d’s y c’s
+            c[i] = ho * den;
+        }
+        *dy = (2 * ns < (n - m) ? c[ns + 1] : d[ns--]);
+        // Después de completar cada columna, decidimos qué corrección, c o d, añadir
+        // al valor acumulado de y, es decir, qué camino tomar a través del tableau:
+        // hacia arriba o hacia abajo. Lo hacemos de forma que se tome el camino más
+        // "recto" a través del tableau hasta su ápice, actualizando ns para mantener
+        // el seguimiento. Esta ruta mantiene las aproximaciones parciales centradas
+        // (en la medida de lo posible) en el objetivo x. Lo último añadido es la indicación de error.
+        *y += *dy;
+    }
+
+    free_vector(d, 1, n);
+    free_vector(c, 1, n);
+}
+\end{lstlisting}
+
+A menudo querrás llamar a \texttt{polint} con los argumentos ficticios \texttt{xa} y \texttt{ya} reemplazados por arreglos reales \emph{con desplazamientos}. Por ejemplo, la construcción \texttt{polint(\&xx[14], \&yy[14], 4, x, y, dy)} realiza una interpolación de 4 puntos sobre los valores tabulados \texttt{xx[15..18]}, \texttt{yy[15..18]}. Para más información sobre esto, consulta el final de la sección §3.4.
+
+\newpage
+
+\section{Interpolación y Extrapolación con Funciones Racionales}
+
+Algunas funciones no se aproximan bien mediante polinomios, pero \emph{sí} se aproximan bien mediante funciones racionales, es decir, cocientes de polinomios. Denotamos por $R_{i(i+1)\ldots(i+m)}$ a una función racional que pasa a través de los $m+1$ puntos $(x_i, y_i), \ldots, (x_{i+m}, y_{i+m})$. Más explícitamente, supongamos
+
+\begin{equation}
+R_{i(i+1)\ldots(i+m)}(x) = \frac{P_\mu(x)}{Q_\nu(x)} = \frac{p_0 + p_1 x + \cdots + p_\mu x^\mu}{q_0 + q_1 x + \cdots + q_\nu x^\nu}
+\end{equation}
+
+Dado que hay $\mu + \nu + 1$ coeficientes $p$ y $q$ desconocidos ($q_0$ puede ser arbitrario), debemos tener
+
+\begin{equation}
+m + 1 = \mu + \nu + 1
+\end{equation}
+
+Al especificar una función racional de interpolación, debes proporcionar el orden deseado tanto del numerador como del denominador.
+
+Las funciones racionales a veces son superiores a los polinomios, en sentido aproximado, debido a su habilidad para modelar funciones con polos, es decir, ceros del denominador de la ecuación (3.2.1). Estos polos podrían ocurrir para valores reales de $x_i$ si la función a interpolar tiene polos reales. Más frecuentemente, la función $f(x)$ es finita para todos los $x$ reales, pero tiene una continuación analítica con polos en el plano complejo $x$-plano. Dichos polos pueden entonces arruinar una aproximación polinomial, incluso una restringida a valores reales de $x$, así como pueden arruinar la convergencia de una serie infinita de potencias en $x$. Si dibujas un círculo en el plano complejo alrededor de tus $m$ puntos tabulados, entonces no deberías esperar que la interpolación polinomial sea buena a menos que el polo más cercano esté bastante alejado del círculo. Una aproximación racional, en contraste, se mantendrá “buena” siempre que tenga suficientes potencias de $x$ en su denominador para anular (o cancelar) cualquier polo cercano.
+
+Para el problema de interpolación, una función racional se construye para pasar por un conjunto elegido de valores tabulados. Sin embargo, también deberíamos mencionar que las aproximaciones racionales también pueden usarse en trabajo analítico. Uno a veces construye una aproximación racional con el criterio de que la función racional de la ecuación (3.2.1) misma tenga una expansión en serie de potencias que concuerde con los primeros $m+1$ términos de la expansión en serie de potencias de la función deseada $f(x)$. Esto se llama \emph{aproximación de Padé}, y se discute en la \S5.12.
+
+Bulirsch y Stoer encontraron un algoritmo de Neville que realiza interpolación racional sobre una tabla de datos tabulados. Una tabla como la que se usó para Neville se construye columna por columna, conduciendo a un resultado y a una estimación del error. El algoritmo racional básico se llama \emph{interpolación racional de forma diagonal}, porque está basado en una secuencia diagonal (si $m$ es par) o con el grado una unidad mayor (si $m$ es impar), y construida como en la ecuación (3.1.3), con una
+
+\begin{equation}
+R_{i(i+1)\ldots(i+m)} = R_{i(i+1)\ldots(i+(m-1))} + \frac{(x - x_i)}{(x - x_{i+m})} \left(1 - \frac{R_{i(i+1)\ldots(i+m)}}{R_{i(i+1)\ldots(i+(m-1))}} \right)^{-1}
+\end{equation}
+
+Esta recurrencia genera las funciones racionales que pasan por $m+1$ puntos desde aquellas que pasan por $m$ puntos (y el término $R_{i(i+1)\ldots(i+m)}$ en la ecuación 3.2.3) $m-1$ puntos. Se inicia con
+
+\begin{equation}
+R_i = y_i
+\end{equation}
+
+y con
+
+\begin{equation}
+R \equiv R_{i(i+1)\ldots(i+m)} \quad \text{con } m = -1 \Rightarrow 0
+\end{equation}
+
+Ahora, exactamente como en las ecuaciones (3.1.4) y (3.1.5) anteriores, podemos convertir la recurrencia (3.2.3) en una que involucra sólo las pequeñas diferencias:
+
+\begin{equation}
+C_{m,i} \equiv R_{i\ldots(i+m)} - R_{i\ldots(i+m-1)}
+\end{equation}
+
+\begin{equation}
+D_{m,i} \equiv R_{i\ldots(i+m)} - R_{(i+1)\ldots(i+m)}
+\end{equation}
+
+Nótese que éstas satisfacen la relación
+
+\begin{equation}
+C_{m+1,i} - D_{m+1,i} = C_{m,i+1} - D_{m,i}
+\end{equation}
+
+lo cual es útil para demostrar las recurrencias
+
+\begin{equation}
+D_{m+1,i} = \left( \frac{C_{m,i+1} - D_{m,i}}{\frac{x - x_i}{x - x_{i+m+1}}} \right)
+\end{equation}
+
+\begin{equation}
+C_{m+1,i} = \left( \frac{C_{m,i+1} - D_{m,i}}{\frac{x - x_{i+m+1}}{x - x_i}} \right)
+\end{equation}
+
+Esta recurrencia se implementa en la siguiente función, cuyo uso es análogo en todo aspecto a \texttt{polint} en la \S3.1. Nótese nuevamente que se asume que los arreglos de entrada tienen offset de una unidad (\S1.2).
+
+\begin{lstlisting}[language=C]
+#include <math.h>
+#include "nrutil.h"
+
+#define TINY 1.0e-25       // Un número muy pequeño
+#define FREERETURN {free_vector(d,1,n);free_vector(c,1,n);return;}
+
+void ratint(float xa[], float ya[], int n, float x, float *y, float *dy)
+// Dados los arreglos xa[1..n] y ya[1..n], y un valor x, esta rutina
+// devuelve un valor y y una estimación de precisión dy.
+// El valor devuelto es el de la función racional diagonal evaluada en x,
+// la cual pasa por los n puntos (xa_i, ya_i), i = 1..n
+{
+    int m,i,ns=1;
+    float w,t,hh,h,dd,*c,*d;
+
+    c=vector(1,n);
+    d=vector(1,n);
+    hh=fabs(x-xa[1]);
+    for (i=1;i<=n;i++) {
+        h=fabs(x-xa[i]);
+        if (h == 0.0) {
+            *y=ya[i];
+            *dy=0.0;
+            FREERETURN
+        } else if (h < hh) {
+            ns=i;
+            hh=h;
+        }
+        c[i]=ya[i];
+        d[i]=ya[i]+TINY; // TINY es necesario para evitar una rara división 0/0
+    }
+    *y=ya[ns--];
+    for (m=1;m<n;m++) {
+        for (i=1;i<=n-m;i++) {
+            w=d[i+1]-d[i];
+            h=xa[i+m]-x; // h nunca será cero, pues se verificó en el ciclo anterior
+            t=(xa[i]-x)*w/h;
+            dd=t-c[i+1];
+            if (dd == 0.0) nrerror("Error en la rutina ratint");
+            // Esta condición de error indica que la función interpoladora
+            // tiene un polo en el valor solicitado de x.
+            dd=w/dd;
+            d[i]=c[i+1]*dd;
+            c[i]=t*dd;
+        }
+        *y += (*dy=(2*ns < (n-m) ? c[ns+1] : d[ns--]));
+    }
+    FREERETURN
+}
+\end{lstlisting}
+
+\newpage
+
+\section{Interpolación por Splines Cúbicos}
+
+Dada una función tabulada \( y_i = y(x_i), \quad i = 1\ldots N \), enfocamos la atención en un intervalo particular, entre \( x_j \) y \( x_{j+1} \). La interpolación lineal en ese intervalo da la fórmula de interpolación
+
+\[
+y = A y_j + B y_{j+1} \tag{3.3.1}
+\]
+
+donde
+
+\[
+A = \frac{x_{j+1} - x}{x_{j+1} - x_j} \qquad B = 1 - A = \frac{x - x_j}{x_{j+1} - x_j} \tag{3.3.2}
+\]
+
+Las ecuaciones (3.3.1) y (3.3.2) son un caso especial de la fórmula de interpolación de Lagrange (3.1.1).
+
+Puesto que es (por tramos) lineal, la ecuación (3.3.1) tiene derivada segunda cero en el interior de cada intervalo, y una derivada segunda indefinida o infinita en las abscisas \( x_j \). El objetivo de la interpolación por splines cúbicos es obtener una fórmula de interpolación que sea suave en la primera derivada, y continua en la segunda derivada, tanto dentro de un intervalo como en sus bordes.
+
+Supongamos, contrariamente al hecho, que además de los valores tabulados de \( y_i \), también tenemos valores tabulados para las derivadas segundas de la función, \( y_i'' \), es decir, un conjunto de números \( y_i'' \). Entonces, dentro de cada intervalo, podemos agregar al lado derecho de la ecuación (3.3.1) un polinomio cúbico cuyas derivadas segundas varíen linealmente desde un valor \( y_j'' \) en la izquierda hasta un valor \( y_{j+1}'' \) en la derecha. Al hacerlo, tendremos la continuidad deseada en la derivada segunda. También construiremos el polinomio cúbico para tener los valores cero en \( x_j \) y \( x_{j+1} \), y al agregarlo no se arruinará la concordancia con los valores funcionales tabulados \( y_j \) y \( y_{j+1} \) en los extremos \( x_j \) y \( x_{j+1} \).
+
+Un pequeño cálculo auxiliar muestra que solo hay una manera de arreglar esta construcción, reemplazando (3.3.1) por
+
+\[
+y = A y_j + B y_{j+1} + C y_j'' + D y_{j+1}'' \tag{3.3.3}
+\]
+
+donde \( A \) y \( B \) están definidos en (3.3.2) y
+
+\[
+C = \frac{1}{6}(A^3 - A)(x_{j+1} - x_j)^2 \qquad D = \frac{1}{6}(B^3 - B)(x_{j+1} - x_j)^2 \tag{3.3.4}
+\]
+
+Nótese que la dependencia con respecto a la variable independiente \( x \) en las ecuaciones (3.3.3) y (3.3.4) es completamente a través de la dependencia lineal en \( x \) de \( A \) y \( B \), y (a través de \( A \) y \( B \)) la dependencia cúbica de \( x \) en \( C \) y \( D \).
+
+Podemos verificar fácilmente que \( y'' \) es, de hecho, la segunda derivada del nuevo polinomio interpolante. Derivamos la ecuación (3.3.3) con respecto a \( x \), usando las definiciones de \( A, B, C, D \) para calcular \( dA/dx, dB/dx, dC/dx, dD/dx \). El resultado es
+
+\[
+\frac{dy}{dx} = \frac{y_{j+1} - y_j}{x_{j+1} - x_j} + \frac{3A^2 - 1}{6}(x_{j+1} - x_j)y_j'' + \frac{3B^2 - 1}{6}(x_{j+1} - x_j)y_{j+1}'' \tag{3.3.5}
+\]
+
+para la primera derivada, y
+
+\[
+\frac{d^2y}{dx^2} = A y_j'' + B y_{j+1}'' \tag{3.3.6}
+\]
+
+para la segunda derivada. Dado que \( A = 1 \) en \( x_j \), \( A = 0 \) en \( x_{j+1} \), mientras que \( B \) es justo el complemento, la ecuación (3.3.6) muestra que \( y'' \) es simplemente la derivada segunda tabulada, y también que la derivada segunda es continua a lo largo de los intervalos (por ejemplo, la frontera entre los dos intervalos \( x_{j-1}, x_j \) y \( x_j, x_{j+1} \)).
+
+El único problema ahora es que supusimos que los \( y_i'' \) eran conocidos, cuando en realidad no lo son. Sin embargo, aún no hemos requerido que la primera derivada, calculada a partir de la ecuación (3.3.5), sea continua a través de la frontera entre dos intervalos. La idea clave de un spline cúbico es exigir esta continuidad y usarla para obtener ecuaciones para las segundas derivadas \( y_i'' \).
+
+Las ecuaciones requeridas se obtienen igualando la ecuación (3.3.5), evaluada en \( x = x_j \) en el intervalo \( (x_{j-1}, x_j) \), a la misma ecuación evaluada en \( x = x_j \), pero en el intervalo \( (x_j, x_{j+1}) \). Con algo de reorganización, esto da (para \( j = 2, \dots, N-1 \)):
+
+\[
+\frac{x_j - x_{j-1}}{6} y_{j-1}'' + \frac{x_{j+1} - x_{j-1}}{3} y_j'' + \frac{x_{j+1} - x_j}{6} y_{j+1}'' = \frac{y_{j+1} - y_j}{x_{j+1} - x_j} - \frac{y_j - y_{j-1}}{x_j - x_{j-1}} \tag{3.3.7}
+\]
+
+Estas son \( N - 2 \) ecuaciones lineales en los \( N \) incógnitas \( y_i'' \), \( i = 1, \dots, N \). Por lo tanto, hay una familia de soluciones de dos parámetros posibles.
+
+Para una solución única, necesitamos especificar dos condiciones adicionales, típicamente tomadas como condiciones de frontera en \( x_1 \) y \( x_N \). Las formas más comunes de hacerlo son:
+
+\begin{itemize}
+  \item Establecer una o ambas de \( y_1'' \) y \( y_N'' \) iguales a cero, dando lugar al llamado \textit{spline cúbico natural}, que tiene derivada segunda nula en uno o ambos extremos, o
+  \item Fijar \( y_1'' \) y/o \( y_N'' \) a valores calculados a partir de la ecuación (3.3.5) de manera que la primera derivada de la función interpolante tenga un valor específico en uno o ambos extremos.
+\end{itemize}
+
+Una razón por la cual los splines cúbicos son especialmente prácticos es que el conjunto de ecuaciones (3.3.7), junto con las dos condiciones de frontera opcionales, no solo es lineal, sino también \textit{tridiagonal}. Cada \( y_j'' \) está acoplado solo con sus vecinos más cercanos en \( j \pm 1 \). Por lo tanto, las ecuaciones pueden resolverse en \( \mathcal{O}(N) \) operaciones usando el algoritmo tridiagonal (§2.4). Este algoritmo es lo suficientemente rápido como para integrarse directamente en la rutina de interpolación spline. Esto hace que la rutina no solo sea completamente transparente como implementación de (3.3.7), sino también tan eficiente como otras formas de interpolación que utilizan splines cúbicos (§3.4). Los arreglos que usamos se describen más completamente en la §1.2.
+
+\begin{lstlisting}[language=C]
+#include "nrutil.h"
+
+void spline(float x[], float y[], int n, float yp1, float ypn, float y2[])
+/* Dados los arreglos x[1..n] e y[1..n] que contienen una función tabulada, es decir, y_i = f(x_i),
+   con x_1 < x_2 < ... < x_N, y dados los valores yp1 y ypn para la primera derivada de la función
+   interpolante en los puntos 1 y n, respectivamente, esta rutina regresa un arreglo y2[1..n] que
+   contiene las segundas derivadas de la función interpolante en los puntos tabulados x_i.
+   Si yp1 y/o ypn son iguales o mayores a 1 × 10^30, la rutina interpreta que debe usar la
+   condición de frontera para una spline natural, con segunda derivada cero en ese extremo. */
+{
+    int i,k;
+    float p,qn,sig,un,*u;
+
+    u=vector(1,n-1);
+    if (yp1 > 0.99e30) {      // La condición de frontera inferior se establece como "natural"
+        y2[1]=u[1]=0.0;
+    } else {                  // o bien se especifica una derivada primera
+        y2[1] = -0.5;
+        u[1]=(3.0/(x[2]-x[1]))*((y[2]-y[1])/(x[2]-x[1])-yp1);
+    }
+
+    // Este es el bucle de descomposición del algoritmo tridiagonal.
+    // y2 y u se usan para almacenamiento temporal de los factores descompuestos.
+    for (i=2;i<n;i++) {
+        sig=(x[i]-x[i-1])/(x[i+1]-x[i-1]);
+        p=sig*y2[i-1]+2.0;
+        y2[i]=(sig-1.0)/p;
+        u[i]=(6.0*((y[i+1]-y[i])/(x[i+1]-x[i]) -
+                  (y[i]-y[i-1])/(x[i]-x[i-1]))/(x[i+1]-x[i-1]) - sig*u[i-1])/p;
+    }
+
+    if (ypn > 0.99e30) {      // La condición de frontera superior se establece como "natural"
+        qn=un=0.0;
+    } else {                  // o bien se especifica una derivada primera
+        qn=0.5;
+        un=(3.0/(x[n]-x[n-1]))*(ypn-(y[n]-y[n-1])/(x[n]-x[n-1]));
+    }
+
+    y2[n]=(un-qn*u[n-1])/(qn*y2[n-1]+1.0);
+
+    // Este es el bucle de sustitución hacia atrás del algoritmo tridiagonal.
+    for (k=n-1;k>=1;k--) {
+        y2[k]=y2[k]*y2[k+1]+u[k];
+    }
+
+    free_vector(u,1,n-1);
+}
+\end{lstlisting}
+
+Es importante entender que el programa \texttt{spline} se llama sólo \textit{una vez}
+para procesar toda una función tabulada en los arreglos $x_i$ y $y_i$. 
+Una vez hecho esto, los valores de la función interpolada para cualquier valor de $x$ 
+se obtienen mediante llamadas (tantas como se deseen) a una rutina separada llamada 
+\texttt{splint} (por ``interpolación spline'').
+
+\begin{lstlisting}[language=C]
+void splint(float xa[], float ya[], float y2a[], int n, float x, float *y)
+// Dado los arreglos xa[1..n] y ya[1..n], que tabulan una función (con los xa’s en orden),
+// y dado el arreglo y2a[1..n], que es la salida del programa spline, y dado un valor de x,
+// esta rutina retorna el valor interpolado usando un spline cúbico.
+{
+    void nrerror(char error_text[]);
+    int klo,khi,k;
+    float h,b,a;
+
+    klo=1;
+    khi=n;
+    // Encontraremos la posición correcta en la tabla usando bisección.
+    while (khi-klo > 1) {
+        k=(khi+klo) >> 1;
+        if (xa[k] > x) khi=k;
+        else klo=k;
+    }
+    // klo y khi ahora encierran el valor de entrada x.
+    h=xa[khi]-xa[klo];
+    if (h == 0.0) nrerror("Entrada xa inválida en la rutina splint");
+    // Los xa’s deben ser distintos.
+    a=(xa[khi]-x)/h;
+    b=(x-xa[klo])/h;
+    // Ahora se evalúa el polinomio del spline cúbico.
+    *y=a*ya[klo]+b*ya[khi]+(((a*a*a-a)*y2a[klo]+(b*b*b-b)*y2a[khi])*(h*h)/6.0);
+}
+\end{lstlisting}
+
+\newpage
+
+\section{Cómo buscar en una tabla ordenada}
+
+Supón que has decidido usar algún esquema de interpolación, como interpolación polinomial de cuarto orden, para calcular una función $f(x)$ a partir de un conjunto tabulado de $x_i$ y $f_i$. Entonces necesitarás una forma rápida de encontrar tu posición en la tabla de $x_i$, dado algún valor particular $x$ en el cual deseas hacer la evaluación. Este problema no pertenece propiamente al análisis numérico, pero ocurre tan frecuentemente en la práctica que sería negligente ignorarlo.
+
+Formalmente, el problema es el siguiente: Dado un arreglo de abscisas $\texttt{xx[j]}, j = 1, 2, \ldots, n$, con elementos ordenados de forma monótonamente creciente o decreciente, y dado un número $x$, encuentra un entero $j$ tal que $x$ se encuentre entre $\texttt{xx[j]}$ y $\texttt{xx[j+1]}$. Para esta tarea, definimos elementos ficticios en los extremos del arreglo: $\texttt{xx[0]}$ y $\texttt{xx[n+1]}$ igual a más o menos infinito (en el orden que sea consistente con la monotonía de la tabla). Así, $j$ siempre estará entre 0 y $n$, inclusive. Un valor de 0 indica que $x$ está fuera de rango por debajo, mientras que $n$ indica que está fuera de rango por arriba.
+
+En la mayoría de los casos, una vez que todo está dicho y hecho, es difícil mejorar el método de \textit{bisección}, que encuentra la posición correcta en un tiempo de aproximadamente $\log_2 n$ intentos. Ya usamos bisección en la rutina de evaluación de splines \texttt{splint} en la sección anterior, así que podrías revisarla nuevamente. Aislada, una rutina de bisección luce como esta:
+
+\begin{lstlisting}[language=C]
+void locate(float xx[], unsigned long n, float x, unsigned long *j)
+// Dado un arreglo xx[1..n] y un valor x, retorna un valor j tal que x esté entre xx[j] y xx[j+1].
+// xx debe ser monótono, ya sea creciente o decreciente.
+// j = 0 o j = n se retorna para indicar que x está fuera de rango.
+{
+    unsigned long ju, jm, jl;
+    int ascd;
+
+    jl = 0;         // Inicializar el límite inferior
+    ju = n + 1;     // e inferior superior
+    ascd = (xx[n] >= xx[1]); // Determinar si la tabla es ascendente
+
+    while (ju - jl > 1) {         // Mientras no se cumpla la condición
+        jm = (ju + jl) >> 1;      // Calcular punto medio
+        if ((x >= xx[jm]) == ascd)
+            jl = jm;              // Actualizar el límite inferior
+        else
+            ju = jm;              // Actualizar el límite superior
+    }
+
+    if (x == xx[1]) *j = 1;
+    else if (x == xx[n]) *j = n - 1;
+    else *j = jl;                 // Retornar el valor j encontrado
+}
+\end{lstlisting}
+
+Se asume un arreglo \texttt{xx} de tipo \texttt{float} con índice desde 1. Para usar \texttt{locate} con un arreglo que empiece desde 0, recuerda restar 1 al índice calculado y también ajustar la dirección de memoria de \texttt{xx}.
+
+\newpage
+
+\subsection{Búsqueda con valores correlacionados}
+
+A veces estarás en la situación de buscar muchas veces en una tabla grande, y con abscisas casi idénticas en búsquedas consecutivas. Por ejemplo, podrías estar generando una función que se utiliza en el lado derecho de una ecuación diferencial: La mayoría de los integradores de ecuaciones diferenciales, como veremos en el Capítulo 16, llaman a evaluaciones del lado derecho en puntos que saltan hacia adelante y hacia atrás un poco, pero cuya tendencia se mueve lentamente en la dirección de la integración.
+
+En tales casos, es un desperdicio hacer una bisección completa, \textit{ab initio}, en cada llamada. La siguiente rutina, en cambio, comienza con una posición adivinada en la tabla. Primero ``caza’’, ya sea hacia arriba o hacia abajo, en incrementos de 1, luego 2, luego 4, etc., hasta que el valor deseado esté acotado. En segundo lugar, biseca dentro del intervalo acotado. En el peor de los casos, esta rutina es aproximadamente un factor de 2 más lenta que \texttt{locate} (si la fase de caza se expande para incluir toda la tabla). En el mejor de los casos, puede ser un factor de $\log_2 n$ más rápida que \texttt{locate}, si el punto deseado usualmente está bastante cerca del valor adivinado. La Figura 3.4.1 compara las dos rutinas.
+
+\begin{lstlisting}[language=C]
+void hunt(float xx[], unsigned long n, float x, unsigned long *jlo)
+/* Dado un arreglo xx[1..n], y un valor x, retorna un valor jlo tal que x está entre xx[jlo] y xx[jlo+1]. 
+   xx[1..n] debe ser monótono, ya sea creciente o decreciente. 
+   jlo=0 o jlo=n se retornan para indicar que x está fuera de rango.
+   jlo en la entrada es tomada como la conjetura inicial para jlo en la salida. */
+{
+    unsigned long jm, jhi, inc;
+    int ascnd;
+
+    ascnd = (xx[n] >= xx[1]); // Orden ascendente o descendente
+
+    if (*jlo <= 0 || *jlo > n) { // Si la conjetura no es útil
+        *jlo = 0;
+        jhi = n + 1;
+    } else {
+        inc = 1;
+        if ((x >= xx[*jlo]) == ascnd) { // Buscar hacia arriba
+            if (*jlo == n) return;
+            jhi = (*jlo) + 1;
+            while ((x >= xx[jhi]) == ascnd) { // Explora hasta acotar
+                *jlo = jhi;
+                inc *= 2;
+                jhi = (*jlo) + inc;
+                if (jhi > n) {
+                    jhi = n + 1;
+                    break;
+                }
+            }
+        } else { // Buscar hacia abajo
+            if (*jlo == 1) {
+                *jlo = 0;
+                return;
+            }
+            jhi = (*jlo)--;
+
+            while ((x < xx[*jlo]) == ascnd) {
+                jhi = (*jlo);
+                inc *= 2;
+                if (inc >= jhi) {
+                    *jlo = 0;
+                    break;
+                } else *jlo = jhi - inc;
+            }
+        }
+    }
+
+    // Búsqueda final por bisección
+    while ((jhi - (*jlo)) != 1) {
+        jm = (jhi + (*jlo)) >> 1;
+        if ((x >= xx[jm]) == ascnd)
+            *jlo = jm;
+        else
+            jhi = jm;
+    }
+
+    // Correcciones por si x es exactamente igual a un extremo
+    if (x == xx[n]) *jlo = n - 1;
+    if (x == xx[1]) *jlo = 1;
+}
+\end{lstlisting}
+
+\subsection*{Después de la búsqueda (After the Hunt)}
+
+\textbf{El problema:} Las rutinas \texttt{locate} y \texttt{hunt} retornan un índice $j$ tal que el valor deseado de $x$ se encuentra entre las entradas de la tabla \texttt{xx[j]} y \texttt{xx[j+1]}, donde \texttt{xx[1..n]} es la tabla completa. Pero, para obtener un valor interpolado de $m$ puntos utilizando una rutina como \texttt{polint} (\S3.1) o \texttt{ratint} (\S3.2), necesitas proporcionar arreglos \texttt{xx} y \texttt{yy} mucho más cortos, de longitud $m$.\\
+
+¿Cómo haces esa conexión?
+
+\textbf{La solución:} Calcula
+
+\[
+k = \texttt{IMIN}(\texttt{IMAX}(j - (m-1)/2,\,1),\,n + 1 - m)
+\]
+
+(Las macros \texttt{IMIN} e \texttt{IMAX} devuelven el mínimo y el máximo de dos argumentos enteros; ver \S1.2 y el Apéndice B.)\\
+
+Esta expresión produce el índice del miembro más a la izquierda de un conjunto de $m$ puntos centrado (en la medida de lo posible) entre $j$ y $j+1$, pero limitado por 1 en el extremo izquierdo y por $n$ en el derecho. Esto te permite llamar a la rutina de interpolación con las direcciones de los arreglos desplazadas por $k$, por ejemplo:
+
+\begin{verbatim}
+    polint(&xx[k-1], &yy[k-1], m, ...)
+\end{verbatim}
+
+\subsection{Coeficientes del Polinomio Interpolador}
+
+Ocasionalmente podrías querer conocer no el valor del polinomio interpolador que pasa por un (pequeño) número de puntos, sino los coeficientes de ese polinomio. Un conjunto útil de coeficientes podría ser, por ejemplo, para computar valores simultáneamente interpolados de la función y de varias de sus derivadas (véase \S3.7), o para convolver un segmento de la función tabulada con alguna otra función, donde los momentos de esa otra función (es decir, su convolución con potencias de $x$) se conocen analíticamente.
+
+Sin embargo, asegúrate de que los coeficientes que buscas sean realmente los necesarios. En general, los coeficientes del polinomio interpolador pueden determinarse con mucha menor precisión que su valor en un punto deseado. Por tanto, no es buena idea determinar los coeficientes solo para luego usarlos al calcular valores interpolados. Los valores así calculados podrían no pasar exactamente por los puntos tabulados, mientras que los valores computados por las rutinas de \S3.1--\S3.3 sí pasan exactamente por tales puntos.
+
+Tampoco debes confundir el polinomio interpolador (y sus coeficientes) con su primo cercano, el mejor ajuste de un polinomio a los datos. El ajuste es un proceso de suavizado, ya que el número de coeficientes ajustados suele ser mucho menor que el número de puntos de datos. Por tanto, los coeficientes ajustados pueden determinarse con precisión incluso en presencia de errores estadísticos en los valores tabulados (véase \S14.8). La interpolación, donde el número de coeficientes y el número de puntos tabulados son iguales, toma los valores tabulados como perfectos. Si en realidad contienen errores estadísticos, estos pueden amplificarse en oscilaciones del polinomio interpolador entre los puntos tabulados.
+
+Como antes, tomamos los valores tabulados como $y_i \equiv y(x_i)$. Si el polinomio interpolador se escribe como:
+
+\begin{equation}
+y = c_0 + c_1 x + c_2 x^2 + \cdots + c_N x^N \tag{3.5.1}
+\end{equation}
+
+entonces los coeficientes $c_i$ deben satisfacer la ecuación lineal:
+
+\begin{equation}
+\begin{bmatrix}
+1 & x_0 & x_0^2 & \cdots & x_0^N \\
+1 & x_1 & x_1^2 & \cdots & x_1^N \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_N & x_N^2 & \cdots & x_N^N \\
+\end{bmatrix}
+\begin{bmatrix}
+c_0 \\
+c_1 \\
+\vdots \\
+c_N \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+y_0 \\
+y_1 \\
+\vdots \\
+y_N \\
+\end{bmatrix}
+\tag{3.5.2}
+\end{equation}
+
+Esta es una matriz de Vandermonde, como se describe en \S2.8. En principio, se puede resolver la ecuación (3.5.2) mediante técnicas estándar de resolución de ecuaciones lineales (véase \S2.3); sin embargo, el método especial derivado en \S2.8 es mucho más eficiente para un gran factor de $N$, por lo que es mucho mejor.
+
+Recuerda que los sistemas con matrices de Vandermonde pueden estar muy mal condicionados. En tales casos, ningún método numérico puede ofrecer una respuesta precisa. Tales dificultades no implican dificultad para encontrar valores interpolados por los métodos de \S3.1, pero sí dificultan encontrar \textit{coeficientes}.
+
+Como se indica en \S2.8, el índice comienza en 0 debido a G. B. Rybicki. Observa que los arreglos en este capítulo están indexados desde cero.
+
+\subsection{Otro Método}
+
+Otra técnica consiste en hacer uso de la rutina de interpolación de valores de función ya dada (\texttt{polint} §3.1). Si interpolamos (o extrapolamos) para encontrar el valor del polinomio interpolador en $x = 0$, entonces este valor será evidentemente $c_0$. Ahora podemos restar $c_0$ de los valores $y_i$ y dividir cada uno por su correspondiente $x_i$. Descartando un punto (el que tenga el menor $x_i$ es una buena opción), podemos repetir el procedimiento para encontrar $c_1$, y así sucesivamente.
+
+No es evidente de inmediato que este procedimiento sea estable, pero en general hemos encontrado que es \textit{algo más} estable que la rutina anterior. Este método es de orden $N^3$, mientras que el anterior era de orden $N^2$. Sin embargo, encontrarás que ninguno de los dos funciona muy bien para $N$ grandes, debido a la condición intrínsecamente mal condicionada del problema de Vandermonde. En precisión simple, $N$ hasta 8 o 10 es satisfactorio; aproximadamente el doble en precisión doble.
+
+\begin{lstlisting}[language=C]
+#include <math.h>
+#include "nrutil.h"
+
+void polcof(float xa[], float ya[], int n, float cof[])
+/* Dados los arreglos xa[0..n] y ya[0..n] que contienen una función tabulada
+   ya_i = f(xa_i), esta rutina devuelve un arreglo de coeficientes cof[0..n]
+   tal que ya_i = \sum_j cof_j x_a^j */
+{
+    void polint(float xa[], float ya[], int n, float x, float *y, float *dy);
+    int k,j,i;
+    float xmin,dy,*x,*y;
+
+    x = vector(0,n);
+    y = vector(0,n);
+    for (j = 0; j <= n; j++) {
+        x[j] = xa[j];
+        y[j] = ya[j];
+    }
+
+    for (j = 0; j <= n; j++) {
+        polint(x-1, y-1, n+1-j, 0.0, &cof[j], &dy); // Extrapolamos a x = 0
+        xmin = 1.0e38;
+        k = -1;
+        for (i = 0; i <= n-j; i++) {
+            if (fabs(x[i]) < xmin) {
+                xmin = fabs(x[i]);
+                k = i;
+            }
+            if (x[i] != 0.0) {
+                y[i] = (y[i] - cof[j]) / x[i]; // reducimos todos los términos
+            }
+        }
+        for (i = k+1; i <= n-j; i++) {
+            y[i-1] = y[i]; // eliminamos el valor mínimo
+            x[i-1] = x[i];
+        }
+    }
+
+    free_vector(y,0,n);
+    free_vector(x,0,n);
+}
+\end{lstlisting}
+
+Si el punto \( x = 0 \) no se encuentra dentro (o al menos cerca) del rango de los valores tabulados \( x_i \), entonces los coeficientes del polinomio interpolante, en general, pueden volverse muy grandes. Sin embargo, el verdadero “contenido de información” de los coeficientes reside en las pequeñas diferencias que se producen por los grandes valores inducidos por la “traslación”. Esta es una causa de mala condición numérica, lo que resulta en pérdida de cifras significativas y coeficientes mal determinados. Deberías considerar redefinir el origen del problema, para poner \( x = 0 \) en un lugar sensato.
+
+Otra patología es que, si se intenta una interpolación de grado demasiado alto sobre una función suave, el polinomio interpolante intentará utilizar sus coeficientes de grado alto en combinación con coeficientes grandes y casi perfectamente cancelados entre sí, para ajustarse a los valores tabulados con la mayor precisión posible. Este efecto es el mismo que la tendencia intrínseca del polinomio interpolante a oscilar (violentamente) entre sus puntos de restricción, y estaría presente incluso si la precisión en punto flotante de la máquina fuera infinitamente buena. Las rutinas anteriores \texttt{polcoe} y \texttt{polcof} tienen sensibilidades ligeramente diferentes a estas patologías que pueden ocurrir.
+
+\medskip
+\noindent
+\textbf{¿Sigues completamente seguro de que usar los \textit{coeficientes} es una buena idea?}
+
+\subsection{Interpolación en dos o más dimensiones}
+
+En la interpolación multidimensional, buscamos una estimación de \( y(x_1, x_2, \ldots, x_n) \) a partir de una grilla \( n \)-dimensional de valores tabulados \( y \) y \( n \) vectores unidimensionales que dan los valores tabulados de cada una de las variables independientes \( x_1, x_2, \ldots, x_n \). No consideraremos aquí el problema de interpolar sobre una malla que no es cartesiana, es decir, que tiene valores tabulados en puntos “aleatorios” en el espacio \( n \)-dimensional en lugar de en los vértices de una grilla rectangular. Para mayor claridad, consideraremos explícitamente solo el caso de dos dimensiones, siendo los casos de tres o más dimensiones análogos en todos los sentidos.
+
+En dos dimensiones, imaginamos que se nos da una matriz de valores funcionales \( \texttt{ya}[1..m][1..n] \). También se nos dan un arreglo \( \texttt{x1a}[1..m] \), y un arreglo \( \texttt{x2a}[1..n] \). La relación de estas entradas con una función subyacente \( y(x_1, x_2) \) es
+
+\begin{equation}
+\texttt{ya[j][k]} = y(\texttt{x1a[j]}, \texttt{x2a[k]})
+\end{equation}
+
+Queremos estimar, por interpolación, el valor de la función \( y \) en algún punto no tabulado \( (x_1, x_2) \).
+
+Un concepto importante es el del \textit{cuadro de grilla} en el que cae el punto \( (x_1, x_2) \), es decir, los cuatro puntos tabulados que rodean el punto interior deseado. Para comodidad, numeraremos estos puntos del 1 al 4, en sentido antihorario comenzando desde la esquina inferior izquierda (véase la Figura 3.6.1). Más precisamente, si
+
+\begin{equation}
+\texttt{x1a[j]} \leq x_1 \leq \texttt{x1a[j+1]} \\
+\texttt{x2a[k]} \leq x_2 \leq \texttt{x2a[k+1]}
+\end{equation}
+
+definen \( j \) y \( k \), entonces
+
+\begin{align}
+y_1 &\equiv \texttt{ya[j][k]} \\
+y_2 &\equiv \texttt{ya[j+1][k]} \\
+y_3 &\equiv \texttt{ya[j+1][k+1]} \\
+y_4 &\equiv \texttt{ya[j][k+1]}
+\end{align}
+
+La interpolación más simple en dos dimensiones es la \textit{interpolación bilineal} en el cuadro de grilla. Sus fórmulas son:
+
+\begin{align}
+t &= (x_1 - \texttt{x1a[j]}) / (\texttt{x1a[j+1]} - \texttt{x1a[j]}) \\
+u &= (x_2 - \texttt{x2a[k]}) / (\texttt{x2a[k+1]} - \texttt{x2a[k]})
+\end{align}
+
+(de modo que \( t \) y \( u \) estén entre 0 y 1), y
+
+\begin{equation}
+y(x_1, x_2) = (1 - t)(1 - u)y_1 + t(1 - u)y_2 + tu y_3 + (1 - t)u y_4
+\end{equation}
+
+La interpolación bilineal suele ser “suficientemente buena para fines prácticos gubernamentales”. A medida que el punto de interpolación se desplaza de un cuadro de grilla a otro, el valor de la función interpolada cambia continuamente. Sin embargo, el gradiente de la función interpolada cambia de forma discontinua en los bordes de cada cuadro de grilla.
+
+Existen dos direcciones claramente diferentes que se pueden tomar para ir más allá de la interpolación bilineal hacia métodos de orden superior: se puede usar un orden superior para obtener mayor precisión en la función interpolada (¡para funciones suficientemente suaves!), sin intentar necesariamente corregir la continuidad del gradiente y las derivadas superiores. O bien, se puede hacer uso de un orden superior para imponer suavidad en algunas de estas derivadas al cruzar los bordes de los cuadros de grilla. A continuación consideraremos cada una de estas dos direcciones por separado.
+
+\subsection{Orden superior para mayor precisión}
+
+La idea básica consiste en descomponer el problema en una sucesión de interpolaciones unidimensionales. Si queremos hacer una interpolación de orden \( m-1 \) en la dirección \( x_1 \), y de orden \( n-1 \) en la dirección \( x_2 \), primero localizamos un sub-bloque \( m \times n \) de la matriz de la función tabulada que contenga nuestro punto deseado \( (x_1, x_2) \). Luego hacemos \( m \) interpolaciones unidimensionales en la dirección \( x_2 \), es decir, sobre las filas del sub-bloque, para obtener valores de función en los puntos \( (x1a[j], x_2) \), \( j = 1, \ldots, m \). Finalmente, hacemos una última interpolación en la dirección \( x_1 \) para obtener el resultado. Si usamos la rutina de interpolación polinomial \texttt{polint} de la §3.1, y un sub-bloque que se presume ya ha sido localizado (y referenciado mediante el apuntador \texttt{float **ya}, véase §1.2), el procedimiento se ve así:
+
+\begin{lstlisting}[language=C]
+#include "nrutil.h"
+
+void polin2(float x1a[], float x2a[], float **ya, int m, int n,
+            float x1, float x2, float *y, float *dy)
+{
+    void polint(float xa[], float ya[], int n, float x, float *y, float *dy);
+    int j;
+    float *ymtmp;
+
+    ymtmp=vector(1,m);
+    for (j=1;j<=m;j++) {
+        polint(x2a,ya[j],n,x2,&ymtmp[j],dy);
+    }
+    polint(x1a,ymtmp,m,x1,y,dy);
+    free_vector(ymtmp,1,m);
+}
+\end{lstlisting}
+
+\subsection{Orden Superior para Suavidad: Interpolación Bicúbica}
+
+Presentaremos dos métodos que están en uso común, y que no son independientes entre sí. El primero se llama usualmente \textit{interpolación bicúbica}.
+
+La interpolación bicúbica requiere que el usuario especifique en cada punto de la cuadrícula no solo la función $y(x_1, x_2)$, sino también los gradientes $\partial y / \partial x_1 \equiv y_{,1}$, $\partial y / \partial x_2 \equiv y_{,2}$ y la derivada cruzada $\partial^2 y / \partial x_1 \partial x_2 \equiv y_{,12}$. Entonces se puede encontrar una función interpolante que sea \textit{cúbica} en las coordenadas escaladas $t$ y $u$ (ver ecuación 3.6.4), con las siguientes propiedades:
+
+(i) Los valores de la función y de las derivadas especificadas se reproducen exactamente en los puntos de la cuadrícula, y  
+(ii) Los valores de la función y de las derivadas especificadas cambian de manera continua conforme el punto de interpolación cruza de un cuadrado de la cuadrícula a otro.
+
+Es importante entender que nada en las ecuaciones de la interpolación bicúbica requiere que se especifiquen las derivadas adicionales \textit{correctamente}. Las propiedades de suavidad están tautológicamente ``forzadas", y no tienen nada que ver con la ``precisión'' de las derivadas especificadas. Es un problema separado decidir cómo obtener los valores que se especificarán. Cuanto mejor se haga esto, más \textit{precisa} será la interpolación. Pero será \textit{suave} sin importar cómo se haga.
+
+Lo mejor de todo es conocer las derivadas analíticamente, o poder computarlas por medios numéricos, en los puntos de la cuadrícula. Lo siguiente mejor es determinarlas por diferenciación numérica a partir de los valores funcionales tabulados disponibles en la cuadrícula. El código relevante podría lucir así (utilizando diferencias centradas):
+
+\begin{lstlisting}[language=C]
+y1a[j][k] = (ya[j+1][k] - ya[j-1][k]) / (x1a[j+1] - x1a[j-1]);
+y2a[j][k] = (ya[j][k+1] - ya[j][k-1]) / (x2a[k+1] - x2a[k-1]);
+y12a[j][k] = (ya[j+1][k+1] - ya[j+1][k-1] - ya[j-1][k+1] + ya[j-1][k-1])
+           / ((x1a[j+1] - x1a[j-1]) * (x2a[k+1] - x2a[k-1]));
+\end{lstlisting}
+
+Para hacer una interpolación bicúbica dentro de un cuadrado de cuadrícula, dados la función $y$ y las derivadas $y_{,1}$, $y_{,2}$, $y_{,12}$ en cada una de las cuatro esquinas del cuadrado, hay dos pasos:
+
+Primero se obtienen dieciséis cantidades $c_{ij}$, $i,j = 1,\dots,4$ usando la rutina \texttt{bcuint}. (Las fórmulas que obtienen los $c$ a partir de los valores de la función y derivadas son complicadas pero lineales, con coeficientes que, una vez determinados para este método de historial numérico, pueden tabularse y olvidarse).
+
+\begin{equation}
+y(x_1, x_2) = \sum_{i=1}^{4} \sum_{j=1}^{4} c_{ij} t^{i-1} u^{j-1}
+\end{equation}
+\begin{equation}
+y_{,1}(x_1, x_2) = \sum_{i=1}^{4} \sum_{j=1}^{4} (i-1)c_{ij} t^{i-2} u^{j-1} \left( \frac{dt}{dx_1} \right)
+\end{equation}
+\begin{equation}
+y_{,2}(x_1, x_2) = \sum_{i=1}^{4} \sum_{j=1}^{4} (j-1)c_{ij} t^{i-1} u^{j-2} \left( \frac{du}{dx_2} \right)
+\end{equation}
+\begin{equation}
+y_{,12}(x_1, x_2) = \sum_{i=1}^{4} \sum_{j=1}^{4} (i-1)(j-1)c_{ij} t^{i-2} u^{j-2} 
+\left( \frac{dt}{dx_1} \right)\left( \frac{du}{dx_2} \right)
+\end{equation}
+
+donde $t$ y $u$ son nuevamente dados por la ecuación (3.6.4).
+
+\begin{lstlisting}[language=C]
+void bcucof(float y[], float y1[], float y2[], float y12[],
+            float d1, float d2, float **c)
+{
+    /* Dados los arreglos y[1..4], y1[1..4], y2[1..4], y12[1..4],
+       que contienen la función, los gradientes y la derivada cruzada
+       en los cuatro puntos de la cuadrícula de una celda rectangular
+       (numerados en sentido antihorario desde la esquina inferior izquierda),
+       y dados d1 y d2, las longitudes de la celda de la cuadrícula en las
+       direcciones 1 y 2, esta rutina retorna la tabla c[1..4][1..4]
+       que es usada por la rutina bcuint para la interpolación bicúbica.
+    */
+
+    static int wt[16][16] = {
+        { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+        { -3, 0, 0, 3, 0, 0, 0, 0, -2, 0, 0, 2, -1, 0, 0, 1 },
+        { 2, 0, 0, -2, 0, 0, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0 },
+        { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, -3, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 2, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, -3, 3, 0, 0, -3, 3, 0, 0, -2, 2, 0, 0 },
+        { 9, -9, -9, 9, 6, -6, 6, -6, 3, -3, -3, 3, 2, -2, 2, -2 },
+        { -6, 6, 6, -6, -4, 4, -2, 2, -3, 3, 3, -3, -2, 2, -1, 1 },
+        { 2, -2, 0, 0, 1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 2, -2, 0, 0, 1, -1, 0, 0 },
+        { -6, 6, 6, -6, -3, 3, 3, -3, -4, 4, 4, -4, -2, 2, 2, -2 },
+        { -4, 4, 4, -4, 2, -2, -2, 2, -2, 2, 2, -2, 1, -1, -1, 1 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
+
+    int l, k, j, i;
+    float xx, d1d2, cl[16], x[16];
+
+    d1d2 = d1 * d2;
+
+    // Empaquetar el vector temporal x
+    for (i = 1; i <= 4; i++) {
+        x[i - 1]      = y[i];
+        x[i + 3]      = y1[i] * d1;
+        x[i + 7]      = y2[i] * d2;
+        x[i + 11]     = y12[i] * d1d2;
+    }
+
+    // Multiplicación matricial por la tabla almacenada
+    for (i = 0; i <= 15; i++) {
+        xx = 0.0;
+        for (k = 0; k <= 15; k++) xx += wt[i][k] * x[k];
+        cl[i] = xx;
+    }
+
+    // Desempaquetar el resultado en la tabla de salida
+    l = 0;
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <= 4; j++) {
+            c[i][j] = cl[l++];
+        }
+    }
+}
+\end{lstlisting}
+
+La implementación de la ecuación (3.6.6), que realiza una interpolación bicúbica, 
+devuelve el valor de la función interpolada y los dos valores de derivadas parciales, 
+y usa la rutina anterior \texttt{bcucof}, es simplemente:
+
+\begin{lstlisting}[language=C]
+#include "nrutil.h"
+
+void bcuint(float y[], float y1[], float y2[], float y12[], 
+            float x1l, float x1u, float x2l, float x2u,
+            float x1, float x2, float *ansy, 
+            float *ansy1, float *ansy2)
+
+/* Interpolación bicúbica dentro de un cuadrado de malla.
+   Las cantidades de entrada son y, y1, y2, y12 (como se describió en bcucof);
+   x1l y x1u son las coordenadas inferior y superior del cuadrado de la malla 
+   en la dirección 1; x2l y x2u en la dirección 2;
+   y x1, x2 son las coordenadas del punto deseado para la interpolación.
+   El valor interpolado de la función se retorna como ansy,
+   y los valores interpolados de las derivadas como ansy1 y ansy2.
+   Esta rutina llama a bcucof.
+*/
+
+{
+    void bcucof(float y[], float y1[], float y2[], float y12[],
+                float d1, float d2, float **c);
+    int i;
+    float t, u, d1, d2, **c;
+
+    c = matrix(1,4,1,4);
+    d1 = x1u - x1l;
+    d2 = x2u - x2l;
+    bcucof(y, y1, y2, y12, d1, d2, c);   /* Obtener los c’s */
+
+    if (x1u == x1l || x2u == x2l) 
+        nrerror("Bad input in routine bcuint");
+
+    t = (x1 - x1l) / d1;                 /* Ecuación (3.6.4) */
+    u = (x2 - x2l) / d2;
+
+    *ansy = (*ansy2) = (*ansy1) = 0.0;
+
+    for (i = 4; i >= 1; i--) {           /* Ecuación (3.6.6) */
+        *ansy += (*ansy += 
+                 ((c[i][4] * u + c[i][3]) * u + c[i][2]) * u + c[i][1]);
+        *ansy2 += ((*ansy2 += (3.0 * c[i][4] * u + 2.0 * c[i][3]) * u + c[i][2]));
+        *ansy1 += (*ansy1 += 
+                   (3.0 * c[4][i] * t + 2.0 * c[3][i]) * t + c[2][i]);
+    }
+
+    *ansy1 /= d1;
+    *ansy2 /= d2;
+    free_matrix(c, 1, 4, 1, 4);
+}
+\end{lstlisting}
+
+\newpage
+
+\subsection{Mayor orden para suavidad: Spline Bicúbico}
+
+La otra técnica común para obtener suavidad en la interpolación bidimensional es el \textit{spline bicúbico}. En realidad, esto es equivalente a un caso especial de interpolación bicúbica: la función interpolante tiene la misma forma funcional que la ecuación (3.6.6); los valores de las derivadas en los puntos de la cuadrícula son, sin embargo, determinados “globalmente” mediante splines unidimensionales. Sin embargo, los splines bicúbicos generalmente se implementan de una forma que luce bastante diferente a las rutinas de interpolación bicúbica anteriores, y más parecida a la rutina \texttt{polin2} vista anteriormente: para interpolar un solo valor funcional, se realizan $m$ interpolaciones unidimensionales a lo largo de las filas de la tabla, seguidas de una interpolación unidimensional adicional a lo largo de la nueva columna creada. Es cuestión de gusto (y de balance entre tiempo y memoria) cuánto de este proceso se quiere precomputar y almacenar. En lugar de precomputar y almacenar toda la información de derivadas (como en la interpolación bicúbica), los usuarios de splines típicamente precomputan y almacenan sólo una tabla auxiliar, de segundas derivadas en una sola dirección. Luego solo se necesitan realizar \textit{evaluaciones} de spline (no construcciones) para las $m$ filas de los splines; aún se debe hacer una construcción y una evaluación para la spline de la columna final. (Recuerda que una construcción de spline es un proceso de orden $N$, mientras que una evaluación de spline es sólo de orden $\log N$ —¡y eso solo para encontrar el lugar en la tabla!)
+
+Aquí hay una rutina para precomputar la tabla auxiliar de segundas derivadas:
+
+\begin{lstlisting}[language=C]
+void splie2(float x1a[], float x2a[], float **ya, int m, int n, float **y2a)
+/* Dado un array m por n de una función tabulada y_{i,j} = ya[i][j],
+y valores tabulados independientes x1a[1..m], x2a[1..n], esta rutina construye
+splines cúbicos naturales unidimensionales de las filas de ya y retorna las
+segundas derivadas en el array y2a[1..m][1..n]. (El array x1a[1..m] se incluye
+en el argumento para consistencia con la rutina splin2.) */
+{
+    void spline(float x[], float y[], int n, float yp1, float ypn, float y2[]);
+    int j;
+
+    for (j=1;j<=m;j++)
+        spline(x2a,ya[j],n,1.0e30,1.0e30,y2a[j]); // Valores 1×10^{30} señalan spline natural
+}
+\end{lstlisting}
+
+(Para interpolar sobre un sub-bloque de una matriz más grande, ver §1.2.)
+
+Una vez que la rutina anterior ha sido ejecutada una vez, cualquier número de interpolaciones cúbicas bicúbicas puede ser realizadas por llamadas sucesivas a la siguiente rutina:
+
+\begin{lstlisting}[language=C]
+#include "nrutil.h"
+
+void splin2(float x1a[], float x2a[], float **ya, float **y2a, int m, int n,
+            float x1, float x2, float *y)
+/* Dados x1a, x2a, ya, y m, n como descrito en splie2 y y2a como producido por
+esa rutina; y dado un punto de interpolación deseado x1,x2; esta rutina retorna
+el valor de la función interpolada y mediante interpolación cúbica bicúbica. */
+{
+    void spline(float xa[], float ya[], int n, float yp1, float ypn, float y2[]);
+    void splint(float xa[], float ya[], float y2a[], int n, float x, float *y);
+    int j;
+    float *ytmp,*ytmp2;
+
+    ytmp=vector(1,m);
+    ytmp2=vector(1,m); // Realiza m evaluaciones de las splines de fila construidas por splie2
+    for (j=1;j<=m;j++) {
+        splint(x2a,ya[j],y2a[j],n,x2,&ytmp[j]); // splint
+    }
+    spline(x1a,ytmp,m,1.0e30,1.0e30,ytmp2); // Construye la spline unidimensional de columna y la evalúa
+    splint(x1a,ytmp,ytmp2,m,x1,y);
+
+    free_vector(ytmp,1,m);
+    free_vector(ytmp2,1,m);
+}
+\end{lstlisting}
+
+\newpage
+\chapter{Modelado de Datos}
+\section{Introducción}
+
+Dado un conjunto de observaciones, a menudo se desea condensar y resumir los datos ajustándolos a un “modelo” que depende de parámetros ajustables. A veces, el modelo es simplemente una clase conveniente de funciones, como polinomios o gaussianas, y el ajuste proporciona los coeficientes apropiados. Otras veces, los parámetros del modelo provienen de alguna teoría subyacente que se supone deben satisfacer los datos; ejemplos son coeficientes de ecuaciones de velocidad en una red compleja de reacciones químicas, o elementos orbitales de una estrella binaria. El modelado también puede usarse como una especie de interpolación restringida, donde se quiere extender unos pocos puntos de datos a una función continua, pero con alguna idea subyacente de cómo debería verse esa función.
+
+El enfoque básico en todos los casos es generalmente el mismo: se elige o diseña una \textit{función de méritos} (“función de mérito”, para abreviar) que mide la concordancia entre los datos y el modelo con una elección particular de parámetros. La función de mérito se organiza convencionalmente de manera que valores pequeños representen un buen ajuste. Los parámetros del modelo se ajustan luego para alcanzar un mínimo en la función de mérito, produciendo los \textit{parámetros de mejor ajuste}. Este proceso de ajuste es así un problema de minimización en muchas dimensiones. Esta optimización fue el tema del Capítulo 10; sin embargo, existen métodos especiales, más eficientes, que son específicos del modelado, y discutiremos estos en este capítulo.
+
+Hay cuestiones importantes que van más allá de simplemente encontrar los parámetros de mejor ajuste. Los datos generalmente no son exactos. Están sujetos a \textit{errores de medición} (llamados \textit{ruido} en el contexto del procesamiento de señales). Así, los datos típicos rara vez se ajustan exactamente al modelo que se está utilizando, incluso cuando ese modelo es correcto. Necesitamos medios para evaluar si el modelo es apropiado o no; es decir, necesitamos probar el \textit{grado de ajuste} en relación con algún estándar estadístico útil.
+
+También necesitamos saber con qué precisión se determinan los parámetros por el conjunto de datos. En otras palabras, necesitamos conocer los errores probables de los parámetros de mejor ajuste.
+
+Finalmente, no es raro en el ajuste de datos descubrir que la función de mérito no es unimodal, con un solo mínimo. En algunos casos, podemos estar interesados en el mínimo global en lugar de en cuestiones locales. No se trata de “¿qué tan bueno es este ajuste?”, sino más bien, “¿estoy seguro de que no hay un ajuste \textit{mucho mejor} en alguna otra parte del espacio de parámetros?” Como hemos visto en el Capítulo 10, especialmente en el §10.9, este tipo de problema es generalmente bastante difícil de resolver.
+
+El punto importante que queremos dejar claro es que ajustar parámetros no es el fin de todo el proceso de ajuste de datos. Más bien, la salida del ajuste debe proporcionar (i) parámetros, (ii) estimaciones de error en los parámetros, y (iii) una medida estadística del grado de ajuste. Cuando el tercer elemento sugiere que el modelo es una coincidencia poco probable con los datos, entonces los elementos (i) y (ii) son probablemente inútiles. Desafortunadamente, muchos practicantes de estimación de parámetros nunca pasan del elemento (i). Consideran aceptable un ajuste si una gráfica de los datos y el modelo “se ve bien”. Este enfoque se conoce como \textit{chi-a-ojímetro}. Afortunadamente, sus practicantes reciben lo que merecen.
+
+\newpage
+
+\section{Mínimos Cuadrados como un Estimador de Máxima Verosimilitud}
+
+Supongamos que estamos ajustando $N$ puntos de datos $(x_i, y_i)$, $i = 1, \ldots, N$, a un modelo que tiene $M$ parámetros ajustables $a_j$, $j = 1, \ldots, M$. El modelo predice una relación funcional entre las variables independientes y dependientes medidas,
+
+\begin{equation}
+y(x) = y(x; a_1 \ldots a_M) \tag{15.1.1}
+\end{equation}
+
+donde la dependencia con respecto a los parámetros se indica explícitamente en el lado derecho.
+
+Entonces, ¿exactamente qué queremos minimizar para obtener valores ajustados para los $a_j$? Lo primero que viene a la mente es el conocido ajuste por mínimos cuadrados,
+
+\begin{equation}
+\min_{a_1 \ldots a_M} \sum_{i=1}^{N} \left[y_i - y(x_i; a_1 \ldots a_M)\right]^2 \tag{15.1.2}
+\end{equation}
+
+Pero, ¿de dónde proviene esto? ¿En qué principios generales se basa? La respuesta a estas preguntas nos lleva al tema de los \textit{estimadores de máxima verosimilitud}.
+
+Dado un conjunto de datos particular de $x_i$’s y $y_i$’s, tenemos la sensación intuitiva de que ciertos conjuntos de parámetros $a_1 \ldots a_M$ son muy poco probables —aquellos para los cuales la función del modelo $y(x)$ no se parece en nada a los datos— mientras que otros pueden ser muy probables— aquellos que se asemejan mucho a los datos. ¿Cómo podemos cuantificar esta sensación intuitiva? ¿Cómo podemos seleccionar los parámetros que son los “más probables” de ser correctos? No tiene mucho sentido preguntar: “¿Cuál es la probabilidad de que un conjunto particular de parámetros ajustados $a_1 \ldots a_M$ sea correcto?” La razón es que no hay un universo estadístico de modelos del cual provienen los parámetros. Solo hay un modelo, el correcto, y un estándar estadístico de uso para evaluar qué tan bien se ajusta.
+
+Dicho esto, podemos reformular la pregunta: ``\textit{Dado un conjunto particular de parámetros}, ¿cuál es la probabilidad de que este conjunto de datos haya ocurrido?'' Si los $y_i$ toman valores continuos, la probabilidad siempre será cero a menos que se agregue la frase ``...más o menos un pequeño $\Delta y$ en cada punto de datos''. Así que siempre tomamos esta frase como implícita. Si la probabilidad de obtener los datos es infinitesimalmente pequeña, podemos concluir que los parámetros bajo consideración son ``improbables'' de ser correctos. Por el contrario, nuestra intuición nos dice que los datos no deben ser demasiado improbables para el conjunto correcto de parámetros.
+
+En otras palabras, identificamos la probabilidad de los datos dado los parámetros (lo cual es una cantidad computacionalmente significativa), como la \textit{verosimilitud} de los parámetros dado los datos. Esta identificación es enteramente basada en la intuición. No tiene una base matemática formal en sí misma; como ya mencionamos, la estadística \textit{no} es una rama de las matemáticas.
+
+Una vez que hacemos esta identificación intuitiva, sin embargo, sólo queda un pequeño paso para decidir ajustar los parámetros $a_1 \ldots a_M$ precisamente encontrando aquellos valores que \textit{maximizan} la verosimilitud definida de la manera anterior. Esta forma de estimación de parámetros se denomina \textit{estimación de máxima verosimilitud}.
+
+Ya estamos listos para hacer la conexión con (15.1.2). Supongamos que cada dato $y_i$ tiene un error de medición que es independiente al resto y distribuido normalmente (Gaussiano) alrededor del modelo ``verdadero'' $y(x)$. Y supongamos que las desviaciones estándar de estas distribuciones normales son las mismas para todos los puntos. Entonces la probabilidad de los datos es el producto de las probabilidades de cada punto:
+
+\begin{equation}
+P \propto \prod_{i=1}^{N} \left[ \exp\left( -\frac{1}{2} \left( \frac{y_i - y(x_i)}{\sigma} \right)^2 \right) \Delta y \right]
+\end{equation}
+
+Observa que hay un factor $\Delta y$ en cada término del producto. Maximizar (15.1.3) es equivalente a maximizar su logaritmo, o minimizar el negativo de su logaritmo, a saber,
+
+\begin{equation}
+\sum_{i=1}^{N} \frac{[y_i - y(x_i)]^2}{2\sigma^2} - N \log \Delta y
+\end{equation}
+
+Dado que $N$, $\sigma$, y $\Delta y$ son constantes, minimizar esta expresión es equivalente a minimizar (15.1.2).
+
+Lo que vemos es que el ajuste por mínimos cuadrados es una estimación de máxima verosimilitud de los parámetros ajustados si los errores de medición son independientes y están normalmente distribuidos con desviación estándar constante. Observa que no hicimos ninguna suposición sobre la linealidad o no linealidad del modelo $y(x; a_1 \ldots)$ en sus parámetros $a_1 \ldots a_M$. Pero si relajamos nuestra suposición de desviación estándar constante y obtenemos las fórmulas similares para lo que se llama ``ajuste por chi-cuadrado'' o \textit{weighted least-squares fitting}. Primero, sin embargo, discutiremos más a fondo nuestro supuesto de una distribución normal.
+
+La siguiente sección tiene que ver con el enamoramiento de la comunidad científica con la distribución normal. Esta fascinación tiende a alejar la atención del hecho de que, para datos reales, la distribución normal es con frecuencia pobremente realizada, si se realiza en absoluto. Estamos acostumbrados a decir, de forma bastante casual, que, en promedio, las mediciones caerán dentro del 68\% del valor verdadero con un error de $\pm 2\sigma$ con un 95\% de certeza, y dentro de $\pm 3\sigma$ con 99.7\% de certeza. Extendiendo esto, uno esperaría una medición fuera de $\pm 20\sigma$ sólo una vez entre $2 \times 10^{85}$. Todos sabemos que los ``fallos'' son mucho más probables que eso.
+
+En algunos casos, las desviaciones de una distribución normal son fáciles de entender y cuantificar. Por ejemplo, en mediciones obtenidas por conteo de eventos, los errores de medición suelen estar distribuidos según una distribución de Poisson, cuya función de distribución acumulada ya se discutió en la sección 6.2. Cuando el número de cuentas en un solo punto de datos es grande, la distribución de Poisson converge hacia una Gaussiana. Sin embargo, la convergencia no es uniforme cuando se mide en precisión fraccional. Cuanto más desviación estándar haya en la cola de la distribución, mayor será el número de cuentas antes de que se alcance un valor cercano a la distribución Gaussiana. El signo del efecto siempre es el mismo: la Gauss predice que los ``eventos extremos'' son mucho menos probables de lo que realmente son (según Poisson). Esto hace que tales eventos, cuando ocurren, desvíen un ajuste por mínimos cuadrados mucho más de lo que deberían.
+
+Otras veces, las desviaciones de una distribución normal no son tan fáciles de entender en detalle. Los puntos experimentales a veces simplemente se salen del patrón. Tal vez la lámpara parpadeó durante la medición de un punto, o alguien golpeó el aparato, o alguien escribió mal un número. Puntos como estos se llaman \textit{outliers}. Pueden arruinar fácilmente un ajuste por mínimos cuadrados adecuado. Su probabilidad de ocurrencia en el modelo Gaussiano asumido es tan pequeña que el estimador de máxima verosimilitud tratará de distorsionar toda la curva para tratar de incluirlos, erróneamente.
+
+El tema de los \textit{errores robustos} trata los casos donde el modelo normal o Gaussiano es una mala aproximación, o donde los \textit{outliers} son importantes. Discutiremos brevemente estos métodos en el \S15.7. Todas las secciones entre ésta y aquella tratan un caso u otro, una distribución Gaussiana para los errores de medición o no. Es bastante importante que mantengas en mente las limitaciones de ese modelo, incluso cuando lo uses. Los resultados pueden parecer buenos sin serlo.
+
+Finalmente, observa que nuestra discusión de errores de medición se ha limitado a errores \textit{estadísticos}, no a aquellos que promedian al repetir muchas veces el experimento. No se puede eliminar un error sistemático simplemente promediando. Por ejemplo, el calibrado de un medidor de metal puede depender de la temperatura. Si tomamos todas nuestras mediciones en el mismo espacio con la misma temperatura, entonces ningún número de promedios o repeticiones corregirá este error sistemático no reconocido.
+
+\subsection{Ajuste por Chi-Cuadrada}
+
+Ya consideramos la estadística de chi-cuadrada anteriormente, en la §14.3. Aquí surge en un contexto ligeramente diferente.
+
+Si cada punto de datos $(x_i, y_i)$ tiene su propia desviación estándar conocida $\sigma_i$, entonces la ecuación (15.1.3) se modifica únicamente colocando un subíndice $i$ en el símbolo $\sigma$. Ese subíndice también se propaga dócilmente en (15.1.4), de modo que la estimación de máxima verosimilitud de los parámetros del modelo se obtiene minimizando la cantidad
+
+\begin{equation}
+\chi^2 \equiv \sum_{i=1}^{N} \left[ \frac{y_i - y(x_i; a_1 \ldots a_M)}{\sigma_i} \right]^2
+\tag{15.1.5}
+\end{equation}
+
+llamada “chi-cuadrada.”
+
+En la medida en que los errores de medición realmente estén distribuidos normalmente, la cantidad $\chi^2$ es correspondientemente una suma de $N$ cuadrados de variables normalmente distribuidas, cada una normalizada a varianza unitaria. Una vez que hemos ajustado los $a_1 \ldots a_M$ para minimizar el valor de $\chi^2$, los términos en la suma ya no son todos estadísticamente independientes. Para modelos que son lineales en los $a$’s, sin embargo, resulta que la distribución de probabilidad para diferentes valores de $\chi^2$ en su mínimo puede derivarse analíticamente, y es la \textit{distribución chi-cuadrada para $N - M$ grados de libertad}. Aprendimos cómo calcular esta función de probabilidad usando la función gamma incompleta discutida en la §6.2. En particular, la ecuación (6.2.18) da la probabilidad $Q$ de que la chi-cuadrada haya excedido un valor particular $\chi^2$ por casualidad, donde $\nu = N - M$ es el \textit{número de grados de libertad}. La cantidad $Q$, o su complemento $P \equiv 1 - Q$, se cita frecuentemente en los apéndices de los libros de estadística, pero generalmente encontramos más fácil usar \texttt{gammp} y calcular nuestros propios valores: $Q = \texttt{gammp}(0.5\nu, 0.5\chi^2)$. Es bastante común, y usualmente no muy erróneo, asumir que la distribución chi-cuadrada se mantiene incluso para modelos que no son estrictamente lineales en los $a$’s.
+
+El valor de $Q$ da una medida cuantitativa de la bondad del ajuste del modelo. Si $Q$ es una probabilidad muy pequeña para algún conjunto de datos en particular, entonces el modelo (i) es incorrecto --- puede ser estadísticamente rechazado, o (ii) alguien ha mentido sobre el tamaño de los errores de medición $\sigma_i$ --- están mal informados o subestimados.
+
+Es importante señalar que la probabilidad chi-cuadrada $Q$ no evalúa directamente la credibilidad de la suposición de que los errores de medición están distribuidos normalmente. Lo asume. En la mayoría, pero no en todos los casos, sin embargo, el efecto de errores no normales es crear una abundancia de valores atípicos. Estos disminuyen la probabilidad $Q$, para que podamos agregar otra posible, aunque menos definitiva, conclusión a la lista anterior: (iii) los errores de medición pueden no estar distribuidos normalmente.
+
+La posibilidad (iii) es bastante común, y también bastante benigna. Es por eso que los procedimientos estándar son a menudo bastante tolerantes con probabilidades bajas $Q$. No es poco común aceptar en igualdad de condiciones muchos modelos con, digamos, $Q > 0.001$. Pero no se debe ser tan descuidado como los periodistas: Los modelos verdaderamente erróneos serán rechazados con valores mucho más pequeños de $Q$, digamos $10^{-8}$, digamos. Sin embargo, si día tras día descubres que tus conjuntos de datos te están dando valores de $\chi^2 \sim \nu$, realmente deberías rastrear la causa.
+
+Si conoces la distribución real de tus errores de medición, entonces puedes usar métodos de Monte Carlo para \textit{simular} algunos conjuntos de datos desde una distribución particular, §§7.2--§7.3. Luego puedes comparar estos datos sintéticos con los tuyos para determinar si la distribución de probabilidad asumida para la estadística $\chi^2$ describe adecuadamente la precisión con la que se reproducen tus parámetros modelo. Discutiremos esto más a fondo en §15.6. Las estadísticas chi-cuadradas son muy generales, pero debes tener cuidado al usarlas.
+
+Finalmente, ten en cuenta que nuestra discusión de errores de medición ha estado limitada a \textit{errores estadísticos}, no a aquellos cuyo valor promedio se alejará incluso de la media bajo promedios. Por ejemplo, la calibración de un medidor de metal puede depender de su temperatura. Si tomamos todos nuestros valores de medición en la misma temperatura, entonces ningún monto de promediar o regresión corregirá este error \textit{sistemático no reconocido}.
+
+Una regla práctica es que un valor “típico” de $\chi^2$ para un ajuste “moderadamente” bueno es $\chi^2 \approx \nu$. Más precisamente, la afirmación es que la estadística $\chi^2$ tiene una media $\nu$ y una desviación estándar $\sqrt{2\nu}$, y, asintóticamente para grandes $\nu$, se convierte en una distribución normal.
+
+A veces los científicos usan conjuntos de datos con un conjunto de errores de medición que no se conocen de antemano, y las consideraciones relacionadas con el ajuste de $\chi^2$ se usan para derivar un valor de $\sigma$. Si asumimos que todas las mediciones tienen la misma desviación estándar, $\sigma_i = \sigma$, y que el modelo se ajusta bien, entonces podemos proceder primero asignando un valor arbitrario a $\sigma$ y a todos los puntos, luego ajustar los parámetros del modelo minimizando $\chi^2$, y finalmente recalculando
+
+\begin{equation}
+\sigma^2 = \sum_{i=1}^{N} [y_i - y(x_i)]^2 / (N - M)
+\tag{15.1.6}
+\end{equation}
+
+Obviamente, este enfoque prohíbe una evaluación independiente de la bondad del ajuste, un hecho ocasionalmente pasado por alto por sus seguidores. Sin embargo, cuando el error de medición no se conoce, este enfoque permite al menos que algún tipo de barra de error sea asignada a los puntos.
+
+Si tomamos la derivada de la ecuación (15.1.5) con respecto a los parámetros $a_k$, obtenemos ecuaciones que deben cumplirse en el mínimo chi-cuadrado,
+
+\begin{equation}
+0 = \sum_{i=1}^{N} \frac{[y_i - y(x_i)]}{\sigma_i^2}
+\left( \frac{\partial y(x_i; \ldots a_k \ldots)}{\partial a_k} \right), \quad
+k = 1, \ldots, M
+\tag{15.1.7}
+\end{equation}
+
+La ecuación (15.1.7) es, en general, un conjunto de $M$ ecuaciones no lineales para los $M$ parámetros desconocidos $a_k$. Varias de los procedimientos descritos en este capítulo derivan de (15.1.7) y sus especializaciones.
+
+\newpage
+
+\section{Mínimos Cuadrados Lineales Generales}
+
+Una generalización inmediata de la §15.2 es ajustar un conjunto de puntos de datos $(x_i, y_i)$ a un modelo que no sea solo una combinación lineal de $1$ y $x$ (es decir, $a + bx$), sino más bien una combinación lineal de cualquier conjunto $M$ de funciones especificadas de $x$. Por ejemplo, las funciones podrían ser $1, x, x^2, \ldots, x^{M-1}$, en cuyo caso su combinación lineal general,
+
+\begin{equation}
+y(x) = a_1 + a_2 x + a_3 x^2 + \cdots + a_M x^{M-1}
+\tag{15.4.1}
+\end{equation}
+
+es un polinomio de grado $M - 1$. O bien, las funciones podrían ser senos y cosenos, en cuyo caso su combinación lineal general es una serie armónica.
+
+La forma general de este tipo de modelo es
+
+\begin{equation}
+y(x) = \sum_{k=1}^{M} a_k X_k(x)
+\tag{15.4.2}
+\end{equation}
+
+donde $X_1(x), \ldots, X_M(x)$ son funciones fijas arbitrarias de $x$, llamadas \textit{funciones base}.
+
+Observa que las funciones $X_k(x)$ pueden ser funciones altamente no lineales de $x$. En esta discusión, “lineal” se refiere únicamente a la dependencia del modelo con respecto a sus \textit{parámetros} $a_k$.
+
+Para estos modelos lineales generalizamos la discusión de la sección anterior definiendo una función de mérito
+
+\begin{equation}
+\chi^2 = \sum_{i=1}^{N} \left[ \frac{y_i - \sum_{k=1}^{M} a_k X_k(x_i)}{\sigma_i} \right]^2
+\tag{15.4.3}
+\end{equation}
+
+Como antes, $\sigma_i$ es el error de medición (desviación estándar) del punto de datos $i$-ésimo, que se presume conocido. Si los errores de medición no son conocidos, pueden (como ya se discutió al final de la §15.1) establecerse en el valor constante $\sigma = 1$.
+
+Una vez más, elegiremos como mejores parámetros aquellos que minimicen $\chi^2$. Existen varias técnicas diferentes disponibles para encontrar este mínimo. Dos son particularmente útiles, y discutiremos ambas en esta sección. Para introducirlas y aclarar su relación, necesitaremos algo de notación.
+
+Sea $\mathbf{A}$ una matriz cuyos componentes $N \times M$ son construidos a partir de las $M$ funciones base evaluadas en las $N$ abscisas $x_i$, y de los $N$ errores de medición $\sigma_i$, por la prescripción
+
+\begin{equation}
+A_{ij} = \frac{X_j(x_i)}{\sigma_i}
+\tag{15.4.4}
+\end{equation}
+
+La matriz $\mathbf{A}$ se llama \textit{matriz de diseño} del problema de ajuste. Observa que en general $\mathbf{A}$ tiene más filas que columnas, $N \ge M$, ya que debe haber más puntos de datos que parámetros del modelo a resolver. (¡Puedes ajustar una línea recta a dos puntos, pero no una quíntica muy significativa!) La matriz de diseño se muestra esquemáticamente en la Figura 15.4.1.
+
+También definimos un vector $\mathbf{b}$ de longitud $N$ mediante
+
+\begin{equation}
+b_i = \frac{y_i}{\sigma_i}
+\tag{15.4.5}
+\end{equation}
+
+y denotamos al vector $M$ cuyos componentes son los parámetros a ajustar, $a_1, \ldots, a_M$, como $\mathbf{a}$.
+
+\newpage
+
+\subsection{Solución mediante el uso de las Ecuaciones Normales}
+
+El mínimo de (15.4.3) ocurre donde la derivada de $\chi^2$ con respecto a todos los parámetros $a_k$ se anula. Especializando la ecuación (15.1.7) al caso del modelo (15.4.2), esta condición produce las $M$ ecuaciones
+\begin{equation}
+0 = \sum_{i=1}^{N} \frac{1}{\sigma_i^2} \left[ y_i - \sum_{j=1}^{M} a_j X_j(x_i) \right] X_k(x_i), \qquad k = 1, \ldots, M
+\end{equation}
+
+Intercambiando el orden de las sumas, podemos escribir (15.4.6) como la ecuación matricial
+\begin{equation}
+\sum_{j=1}^{M} \alpha_{kj} a_j = \beta_k
+\end{equation}
+
+donde
+\begin{equation}
+\alpha_{kj} = \sum_{i=1}^{N} \frac{X_j(x_i) X_k(x_i)}{\sigma_i^2}, \quad \text{o equivalentemente} \quad [\alpha] = \mathbf{A}^T \cdot \mathbf{A}
+\end{equation}
+
+una matriz $M \times M$, y
+\begin{equation}
+\beta_k = \sum_{i=1}^{N} \frac{y_i X_k(x_i)}{\sigma_i^2}, \quad \text{o equivalentemente} \quad [\beta] = \mathbf{A}^T \cdot \mathbf{b}
+\end{equation}
+
+un vector de longitud $M$.
+
+Las ecuaciones (15.4.6) o (15.4.7) se llaman las \textit{ecuaciones normales} del problema de mínimos cuadrados. Pueden resolverse para el vector de parámetros $\mathbf{a}$ por los métodos estándar del Capítulo 2, ya sea descomposición $LU$, eliminación hacia atrás y hacia adelante, descomposición de Cholesky, o eliminación de Gauss-Jordan. En forma matricial, las ecuaciones normales pueden escribirse como
+\begin{equation}
+[\alpha] \cdot \mathbf{a} = [\beta] \quad \text{o} \quad (\mathbf{A}^T \cdot \mathbf{A}) \cdot \mathbf{a} = \mathbf{A}^T \cdot \mathbf{b}
+\end{equation}
+
+La matriz inversa $C_{jk} \equiv [\alpha]^{-1}_{jk}$ está estrechamente relacionada con las incertidumbres \textit{probables} (o, más precisamente, \textit{estándar}) de los parámetros estimados. Para estimar estas incertidumbres, consideramos que
+\begin{equation}
+a_j = \sum_{k=1}^{M} [\alpha]^{-1}_{jk} \beta_k = \sum_{k=1}^{M} C_{jk} \left[ \sum_{i=1}^{N} \frac{y_i X_k(x_i)}{\sigma_i^2} \right]
+\end{equation}
+
+y que la varianza asociada con la estimación $a_j$ puede encontrarse como en (15.2.7) a partir de
+\begin{equation}
+\sigma^2(a_j) = \sum_{i=1}^{N} \sigma_i^2 \left( \frac{\partial a_j}{\partial y_i} \right)^2
+\end{equation}
+
+Note que $a_j$ es independiente de $y_i$, por lo tanto
+\begin{equation}
+\frac{\partial a_j}{\partial y_i} = \sum_{k=1}^{M} C_{jk} X_k(x_i) / \sigma_i^2
+\end{equation}
+
+En consecuencia, obtenemos que
+\begin{equation}
+\sigma^2(a_j) = \sum_{k=1}^{M} \sum_{l=1}^{M} C_{jk} C_{jl} \left[ \sum_{i=1}^{N} \frac{X_k(x_i) X_l(x_i)}{\sigma_i^2} \right]
+\end{equation}
+
+El término final entre corchetes es simplemente la matriz $[\alpha]$. Como esta es la inversa de $[C]$, (15.4.14) se reduce inmediatamente a
+\begin{equation}
+\sigma^2(a_j) = C_{jj}
+\end{equation}
+
+En otras palabras, los elementos diagonales de $[C]$ son las varianzas (incertidumbres cuadradas) de los parámetros ajustados. No debería sorprender que los elementos fuera de la diagonal $C_{jk}$ sean las covarianzas entre $a_j$ y $a_k$ (cf. 15.2.10); pero dejaremos la discusión de esto hasta el §15.6.
+
+Implementaremos una rutina que utiliza las fórmulas anteriores para el problema general de mínimos cuadrados lineales, y no solo resuelve para la solución vectorial $\mathbf{a}$ sino también para la matriz de covarianzas $[C]$, es más eficiente utilizar la eliminación de Gauss-Jordan (cf. §2.1) para realizar el álgebra lineal. La operación requerida, en esta aplicación, no es mayor que para la descomposición $LU$.
+
+Si sabes de antemano que algunos de los parámetros $a_k$ deben mantenerse fijos en ciertos valores debido a teoría previa o mediciones anteriores, puedes congelarlos (ponerlos constantes). En la rutina siguiente, se proporciona un arreglo \verb|ia[1..ma]|, cuyos componentes son cero o no cero (\textit{e.g.}, 1). Ceros indican que el valor correspondiente del vector de parámetros $\mathbf{a}[1..ma]$ debe mantenerse fijo. En la salida, los parámetros fijados no tendrán varianza y todas sus covarianzas se establecerán en cero en la matriz de covarianzas.
+
+\newpage
+
+\begin{lstlisting}[language=C]
+#include "nrutil.h"
+
+void lfit(float x[], float y[], float sig[], int ndat, float a[], int ia[],
+int ma, float **covar, float *chisq, void (*funcs)(float, float [], int))
+/* Dado un conjunto de puntos de datos x[1..ndat], y[1..ndat] con desviaciones estándar
+   individuales sig[1..ndat], usa minimización de χ^2 para ajustar algunos o todos los coeficientes a[1..ma]
+   de una función que depende linealmente de a, y = ∑i ai × afuncs(x). El arreglo de entrada ia[1..ma]
+   indica mediante valores distintos de cero aquellos componentes de a que deben ser ajustados, y mediante ceros
+   aquellos componentes que deben mantenerse fijos en sus valores de entrada. El programa devuelve los valores
+   para a[1..ma], χ^2 = chisq, y la matriz de covarianza covar[1..ma][1..ma]. (Parámetros
+   mantenidos fijos retornarán covarianzas cero.) El usuario suministra una rutina funcs(x,afunc,ma) que
+   devuelve las ma funciones base evaluadas en x = x en el arreglo afunc[1..ma].
+*/
+{
+    void covsrt(float **covar, int ma, int ia[], int mfit);
+    void gaussj(float **a, int n, float **b, int m);
+    int i,j,k,l,m,mfit=0;
+    float ym,wt,sum,sig2i,**beta,**afunc;
+
+    beta=matrix(1,ma,1,1);
+    afunc=vector(1,ma);
+    for (j=1;j<=ma;j++)
+        if (ia[j]) mfit++;
+    if (mfit == 0) nrerror("lfit: no parameters to be fitted");
+    for (j=1;j<=mfit;j++) {            /* Inicializa la matriz (simétrica). */
+        for (k=1;k<=mfit;k++) covar[j][k]=0.0;
+        beta[j][1]=0.0;
+    }
+
+    for (i=1;i<=ndat;i++) {            /* Recorre los datos para acumular coeficientes
+                                          de las ecuaciones normales. */
+        (*funcs)(x[i],afunc,ma);
+        ym=y[i];
+        if (mfit < ma) {
+            for (j=1;j<=ma;j++)
+                if (!ia[j]) ym -= a[j]*afunc[j]; /* Sustrae dependencias de las partes conocidas de la función de ajuste. */
+        }
+        sig2i=1.0/SQR(sig[i]);
+        for (j=0,l=1;l<=ma;l++) {
+            if (ia[l]) {
+                wt=afunc[l]*sig2i;
+                for (j++,k=0,m=1;m<=l;m++)
+                    if (ia[m]) covar[j][++k] += wt*afunc[m];
+                beta[j][1] += ym*wt;
+            }
+        }
+    }
+
+    for (j=2;j<=mfit;j++)
+        for (k=1;k<j;k++) covar[k][j]=covar[j][k]; /* Completa por simetría. */
+    gaussj(covar,mfit,beta);           /* Solución matricial. */
+    for (j=0,l=1;l<=ma;l++)
+        if (ia[l]) a[l]=beta[++j][1];  /* Asigna solución a los coeficientes apropiados a. */
+    *chisq=0.0;
+    for (i=1;i<=ndat;i++) {
+        (*funcs)(x[i],afunc,ma);
+        for (sum=0.0,j=1;j<=ma;j++) sum += a[j]*afunc[j];
+        *chisq += SQR((y[i]-sum)/sig[i]);  /* Evalúa χ^2 del ajuste. */
+    }
+    covsrt(covar,ma,ia,mfit);         /* Ordena matriz de covarianza a verdadero orden de los
+                                         coeficientes de ajuste. */
+    free_vector(afunc,1,ma);
+    free_matrix(beta,1,ma,1,1);
+}
+\end{lstlisting}
+
+\subsection{Solución mediante el uso de la descomposición en valores singulares}
+
+En algunas aplicaciones, las ecuaciones normales son perfectamente adecuadas para problemas de mínimos cuadrados lineales. Sin embargo, en muchos casos, las ecuaciones normales son muy cercanas a ser singulares. Un elemento pivote cero puede encontrarse durante la solución de las ecuaciones lineales (por ejemplo, en \texttt{gaussj}), en cuyo caso no se obtiene solución en absoluto. O puede encontrarse un pivote muy pequeño, en cuyo caso típicamente se obtienen parámetros ajustados $a_k$ con magnitudes muy grandes que están (delicada y exactamente) balanceadas para cancelarse casi precisamente cuando se evalúa la función ajustada.
+
+¿Por qué ocurre esto comúnmente? La razón es que, más a menudo de lo que los experimentadores quisieran admitir, los datos no distinguen claramente entre dos o más de las funciones base provistas. Si dos tales funciones, o dos combinaciones diferentes de funciones, resultan ajustar los datos igualmente bien — o igualmente mal — entonces la matriz $[\alpha]$, incapaz de distinguir entre ellas, colapsa y se vuelve singular. Hay cierta ironía matemática en el hecho de que los problemas de mínimos cuadrados son tanto \textit{sobredeterminados} (número de puntos de datos mayor que número de parámetros) como \textit{subdeterminados} (existen combinaciones ambiguas de parámetros), pero esto ocurre frecuentemente. Las ambigüedades pueden ser extremadamente difíciles de notar \textit{a priori} en problemas complicados.
+
+Entra en escena la descomposición en valores singulares (SVD). Este sería un buen momento para revisar lo explicado en la sección §2.6, que no repetiremos aquí. En el caso de un sistema sobredeterminado, SVD produce una solución que es la mejor aproximación en el sentido de los mínimos cuadrados, cf. ecuación (2.6.10). Eso es exactamente lo que queremos. En el caso de un sistema subdeterminado, SVD produce una solución cuyos valores (para los $a_k$) son mínimos en el sentido de los mínimos cuadrados, cf. ecuación (2.6.8). Eso también es lo que queremos: cuando alguna combinación de funciones base es irrelevante para el ajuste, esa combinación será reducida a un valor pequeño, inocuo, en lugar de empujada hacia infinitos delicadamente cancelantes.
+
+En términos de la matriz de diseño $\mathbf{A}$ (ecuación 15.4.4) y del vector $\mathbf{b}$ (ecuación 15.4.5), la minimización de $\chi^2$ en (15.4.3) puede escribirse como
+\[
+\text{Encontrar } \mathbf{a} \text{ que minimice } \chi^2 = |\mathbf{A} \cdot \mathbf{a} - \mathbf{b}|^2 \tag{15.4.16}
+\]
+
+Comparando con la ecuación (2.6.9), vemos que este es precisamente el problema que las rutinas \texttt{svdcmp} y \texttt{svbksb} están diseñadas para resolver. La solución, dada por la ecuación (2.6.12), puede reescribirse como sigue: si $\mathbf{U}$ y $\mathbf{V}$ ingresan a la descomposición SVD de acuerdo con la ecuación (2.6.13), computada por \texttt{svdcmp}, entonces los vectores $\mathbf{U}_{(i)}$ con $i=1,\ldots,M$ son las columnas de $\mathbf{U}$ (cada una un vector de longitud $N$); y los vectores $\mathbf{V}_{(i)}$ con $j=1,\ldots,M$ denotan las columnas de $\mathbf{V}$ (cada una un vector de longitud $M$). Entonces, la solución de mínimos cuadrados (15.4.16) puede escribirse como
+\[
+\mathbf{a} = \sum_{i=1}^{M} \frac{(\mathbf{U}_{(i)} \cdot \mathbf{b})}{w_i} \mathbf{V}_{(i)} \tag{15.4.17}
+\]
+
+Aunque está más allá de nuestro alcance probarlo aquí, resulta que los errores estándar (locales, "probables") en los parámetros ajustados también son combinaciones lineales de las columnas de $\mathbf{V}$. De hecho, la ecuación (15.4.17) puede escribirse en una forma que muestra estos errores como
+\[
+\mathbf{a} = \left[ \sum_{i=1}^{M} \frac{(\mathbf{U}_{(i)} \cdot \mathbf{b})}{w_i} \mathbf{V}_{(i)} \right] \pm \left[ \frac{1}{w_1} \mathbf{V}_{(1)} \pm \cdots \pm \frac{1}{w_M} \mathbf{V}_{(M)} \right] \tag{15.4.18}
+\]
+
+Aquí, el signo $\pm$ es seguido por una desviación estándar. Lo sorprendente es que, descompuestos de esta manera, las desviaciones estándar son todas mutuamente independientes (no correlacionadas). Por lo tanto, pueden sumarse en cuadratura. Lo que ocurre es que los vectores $\mathbf{V}_{(i)}$ son los ejes principales del elipsoide de error de los parámetros ajustados (ver §15.6).
+
+Se sigue que la varianza en la estimación de un parámetro $a_j$ viene dada por
+\[
+\sigma^2(a_j) = \sum_{i=1}^{M} \frac{1}{w_i^2} V_{(i)j}^2 = \sum_{i=1}^{M} \left( \frac{V_{ij}}{w_i} \right)^2 \tag{15.4.19}
+\]
+
+cuyo resultado debe coincidir con (15.4.14). Como antes, no debes sorprenderte de que la fórmula para las covarianzas, aquí dada sin demostración, sea
+\[
+\text{Cov}(a_j, a_k) = \sum_{i=1}^{M} \left( \frac{V_{ij} V_{ik}}{w_i^2} \right) \tag{15.4.20}
+\]
+
+Hemos introducido esta subsección notando que las ecuaciones normales pueden fallar al encontrar un pivote cero. Sin embargo, no hemos notado aún cómo SVD supera este problema. La respuesta es: Si algún valor singular $w_i$ es cero, su recíproco en la ecuación (15.4.18) debe establecerse en cero, no en infinito. (Comparar con la discusión anterior a la ecuación 2.6.7.) Esto corresponde a agregar al conjunto de parámetros ajustados un múltiplo cero, más bien que algún múltiplo aleatorio grande, de cualquier combinación lineal de funciones base que sea degenerada en el ajuste. ¡Es una buena cosa por hacer!
+
+Además, si un valor singular $w_i$ no es cero pero muy pequeño, también deberías establecer su recíproco en cero, ya que su valor aparente probablemente es un artefacto de error numérico, no una cantidad significativa. Una respuesta plausible a la pregunta "¿qué tan pequeño es pequeño?" es editar a mano todos los valores singulares cuyo cociente respecto al mayor valor singular sea menor que $N$ veces la precisión de la máquina $\epsilon$. (Podrías multiplicar por $\sqrt{N}$, o una constante, en lugar de $N$ como el multiplicador; eso comienza a adentrarse en cuestiones específicas del hardware y del problema.)
+
+Hay otra razón para editar manualmente valores singulares pequeños: aquellos lo son precisamente porque el número no es una pregunta. La descomposición en valores singulares siempre permite combinaciones lineales de variables que simplemente no contribuyen mucho a reducir la función $\chi^2$ para tu conjunto de datos. Editarlas puede reducir el número de grados de libertad efectivos bastante significativamente, mientras que incrementa poco la función $\chi^2$. Nos gustaría saber más sobre cómo identificar y tratar estos casos de forma automática. Si sabes cómo hacer esto, ¡dínoslo! Mientras tanto, la edición manual resultará ser una técnica bastante poderosa.
+
+Un problema menor es que la SVD requiere almacenamiento adicional para una matriz de tamaño $N \times M$ para almacenar la matriz de diseño completa. Este almacenamiento es sobrescrito por la matriz $\mathbf{U}$. También se requiere almacenamiento para la matriz $\mathbf{V}$ de tamaño $M \times M$, pero esto es en lugar de la matriz del mismo tamaño para los coeficientes de las ecuaciones normales. La SVD puede ser significativamente más lenta que resolver las ecuaciones normales; sin embargo, su gran ventaja, que (teóricamente) \textit{no puede fallar}, compensa más que de sobra la desventaja en velocidad.
+
+En la rutina que sigue, las matrices $\mathbf{u}$, $\mathbf{v}$ y el vector $\mathbf{w}$ se ingresan como espacio de trabajo. Las dimensiones lógicas del problema son \texttt{ndata} puntos de datos por \texttt{ma} funciones base (y parámetros ajustados). Si solo te importan los valores de $\mathbf{a}$ de los parámetros ajustados, entonces $\mathbf{u}$, $\mathbf{v}$ y $\mathbf{w}$ no contienen información útil en la salida. Si deseas errores probables para los parámetros ajustados, continúa leyendo.
+
+\begin{lstlisting}[language=C, caption={Ajuste por descomposición en valores singulares}, label={lst:svdfit}]
+#include "nrutil.h"
+#define TOL 1.0e-5 // Valor por defecto para precisión simple y variables escaladas a la unidad
+
+void svdfit(float x[], float y[], float sig[], int ndat, float a[], int ma,
+    float **u, float **v, float w[], float *chisq,
+    void (*funcs)(float, float [], int))
+{
+    void svbksb(float **u, float w[], float **v, int m, int n, float b[], float x[]);
+    void svdcmp(float **a, int m, int n, float w[], float **v);
+    int i,j;
+    float wmax,tmp,thresh,sum,*b,*afunc;
+
+    b=vector(1,ndat);
+    afunc=vector(1,ma);
+    for (i=1;i<=ndat;i++) { // Acumula los coeficientes de la matriz del ajuste.
+        (*funcs)(x[i],afunc,ma);
+        tmp=1.0/sig[i];
+        for (j=1;j<=ma;j++) u[i][j]=afunc[j]*tmp;
+        b[i]=y[i]*tmp;
+    }
+
+    svdcmp(u,ndat,ma,w,v); // Descomposición en valores singulares
+    wmax=0.0;
+    for (j=1;j<=ma;j++) // Edita los valores singulares, con TOL desde la definición
+        if (w[j] > wmax) wmax=w[j];
+    thresh=TOL*wmax;
+    for (j=1;j<=ma;j++)
+        if (w[j] < thresh) w[j]=0.0;
+    svbksb(u,w,v,ndat,ma,b,a); // Evalúa chi-cuadrado.
+    *chisq=0.0;
+    for (i=1;i<=ndat;i++) {
+        (*funcs)(x[i],afunc,ma);
+        for (sum=0.0,j=1;j<=ma;j++) sum += a[j]*afunc[j];
+        *chisq += (tmp=(y[i]-sum)/sig[i],tmp*tmp);
+    }
+    free_vector(afunc,1,ma);
+    free_vector(b,1,ndat);
+}
+\end{lstlisting}
+
+Al introducir la matriz \texttt{v} y el vector \texttt{w} producidos por el programa anterior en la siguiente rutina breve, se obtienen fácilmente las varianzas y covarianzas de los parámetros ajustados \texttt{a}. Las raíces cuadradas de las varianzas son las desviaciones estándar de los parámetros ajustados. La rutina implementa directamente la ecuación (15.4.20) anterior, con la convención de que los valores singulares iguales a cero son reconocidos como eliminados del ajuste.
+
+
+\begin{lstlisting}[language=C, caption={Cálculo de la matriz de covarianza con descomposición SVD}, label={lst:svdvar}]
+#include "nrutil.h"
+
+void svdvar(float **v, int ma, float w[], float **cvm)
+// Evalúa la matriz de covarianza cvm[1..ma][1..ma] del ajuste para los parámetros obtenidos por svdfit.
+// Llama a esta rutina con las matrices v[1..ma][1..ma] y w[1..ma] tal como se obtienen en svdfit.
+{
+    int k,j,i;
+    float sum,*wti;
+
+    wti=vector(1,ma);
+    for (i=1;i<=ma;i++) {
+        wti[i]=0.0;
+        if (w[i]) wti[i]=1.0/(w[i]*w[i]);
+    }
+
+    for (i=1;i<=ma;i++) { // Suma contribuciones a la matriz de covarianza (15.4.20).
+        for (j=1;j<=i;j++) {
+            for (sum=0.0,k=1;k<=ma;k++) sum += v[i][k]*v[j][k]*wti[k];
+            cvm[j][i]=cvm[i][j]=sum;
+        }
+    }
+    free_vector(wti,1,ma);
+}
+\end{lstlisting}
+
+
+\end{document}

@@ -1,0 +1,10 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Generalidades importantes.}{3}{0}{1}
+\beamer@sectionintoc {2}{Procesos autorregresivos}{12}{0}{2}
+\beamer@subsectionintoc {2}{1}{Proceso autorregresivo de primer orden AR(1)}{13}{0}{2}
+\beamer@subsectionintoc {2}{2}{Proceso autorregresivo de segundo orden AR(2)}{14}{0}{2}
+\beamer@subsectionintoc {2}{3}{Proceso autoregresivo general AR(p)}{15}{0}{2}
+\beamer@sectionintoc {3}{Función de autoccorelación simple}{23}{0}{3}
+\beamer@sectionintoc {4}{Funcion de autocorrelación parcial}{27}{0}{4}
+\beamer@subsectionintoc {4}{1}{¿Qué hace?}{28}{0}{4}
+\beamer@subsectionintoc {4}{2}{¿Cómo lo hace?}{30}{0}{4}

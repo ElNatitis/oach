@@ -1,0 +1,4 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{ANOVA frente a MANOVA}{3}{0}{1}
+\beamer@sectionintoc {2}{ANCOVA frente a MANCOVA}{7}{0}{2}
+\beamer@sectionintoc {3}{Ejemplo en R}{8}{0}{3}

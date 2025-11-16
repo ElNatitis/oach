@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Geometría del atractor y fractales}{3}{0}{1}
+\beamer@sectionintoc {2}{Dimensión de correlación}{8}{0}{2}
+\beamer@sectionintoc {3}{Suma de correlación a partir de una serie temporal}{13}{0}{3}
+\beamer@sectionintoc {4}{Interpretación y dificultades}{18}{0}{4}
+\beamer@sectionintoc {5}{Señales multi-escala o auto-similares}{23}{0}{5}
+\beamer@subsectionintoc {5}{1}{Leyes de escalamiento}{24}{0}{5}
+\beamer@subsectionintoc {5}{2}{Análisis de fluctuación sin tendencia}{28}{0}{5}

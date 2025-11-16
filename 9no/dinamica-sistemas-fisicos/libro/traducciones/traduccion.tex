@@ -1,0 +1,923 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+
+
+\title{Una Introducción a los Sistemas Dinámicos Caóticos \\ \small \textit{traducido por natits}}
+\author{Robert L. Devaney}
+
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\chapter{Dinámica de una dimención}
+\section{Definiciones elementales}
+El objetivo básico de la teoría de sistemas dinámicos es comprender el comportamiento eventual o asintótico de un proceso iterativo. Si este proceso es una ecuación diferencial cuya variable independiente es el tiempo, entonces la teoría intenta predecir el comportamiento último de las soluciones de la ecuación tanto en el futuro lejano ($t \to \infty$) como en el pasado lejano ($t \to -\infty$).  
+
+Si el proceso es discreto, como la iteración de una función, entonces la teoría busca comprender el comportamiento eventual de los puntos 
+\[
+x,\; f(x),\; f^{2}(x),\; \dots,\; f^{n}(x)
+\]
+cuando $n$ crece mucho. Es decir, los sistemas dinámicos plantean la pregunta —un tanto no matemática en apariencia—: ¿hacia dónde se mueven los puntos y qué hacen cuando llegan allí?  
+
+En este capítulo intentaremos responder, al menos parcialmente, esta pregunta para una de las clases más simples de sistemas dinámicos:las funciones de una sola variable real. Las funciones que determinan sistemas dinámicos también se llaman \emph{mapeos}, o en inglés \emph{mappings} o \emph{maps}, para abreviar. Esta terminología denota el proceso geométrico de llevar un punto a otro. Dado que gran parte de lo que sigue tendrá, de hecho, un carácter geométrico, utilizaremos todos estos términos como sinónimos.
+\\
+
+
+\textbf{Conjunto de deefiniciones 3.1.} 
+\begin{enumerate}
+	\item \textit{La órbita hacia adelante de} $x$ es el conjunto de puntos 
+\[
+x,\; f(x),\; f^{2}(x),\; \dots
+\]
+y se denota por $O^{+}(x)$.  
+
+	\item Si $f$ es un homeomorfismo, podemos definir la \textit{órbita completa de }$x$, 
+\[
+O(x) = \{ f^{n}(x) \;|\; n \in \mathbb{Z} \},
+\]
+como el conjunto de puntos $f^{n}(x)$ para $n \in \mathbb{Z}$,  
+
+y \textit{la órbita hacia atrás de} $x$,
+\[
+O^{-}(x) = \{x,\; f^{-1}(x),\; f^{-2}(x),\; \dots \}.
+\]
+\end{enumerate}
+
+
+Así, \textbf{nuestro objetivo básico es comprender todas las órbitas de un mapeo.} Las órbitas y órbitas hacia adelante de los puntos pueden ser conjuntos bastante complicados, incluso para mapeos no lineales muy simples. Sin embargo, existen algunas órbitas que son especialmente simples y que desempeñarán un papel 
+central en el estudio de todo el sistema.
+\\
+
+\textbf{Conjunto de definiciones 3.2.} 
+\begin{enumerate}
+	\item El punto $x$ es un \emph{punto fijo} de $f$ si $f(x)=x$.  
+	\item El punto $x$ es un \emph{punto periódico de período $n$} si $f^{n}(x)=x$.  
+	\item El menor $n$ positivo para el cual $f^{n}(x)=x$ se llama el \emph{período primo} de $x$.  
+	\item Denotamos el conjunto de puntos periódicos de período $n$ (no necesariamente primo) por $\mathrm{Per}_{n}(f)$, y el conjunto de puntos fijos por $\mathrm{Fix}(f)$. 
+	\item El conjunto de todas las iteraciones de un punto periódico forma una \emph{órbita periódica}.  
+\end{enumerate}
+
+Los mapeos pueden tener muchos puntos fijos.  
+Por ejemplo, la aplicación identidad $id(x)=x$ fija todos los puntos en $\mathbb{R}$,  
+mientras que el mapeo $f(x)=-x$ fija el origen, y todos los demás puntos tienen período $2$.  
+
+Sin embargo, estos son sistemas dinámicos atípicos;  
+los mapeos con intervalos de puntos fijos o periódicos son raros en un sentido que se precisará más adelante.  
+La mayoría de los sistemas dinámicos que encontraremos tendrán puntos periódicos aislados.
+
+
+\newpage
+
+\textbf{Ejemplo 3.3.} El mapreo $f(x) = x^{3}$ tiene $0,\,1$ y $-1$ como puntos fijos 
+y ningún otro punto periódico.  
+El mapeo $P(x) = x^{2}-1$ tiene puntos fijos en $(1 \pm \sqrt{5})/2$, 
+mientras que los puntos $0$ y $-1$ pertenecen a una órbita periódica de período $2$.
+
+\medskip
+
+\textbf{Ejemplo 3.4.} Sea $S^{1}$ el círculo unitario en el plano. Denotamos un punto en $S^{1}$ por su ángulo $\theta$ medido en radianes de la manera estándar. Así, un punto queda determinado por cualquier ángulo de la forma $\theta + 2k\pi$ para un entero $k$.  
+
+Definamos $f(\theta)=2\theta$. \textit{(Nótese que $f(\theta + 2\pi) = f(\theta)$ en el círculo, por lo que este mapeo está bien definido).  }
+
+Ahora, $f^{n}(\theta) = 2^{n}\theta$, de modo que $\theta$ es periódico de período $n$ si y solo si $2^{n}\theta = \theta + 2k\pi$ para algún entero $k$, es decir, si y solo si $\theta = 2k\pi/(2^{n}-1)$, donde $- \frac{1}{2}(2^{n}-1) < k \le \frac{1}{2}(2^{n}-1)$ es un entero. De este modo, los puntos periódicos de período $n$ para $f$ son las raíces $(2^{n}-1)$-ésimas de la unidad. Se sigue que el conjunto de puntos periódicos es denso en $S^{1}$. \textit{(Véase el Ejercicio 10).}
+
+
+\newpage
+
+\textbf{Definición 3.5.} Un punto $x$ es \emph{eventualmente periódico} de período $n$ si $x$ no es periódico, 
+pero existe un $m>0$ tal que 
+\[
+f^{n+i}(x) = f^{i}(x) \quad \text{para todo } i \geq m.
+\]
+Es decir, $f^{i}(x)$ es periódico para $i \geq m$.
+\\
+
+\textbf{Ejemplo 3.6.} Sea $f(x) = -x^{2}$. Entonces $f(1) = -1$ es un punto fijo, mientras que 
+$f(-1) = -1$ es eventualmente fijo.
+
+\medskip
+
+\textbf{Ejemplo 3.7.} Sea $f(\theta) = 2\theta$ en el círculo.  
+Nótese que $f(0)=0$ es un punto fijo.  
+Si $\theta = 2k\pi/2^{n}$, entonces $f^{n}(\theta) = 2k\pi$, por lo que $\theta$ es eventualmente fijo.  
+
+Se sigue que los puntos eventualmente fijos también son densos en $S^{1}$.  
+(Véase el Ejercicio 11).
+
+\medskip
+
+\textit{Observamos que los puntos eventualmente periódicos no pueden ocurrir si la aplicación es un homeomorfismo.}
+
+\newpage
+
+\textbf{Conjunto de definiciones 3.8.} Sea $p$ un punto periódico de período $n$. 
+\begin{enumerate}
+	\item Un punto $x$ es \emph{asintótico hacia adelante} a $p$ si 
+\[
+\lim_{i \to \infty} f^{in}(x) = p.
+\]
+	\item El conjunto estable de $p$, denotado por $W^{s}(p)$, consiste en todos los puntos asintóticos hacia adelante a $p$.
+	\item Si $p$ no es periódico, aún podemos definir puntos asintóticos hacia adelante exigiendo que 
+\[
+|f^{i}(x) - f^{i}(p)| \to 0 \quad \text{cuando } i \to \infty.
+\]
+	\item Si $f$ es invertible, podemos considerar puntos \emph{asintóticos hacia atrás} dejando que $i \to -\infty$ en la definición anterior. 
+	
+	\item El conjunto de puntos asintóticos hacia atrás a $p$ se llama \emph{conjunto inestable} de $p$ y se denota por $W^{u}(p)$.
+\end{enumerate}
+
+\textbf{Ejemplo 3.9.} Sea $f(x) = x^{3}$. Entonces 
+\[
+W^{s}(0) = \{\, x \in \mathbb{R} : -1 < x < 1 \,\}
+\]
+es el intervalo abierto $-1 < x < 1$.  
+
+Además, $W^{u}(1)$ es el eje real positivo, mientras que $W^{u}(-1)$ es el eje real negativo.
+
+\newpage
+
+\textbf{Conjunto de definiciones 3.10.} Un punto $x$ es un \emph{punto crítico} de $f$ si $f'(x)=0$. 
+\begin{itemize}
+	\item El punto crítico es \emph{no degenerado} si $f''(x)\neq 0$.  
+	\item El punto crítico es \emph{degenerado} si $f''(x)=0$.
+\end{itemize} 
+
+
+\medskip
+
+Por ejemplo, $f(x)=x^{2}$ tiene un punto crítico no degenerado en $0$, pero $f(x)=x^{n}$ para $n>2$ tiene un punto crítico degenerado en $0$. Nótese que los puntos críticos degenerados pueden ser máximos, mínimos o puntos de silla (como en el caso de $f(x)=x^{3}$). En cambio, los puntos críticos no degenerados deben ser necesariamente máximos o mínimos. Los puntos críticos no pueden ocurrir en difeomorfismos, pero su existencia en aplicaciones no invertibles 
+es una de las razones por las cuales este tipo de mapeos son más complicados.
+
+\medskip
+
+El objetivo de la teoría de sistemas dinámicos es comprender la naturaleza de todas las órbitas e identificar el conjunto de órbitas que son periódicas, eventualmente periódicas, asintóticas, etc. En general, esta es una tarea imposible. Por ejemplo, si $f(x)$ es un polinomio cuadrático, entonces encontrar explícitamente los puntos periódicos de período $n$ requiere resolver la ecuación $f^{n}(x)=x$, que es una ecuación polinómica de grado $2^{n}$. El uso de una computadora no ayuda demasiado, pues los cálculos numéricos de puntos periódicos suelen ser engañosos: los errores de redondeo tienden a acumularse y hacen invisibles muchos puntos periódicos para la computadora. Por lo tanto, nos queda únicamente utilizar técnicas cualitativas o geométricas para comprender la dinámica de un sistema dado. Esto significa que debemos buscar una representación geométrica del comportamiento de todas las órbitas de un sistema. Esta representación geométrica está dada por el \emph{retrato de fases}, que discutiremos a continuación.
+
+\medskip
+
+La gráfica de una función en los reales proporciona información sobre su primera iteración, pero da muy poca información sobre las iteraciones posteriores. Para comprender iteraciones superiores, podríamos intentar graficar cada una de ellas, pero este es un procedimiento engorroso. Existe un método mucho más eficiente y geométrico para describir las órbitas de un sistema dinámico: el \emph{retrato de fases}. Este consiste en una representación sobre la propia recta real (a diferencia del plano), de todas las órbitas de un sistema.  Por ejemplo, para indicar que todas las órbitas no nulas de $f(x)=-x$ tienen período $2$, podríamos esbozar el retrato de fases como en la Fig. 3.1.a. Esa figura también muestra los retratos de fases de algunos otros mapeos simples.
+
+\medskip
+
+La gráfica de $f(x)$, por supuesto, contiene información acerca de la primera iteración de $f$. Podemos usarla para obtener una idea de iteraciones superiores y, por lo tanto, del retrato de fases, mediante el siguiente procedimiento que llamamos \emph{análisis gráfico}. Identificamos la diagonal 
+\[
+\Delta = \{(x,x)\;|\; x \in \mathbb{R}\}
+\]
+con $\mathbb{R}$ de manera natural.  
+
+Una línea vertical desde $(p,p)$ hasta la gráfica de $f$ se encuentra con ella en $(p,f(p))$. Luego, una línea horizontal desde $(p,f(p))$ hacia $\Delta$ se encuentra con la diagonal en $(f(p),f(p))$. Así, una línea vertical hacia la gráfica seguida de una línea horizontal de regreso a la diagonal produce la imagen del punto $p$ bajo $f$ en la diagonal. De este modo, podemos visualizar el retrato de fases de una aplicación como si tuviera lugar en la diagonal en vez de en el eje $x$. Entonces, una órbita se obtiene al trazar repetidamente segmentos de línea verticales desde $\Delta$ hacia la gráfica y luego horizontales desde la gráfica hacia $\Delta$.  
+
+La Fig. 3.2 ilustra este procedimiento para $g(x)=x^{3}$ y $f(x)=2x-x^{2}$.
+
+\newpage
+
+Los difeomorfismos del círculo constituyen una clase interesante de aplicaciones, algo distinta de los mapeos de $\mathbb{R}$. El siguiente ejemplo es típico.
+
+\medskip
+
+\textbf{Ejemplo 3.12.} \emph{Traslaciones del círculo.}  \\
+Sea $\lambda \in \mathbb{R}$ y definamos $T_{\lambda}(\theta)=\theta+2\pi\lambda$.  Las aplicaciones $T_{\lambda}$ se comportan de manera muy diferente dependiendo de si $\lambda$ es racional o irracional. 
+\begin{enumerate}
+	\item Si $\lambda = p/q$, donde $p$ y $q$ son enteros, entonces \[T_{\lambda}^{q}(\theta) = \theta + 2\pi p = \theta,\]de modo que todos los puntos son fijos por $T_{\lambda}^{q}$.  
+
+	 \item Cuando $\lambda$ es irracional, la situación es bastante distinta.  
+El siguiente resultado se conoce como el \emph{Teorema de Jacobi}.
+\end{enumerate} 
+
+
+\newpage
+
+\textbf{Teorema 3.13.} \emph{Cada órbita de $T_{\lambda}$ es densa en $S^{1}$ si $\lambda$ es irracional.}
+
+\bigskip
+
+\emph{Demostración.} Sea $\theta \in S^{1}$.  
+Los puntos en la órbita de $\theta$ son distintos, pues si $T_{\lambda}^{n}(\theta)=T_{\lambda}^{m}(\theta)$, tendríamos $(n-m)\lambda \in \mathbb{Z}$, lo cual implica $n=m$.  Cualquier conjunto infinito de puntos en el círculo debe tener un punto de acumulación. Así, dado $\varepsilon > 0$, deben existir enteros $n$ y $m$ tales que \[
+|T_{\lambda}^{n}(\theta)-T_{\lambda}^{m}(\theta)| < \varepsilon.
+\] Sea $k=n-m$. Entonces \[
+|T_{\lambda}^{k}(\theta)-\theta| < \varepsilon.
+\] Ahora bien, $T_{\lambda}$ preserva longitudes en $S^{1}$. En consecuencia, $T_{\lambda}^{k}$ envía el arco que conecta $\theta$ con $T_{\lambda}^{k}(\theta)$ en el arco que conecta $T_{\lambda}^{k}(\theta)$ y $T_{\lambda}^{2k}(\theta)$, cuya longitud es menor que $\varepsilon$. En particular, se deduce que los puntos $\theta, T_{\lambda}^{k}(\theta), T_{\lambda}^{2k}(\theta),\dots$ particionan $S^{1}$ en arcos de longitud menor que $\varepsilon$. Como $\varepsilon$ era arbitrario, esto completa la demostración.  
+
+\hfill q.e.d.
+
+
+
+\newpage
+
+\section{Hiperbolicidad}
+
+Mapas simples como $id(x)=x$ y $f(x)=-x$ son, desafortunadamente, atípicos entre los sistemas dinámicos.  
+Hay muchas razones por las cuales esto es así, pero quizá la más inusual es el hecho de que todos los puntos son periódicos bajo la iteración de estos mapas.  
+La mayoría de los mapas no tienen este tipo de comportamiento.  
+Los puntos periódicos tienden a estar más dispersos en la recta.  
+
+En esta sección introduciremos uno de los temas principales de este libro: la \emph{hiperbolicidad}.  
+Los mapas con puntos periódicos hiperbólicos son precisamente aquellos que aparecen típicamente en muchos sistemas dinámicos y, además, proporcionan los tipos más simples de comportamiento periódico para analizar.
+
+\medskip
+
+\textbf{Conjunto de definiciones 4.1.} Sea $p$ un punto periódico de período primo $n$. 
+\begin{enumerate}
+	\item El punto $p$ es \emph{hiperbólico} si $|(f^{n})'(p)| \neq 1$.  
+	\item El número $(f^{n})'(p)$ se llama el \emph{multiplicador} del punto periódico $p$.
+\end{enumerate} 
+
+
+\medskip
+
+\textbf{Ejemplo 4.2.} Consideremos el difeomorfismo $f(x)=\tfrac{1}{4}(x^{3}+x)$.  
+Tiene tres puntos fijos: $x=0,\,1,$ y $-1$.  
+Nótese que $f'(0)=\tfrac{1}{2}$ y $f'(\pm 1)=2$.  
+Por lo tanto, cada punto fijo es hiperbólico.  
+La gráfica y el retrato de fases de $f(x)$ están representados en la Fig. 4.1.
+
+\newpage
+
+\textbf{Ejemplo 4.3.} Sea $f(x)=-\tfrac{1}{2}(x^{3}+x)$.  
+El punto $0$ es un punto fijo hiperbólico, con $f'(0)=-\tfrac{1}{2}$.  
+
+Los puntos $\pm 1$ ahora pertenecen a una órbita periódica de período $2$.  
+Calculamos
+$$
+(f^{2})'(1) = f'(1)\cdot f'(-1) = 4,
+$$
+mediante la regla de la cadena.  
+Así, este punto periódico es hiperbólico, y el retrato de fases está representado en la Fig. 4.2. Nótese que los puntos en el intervalo $(-1,1)$ convergen hacia $0$ en espiral, mientras que los puntos fuera de ese intervalo se alejan de $0$.
+
+\newpage
+
+Observamos que, en los dos ejemplos anteriores, tenemos $|f'(0)|<1$ y que los puntos cercanos a $0$ son
+asintóticos hacia adelante a $0$.  
+Esta situación ocurre frecuentemente:
+
+\medskip
+
+\textbf{Proposición 4.4.} Sea $p$ un punto fijo hiperbólico con $|f'(p)|<1$.  
+Entonces existe un intervalo abierto $U$ alrededor de $p$ tal que, si $x \in U$, entonces
+\[
+\lim_{n \to \infty} f^{n}(x) = p.
+\]
+
+\medskip
+
+\emph{Demostración.} Como $f$ es $C^{1}$, existe $\varepsilon>0$ tal que $|f'(x)|<A<1$ para $x \in [p-\varepsilon,\,p+\varepsilon]$.  
+Por el Teorema del Valor Medio:
+\[
+|f(x)-p| = |f(x)-f(p)| \leq A|x-p| < |x-p| \leq \varepsilon.
+\]
+De este modo, $f(x)$ está contenido en $[p-\varepsilon,\,p+\varepsilon]$ y, de hecho, está más cerca de $p$ que $x$.
+
+Por el mismo argumento,
+\[
+|f^{n}(x)-p| \leq A^{n}|x-p|,
+\]
+de modo que $f^{n}(x) \to p$ cuando $n \to \infty$.
+
+\hfill q.e.d.
+
+\bigskip
+
+\textbf{Observaciones.}
+
+\begin{enumerate}
+	\item Se sigue que el intervalo $[p-\varepsilon,\,p+\varepsilon]$ está contenido en el conjunto estable
+asociado a $p$, $W^{s}(p)$.
+
+	\item Un resultado similar es válido para puntos periódicos hiperbólicos de período $n$.  En este caso, obtenemos un intervalo abierto $U$ alrededor de $p$ que es enviado dentro de sí mismo por $f^{n}$. Por supuesto, la suposición en este caso es que $|(f^{n})'(p)|<1$.
+
+\end{enumerate}
+
+
+\medskip
+
+\textbf{Definición 4.5.} Sea $p$ un punto periódico hiperbólico de período $n$ con $|(f^{n})'(p)|<1$.  El punto $p$ se llama un \emph{punto periódico atractor} (un \emph{attractor}) o un \emph{sumidero}.
+
+\bigskip
+
+Los puntos periódicos atractores de período $n$ tienen vecindades que son enviadas dentro de sí mismas por $f^{n}$. Dicha vecindad se llama el \emph{conjunto estable local} y se denota por $W^{s}_{\text{loc}}$. Podemos distinguir tres tipos diferentes de puntos fijos atractores, a saber: aquellos donde $f'(p)=0$, $0<f'(p)<1$, y $-1<f'(p)<0$. El comportamiento cerca de estos tipos de puntos fijos se ilustra en la Fig. 4.3.El comportamiento de un mapa cerca de puntos periódicos donde la derivada es mayor que uno en valor absoluto es bastante diferente al de los sumideros.
+
+\medskip
+
+\textbf{Proposición 4.6.} Sea $p$ un punto fijo hiperbólico con $|f'(p)|>1$.  
+Entonces existe un intervalo abierto $U$ alrededor de $p$ tal que, si $x \in U$ y $x \neq p$, 
+existe $k>0$ tal que $f^{k}(x) \notin U$.
+
+\medskip
+
+La demostración es similar a la prueba de la proposición anterior y, por lo tanto, se deja como ejercicio. Gráficamente, el resultado es bastante claro; véase la Fig. 4.4.
+
+\newpage
+
+\textbf{Definición 4.7.} Un punto fijo $p$ con $|f'(p)|>1$ se llama un \emph{punto fijo repulsor} 
+(\emph{repellor}) o \emph{fuente}.  
+La vecindad descrita en la Proposición se llama el \emph{conjunto inestable local} y se denota por $W^{u}_{\text{loc}}$. Observamos que los puntos periódicos de período $n$ exhiben un comportamiento similar cuando $|(f^{n})'(p)| > 1$.
+
+\medskip
+
+Por lo tanto, los puntos periódicos hiperbólicos tienen un comportamiento local que está gobernado por la derivada en el punto periódico. Esto no es cierto cuando el punto es indiferente o no hiperbólico, como muestra el siguiente ejemplo.
+
+\medskip
+
+\textbf{Ejemplo 4.8.} Cada uno de los mapas en la Fig. 4.5 satisface $f(0)=0$ y $f'(0)=1$, pero cada uno tiene retratos de fases muy diferentes cerca de $0$.
+
+\begin{enumerate}
+\item En (a), el mapa $f(x)=x+x^{3}$ tiene un punto fijo débilmente repulsor en $0$.  
+
+\item En (b), el mapa $f(x)=x-x^{3}$ tiene un punto fijo débilmente atractor en $0$.  
+
+\item En (c), el mapa $f(x)=x+x^{2}$ es débilmente repulsor por la derecha, pero débilmente atractor por la izquierda.
+\end{enumerate}
+
+
+\medskip
+
+La mayoría de los mapas tienen únicamente puntos periódicos hiperbólicos, como veremos más adelante. Sin embargo, los puntos periódicos no hiperbólicos suelen aparecer en familias de mapas. Cuando esto ocurre, la estructura de puntos periódicos a menudo experimenta una \emph{bifurcación}. Nos ocuparemos de la teoría de bifurcaciones más extensamente más adelante, pero por ahora daremos varios ejemplos.
+
+\newpage
+
+\textbf{Ejemplo 4.9.} Consideremos la familia de funciones cuadráticas $Q_{c}(x)=x^{2}+c$, donde $c$ es un parámetro. Las gráficas de $Q_{c}$ asumen tres posiciones diferentes relativas a la diagonal, dependiendo de si $c>1/4$, $c=1/4$ o $c<1/4$ (véase Fig. 4.6). Nótese que $Q_{c}$ no tiene puntos fijos para $c>1/4$. Cuando $c=1/4$, $Q_{c}$ tiene un único punto fijo no hiperbólico en $x=1/2$. Y cuando $c<1/4$, $Q_{c}$ tiene un par de puntos fijos: uno atractor y uno repulsor. Así, el retrato de fases de $Q_{c}$ cambia cuando $c$ disminuye a través de $1/4$. Este cambio es un ejemplo de una bifurcación.
+
+\newpage
+
+\textbf{Ejemplo 4.10.} Sea $F_{\mu}(x)=\mu x(1-x)$ con $\mu>1$. $F_{\mu}$ tiene dos puntos fijos: uno en $0$ y el otro en $p_{\mu}=(\mu-1)/\mu$. Nótese que $F'_{\mu}(0)=\mu$ y $F'_{\mu}(p_{\mu})=2-\mu$. Por lo tanto, $0$ es un punto fijo repulsor para $\mu>1$ y $p_{\mu}$ es atractor para $1<\mu<3$. Cuando $\mu=3$, $F'_{\mu}(p_{\mu})=-1$. Representamos las gráficas de $F_{\mu}^{2}$ para $\mu$ cercano a $3$ (véase Fig. 4.7). Obsérvese que aparecen dos nuevos puntos fijos para $F_{\mu}^{2}$ cuando $\mu$ aumenta pasando por $3$. Estos son nuevos puntos periódicos de período $2$.  Otra bifurcación ocurre en este caso: tenemos un cambio en $\mathrm{Per}_{2}(F_{\mu})$.  
+
+\bigskip
+
+Esta familia cuadrática exhibe de hecho muchos de los fenómenos que son cruciales en la teoría general.  
+La siguiente sección está dedicada enteramente a esta función.
+
+\newpage
+
+\section{Un ejemplo: la familia cuadrática}
+
+En esta sección continuaremos la discusión de la familia cuadrática 
+\[
+F_{\mu}(x) = \mu x (1-x).
+\]
+De hecho, volveremos a este ejemplo repetidamente a lo largo del resto de este capítulo, 
+ya que ilustra muchos de los fenómenos más importantes que ocurren en los sistemas dinámicos.
+
+\medskip
+
+\textbf{Proposición 5.1.}
+\begin{enumerate}
+    \item $F_{\mu}(0)=F_{\mu}(1)=0$ y $F_{\mu}(p_{\mu})=p_{\mu}$, donde 
+    \[
+    p_{\mu}=\frac{\mu-1}{\mu}.
+    \]
+    \item $0<p_{\mu}<1$ si $\mu>1$.
+\end{enumerate}
+
+La demostración de esta proposición es directa.  
+De ahora en adelante, nos concentraremos en el caso $\mu>1$.  
+
+La siguiente proposición muestra que la mayoría de los puntos se comportan de manera bastante sencilla 
+bajo la iteración de $F_{\mu}$: todos los puntos que no se encuentran en el intervalo $[0,1]$ tienden a $-\infty$.
+
+\medskip
+
+\textbf{Proposición 5.2.} Supongamos $\mu>1$.  
+Si $x<0$, entonces $F_{\mu}^{n}(x)\to -\infty$ cuando $n\to\infty$.  
+De manera similar, si $x>1$, entonces $F_{\mu}^{n}(x)\to -\infty$ cuando $n\to\infty$.
+
+\bigskip
+
+\emph{Demostración.}  
+Si $x<0$, entonces $\mu x(1-x)<x$, por lo que $F_{\mu}(x)<x$.  
+De este modo, $F_{\mu}^{n}(x)$ es una sucesión decreciente de puntos.  
+Esta sucesión no puede converger a $p_{\mu}$, pues en tal caso tendríamos 
+$F_{\mu}^{n+1}(x)\to F_{\mu}(p)<p$, mientras que $F_{\mu}^{n}(x)\to p$.  
+Por lo tanto, $F_{\mu}^{n}(x)\to -\infty$, como se requería. Si $x>1$, entonces $F_{\mu}(x)<0$, así que $F_{\mu}^{n}(x)\to -\infty$ también.  
+
+\hfill q.e.d.
+
+\bigskip
+
+El análisis gráfico muestra fácilmente los resultados anteriores, como se ilustra en la Fig. 5.1.  
+
+Como consecuencia de esta proposición, toda la dinámica interesante de la familia cuadrática ocurre en el intervalo unitario 
+\[
+I=\{x \;|\; 0 \leq x \leq 1\}.
+\]
+Para valores pequeños de $\mu$, la dinámica de $F_{\mu}$ no es demasiado complicada.
+
+\newpage
+
+\textbf{Proposición 5.3.} Sea $1<\mu<3$.
+\begin{enumerate}
+    \item $F_{\mu}$ tiene un punto fijo atractor en $p_{\mu}=\tfrac{\mu-1}{\mu}$ y un punto fijo repulsor en $0$.
+    \item Si $0<x<1$, entonces 
+    \[
+    \lim_{n \to \infty} F_{\mu}^{n}(x)=p_{\mu}.
+    \]
+\end{enumerate}
+
+\emph{Demostración.}  
+La parte 1 fue probada en el Ejemplo 4.10 al final de la sección anterior.  
+
+Para la parte 2, primero tratemos el caso $1<\mu<2$.  
+Supongamos que $x$ está en el intervalo $(0,1/2]$.  
+Entonces, el análisis gráfico muestra inmediatamente que 
+\[
+|F_{\mu}(x)-p_{\mu}| < |x-p_{\mu}|
+\]
+si $x \neq p_{\mu}$ (véase Fig. 5.2).  
+
+En consecuencia, $F_{\mu}^{n}(x) \to p_{\mu}$ cuando $n\to\infty$.  
+Si, por otro lado, $x$ está en el intervalo $(1/2,1)$, entonces $F_{\mu}(x)$ está en $(0,1/2)$, 
+por lo que el argumento anterior implica
+\[
+F_{\mu}^{n}(x)=F_{\mu}^{n-1}(F_{\mu}(x)) \to p_{\mu}
+\]
+cuando $n\to\infty$.
+
+\medskip
+
+El caso $2<\mu<3$ es más difícil. El análisis gráfico muestra qué es lo diferente en este caso (véase Fig. 5.2). Nótese que $1/2<p_{\mu}<1$. Sea $\hat{p}_{\mu}$ el único punto en el intervalo $(0,1/2)$ que es enviado a $p_{\mu}$ por $F_{\mu}$. Entonces, se puede comprobar fácilmente que $F_{\mu}^{2}$ envía el intervalo $[\hat{p}_{\mu},p_{\mu}]$ dentro de $[1/2,p_{\mu}]$. Se sigue que $F_{\mu}^{n}(x)\to p_{\mu}$ cuando $n\to\infty$ para todo $x\in[\hat{p}_{\mu},p_{\mu}]$. Ahora supongamos $x<\hat{p}_{\mu}$. Nuevamente, el análisis gráfico muestra que existe $k>0$ tal que $F_{\mu}^{k}(x)\in[\hat{p}_{\mu},p_{\mu}]$. Así, $F_{\mu}^{k+n}(x)\to p_{\mu}$ cuando $n\to\infty$ en este caso también. Finalmente, como antes, $F_{\mu}$ envía el intervalo $(p_{\mu},1)$ dentro de $(0,p_{\mu})$, por lo que el resultado se sigue aquí también. Dado que $(0,1)=(0,\hat{p}_{\mu}) \cup [\hat{p}_{\mu},p_{\mu}] \cup (p_{\mu},1)$, hemos terminado. Dejamos el caso intermedio $\mu=2$ al lector (véase el Ejercicio 1).  
+
+\hfill q.e.d.
+
+\bigskip
+
+Por lo tanto, para $1<\mu<3$, $F_{\mu}$ tiene únicamente dos puntos fijos y todos los demás puntos en $I$ son asintóticos a $p_{\mu}$. Así, la dinámica de $F_{\mu}$ está completamente comprendida para $\mu$ en este rango. Los retratos de fase de $F_{\mu}$ se muestran en la Fig. 5.3. Como vimos en el Ejemplo 4.10 en la sección anterior, cuando $\mu$ pasa a través de $3$, la dinámica de $F_{\mu}$ se vuelve un poco más complicada: nace un nuevo punto periódico de período $2$. Este es el comienzo de una larga historia: a medida que $\mu$ continúa aumentando, la dinámica de $F_{\mu}$ se vuelve cada vez más complicada hasta que el retrato de fases de $F_{\mu}$ es dramáticamente diferente del anterior. Este es un escenario que investigaremos con mucho más detalle más adelante.
+
+\medskip
+
+Ahora consideremos el caso $\mu>4$. Para el resto de esta sección, omitiremos el subíndice $\mu$ y escribiremos $F$ en lugar de $F_{\mu}$. Como antes, toda la dinámica interesante de $F$ ocurre en el intervalo unitario $I$. Nótese que, dado que $\mu/4>1$, el valor máximo de $F$ es mayor que uno. Por lo tanto, ciertos puntos abandonan $I$ después de una iteración de $F$. Denotemos el conjunto de tales puntos por $A_{0}$. Claramente, $A_{0}$ es un intervalo abierto centrado en $1/2$ y tiene la propiedad de que, si $x\in A_{0}$, entonces $F(x)>1$, de modo que $F^{2}(x)<0$ y $F^{n}(x)\to -\infty$. Así, $A_{0}$ es el conjunto de puntos que escapan inmediatamente de $I$. Todos los demás puntos en $I$ permanecen en $I$ después de una iteración de $F$.
+
+\medskip
+
+Sea
+\[
+A_{1} = \{x \in I \mid F(x)\in A_{0}\}.
+\]
+Si $x\in A_{1}$, entonces $F^{2}(x)>1$, $F^{3}(x)<0$, y, como antes, $F^{n}(x)\to -\infty$. Inductivamente, definamos
+\[
+A_{n}=\{x\in I \mid F^{i}(x)\in I \text{ para } i\leq n \text{ pero } F^{n+1}(x)\notin I\}.
+\]
+Es decir, $A_{n}$ consiste en todos los puntos que escapan de $I$ en la $(n+1)$-ésima iteración. Como antes, si $x$ pertenece a $A_{n}$, se sigue que la órbita de $x$ tiende eventualmente a $-\infty$. Dado que sabemos el destino último de cualquier punto que esté en los $A_{n}$, solo queda analizar el comportamiento de aquellos puntos que nunca escapan de $I$, es decir, el conjunto de puntos que pertenecen a
+\[
+I - \bigcup_{n=0}^{\infty} A_{n}.
+\]
+
+Denotemos este conjunto por $\Lambda$. Nuestra primera pregunta es: ¿qué es exactamente este conjunto de puntos? Para comprender $\Lambda$, describiremos más cuidadosamente su construcción recursiva.
+
+\newpage
+
+Como $A_{0}$ es un intervalo abierto centrado en $1/2$, $I-A_{0}$ consiste en dos intervalos cerrados, 
+$I_{0}$ a la izquierda e $I_{1}$ a la derecha (véase Fig. 5.4).  
+
+Nótese que $F$ envía tanto $I_{0}$ como $I_{1}$ monótonamente sobre $I$; 
+$F$ es creciente en $I_{0}$ y decreciente en $I_{1}$.  
+Como $F(I_{0})=F(I_{1})=I$, existen dos intervalos abiertos, uno en $I_{0}$ y otro en $I_{1}$, 
+que son enviados dentro de $A_{0}$ por $F$.  
+Por lo tanto, este par de intervalos es precisamente el conjunto $A_{1}$.
+
+\medskip
+
+Ahora consideremos $I-(A_{0}\cup A_{1})$.  
+Este conjunto consiste en $4$ intervalos cerrados, y $F$ envía cada uno de ellos monótonamente sobre 
+$I_{0}$ o $I_{1}$.  
+En consecuencia, $F^{2}$ envía cada uno de ellos sobre $I$.  
+
+Por lo tanto, vemos que cada uno de los cuatro intervalos en $I-(A_{0}\cup A_{1})$ 
+contiene un subintervalo abierto que es enviado por $F^{2}$ sobre $A_{0}$.  
+Por consiguiente, los puntos en estos intervalos escapan de $I$ en la tercera iteración de $F$.  
+Este es el conjunto que llamamos $A_{2}$.  
+
+Para uso posterior, observamos que $F^{2}$ es alternativamente creciente y decreciente en estos cuatro intervalos.  
+Se sigue que la gráfica de $F^{2}$ debe tener dos “jorobas”, como se muestra en la Fig. 5.5.
+
+\medskip
+
+Continuando de esta manera, notamos dos hechos:  
+
+1. $A_{n}$ consiste en $2^{n}$ intervalos abiertos disjuntos.  
+Así, $I-(A_{0}\cup \cdots \cup A_{n})$ consiste en $2^{n+1}$ intervalos cerrados, ya que
+\[
+1+2+2^{2}+\cdots+2^{n}=2^{n+1}-1.
+\]
+
+2. $F^{n+1}$ envía cada uno de estos intervalos cerrados monótonamente sobre $I$.  
+De hecho, la gráfica de $F^{n+1}$ es alternativamente creciente y decreciente en estos intervalos.  
+Así, la gráfica de $F^{n+1}$ tiene exactamente $2^{n}$ “jorobas” en $I$, 
+y de ello se sigue que la gráfica de $F^{n}$ cruza la línea $y=x$ al menos $2^{n}$ veces.  
+Esto implica que $F^{n}$ tiene al menos $2^{n}$ puntos fijos o, equivalentemente, 
+que $\text{Per}_{n}(F)$ consiste de $2^{n}$ puntos en $I$.  
+
+Claramente, la estructura de $\Lambda$ es mucho más complicada cuando $\mu>4$ 
+que en el caso anterior $\mu<3$.
+
+\medskip
+
+La construcción de $\Lambda$ recuerda a la construcción del conjunto de Cantor de los tercios medios.  
+$\Lambda$ se obtiene eliminando sucesivamente intervalos abiertos en el “medio” de un conjunto de intervalos cerrados.
+
+\bigskip
+
+\textbf{Conjunto de definiciones 5.4.}
+
+\begin{itemize}
+\item Un conjunto $\Lambda$ es un \textbf{\textit{conjunto de Cantor}} si es un subconjunto cerrado, totalmente disconexo y perfecto de $I$.
+\item Un conjunto es \textbf{\textit{totalmente disconexo}} si no contiene intervalos
+\item un conjunto es \textbf{\textit{perfecto}} si cada punto en él es un punto de acumulación o punto límite de otros puntos en el conjunto.
+\end{itemize}  
+
+\medskip
+
+\textbf{Ejemplo 5.5. El conjunto de los tercios medios de Cantor.}  
+Este es el ejemplo clásico de un conjunto de Cantor.  
+Comenzamos con $I$, pero removemos el “tercio medio” abierto, es decir, el intervalo 
+\(\left(\tfrac{1}{3},\tfrac{2}{3}\right)\).  
+
+Después, de lo que queda removemos de nuevo los dos tercios medios, es decir, los intervalos 
+\(\left(\tfrac{1}{9},\tfrac{2}{9}\right)\) y \(\left(\tfrac{7}{9},\tfrac{8}{9}\right)\).  
+
+Continuamos removiendo tercios medios de esta manera; nótese que en la $n$-ésima etapa de este proceso 
+se eliminan $2^{n-1}$ intervalos abiertos.  
+
+Así, este procedimiento es completamente análogo a nuestra construcción anterior.  
+
+El Ejercicio 7 muestra que el conjunto de los tercios medios de Cantor es, en efecto, un conjunto de Cantor 
+según lo definido en 5.4.
+
+\newpage
+
+\textbf{Observación.}  
+El conjunto de los tercios medios de Cantor es un ejemplo de un \emph{fractal}.  
+Intuitivamente, un fractal es un conjunto que es autosimilar bajo magnificación.  
+
+En el conjunto de Cantor de los tercios medios, supongamos que solo observamos los puntos que están 
+en el intervalo izquierdo $[0,\tfrac{1}{3}]$. Bajo un microscopio que magnifica este intervalo por un factor de tres, la “pieza” del conjunto de Cantor en $[0,\tfrac{1}{3}]$ luce exactamente como el conjunto original.  
+
+Más precisamente, la aplicación lineal $L(x)=3x$ envía la porción del conjunto de Cantor en $[0,\tfrac{1}{3}]$ homeomórficamente sobre el conjunto completo (véase Ejercicio 10). Este proceso no se detiene en el primer nivel: uno puede magnificar cualquier pieza del conjunto de Cantor en la $n$-ésima etapa de la construcción por un factor de $3^{n}$ y obtener el conjunto original (véase Ejercicio 11).
+
+\medskip
+
+Para garantizar que nuestro conjunto $\Lambda$ sea un conjunto de Cantor, necesitamos una hipótesis adicional 
+sobre $\mu$. Supongamos que $\mu$ es suficientemente grande de modo que $|F'(x)|>1$ para todo $x\in I_{0}\cup I_{1}$.  
+El lector puede verificar que $\mu>2+\sqrt{5}$ es suficiente. Así, para estos valores de $\mu$, existe un $\lambda>1$ tal que $|F'(x)|>\lambda$ para todo $x\in\Lambda$. Por la regla de la cadena, se sigue que $|(F^{n})'(x)|>\lambda^{n}$ también.  
+
+Afirmamos que $\Lambda$ no contiene intervalos. En efecto, si así fuera, podríamos elegir $x,y\in\Lambda$, con $x\neq y$, de modo que el intervalo cerrado $[x,y]\subset\Lambda$. Pero entonces, $|(F^{n})'(\alpha)|>\lambda^{n}$ para todo $\alpha\in[x,y]$. Elijamos $n$ tal que $\lambda^{n}|y-x|>1$.  
+
+Por el teorema del valor medio, se sigue que 
+\[
+|F^{n}(y)-F^{n}(x)| \geq \lambda^{n}|y-x|>1,
+\] 
+lo que implica que al menos uno de $F^{n}(y)$ o $F^{n}(x)$ yace fuera de $I$. Esto es una contradicción, y por lo tanto $\Lambda$ es totalmente disconexo.
+
+\bigskip
+
+Dado que $\Lambda$ es una intersección anidada de intervalos cerrados, $\Lambda$ es cerrado.  
+Ahora probaremos que $\Lambda$ es perfecto.  
+
+Primero, nótese que cualquier extremo de un $A_{k}$ está en $\Lambda$: en efecto, tales puntos 
+eventualmente son enviados al punto fijo en $0$, y por lo tanto permanecen en $I$ bajo iteración.  
+
+Ahora, si $p\in\Lambda$ fuera aislado, todo punto cercano debería salir de $I$ bajo iteración de $F$.  
+Tales puntos deben pertenecer a algún $A_{k}$.  
+
+Entonces, o bien existe una sucesión de extremos de los $A_{k}$ que converge a $p$, 
+o bien todos los puntos en un entorno acotado de $p$ son enviados fuera de $I$ por alguna potencia de $F$.  
+
+En el primer caso, hemos terminado, ya que los extremos de los $A_{k}$ se envían a $0$ y, por lo tanto, están en $\Lambda$.  
+
+En el segundo caso, podemos suponer que $F^{n}$ envía $p$ a $0$ y a todos los demás puntos en un entorno de $p$ 
+al eje real negativo.  
+Pero entonces $F^{n}$ tiene un máximo en $p$, de modo que $(F^{n})'(p)=0$.  
+
+Por la regla de la cadena, debemos tener $F'(F^{i}(p))=0$ para algún $i<n$.  
+Así, $F^{i}(p)=1/2$.  
+Pero entonces $F^{i+1}(p)\notin I$ y por lo tanto $F^{n}(p)\to -\infty$, lo cual contradice el hecho de que $F^{n}(p)=0$.  
+
+\medskip
+
+Por lo tanto, hemos probado que $\Lambda$ es perfecto.
+
+\bigskip
+
+\textbf{Teorema 5.6.} \textit{Si $\mu > 2 + \sqrt{5}$, entonces $\Lambda$ es un conjunto de Cantor.}
+
+\medskip
+
+\textbf{Observación.} El teorema también es cierto para $\mu > 4$, pero la demostración es más delicada.
+
+\medskip
+
+Hemos logrado comprender el comportamiento general de las órbitas de $F_{\mu}$ cuando $\mu > 4$.  
+O bien un punto tiende a $-\infty$ bajo iteración de $F_{\mu}$, o bien toda su órbita yace en $\Lambda$.  
+Así, entendemos la órbita de un punto bajo $F_{\mu}$ perfectamente bien siempre que el punto no pertenezca a $\Lambda$.  
+En la siguiente sección completaremos el análisis de la dinámica de $F_{\mu}$ estudiando la dinámica de $F_{\mu}$ en $\Lambda$.  
+
+\medskip
+
+Cuando $\mu > 2 + \sqrt{5}$, hemos mostrado que $|F'_{\mu}(x)| > 1$ en $I_{0} \cup I_{1}$.  
+Esto implica que $|F'_{\mu}(x)| > 1$ en $\Lambda$.  
+Esta es una condición similar a la condición de hiperbolicidad de la sección \S 3,  
+excepto que aquí requerimos $|F'^{n}(x)| \neq 1$ en todo un conjunto, no sólo en un punto periódico.  
+Esto motiva la definición de un conjunto hiperbólico.  
+
+\medskip
+
+\textbf{Definición 5.7.}  
+Un conjunto $\Gamma \subset \mathbb{R}$ es un conjunto hiperbólico \textit{repulsivo} (resp. \textit{atractivo}) para $f$  
+si $\Gamma$ es cerrado, acotado e invariante bajo $f$, y existe un $N > 0$ tal que  
+\[
+|(f^{n})'(x)| > 1 \quad (\text{resp. } < 1) \quad \text{para todo } n \geq N \text{ y todo } x \in \Gamma.
+\]
+
+\medskip
+
+El conjunto de Cantor $\Lambda$ para la aplicación cuadrática cuando $\mu > 2 + \sqrt{5}$  
+es, por supuesto, un conjunto hiperbólico repulsivo con $N = 1$.
+
+\newpage
+
+\section{Dinámica simbólica}
+
+Nuestro objetivo en esta sección es dar un modelo para la rica estructura dinámica del mapeo cuadrático en el conjunto de Cantor $\Lambda$ discutido en la sección anterior.Para hacer esto estableceremos un mapeo modelo que sea completamente equivalente. Al principio, este modelo puede parecer artificial y no intuitivo. Pero, a medida que avancemos, quedará claro que tales modelos simbólicos describen completamente la dinámica de $F$ y además de la manera más simple posible.
+
+\bigskip
+
+Necesitamos un “espacio” en el que nuestro mapa modelo actuará. Los puntos en este espacio serán secuencias infinitas de 0's y 1's. No nos preocupamos por la convergencia de estas secuencias; más bien, la noción difícil aquí es imaginar tal secuencia infinita como representando un solo “punto” en el espacio.
+
+\bigskip
+
+\textbf{Definición 6.1.} $\Sigma_2 = \{s = (s_0 s_1 s_2 \ldots) \mid s_j = 0 \text{ o } 1\}$.
+
+$\Sigma_2$ se llama el \textit{espacio de secuencias} sobre los dos símbolos 0 y 1. Más generalmente, podemos considerar el espacio $\Sigma_n$ que consiste en secuencias infinitas de enteros entre 0 y $n - 1$. Los elementos de $\Sigma_2$ son cadenas infinitas de enteros, como (000...) o (0101...). Podemos hacer de $\Sigma_2$ un espacio métrico como sigue. Para dos secuencias $s = (s_0 s_1 s_2 \ldots)$ y $t = (t_0 t_1 t_2 \ldots)$, definimos la distancia entre ellas por
+
+\[
+d[s,t] = \sum_{i=0}^{\infty} \frac{|s_i - t_i|}{2^i}
+\]
+
+Como $|s_i - t_i|$ es 0 o 1, esta serie infinita está dominada por la serie geométrica
+
+\[
+\sum_{i=0}^{\infty} \frac{1}{2^i} = 2
+\]
+
+y por lo tanto converge.
+
+Por ejemplo, si $s = (000\ldots)$ y $t = (111\ldots)$, entonces $d[s,t] = 2$. Si $r = (1010\ldots)$, entonces
+
+\[
+d[s,r] = \sum_{i=0}^{\infty} \frac{1}{2^{2i}} = \frac{1}{1 - \frac{1}{4}} = \frac{4}{3}
+\]
+
+\textbf{Proposición 6.2.} $d$ es una métrica en $\Sigma_2$.
+
+\textit{Demostración.} Claramente, $d[s,t] \geq 0$ para cualesquiera $s,t \in \Sigma_2$, y $d[s,t] = 0$ si y sólo si $s_i = t_i$ para todo $i$. Como $|s_i - t_i| = |t_i - s_i|$, se sigue que $d[s,t] = d[t,s]$. Finalmente, si $r,s,t \in \Sigma_2$, entonces $|r_i - s_i| + |s_i - t_i| \geq |r_i - t_i|$, de donde deducimos que $d[r,s] + d[s,t] \geq d[r,t]$. \hfill q.e.d.
+
+La métrica $d$ nos permite decidir qué subconjuntos de $\Sigma_2$ son abiertos y cuáles son cerrados, así como qué secuencias están cercanas entre sí.
+
+\textbf{Proposición 6.3.} Sean $s, t \in \Sigma_2$ y supongamos que $s_i = t_i$ para $i = 0,1,\ldots,n$. Entonces $d[s,t] \leq 1/2^n$. Recíprocamente, si $d[s,t] < 1/2^n$, entonces $s_i = t_i$ para $i \leq n$.
+
+\textit{Demostración.} Si $s_i = t_i$ para $i \leq n$, entonces
+\[
+d[s,t] = \sum_{i=0}^n \frac{|s_i - t_i|}{2^i} + \sum_{i=n+1}^\infty \frac{|s_i - t_i|}{2^i}
+= \sum_{i=n+1}^\infty \frac{|s_i - t_i|}{2^i} \leq \sum_{i=n+1}^\infty \frac{1}{2^i} = \frac{1}{2^n}.
+\]
+
+Por otro lado, si $s_j \ne t_j$ para algún $j \leq n$, entonces debemos tener
+\[
+d[s,t] \geq \frac{1}{2^j} \geq \frac{1}{2^n},
+\]
+por consiguiente, si $d[s,t] < 1/2^n$, entonces $s_i = t_i$ para $i \leq n$. \hfill q.e.d.
+
+La importancia de este resultado es que podemos decidir rápidamente si dos secuencias están cercanas entre sí. Intuitivamente, este resultado dice que dos secuencias en $\Sigma_2$ están cercanas siempre y cuando sus primeras entradas coincidan. Ahora definimos el ingrediente más importante en la dinámica simbólica, el mapa de desplazamiento en $\Sigma_2$.
+
+\textbf{Definición 6.4.} El mapa de desplazamiento $\sigma : \Sigma_2 \to \Sigma_2$ está dado por $\sigma(s_0 s_1 s_2 \ldots) = (s_1 s_2 s_3 \ldots)$.
+
+El mapa de desplazamiento simplemente “olvida” la primera entrada de la secuencia y desplaza todas las demás entradas un lugar a la izquierda. Claramente, $\sigma$ es una función dos-a-uno en $\Sigma_2$, ya que $s_0$ puede ser 0 o 1. Además, en la métrica definida arriba, $\sigma$ es una función continua.
+
+\textbf{Proposición 6.5.} $\sigma : \Sigma_2 \to \Sigma_2$ es continua.
+
+\textit{Demostración.} Sea $\varepsilon > 0$ y $s = s_0 s_1 s_2 \ldots$. Escoge $n$ tal que $1/2^n < \varepsilon$. Sea $\delta = 1/2^{n+1}$. Si $t = t_0 t_1 t_2 \ldots$ satisface $d[s,t] < \delta$, entonces por la Proposición 6.3 tenemos que $s_i = t_i$ para $i \leq n + 1$. Por lo tanto, las $n^\text{ésimas}$ entradas de $\sigma(s)$ y $\sigma(t)$ coinciden para $i \leq n$. Por lo tanto $d[\sigma(s), \sigma(t)] \leq 1/2^n < \varepsilon$. \hfill q.e.d.
+
+En la siguiente sección, mostraremos que la aplicación de corrimiento es un modelo exacto para la aplicación cuadrática \( F_\mu \) cuando \( \mu > 4 \). Aquí simplemente mostraremos que la dinámica de \( \sigma \) puede entenderse completamente. Por ejemplo, los puntos periódicos corresponden exactamente a secuencias repetidas, es decir, secuencias de la forma 
+\[
+(s_0 \ldots s_{n-1}, s_0 \ldots s_{n-1}, s_0 \ldots s_{n-1}, \ldots).
+\]
+Por lo tanto, hay \( 2^n \) puntos periódicos de período \( n \) para \( \sigma \), cada uno generado por una de las \( 2^n \) secuencias finitas de 0's y 1's de longitud \( n \).
+
+Los puntos periódicos son igualmente abundantes y fáciles de reconocer. Por ejemplo, cualquier secuencia de la forma \( (s_0 \ldots s_n 1111 \ldots) \) eventualmente se fija, mientras que cualquier secuencia eventualmente repetitiva es eventualmente periódica para \( \sigma \).
+
+Otro hecho interesante sobre \( \sigma \) es que los puntos periódicos forman un subconjunto denso de \( \Sigma_2 \). Recordemos que un subconjunto es denso en \( \Sigma_2 \) siempre que su clausura sea todo \( \Sigma_2 \). Para probar que \( \text{Per}(\sigma) \) es denso, debemos producir una secuencia de puntos periódicos \( \tau_n \) que converjan a un punto arbitrario \( s = (s_0 s_1 s_2 \ldots) \in \Sigma_2 \). Definimos la secuencia \( \tau_n = (s_0 \ldots s_n, s_0 \ldots s_n, \ldots) \), es decir, \( \tau_n \) es la secuencia repetitiva cuyos elementos coinciden con \( s \) hasta la entrada \( n \)-ésima. Por la Proposición 6.3,
+\[
+d(\tau_n, s) \leq \frac{1}{2^n},
+\]
+por lo que tenemos que \( \tau_n \to s \).
+
+Por supuesto, no todos los puntos en \( \Sigma_2 \) son periódicos o eventualmente periódicos. Cualquier secuencia no repetitiva nunca puede ser periódica. De hecho, las secuencias no periódicas superan ampliamente en número a las secuencias periódicas en \( \Sigma_2 \). Además, hay órbitas no periódicas en \( \Sigma_2 \) que se enroscan densamente en \( \Sigma_2 \), es decir, la clausura de la órbita es \( \Sigma_2 \) misma. Otra forma de decir esto es que hay puntos en \( \Sigma_2 \) cuya órbita se aproxima arbitrariamente a cualquier secuencia dada en \( \Sigma_2 \). Para ver esto, considera
+\[
+s^* = (0 \mid 00\ 01\ 10\ 11 \mid 000\ 001 \ldots \mid \cdots),
+\]
+\textit{1-bloques \hspace{2em} 2-bloques \hspace{2em} 3-bloques \hspace{2em} 4-bloques}
+
+\( s^* \) se construye listando sucesivamente todos los bloques de 0's y 1's de longitud \( n \), luego longitud \( n + 1 \), etc. Claramente, algún iterado de \( \sigma \) aplicado a \( s^* \) produce una secuencia que concuerda con cualquier secuencia dada en un número arbitrariamente grande de lugares. Las aplicaciones que tienen órbitas densas se denominan \textit{topológicamente transitivas}.
+
+Enumeremos ahora estas propiedades de \( \sigma \):
+
+\textbf{Proposición 6.6.}
+\begin{enumerate}
+    \item \textit{La cardinalidad de $\text{Per}_n(\sigma)$ es $2^n$.}
+    \item $\text{Per}(\sigma)$ \textit{es denso en } $\Sigma_2$.
+    \item \textit{Existe una órbita densa para } $\sigma$ \textit{ en } $\Sigma_2$.
+\end{enumerate}
+
+En la siguiente sección, mostraremos que la aplicación de desplazamiento en $\Sigma_2$ es de hecho la misma aplicación que $f$ en $\Lambda$.
+
+La dinámica simbólica es uno de los temas principales de este libro. Aparecerá en diversas formas a lo largo del texto, incluyendo más adelante en este capítulo cuando introduzcamos subdesplazamientos de tipo finito y también la teoría del \textit{kneading} para describir la dinámica de $F_\mu$ cuando $\mu < 4$.
+
+\newpage
+
+\subsection{Ejercicios}
+
+\begin{enumerate}
+    \item Sea
+    \[
+    s = (001\,001\,001\ldots), \quad t = (01\,01\,01\ldots), \quad r = (10\,10\,10\ldots).
+    \]
+    Calcula:
+    \begin{enumerate}
+        \item $d[s, t]$
+        \item $d[t, r]$
+        \item $d[s, r]$
+    \end{enumerate}
+
+    \item Identifica todas las secuencias en $\Sigma_2$ que son puntos periódicos de periodo 3 para $\sigma$. ¿Qué secuencias están en la misma órbita bajo $\sigma$?
+
+    \item Rehaz el ejercicio 2 para los periodos cuatro y cinco.
+
+    \item Sea $\Sigma'$ el conjunto de todas las secuencias en $\Sigma_2$ que satisfacen: si $s_j = 0$, entonces $s_{j+1} = 1$. En otras palabras, $\Sigma'$ consiste solo de aquellas secuencias en $\Sigma_2$ que nunca tienen dos ceros consecutivos.
+    \begin{enumerate}
+        \item Muestra que $\sigma$ preserva a $\Sigma'$ y que $\Sigma'$ es un subconjunto cerrado de $\Sigma$.
+        \item Muestra que los puntos periódicos de $\sigma$ son densos en $\Sigma'$.
+        \item Muestra que hay una órbita densa en $\Sigma'$.
+        \item ¿Cuántos puntos fijos hay para $\sigma$, $\sigma^2$, $\sigma^3$ en $\Sigma'$?
+        \item Encuentra una fórmula recursiva para el número de puntos fijos de $\sigma^n$ en términos del número de puntos fijos de $\sigma^{n-1}$ y $\sigma^{n-2}$.
+    \end{enumerate}
+
+    \item Sea $\Sigma_N$ el conjunto de todas las secuencias de números naturales $1, 2, \ldots, N$. Hay un desplazamiento natural en $\Sigma_N$.
+    \begin{enumerate}
+        \item ¿Cuántos puntos periódicos tiene $\sigma$ en $\Sigma_N$?
+        \item Muestra que $\sigma$ tiene una órbita densa en $\Sigma_N$.
+    \end{enumerate}
+
+    \item Sea $s \in \Sigma_2$. Define el conjunto estable de $s$, $W^s(s)$, como el conjunto de secuencias $t$ tal que $d[\sigma^i(s), \sigma^i(t)] \to 0$ cuando $i \to \infty$. Identifica todas las secuencias en $W^s(s)$.
+\end{enumerate}
+
+\newpage
+
+\section{Conjugación Topológica}
+
+El objetivo de esta sección es relacionar el desplazamiento $\sigma$ discutido en la sección anterior con la función cuadrática $F_\mu(x) = \mu(1 - x)$ cuando $\mu$ es suficientemente grande. Recuerda que todos los puntos en $\mathbb{R}$ tienden a $-\infty$ bajo iteraciones de $F_\mu$ con excepción de aquellos puntos en el conjunto de Cantor $\Lambda$. Para completar la descripción de la dinámica de $F_\mu$, debemos entender la restricción de $F_\mu$ a $\Lambda$.
+
+Primero recordemos que $\Lambda \subset I_0 \cup I_1$. Si $x \in \Lambda$, entonces todos los puntos en la órbita de $x$ yacen en $\Lambda$ y por tanto en uno de estos dos intervalos. Así podemos obtener una idea del comportamiento de la órbita notando en cuál de estos intervalos caen las varias iteraciones de $x$. En consecuencia, hacemos la siguiente definición.
+
+\textbf{Definición 7.1.} El itinerario de $x$ es una secuencia $S(x) = s_0 s_1 s_2 \ldots$ donde
+\[
+s_j = 0 \text{ si } F_\mu^j(x) \in I_0, \quad s_j = 1 \text{ si } F_\mu^j(x) \in I_1.
+\]
+
+Así, el itinerario de $x$ es una secuencia infinita de ceros y unos. Es decir, $S(x)$ es un punto en el espacio de secuencias $\Sigma_2$. Pensamos en $S$ como una función de $\Lambda$ a $\Sigma_2$. Este mapeo tiene varias propiedades interesantes.
+
+\textbf{Teorema 7.2.} Si $\mu > 2 + \sqrt{5}$, entonces $S : \Lambda \to \Sigma_2$ es un homeomorfismo.
+
+\textit{Demostración.} Primero mostraremos que $S$ es inyectiva. Sean $x, y \in \Lambda$ y supongamos que $S(x) = S(y)$. Entonces, para cada $n$, $F_\mu^n(x)$ y $F_\mu^n(y)$ están del mismo lado de $1/2$. Esto implica que $F_\mu$ es monótona en el intervalo entre $F_\mu^n(x)$ y $F_\mu^n(y)$. En consecuencia, todos los puntos en este intervalo permanecen en $I_0 \cup I_1$. Esto contradice el hecho de que $\Lambda$ es totalmente disconexo.
+
+Para ver que $S$ es suprayectiva, primero introducimos la siguiente notación. Sea $J \subset I$ un intervalo cerrado. Definimos:
+\[
+F_\mu^{-n}(J) = \{x \in \mathbb{R} \mid F_\mu^n(x) \in J\}.
+\]
+En particular, $F_\mu^{-1}(J)$ denota la preimagen de $J$. Observa que, si $J \subset I$ es un intervalo cerrado, entonces $F_\mu^{-1}(J)$ consiste en dos subintervalos: uno en $I_0$ y uno en $I_1$. Ver Figura 7.1.
+
+Ahora sea $s = s_0 s_1 s_2 \dots$. Debemos producir un $x \in \Lambda$ tal que $S(x) = s$. Para ello, definimos
+\[
+I_{s_0 s_1 \dots s_n} = \{x \in I \mid x \in I_0, F_\mu(x) \in I_{s_1}, \dots, F_\mu^n(x) \in I_{s_n}\} = I_0 \cap F_\mu^{-1}(I_{s_1}) \cap \dots \cap F_\mu^{-n}(I_{s_n}).
+\]
+
+Afirmamos que los $I_{s_0 \dots s_n}$ forman una sucesión anidada de intervalos cerrados no vacíos cuando $n \to \infty$. Nótese que:
+\[
+I_{s_0 \dots s_n} = I_0 \cap F_\mu^{-1}(I_{s_1 \dots s_n}).
+\]
+
+Por inducción, podemos asumir que $I_{s_1 \dots s_n}$ es un subintervalo no vacío, de modo que, por la observación anterior, $F_\mu^{-1}(I_{s_1 \dots s_n})$ consiste en dos intervalos cerrados, uno en $I_0$ y otro en $I_1$. Por lo tanto, $I_0 \cap F_\mu^{-1}(I_{s_1 \dots s_n})$ es un único intervalo cerrado.
+
+Estos intervalos están anidados porque:
+\[
+I_{s_0 \dots s_n} = I_{s_0 \dots s_{n-1}} \cap F_\mu^{-n}(I_{s_n}) \subset I_{s_0 \dots s_{n-1}}.
+\]
+
+Por lo tanto, concluimos que:
+\[
+\bigcap_{n \geq 0} I_{s_0 \dots s_n}
+\]
+no es vacío. Observa que si $x \in \bigcap_{n \geq 0} I_{s_0 \dots s_n}$, entonces $x \in I_0$, $F_\mu(x) \in I_{s_1}$, $F_\mu^2(x) \in I_{s_2}$, etc. Por lo tanto, $S(x) = (s_0 s_1 \dots)$. Esto demuestra que $S$ es suprayectiva.
+
+Nótese que $\bigcap_{n \geq 0} I_{s_0 s_1 \dots s_n}$ consiste en un único punto. Esto se deduce inmediatamente del hecho de que $S$ es inyectiva. En particular, tenemos que
+\[
+\text{diam } I_{s_0 s_1 \dots s_n} \to 0 \quad \text{cuando } n \to \infty.
+\]
+
+Finalmente, para probar la continuidad de $S$, elegimos $x \in \Lambda$ y suponemos que $S(x) = s_0 s_1 s_2 \dots$. Escoge $n$ tal que $1/2^n < \varepsilon$. Considera los subintervalos cerrados $I_{s_0 \dots s_n}$ definidos arriba para todas las posibles combinaciones de $s_0 \dots s_n$. Estos subintervalos son todos disjuntos, y $\Lambda$ está contenida en su unión. Hay $2^{n+1}$ tales subintervalos, y $I_{s_0 \dots s_n}$ es uno de ellos. Por lo tanto, podemos elegir $\delta$ tal que si $|x - y| < \delta$ y $y \in \Lambda$, esto implica que $y \in I_{s_0 \dots s_n}$. Por lo tanto, $S(y)'$ coincide con $S(x)$ en las primeras $n+1$ entradas. Por la Proposición 6.3,
+\[
+d(S(x), S(y)) < \frac{1}{2^n} < \varepsilon.
+\]
+
+Esto prueba la continuidad de $S$. Es fácil comprobar que $S^{-1}$ también es continua. Por lo tanto, $S$ es un homeomorfismo.
+\hfill q.e.d.
+
+Este teorema muestra que, como conjuntos, $\Lambda$ y $\Sigma_2$ son lo mismo. Más importante aún, la codificación $S$ permite una equivalencia entre la dinámica de $F_\mu$ en $\Lambda$ y de $\sigma$ en $\Sigma_2$. Este es el contenido del siguiente teorema.
+
+\textbf{Teorema 7.3.} $S \circ F_\mu = \sigma \circ S$.
+
+\textit{Demostración.} Un punto $x \in \Lambda$ puede definirse de manera única mediante la sucesión anidada de intervalos
+\[
+\bigcap_{n \geq 0} I_{s_0 s_1 \dots s_n}
+\]
+determinada por el itinerario $S(x)$. Ahora
+\[
+I_{s_0 \dots s_n} = I_0 \cap F_\mu^{-1}(I_{s_1}) \cap \dots \cap F_\mu^{-n}(I_{s_n}),
+\]
+de modo que $F_\mu(I_{s_0 \dots s_n})$ puede escribirse como
+\[
+I_1 \cap F_\mu^{-1}(I_{s_2}) \cap \dots \cap F_\mu^{-n+1}(I_{s_n}) = I_{s_1 \dots s_n},
+\]
+ya que $F_\mu(I_0) = I$. Por lo tanto,
+\[
+S F_\mu(x) = S F_\mu \left( \bigcap_{n \geq 0} I_{s_0 \dots s_n} \right) = S \left( \bigcap_{n \geq 0} I_{s_1 \dots s_n} \right) = s_1 s_2 \dots = \sigma(S(x)).
+\]
+\hfill q.e.d
+
+\textbf{Definición 7.4.} Sea $f : A \to A$ y $g : B \to B$ dos funciones. Se dice que $f$ y $g$ son topológicamente conjugadas si existe un homeomorfismo $h : A \to B$ tal que $h \circ f = g \circ h$. Al homeomorfismo $h$ se le llama una \textit{conjugación topológica}.
+
+Las aplicaciones que son topológicamente conjugadas son completamente equivalentes en términos de su dinámica. Por ejemplo, si $f$ es topológicamente conjugada con $g$ vía $h$, y $p$ es un punto fijo de $f$, entonces $h(p)$ es punto fijo para $g$. En efecto, $h(p) = h(f(p)) = g(h(p))$. De manera similar, $h$ da una correspondencia biunívoca entre $\operatorname{Per}_n(f)$ y $\operatorname{Per}_n(g)$. También puede comprobarse que las órbitas periódicas y asintóticas eventualmente para $f$ se transforman a órbitas similares para $g$ mediante $h$, y que $f$ es topológicamente transitiva si y sólo si $g$ lo es. 
+
+En particular, dado que $F_\mu$ en $\Lambda$ es topológicamente conjugado con el desplazamiento, hemos probado ahora que el mapa cuadrático posee las propiedades notables que descubrimos con tanta facilidad para $\sigma$ en la sección anterior. Estas se resumen como sigue.
+
+\textbf{Teorema 7.5.} Sea $F_\mu(x) = \mu x(1 - x)$ con $\mu > 2 + \sqrt{5}$. Entonces
+\begin{enumerate}
+    \item La cardinalidad de $\operatorname{Per}_n(F_\mu)$ es $2^n$.
+    \item $\operatorname{Per}(F_\mu)$ es denso en $\Lambda$.
+    \item $F_\mu$ tiene una órbita densa en $\Lambda$.
+\end{enumerate}
+
+Este teorema muestra el poder de la dinámica simbólica y la conjugación topológica. Calcular realmente los puntos periódicos $2^n$ de periodo $n$ para $F_\mu$ es una tarea desesperada. Pero la conjugación topológica garantiza que estos puntos están ahí, y además, la dinámica simbólica da una medida aproximada de la complejidad de las órbitas en $\Lambda$. Por lo tanto, estas dos nociones justifican nuestra afirmación de que el desplazamiento es un modelo adecuado para el mapa cuadrático.
+
+\newpage
+
+\subsection{Ejercicios}
+\begin{itemize}
+
+\item \textbf{Ejercicio 1.} Sea $Q_c(x) = x^2 + c$. Demuestra que si $c < 1/4$, existe un único $\mu > 1$ tal que $Q_c$ es conjugado topológicamente a $F_\mu(x) = \mu x(1 - x)$ mediante una aplicación de la forma $h(x) = \alpha x + \beta$.
+
+\item \textbf{Ejercicio 2.} Un punto $p$ es un \textit{punto no errante} para $f$ si, para cualquier intervalo abierto $J$ que contenga a $p$, existe $x \in J$ y $n > 0$ tal que $f^n(x) \in J$. Observa que no se requiere que $p$ en sí mismo regrese a $J$. Denotamos por $\Omega(f)$ al conjunto de puntos no errantes de $f$.
+    \begin{itemize}
+        \item[a)] Demuestra que $\Omega(f)$ es un conjunto cerrado.
+        \item[b)] Si $F_\mu$ es la aplicación cuadrática con $\mu > 2 + \sqrt{5}$, muestra que $\Omega(F_\mu) = \Lambda$.
+        \item[c)] Identifica $\Omega(F_\mu)$ para cada $\mu$ que satisface $0 < \mu \leq 3$.
+    \end{itemize}
+
+\item \textbf{Ejercicio 3.} Un punto $p$ es \textit{recurrente} para $f$ si, para cualquier intervalo abierto $J$ que contenga a $p$, existe $n > 0$ tal que $f^n(p) \in J$. Claramente, todos los puntos periódicos son recurrentes.
+    \begin{itemize}
+        \item[a)] Da un ejemplo de un punto recurrente no periódico para $F_\mu$ cuando $\mu > 2 + \sqrt{5}$.
+        \item[b)] Da un ejemplo de un punto no errante para $F_\mu$ que no sea recurrente.
+    \end{itemize}
+
+\item \textbf{Ejercicio 4.} \textit{Orden de los puntos periódicos.} Sea $\Gamma_n$ el conjunto de secuencias repetitivas de periodo $n$ en $\Sigma_2$. Identifica una secuencia así mediante una cadena finita $s_1, \ldots, s_n$ de $0$’s y $1$’s de forma natural. Bajo la conjugación topológica, cada elemento de $\Gamma_n$ corresponde a un punto único en $I$ para un valor dado de $\mu > 2 + \sqrt{5}$.
+    \begin{itemize}
+        \item[a)] Demuestra que el orden de estos puntos en $I$ es independiente de $\mu > 2 + \sqrt{5}$. Sea $\mathcal{N}(s_1, \ldots, s_n)$ el número entero entre $0$ y $2^n - 1$ correspondiente a esta secuencia, numerando de izquierda a derecha, es decir, $\mathcal{N}(0, \ldots, 0) = 0$. Sea $B(s_1, \ldots, s_n)$ la forma binaria de $\mathcal{N}$. Es decir,
+        \[
+        B(s_1, \ldots, s_n) = (a_1, \ldots, a_n)
+        \]
+        donde $a_j = 0$ o $1$ y
+        \[
+        \mathcal{N}(s_1, \ldots, s_n) = a_1 \cdot 2^{n-1} + a_2 \cdot 2^{n-2} + \ldots + a_n \cdot 2^0.
+        \]
+        \item[b)] Usa inducción para demostrar que $B$ está dado por la fórmula:
+        \[
+        a_j = \sum_{i=1}^j s_i \mod 2.
+        \]
+        Por ejemplo, el punto fijo $1,1,1 \in \Gamma_3$ ocupa la posición $5$ en la recta real, ya que:
+        \[
+        a_1 = s_1 = 1, \quad a_2 = s_1 + s_2 \mod 2 = 0, \quad a_3 = s_1 + s_2 + s_3 \mod 2 = 1.
+        \]
+        \item[c)] Enumera todos los puntos en $\Gamma_n$ para $n = 2, 3, 4$ de acuerdo con este orden.
+        \item[d)] Describe un algoritmo para ordenar los puntos en $\Gamma_n$ conociendo el orden de $\Gamma_{n-1}$.
+    \end{itemize}
+
+\end{itemize}
+
+
+\end{document}

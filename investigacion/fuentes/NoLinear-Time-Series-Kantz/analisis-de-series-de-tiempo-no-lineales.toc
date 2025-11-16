@@ -1,0 +1,45 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Temas básicos}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introducción: ¿por qué métodos no lineales?}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Lecturas adicionales}{8}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Herramientas lineales y consideraciones generales}{11}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Estacionariedad y muestreo}{11}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Pruebas de estacionariedad}{13}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Correlaciones lineales y el espectro de potencia}{15}{section.2.3}%
+\contentsline {subsubsection}{Estacionariedad y el componente de baja frecuencia en el espectro de potencia}{18}{section*.14}%
+\contentsline {section}{\numberline {2.4}Filtros lineales}{19}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Predicciones lineales}{21}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Ejercicios}{23}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Métodos de espacio de fases}{25}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Determinismo: unicidad en el espacio de fases}{25}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Reconstrucción con retardos}{28}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Encontrar un buen embebido}{29}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Vecinos falsos}}{30}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}\textit {El retardo temporal}}{31}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Inspección visual de datos}{32}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Superficie de sección de Poincaré}{33}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Gráficas de recurrencia}{35}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Ejercicios}{37}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Determinismo y predictibilidad}{41}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Fuentes de predictibilidad}{41}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Algoritmo simple de predicción no lineal}{42}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Verificación de una predicción exitosa}{44}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Errores de predicción cruzada: examinando la estacionariedad}{46}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Reducción no lineal simple de ruido}{47}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Ejercicios}{50}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Inestabilidad: Exponentes de Lyapunov}{53}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Dependencia sensible de las condiciones iniciales}{53}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Divergencia exponencial}{54}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Medición del exponente máximo a partir de datos}{55}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Ejercicios}{58}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Autosimilitud: dimensiones}{61}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Geometría del atractor y fractales}{61}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Dimensión de correlación}{62}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Suma de correlación a partir de una serie temporal}{63}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Interpretación y dificultades}{65}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Correlaciones temporales, no estacionariedad y diagramas espacio–tiempo}{67}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Consideraciones prácticas}{69}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Una aplicación útil: determinación del nivel de ruido mediante la integral de correlación}{70}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Señales multi-escala o auto-similares}{72}{section.6.8}%
+\contentsline {subsection}{\numberline {6.8.1}\textit {Leyes de escalamiento}}{73}{subsection.6.8.1}%
+\contentsline {subsection}{\numberline {6.8.2}\textit {Análisis de fluctuación sin tendencia}}{75}{subsection.6.8.2}%

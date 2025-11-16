@@ -1,0 +1,21 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Modelo lineal}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Regresión lineal simple}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Regresión lineal múltiple}{14}{0}{1}
+\beamer@subsectionintoc {1}{3}{Supuestos}{19}{0}{1}
+\beamer@sectionintoc {2}{Estimación de mínimos cuadrados}{24}{0}{2}
+\beamer@subsectionintoc {2}{1}{Principio}{25}{0}{2}
+\beamer@subsectionintoc {2}{2}{Estimación por TSLM}{30}{0}{2}
+\beamer@subsectionintoc {2}{3}{Valores ajustados}{33}{0}{2}
+\beamer@subsectionintoc {2}{4}{Bondad de ajuste}{38}{0}{2}
+\beamer@sectionintoc {3}{Evaluación del modelo de regresión}{40}{0}{3}
+\beamer@subsectionintoc {3}{1}{Sobre los residuos}{41}{0}{3}
+\beamer@subsectionintoc {3}{2}{Gráficos de residuos}{43}{0}{3}
+\beamer@sectionintoc {4}{Predictores útiles}{50}{0}{4}
+\beamer@subsectionintoc {4}{1}{Tendencia (Trend)}{51}{0}{4}
+\beamer@subsectionintoc {4}{2}{Variables dummy}{52}{0}{4}
+\beamer@subsectionintoc {4}{3}{Aplicación}{55}{0}{4}
+\beamer@sectionintoc {5}{Variables de intervención}{66}{0}{5}
+\beamer@subsectionintoc {5}{1}{Variables \textit {spike}}{68}{0}{5}
+\beamer@subsectionintoc {5}{2}{Variables \textit {step}}{70}{0}{5}
+\beamer@subsectionintoc {5}{3}{Cambio en la pendiente}{71}{0}{5}

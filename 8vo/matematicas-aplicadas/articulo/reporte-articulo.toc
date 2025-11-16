@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Resumen}{3}{}%
+\contentsline {section}{\numberline {2}Introducción.}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Contexto físico del problema}{3}{}%
+\contentsline {section}{\numberline {3}Desarrollo}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Formulación matemática del modelo}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Métodos numéricos utilizados}{4}{}%
+\contentsline {subsection}{\numberline {3.3}Simulaciones y resultados}{5}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{6}{}%
+\contentsline {subsection}{\numberline {4.1}Reflexión sobre el artículo}{6}{}%
+\contentsline {subsection}{\numberline {4.2}Reflexión del curso y la carrera}{6}{}%
+\contentsline {section}{\numberline {5}Referencias}{7}{}%

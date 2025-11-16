@@ -1,0 +1,85 @@
+---
+title: "Examen Primer Parcial"
+output: pdf_document
+author: "Natividad Oswaldo Pérez Medina"
+date: "`r Sys.Date()`"
+---
+# Ejercicio 1
+
+El conjunto de datos morley (en R) contiene mediciones de la velocidad de la luz de Michelson y Morley. Hubo cinco experimentos, cada uno de los cuales consistía en múltiples mediciones. Realice un análisis de varianza de una vía para ver si cada uno de los cinco experimentos tiene la misma media poblacional
+
+## Respuesta
+
+```{r}
+# Declaramos la variable que contiene la base de datos 
+data("morley")
+
+head(morley)
+str(morley)
+tail(morley)
+
+```
+
+Podemos observar que la variable `Expt` es una variable categórica, por lo que podemos convertirla a un factor y que R lo reconozca como tal
+
+```{r}
+morley$Expt <- factor(morley$Expt)
+str(morley)
+```
+
+Antes de aplicar el análisis ANOVA, vamos a relizar comrobar los supuestos de independendia, normalidad y homoscedasticidad
+
+### Supuesto de independencia
+
+Queremos evaluar que estemos midiendo efectivamente diferentes velocidades de diferentes experimentos y que no estamos relizando la misma medición dos veces
+
+### Supuesto de Normalidad
+
+Queremos evaluar que los errores sigan una distribución normal.
+Podemos aplicar el test de Shapiro-Wilk para cada Experimento para garantizarlo
+
+```{r}
+shapiro.test(morley$Speed[morley$Expt == '1']) # Expt 1
+shapiro.test(morley$Speed[morley$Expt == '2']) # Expt 2
+shapiro.test(morley$Speed[morley$Expt == '3']) # Expt 3
+shapiro.test(morley$Speed[morley$Expt == '4']) # Expt 4
+shapiro.test(morley$Speed[morley$Expt == '5']) # Expt 5
+```
+---
+Según los valores obtenidos en las pruebas realizadas, para los `Expt` 1, 2, 4 y 5, al tener `p-values` mayores que `0.05`, no rechazamos la $H_0$ por lo que no hay evidencia suficiente para decir que los residuos no se comportan de manera normal. Mientras que para el `Expt` 3, al tener un `p-value` menor que `0.5`, existe evidencia para afirmar que, en ese grupo en particular, los residuos no se comportan de manera normal.
+
+### Supuesto de Homoscedasticidad
+
+Queremos evaluar si las varianzas de los diferentes Experimentos que comparamos son aproximadamente iguales.
+Para constrastar las varianzas utilizamos el test de Bartlett
+
+```{r}
+bartlett.test(Speed ~  Expt, data = morley)
+```
+
+Segun los valores obtenidos por la prueba de Bartlett, dado que el `p-value` es menor que `0.05`, existe evidencia de que las varianzas no son iguales entre grupos, por lo que no se cumple el supuesto de homogeneidad de varianzas.
+
+### Análisis ANOVA
+```{r}
+modelo <- aov(Speed ~ Expt, data = morley)
+summary(modelo)
+```
+
+El valor de $F=4.288$, al ser mayor que 1, sugiere que hay diferencias entre la variabilidad entre Experimentos comparada con la variabilidad dentro de los Experimentos. Por otro lado, el `p-value=0.00311` obtenido es menor que `0.5` por lo que se rechaza la $H_0$, lo que apunta que no todas las medias son iguales.
+
+Por todo lo anterior podemos concluir que existen diferencias entre al menos un par de grupos
+
+El análisis ANOVA aplicado al conjunto de datos indica diferencias estadísticamente significativas en las medias de velocidad entre los cinco experimentos (p=0.003). No obstante, los supuestos de normalidad (violado en el Expt 3) y de homogeneidad de varianzas (rechazado por la prueba de Bartlett) no se cumplen plenamente. 
+
+\newpage
+
+### Prueba de Bonferroni
+
+Teniendo en cuenta lo anterior, podemos realizar un a prueba de Bonferroni para ver cúales son los Experimentos que difieren en sus medias.
+
+```{r}
+pairwise.t.test(morley$Speed,morley$Expt,p.adj='bonferroni')
+```
+
+La prueba de Bonferroni muestra que esas diferencias se deben principalmente a que el `Expt` 1 difiere en su media de velocidad respecto a los `Expt` 4 y 5. Mientras que entre los demás pares de experimentos (1 vs 2, 1 vs 3, 2 vs 3, etc.), no se encontraron diferencias estadísticamente significativas después del ajuste.
+

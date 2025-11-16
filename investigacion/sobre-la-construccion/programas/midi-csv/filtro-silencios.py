@@ -24,7 +24,7 @@ for _, ins in instrumentos: # iteramos sobre cada instrumento
                 print(f"\naquí va un silencio que duraría {silencio}")
                 # guardamos el silencio
                 cancion_cc.append({
-                        'instrumento': float(ins.loc[i,'instrumento']),
+                        'instrumento': int(ins.loc[i,'instrumento']),
                         'nota': -1,
                         'volumen': 0.0,
                         'dura': float(silencio),

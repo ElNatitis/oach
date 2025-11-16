@@ -1,0 +1,161 @@
+\documentclass[11pt]{beamer}
+\usetheme{Warsaw}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{N.Pérez-Medina}
+\title{\textbf{MANOVA y MANCOVA.}}
+\setbeamercovered{transparent} 
+\setbeamertemplate{navigation symbols}{} 
+\logo{\includegraphics[scale=0.04]{logo_fing_uach_bn.png} } 
+\institute{\textbf{FING - UACH}
+	\\
+	\begin{small}
+	\textit{Análisis multivariado}\\
+	\textbf{Catedrático:} M. C. Erick N. Grijalva 
+	\end{small}		
+	} 
+\date{\today} 
+\subject{Series de tiempo} 
+
+
+% Para tener un morado coqueto
+\definecolor{lightPurple}{RGB}{186, 146, 209} % Morado claro
+\definecolor{darkPurple}{RGB}{98, 54, 150}    % Morado oscuro
+\setbeamercolor{structure}{fg=darkPurple} % Color principal para estructuras
+\setbeamercolor{frametitle}{bg=darkPurple, fg=white} % Título del marco
+\setbeamercolor{block title}{bg=darkPurple, fg=white} % Título de bloques
+\setbeamercolor{block body}{bg=lightPurple!30, fg=black} % Cuerpo de bloques
+
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+\section{ANOVA frente a MANOVA}
+\begin{frame}{Diferencias conceptuales.}
+	\begin{block}{ANOVA}
+		Es apropiado cuando el diseño se restringe a la medición de una sola \textit{variable dependiente} y se ha manipulado al menos una \textit{variable independiente.}
+	\end{block}
+	\begin{block}{MANOVA}
+		Es apropiado cuando el diseño incluye varias \textit{variables dependientes} diferentes y al menos un factor manipulado entre grupos.
+	\end{block}
+
+\end{frame}
+
+\begin{frame}{Casos apropiados para ANOVA.}
+	\begin{block}{}
+		Si nuestro interés reside en \textbf{comparar} los grupos entre sí en cada \textit{variable dependiente} por separado.\footnote{El análisis separado ignora la correlación entre las variables dependientes sin más, sin embargo puede exisitr y ser relevante}
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}{Utilidad de MANOVA}
+	\begin{block}{}
+		\begin{itemize}
+			\item Tiene en cuenta \textit{todas las variables dependientes de forma simultanea}
+			\item Podemos discernir cuáles variables dependientes son relevantes y cuáles no para capturar el efecto de la manipulación 
+		\end{itemize}
+		
+	\end{block}
+\end{frame}
+
+\begin{frame}{Enfoque del análisis}
+	\begin{block}{La estrategia es simple:}
+		\textbf{Lo que pueda ser explicado por los covariados no se debe a la manipulación.} El análisis consiste en constrastar las diferencias entre tratamientos en lo que no puede ser explicado por los covariados.
+	\end{block}
+\end{frame}
+
+\section{ANCOVA frente a MANCOVA}
+\begin{frame}{Diferencias conceptuales.}
+	\begin{block}{ANCOVA}
+		Se trata de comparar las medias de la variable dependiente en diferentes grupos definidos por una o más variables independientes, ajustando por una o más covariables (variables cuantitativas que se cree que afectan a la variable dependiente).
+	\end{block}
+	\begin{block}{MANCOVA}
+		Compara las medias de las variables dependientes en diferentes grupos definidos por las variables independientes, pero con varias variables dependientes simultáneamente y controlando el efecto de las covariables.
+	\end{block}
+\end{frame}
+
+\section{Ejemplo en R}
+\begin{frame}{Sobre la base de datos.}
+	\begin{block}{mtcars}
+		\begin{small}
+			La base de datos contiene información sobre 32 modelos de automóviles de distintas marcas con 10 variables que describen características de cada automóvil.
+		\end{small}
+		
+	\end{block}
+	
+	\begin{itemize}
+        \item \textbf{mpg}: Consumo de combustible (millas por galón) - Variable dependiente.
+        \item \textbf{cyl}: Número de cilindros del motor (categórica).
+        \item \textbf{disp}: Desplazamiento del motor (en pulgadas cúbicas).
+        \item \textbf{hp}: Potencia (caballos de fuerza).
+        \item \textbf{wt}: Peso del automóvil (en miles de libras).
+        \item \textbf{qsec}: Tiempo en cuarto de milla (segundos).
+        \item \textbf{vs}: Tipo de motor (0 = V, 1 = recto).
+        \item \textbf{am}: Tipo de transmisión (0 = automática, 1 = manual).
+        \item \textbf{gear}: Número de marchas del vehículo.
+        \item \textbf{carb}: Número de carburadores.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{MANOVA con \texttt{mtcars}}
+	\begin{block}{Hipótesis:}
+    		\textit{¿Los autos con diferente número de cilindros tienen un perfil multivariado distinto en consumo, potencia y velocidad?}
+	\end{block}
+	
+	\begin{block}{\textbf{Variables dependientes}}	
+    		\begin{itemize}
+        		\item Consumo de combustible (\texttt{mpg})
+        		\item Potencia del motor (\texttt{hp})
+        		\item Velocidad en el cuarto de milla (\texttt{qsec})
+    		\end{itemize}
+	\end{block}
+
+	\begin{block}{\textbf{Independiente}}
+	
+    \begin{itemize}
+        \item Número de cilindros (\texttt{cyl})
+        \item Tipo de transmisión (\texttt{am})
+    \end{itemize}
+	\end{block}
+    
+\end{frame}
+
+
+\begin{frame}{MANCOVA con \texttt{mtcars}}
+	\begin{block}{Hipótesis:}
+    		\textit{¿Los autos con diferente número de cilindros difieren en consumo, potencia y velocidad, descontando el efecto del peso?}
+	\end{block}
+	
+	\begin{block}{\textbf{Variables dependientes}}	
+    		\begin{itemize}
+        		\item Consumo de combustible (\texttt{mpg})
+        		\item Potencia del motor (\texttt{hp})
+        		\item Velocidad en el cuarto de milla (\texttt{qsec})
+    		\end{itemize}
+	\end{block}
+
+	\begin{block}{\textbf{Independiente}}
+	
+    \begin{itemize}
+        \item Número de cilindros (\texttt{cyl})
+        \item Tipo de transmisión (\texttt{am})
+    \end{itemize}
+    Agregando una covariable del peso del coche
+	\end{block}
+    
+\end{frame}
+
+
+\end{document}

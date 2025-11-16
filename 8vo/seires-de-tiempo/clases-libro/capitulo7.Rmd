@@ -1,0 +1,310 @@
+---
+title: "7 Modelos No Estacionarios"
+output: pdf_document
+author: "natetas"
+date: "`r Sys.Date()`"
+---
+
+# 7.1 Propósito
+
+Como se ha demostrado en los capítulos anteriores, muchas series temporales son no estacionarias debido a efectos estacionales o a tendencias. En particular, los paseos aleatorios (random walks), que caracterizan a muchos tipos de series, son no estacionarios, pero pueden transformarse en series estacionarias mediante una diferenciación de primer orden (§4.4). En este capítulo, primero se extiende el modelo de paseo aleatorio para incluir términos autorregresivos y de medias móviles. Dado que las series diferenciadas deben ser agregadas (o “integradas”) para recuperar la serie original, el proceso estocástico subyacente se denomina modelo autorregresivo integrado de medias móviles, abreviado como ARIMA.
+
+El proceso ARIMA puede extenderse para incluir términos estacionales, dando lugar a un modelo ARIMA estacional no estacionario, conocido como SARIMA. Los modelos SARIMA son herramientas potentes en el análisis de series temporales, ya que son capaces de modelar una amplia variedad de series. Gran parte de esta metodología fue desarrollada por Box y Jenkins en la década de 1970.
+
+Una serie también puede ser no estacionaria porque su varianza está correlacionada en el tiempo (esto se conoce técnicamente como heterocedasticidad condicional), lo cual suele reflejarse en períodos de volatilidad, donde se observa un cambio evidente en la varianza. Este comportamiento es común en las series financieras, pero también puede ocurrir en otras series como las climáticas. Una opción para modelar este tipo de series es usar un modelo expresamente diseñado para la varianza, como el modelo condicional autorregresivo heterocedástico (ARCH). En este capítulo, se presenta una introducción al modelo ARCH y su generalización más conocida, el modelo GARCH.
+
+\newpage
+
+# 7.2 Modelos ARIMA no estacionales
+
+## 7.2.1 Diferenciación y la serie de electricidad
+
+Diferenciar una serie \(\{x_t\}\) puede eliminar tendencias, ya sea que estas tendencias sean estocásticas, como en un paseo aleatorio, o deterministas, como en el caso de una tendencia lineal.
+
+En el caso de un paseo aleatorio, \(x_t = x_{t-1} + w_t\), la primera diferencia \( \nabla x_t = x_t - x_{t-1} = w_t \) es ruido blanco \( \{w_t\} \), y por lo tanto la serie diferenciada es estacionaria.
+
+En contraste, si \(x_t = a + b t + w_t\), una tendencia lineal con errores de ruido blanco, entonces \(\nabla x_t = x_t - x_{t-1} = b + w_t - w_{t-1}\), que es un proceso de medias móviles MA(1) estacionario (ya que involucra diferencia de ruidos blancos) en lugar de ruido blanco puro.
+
+Esto tiene como consecuencia que diferenciar una tendencia lineal con ruido blanco da lugar a un proceso MA(1), mientras que la sustracción de una tendencia pura \(a + bt\) daría simplemente ruido blanco. Esto plantea la cuestión de si es apropiado o no usar la diferenciación para eliminar una tendencia determinista.
+
+La función `arima` en R no permite por defecto incluir una constante al ajustar un modelo a una serie diferenciada. Si deseas ajustar un modelo diferenciado a una tendencia determinista, es necesario primero realizar la diferenciación, luego centrar la serie resultante para que tenga media cero, y finalmente ajustar un modelo ARMA a la serie centrada usando `arima` con los argumentos `include.mean = FALSE` y `d = 0`.
+
+Un problema similar surge al simular modelos ARIMA. Supongamos que \(x_t = a + b t + w_t\) y que \(\nabla x_t = y_t = b + u_t - u_{t-1}\). Se sigue directamente de las definiciones que la inversa de \(\nabla x_t = y_t\) es \(x_t = x_0 + \sum_{i=1}^t y_i\). Si se desea que la serie simulada \(\{x_t\}\) refleje la tendencia correcta, entonces la media de \(u_t\) debe identificarse como precisamente \(-1\). De ello se concluye que la simulación de series diferenciadas puede inducir errores en la interpretación si no se consideran adecuadamente los efectos de las tendencias subyacentes.
+
+```{r}
+CBE <- read.table("cbe.dat", header = TRUE)
+Elec.ts <- ts(CBE[, 3], start = 1958, freq = 12)
+plot(Elec.ts)
+plot(diff(Elec.ts))
+plot(diff(log(Elec.ts)))
+```
+\newpage
+
+## 7.2.2 Modelo integrado
+
+Una serie \(\{x_t\}\) se dice que está integrada de orden \(d\), denotada como I(\(d\)), si la \(d\)-ésima diferencia de \(\{x_t\}\) es ruido blanco \(\{w_t\}\); es decir,
+
+\[
+\nabla^d x_t = w_t
+\]
+
+Dado que \(\nabla^d \equiv (1 - \mathbf{B})^d\), donde \(\mathbf{B}\) es el operador de rezago, una serie \(\{x_t\}\) es integrada de orden \(d\) si:
+
+\[
+(1 - \mathbf{B})^d x_t = w_t \tag{7.1}
+\]
+
+El paseo aleatorio es un caso especial I(1). El comando `diff` de la sección anterior puede usarse para obtener diferencias de orden superior, ya sea aplicándolo repetidamente o configurando el parámetro `d` al valor requerido; por ejemplo:
+
+Las expresiones `diff(diff(x))` y `diff(x, differences = 2)` producirán una serie con diferencias de segundo orden de \(x\). La diferenciación de segundo orden puede, en algunos casos, reducir exitosamente una serie con una tendencia curva subyacente a una serie de ruido blanco.
+
+Un parámetro adicional, `lag`, puede utilizarse para establecer el desfase (lag) de la diferenciación. Por defecto, `lag` está definido como 1, pero otros valores pueden ser útiles para eliminar efectos estacionales aditivos. Por ejemplo, `diff(x, lag = 12)` eliminará tanto una tendencia lineal como los efectos estacionales aditivos en una serie mensual.
+
+
+\newpage
+
+## 7.2.3 Definición y ejemplos
+
+Una serie temporal \(\{x_t\}\) sigue un proceso ARIMA(\(p, d, q\)) si las \(d\)-ésimas diferencias de la serie, \(\{x_t\}\), siguen un proceso ARMA(\(p, q\)). Si introducimos \(y_t = (1 - \mathbf{B})^d x_t\), entonces:
+
+\[
+\theta_p(\mathbf{B}) y_t = \phi_q(\mathbf{B}) w_t
+\]
+
+Podemos sustituir \(y_t\) para obtener una forma más concisa del proceso ARIMA(\(p, d, q\)):
+
+\[
+\theta_p(\mathbf{B})(1 - \mathbf{B})^d x_t = \phi_q(\mathbf{B}) w_t \tag{7.2}
+\]
+
+donde \(\theta_p\) y \(\phi_q\) son polinomios de orden \(p\) y \(q\), respectivamente.
+
+Algunos ejemplos de modelos ARIMA son:
+
+- **(a)** \(x_t = x_{t-1} + w_t + \beta w_{t-1}\), donde \(\beta\) es un parámetro del modelo. Para identificar a qué modelo pertenece, agrupamos términos semejantes y los expresamos usando el operador de rezago:  
+\[
+(1 - \mathbf{B}) x_t = (1 + \beta \mathbf{B}) w_t
+\]  
+Comparando esta expresión con la Ecuación (7.2), vemos que \(\{x_t\}\) es un modelo ARIMA(0, 1, 1), también conocido como un modelo de medias móviles integrado, denotado como IMA(1, 1). En general, ARIMA(0, \(d\), \(q\)) se denota como IMA(\(d, q\)).
+
+- **(b)** \(x_t = \alpha x_{t-1} + w_t - \alpha x_{t-2} + w_{t-1}\), donde \(\alpha\) es un parámetro del modelo. Reordenando y factorizando se obtiene:
+\[
+(1 - \alpha \mathbf{B})(1 - \mathbf{B}) x_t = w_t
+\]
+lo cual corresponde a un modelo ARIMA(1, 1, 0), también conocido como un proceso autorregresivo integrado, denotado como ARI(1, 1). En general, ARI(\(p, d\)) es equivalente a ARIMA(\(p, d, 0\)).
+
+\newpage
+
+## 7.2.4 Simulación y ajuste
+
+Un proceso ARIMA(\(p, d, q\)) puede ajustarse a datos utilizando la función `arima` de R, con el parámetro `order` definido como `c(p, d, q)`. También es posible simular un proceso ARIMA(\(p, d, q\)) en R escribiendo el código correspondiente.
+
+Por ejemplo, en el siguiente código, se simula un modelo ARIMA(1, 1, 1) de la forma:
+
+\[
+x_t = 0.5x_{t-1} + x_{t-1} - 0.5x_{t-2} + w_t + 0.3w_{t-1}
+\]
+
+y se ajusta un modelo ARIMA a los datos simulados para recuperar los parámetros estimados:
+
+```{r}
+set.seed(1)
+x <- w <- rnorm(1000)
+for (i in 3:1000) 
+  x[i] <- 0.5 * x[i - 1] + x[i - 1] - 0.5 * x[i - 2] + w[i] + 0.3 * w[i - 1]
+
+arima(x, order = c(1, 1, 1))
+```
+
+Escribir tu propio código tiene la ventaja de que te ayuda a comprender mejor el modelo. Sin embargo, una simulación ARIMA también puede realizarse utilizando la función integrada `arima.sim`, la cual acepta los parámetros `model` y `n` para especificar el modelo y la longitud de la simulación, respectivamente.
+
+```{r}
+# set.seed(1)
+x <- arima.sim(model = list(order = c(1, 1, 1), ar = 0.5, ma = 0.3), n = 1000)
+arima(x, order = c(1, 1, 1))
+```
+\newpage
+
+## 7.2.5 Modelo IMA(1, 1) ajustado a la serie de producción de cerveza
+
+La serie de producción de cerveza australiana se encuentra en la segunda columna del conjunto de datos `CBE` (ver §7.2.1). Los datos presentan una clara tendencia de crecimiento en la producción a lo largo del tiempo, por lo que se ajusta un modelo IMA(1, 1) simple para capturar esta tendencia y el efecto de arrastre de la producción del mes anterior.
+
+El modelo IMA(1, 1) suele ser apropiado porque representa una tendencia lineal con ruido blanco aditivo. Los residuos se analizan mediante el correlograma (Fig. 7.2), que presenta picos anuales y sugiere que podría ser necesario un término estacional.
+
+```{r}
+Beer.ts <- ts(CBE[, 2], start = 1958, freq = 12)
+Beer.ima <- arima(Beer.ts, order = c(0, 1, 1))
+Beer.ima
+acf(resid(Beer.ima))
+```
+
+\newpage
+
+A partir del modelo ajustado, se obtiene la siguiente ecuación $x_t = x_{t-1} + w_t - 0.33 w_{t-1}$. Es posible generar pronósticos utilizando este modelo, donde \(t\) representa el punto de inicio de la predicción. También puede utilizarse la función `predict` en R, especificando el parámetro `n.ahead` para indicar el número de pasos hacia adelante que se desean pronosticar. 
+
+Por ejemplo, para obtener el pronóstico correspondiente al año siguiente (12 meses), se puede usar `predict` y luego sumar los valores pronosticados:
+
+```{r}
+Beer.1991 <- predict(Beer.ima, n.ahead = 12)
+sum(Beer.1991$pred)
+```
+
+\newpage
+
+# 7.3 Modelos ARIMA estacionales
+
+## 7.3.1 Definición
+
+Un modelo ARIMA estacional utiliza diferenciación con un desfase igual al número de estaciones (\(s\)) para eliminar efectos estacionales aditivos. Así como la diferenciación de orden 1 se utiliza para eliminar una tendencia, la diferenciación estacional de orden 1 introduce un término de medias móviles estacional.
+
+El modelo ARIMA estacional incluye términos autorregresivos y de medias móviles tanto a nivel regular como estacional, y puede expresarse más concisamente utilizando el operador de rezago estacional:
+
+\[
+\Theta_P(\mathbf{B}^s)\theta_p(\mathbf{B})(1 - \mathbf{B}^s)^D(1 - \mathbf{B})^d x_t = \tilde{\Phi}_Q(\mathbf{B}^s)\phi_q(\mathbf{B}) w_t \tag{7.3}
+\]
+
+donde \(\Theta_P\), \(\theta_p\), \(\tilde{\Phi}_Q\) y \(\phi_q\) son polinomios de orden \(P\), \(p\), \(Q\), y \(q\), respectivamente.
+
+En general, el modelo no es estacionario, aunque si \(D = d = 0\) y las raíces de la ecuación característica (es decir, los polinomios del lado izquierdo de la ecuación 7.3) tienen módulo mayor que uno, el modelo resultante será estacionario.
+
+Algunos ejemplos de modelos ARIMA estacionales son:
+
+- **(a)** Un modelo autorregresivo simple con un periodo estacional de 12 unidades, denotado como ARIMA(0, 0, 0)(1, 0, 0)\(_{12}\), tiene la forma:  
+\[
+x_t = \alpha x_{t-12} + w_t
+\]  
+Este modelo sería adecuado para datos mensuales en los que solo el mismo mes del año anterior influye sobre el valor del mes actual. El modelo es estacionario cuando \(|\alpha^{-1/12}| > 1\).
+
+- **(b)** Es común encontrar series con tendencias estocásticas que aún así presentan influencias estacionales. El modelo (a) anterior puede extenderse como:
+\[
+x_t = x_{t-1} + \alpha x_{t-12} - \alpha x_{t-13} + w_t
+\]
+Reordenando y factorizando se obtiene:
+\[
+(1 - \alpha \mathbf{B}^{12})(1 - \mathbf{B})x_t = w_t
+\]
+o bien:
+\[
+\Theta_1(\mathbf{B}^{12})(1 - \mathbf{B})x_t = w_t
+\]
+comparándolo con la Ecuación (7.3), corresponde a un modelo ARIMA(0, 1, 0)(1, 0, 0)\(_{12}\). Nótese que este modelo también podría escribirse como:
+\[
+\nabla x_t = \nabla x_{t-12} + w_t
+\]
+lo cual enfatiza que el cambio en el tiempo \(t\) depende del cambio en el mismo mes del año anterior. El modelo no es estacionario, ya que el polinomio en el lado izquierdo contiene el término \((1 - \mathbf{B})\), lo que implica que existe una raíz unitaria en \(\mathbf{B} = 1\).
+
+\newpage
+
+- **(c)** Un modelo de medias móviles estacional trimestral simple puede escribirse como:
+\[
+x_t = (1 - \beta \mathbf{B}^4)w_t = w_t - \beta w_{t-4}
+\]
+Este modelo es estacionario y solo es adecuado para datos sin tendencia. Si los datos también contienen una tendencia estocástica, el modelo puede extenderse para incluir diferencias de primer orden:
+\[
+x_t = x_{t-1} + w_t - \beta w_{t-4}
+\]
+lo cual corresponde a un proceso ARIMA(0, 1, 0)(0, 0, 1)\(_4\). Alternativamente, si los términos estacionales contienen una tendencia estocástica, se puede aplicar diferenciación estacional para obtener:
+\[
+x_t = x_{t-4} + w_t - \beta w_{t-4}
+\]
+lo que da lugar al modelo ARIMA(0, 0, 0)(0, 1, 1)\(_4\).
+
+Es importante considerar que aplicar una diferenciación con desfase estacional (por ejemplo, \(s = 4\)) eliminará también una tendencia lineal, por lo que surge la cuestión de si debe incluirse o no una diferenciación ordinaria de orden 1. Si se incluye una diferenciación de orden 1, cuando ya existe una tendencia lineal, se introduce un efecto de medias móviles adicional en una serie de ruido blanco.
+
+Como ejemplo, consideremos una serie de periodo 4 que es la suma de una tendencia lineal, una componente estacional aditiva, y ruido blanco:
+
+\[
+x_t = a + bt + s_{[t]} + w_t
+\]
+
+donde \([t]\) es el residuo de la división entera de \(t\) entre 4, es decir \(s_{[t]} = s_{t-4}\). Primero, aplicamos diferenciación de primer orden con lag 4:
+
+\[
+(1 - \mathbf{B}^4)x_t = x_t - x_{t-4}
+\]
+
+\[
+= a + bt - (a + b(t - 4)) + s_{[t]} - s_{[t-4]} + w_t - w_{t-4}
+\]
+
+\[
+= 4b + w_t - w_{t-4}
+\]
+
+Formalmente, este modelo puede expresarse como ARIMA(0, 0, 0)(0, 1, 1)\(_4\) con una constante de término 4b. Ahora supongamos que también aplicamos una diferenciación ordinaria (de lag 1) antes de diferenciar con lag 4. Entonces:
+
+\[
+(1 - \mathbf{B}^4)(1 - \mathbf{B})x_t = (1 - \mathbf{B}^4)(b + s_{[t]} - s_{[t-1]} + w_t - w_{t-1})
+\]
+
+\[
+= w_t - w_{t-1} - w_{t-4} + w_{t-5}
+\]
+
+lo cual corresponde a un modelo ARIMA(0, 1, 0)(0, 1, 1)\(_4\) con término constante.
+
+\newpage
+
+## 7.3.2 Procedimiento de ajuste
+
+Los modelos ARIMA estacionales pueden tener una gran cantidad de parámetros y combinaciones posibles. Por lo tanto, es apropiado probar una amplia variedad de modelos al ajustar los datos y elegir el modelo con mejor ajuste utilizando un criterio adecuado, como el AIC.
+
+Una vez que se ha encontrado un modelo con buen ajuste, se debe verificar que el correlograma de los residuos se asemeje al de un proceso de ruido blanco. Puede obtenerse mayor confianza en el modelo seleccionado al sobreajustar deliberadamente el modelo (por ejemplo, agregando más parámetros) y observando si el valor del AIC aumenta, lo que indicaría que los nuevos términos no mejoran el ajuste.
+
+En R, este enfoque para ajustar una variedad de modelos ARIMA estacionales es sencillo, ya que los criterios de ajuste pueden ser llamados anidando funciones, y la tecla de flecha hacia arriba en el teclado puede utilizarse para recuperar el último comando, que luego puede ser editado para probar un nuevo modelo. Cualquier término obvio, como una diferencia de orden 1 en caso de existir una tendencia, debe ser incluido y mantenido en el modelo para reducir el número de combinaciones a evaluar.
+
+El modelo puede ajustarse con la función `arima`, que requiere un parámetro adicional llamado `seasonal` para especificar los componentes estacionales.
+
+En el ejemplo siguiente, se ajustan dos modelos con términos de primer orden a los datos de producción de electricidad. El primero utiliza términos autorregresivos y el segundo utiliza términos de medias móviles. El parámetro \(d = 1\) se mantiene, ya que se encontró en §7.2.1 que la diferenciación de primer orden era necesaria para eliminar la tendencia en la serie. El modelo ARIMA estacional proporciona el menor valor del AIC.
+
+```{r}
+AIC(arima(log(Elec.ts), order = c(1, 1, 0), seas = list(order = c(1, 0, 0), period = 12)))
+
+AIC(arima(log(Elec.ts), order = c(0, 1, 1), seas = list(order = c(0, 0, 1), period = 12)))
+```
+\newpage
+Es sencillo evaluar una gama de modelos mediante un enfoque de prueba y error, que consiste en editar un comando en cada intento para verificar si se produce una mejora en el valor del AIC.
+
+Alternativamente, se puede escribir una función sencilla que ajuste una gama de modelos ARIMA y seleccione el modelo con mejor ajuste según el valor del AIC. Este enfoque es más eficaz cuando se selecciona el método de mínimos cuadrados condicionales (`CSS`) dentro de la función `arima`, ya que dicho algoritmo es más robusto.
+
+Para evitar la sobreparametrización, puede emplearse el **Criterio de Información de Akaike Consistente** (CAIC; véase Bozdogan, 1987), el cual también puede utilizarse como base para la selección de modelos.
+
+A continuación se muestra un programa de ejemplo.
+```{r}
+get.best.arima <- function(x.ts, maxord = c(1, 1, 1, 1, 1, 1)) {
+  best.aic <- 1e8
+  n <- length(x.ts)
+
+  for (p in 0:maxord[1]) for (d in 0:maxord[2]) for (q in 0:maxord[3])
+  for (P in 0:maxord[4]) for (D in 0:maxord[5]) for (Q in 0:maxord[6]) {
+    fit <- arima(x.ts, order = c(p, d, q),
+                 seas = list(order = c(P, D, Q), frequency = frequency(x.ts)),
+                 method = "CSS")
+    fit.aic <- -2 * fit$loglik + (log(n) + 1) * length(fit$coef)
+    if (fit.aic < best.aic) {
+      best.aic <- fit.aic
+      best.fit <- fit
+      best.model <- c(p, d, q, P, D, Q)
+    }
+  }
+
+  list(best.aic, best.fit, best.model)
+}
+
+# Aplicación a la serie logarítmica de electricidad
+best.arima.elec <- get.best.arima(log(Elec.ts))
+
+# Ajustar modelo ARIMA con la mejor estructura encontrada
+best.fit.elec <- best.arima.elec[[2]]
+best.model <- best.arima.elec[[3]]
+
+# Verificar residuos
+acf(resid(best.fit.elec))
+best.model
+```
+
+```{r}
+# Graficar valores observados y predichos a partir de 1981
+ts.plot(cbind(window(Elec.ts, start = 1981), exp(predict(best.fit.elec, 12)$pred)), lty = 1:2)
+```
+

@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Introducción}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Ideas generales}{4}{0}{1}
+\beamer@subsectionintoc {1}{2}{Pregunta fundamental}{5}{0}{1}
+\beamer@sectionintoc {2}{Mínimos Cuadrados como un Estimador de Máxima Verosimilitud}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Sobre la Verosimilitud}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{Sobre los Mínimos Cuadrados}{11}{0}{2}
+\beamer@subsectionintoc {2}{3}{Ajsute por Chi-Cuadrada $\chi ^2$}{15}{0}{2}

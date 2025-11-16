@@ -1,0 +1,8 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Determinismo: unicidad en el espacio de fases}{3}{0}{1}
+\beamer@sectionintoc {2}{Reconstrucción con retardos}{8}{0}{2}
+\beamer@sectionintoc {3}{Encontrar un buen embebido}{12}{0}{3}
+\beamer@subsectionintoc {3}{1}{Vecinos falsos}{15}{0}{3}
+\beamer@subsectionintoc {3}{2}{El retardo temporal}{19}{0}{3}
+\beamer@sectionintoc {4}{Gráficas de recurrencia}{20}{0}{4}
+\beamer@sectionintoc {5}{Ejercicios}{26}{0}{5}

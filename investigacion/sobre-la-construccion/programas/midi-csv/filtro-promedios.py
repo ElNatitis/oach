@@ -26,7 +26,7 @@ for _, ins in instrumentos: # iteramos sobre cada instrumento
         
         
         for dato in simultaneas:
-                    print(f'\n{dato}')
+            print(f'\n{dato}')
        
         
         

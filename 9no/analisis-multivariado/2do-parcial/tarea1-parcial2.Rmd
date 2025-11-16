@@ -1,0 +1,149 @@
+---
+title: "Tarea 1 Parcial 2"
+output: html_document
+author: "Natividad Oswaldo Pérez Medina"
+date: "`r Sys.Date()`"
+---
+
+# Resumen de *Análisis Conjunto* y Ejemplo en R
+
+## Análisis Conjunto
+
+El análisis conjunto (conjoint analysis) es una técnica estadística utilizada para comprender cómo las personas evalúan y eligen productos o servicios con base en sus características o atributos. Su propósito es cuantificar el valor percibido que un consumidor asigna a cada nivel de atributo, y así modelar sus preferencias de forma descomponible y predecible.
+
+Para la recolección de datos, el análisis conjunto presenta al encuestado perfiles completos (combinaciones de atributos) y le solicita que **califique**, **ordene** o **elija** entre ellos. A partir de esas respuestas, se estiman las llamadas *utilidades parciales* (part-worths), que permiten:
+
+- Simular decisiones del consumidor
+- Predecir participación de mercado de productos nuevos
+- Diseñar productos óptimos según preferencias reales
+- Identificar atributos clave que influyen en la decisión
+
+### Tipos de análisis conjunto según el tipo de encuesta
+
+El enfoque que se aplica depende directamente del formato del cuestionario que se haya administrado al consumidor. **Existen principalmente 3 formatos clásicos:**
+
+#### 1) Ratings-based Conjoint (Análisis conjunto con calificaciones)
+**Encuesta:** A los encuestados se les presentan perfiles de producto y se les pide asignar una puntuación a cada uno (por ejemplo, de 1 a 10 o de 0 a 100).
+
+**Tipo de análisis:** 
+- Modelo de regresión lineal (OLS)
+- Estimación de utilidades parciales como coeficientes
+- Escenarios simulables con funciones aditivas
+
+**Ventajas:**
+- Simples de implementar
+- Permiten medir la intensidad de preferencia
+
+**Limitación:** Los consumidores pueden usar las escalas de forma diferente 
+
+#### 2) Ranking-based Conjoint (Análisis conjunto con ordenamientos)
+**Encuesta:** Se muestran varios perfiles y se pide al encuestado que los ordene del más al menos preferido.
+
+**Tipo de análisis:**
+
+- Métodos de regresión para datos ordinales
+- Estimación por mínimos cuadrados monotónicos
+
+**Ventajas:**
+
+- Obliga a comparaciones directas entre opciones
+- Evita ambigüedad en la interpretación de escalas
+
+**Limitación:** Requiere un esfuerzo mental considerable por parte de la persona que realiza la tarea.
+
+#### 3) Choice-based Conjoint (CBC) o Discrete Choice Experiments (DCE)
+
+**Encuesta:** Se presentan conjuntos de elección (sets de 3–5 alternativas), y el encuestado elige una sola opción por set.
+
+**Tipo de análisis:**
+
+- Modelos logit multinomial (MNL)
+- Modelos de elección probabilística
+- Posibilidad de estimar probabilidades de elección
+
+**Ventajas:**
+
+- Refleja mejor el comportamiento real de compra
+- Es el estándar actual en marketing y diseño de productos
+
+**Limitación:** No capta intensidad de preferencia, solo elección final
+
+## Ejemplo en R
+
+### Base de datos seleccionada
+
+El conjunto de datos `pizza_data.csv` contiene una combinación de atributos y niveles de pizza, es decir, diferentes perfiles de pizza con distintos niveles y clasificaciones de atributos. A continuación, una breve descripción
+
+| Atributo   | Tipo                            | Ejemplos                   |
+| ---------- | ------------------------------- | -------------------------- |
+| `brand`    | Categórico                      | Dominos, Pizza Hut, Onesta |
+| `price`    | Cuantitativo (aunque es string) | $1.00, $2.00...            |
+| `weight`   | Cuantitativo (string con "g")   | 100g, 200g...              |
+| `crust`    | Categórico                      | thin, thick                |
+| `cheese`   | Categórico                      | Mozzarella, Cheddar        |
+| `size`     | Categórico                      | regular, large             |
+| `toppings` | Categórico                      | paneer, mushroom           |
+| `spicy`    | Categórico                      | normal, extra              |
+| `ranking`  | Numérico (ordinal)              | 1 a 12 (probablemente)     |
+
+```{r}
+# Leer la base de datos
+bd <- read.csv("pizza_data.csv", stringsAsFactors = FALSE)
+head(bd)
+```
+
+### Tratamiento de los datos
+
+```{r}
+# Convertir 'price' a numérico 
+bd$price <- as.numeric(gsub("[$]", "", bd$price))
+
+# Convertir 'weight' a numérico
+bd$weight <- as.numeric(gsub("g", "", bd$weight))
+
+# Normalizar el ranking entre 0 y 1 (1 = más preferido)
+min_r <- min(bd$ranking, na.rm = TRUE)
+max_r <- max(bd$ranking, na.rm = TRUE)
+## Creamos una columna raiting que es el ranking normalizado
+bd$rating <- (max_r - bd$ranking) / (max_r - min_r)
+
+# Codificar variables categóricas como factores 
+bd$brand     <- as.factor(bd$brand)
+bd$crust     <- as.factor(bd$crust)
+bd$cheese    <- as.factor(bd$cheese)
+bd$size      <- as.factor(bd$size)
+bd$toppings  <- as.factor(bd$toppings)
+bd$spicy     <- as.factor(bd$spicy)
+
+head(bd)
+```
+
+### Ajuste a modelo lineal con R
+
+```{r}
+# Ajustar modelo lineal (regresión OLS)
+modelo <- lm(rating ~ brand + price + weight + crust + cheese + size + toppings + spicy, data = bd)
+
+# Mostrar resumen del modelo
+summary(modelo)
+```
+
+### Interpretación de resultados
+
+- El valor de $R^2$ ajustada de 0.9722 indica que el modelo explica el 97.22% de la variación observada en el ranking normalizado.
+- El coeficiente estimado para `weight` es positivo y significativo, lo que indica que, a mayor peso de la pizza, mayor es la preferencia estimada por parte del consumidor. 
+- El nivel `crust = thin` tiene un coeficiente positivo significativo, lo cual sugiere que los perfiles que incluyen masa delgada tienden a recibir mejores puntuaciones.
+- El atributo `toppings = paneer` muestra un efecto positivo y significativo. Esto indica que los perfiles que contienen este tipo de topping son, en promedio, mejor valorados que aquellos con `mushroom`
+- Los coeficientes asociados a los distintos niveles de la variable `brand` no resultaron estadísticamente significativos, lo cual implica que la marca de la pizza no es significativo en la preferencia declarada.
+
+
+## Fuentes
+
+- **[1]** S. D. Barbini, “Aplicación del análisis conjunto al estudio de las preferencias de los consumidores turísticos,” *Estudios y Perspectivas en Turismo*, vol. 20, no. 2, pp. 332–350, 2011. [En línea]. Disponible en: [https://scholar.archive.org/work/vlxtfxxoxrhnje4s5r2a6dr43i/access/wayback/http://www.estudiosenturismo.com.ar/PDF/V20/N02/v20n2a05.pdf](https://scholar.archive.org/work/vlxtfxxoxrhnje4s5r2a6dr43i/access/wayback/http://www.estudiosenturismo.com.ar/PDF/V20/N02/v20n2a05.pdf)
+
+- **[2]** V. R. Rao, “Conjoint Analysis,” in *Wiley International Encyclopedia of Marketing*, 2010. [En línea]. Disponible en: [https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781444316568.wiem02019](https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781444316568.wiem02019)
+
+- **[3]** S. Singh, *Pizza Attributes Dataset for Conjoint Analysis*, Kaggle, 2021. [En línea]. Disponible en: [https://www.kaggle.com/datasets/sachinsin8h/pizza-attributes-dataset-for-conjoint-analysis](https://www.kaggle.com/datasets/sachinsin8h/pizza-attributes-dataset-for-conjoint-analysis)
+
+
+

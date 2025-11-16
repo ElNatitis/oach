@@ -1,0 +1,512 @@
+---
+title: "Tarea Tercer Parcial"
+output: pdf_document
+author: "Natividad Oswaldo Pérez Medina" 
+date: "`r Sys.Date()`"
+---
+
+# Capítulo 6
+
+## Ejercicio 2
+
+La serie $\{w_t\}$ es ruido blanco con media cero y varianza $\sigma_w^2$. Para los siguientes modelos de media móvil, encuentra la función de autocorrelación y determina si son invertibles. Además, simula 100 observaciones para cada modelo en R, compara los gráficos temporales de las series simuladas y comenta cómo podrían distinguirse las dos series.
+
+- **a)** $x_t = w_t + \frac{1}{2}w_{t-1}$  
+- **b)** $x_t = w_t + 2w_{t-1}$
+
+\newpage
+
+### Simulaciones 
+
+```{r}
+set.seed(1)
+
+# a) MA(1) con theta = 0.5 
+x1 <- arima.sim(model = list(ma = 0.5), n = 100)
+
+# b) MA(1) con theta = 2 
+x2 <- arima.sim(model = list(ma = 2), n = 100)
+
+# Gráficos temporales
+par(mfrow = c(2,1))
+plot.ts(x1, main = "MA(1) a)")
+plot.ts(x2, main = "MA(1) b)")
+
+```
+
+
+\newpage
+
+## Ejercicio 3
+
+Escribe los siguientes modelos en notación ARMA$(p, q)$ y determina si son estacionarios y/o invertibles (donde $w_t$ es ruido blanco). En cada caso, revisa si hay redundancia de parámetros y asegúrate de que la notación ARMA$(p, q)$ esté expresada en su forma más simple.
+
+- **a)** $x_t = x_{t-1} - \frac{1}{4}x_{t-2} + w_t + \frac{1}{2}w_{t-1}$  
+- **b)** $x_t = 2x_{t-1} - x_{t-2} + w_t$  
+- **c)** $x_t = \frac{3}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t - \frac{1}{2}w_{t-1} + \frac{1}{4}w_{t-2}$  
+- **d)** $x_t = \frac{3}{2}x_{t-1} - \frac{1}{2}x_{t-2} + \frac{1}{2}w_{t-1}$  
+- **e)** $x_t = \frac{7}{10}x_{t-1} - \frac{1}{10}x_{t-2} + w_t - \frac{3}{2}w_{t-1}$  
+- **f)** $x_t = \frac{3}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t - \frac{1}{3}w_{t-1} + \frac{1}{6}w_{t-2}$
+
+\newpage
+
+## Ejercicio 4
+
+- **a)** Ajusta un modelo de regresión adecuado a la serie de pasajeros aéreos. Comenta sobre el correlograma de los residuos del modelo de regresión ajustado.
+
+- **b)** Ajusta un modelo ARMA$(p, q)$ a la serie de residuos del modelo de regresión ajustado, considerando valores de $p$ y $q$ no mayores a 2. Elige el mejor modelo con base en el AIC y comenta sobre su correlograma.
+
+- **c)** Realiza una predicción del número de pasajeros que viajarán en la aerolínea durante el año 1961.
+
+### Respuesta
+
+- **a)** 
+
+```{r}
+data("AirPassengers") # Cargamos los datos
+AP = AirPassengers # Se asignan a AP
+# Para observar los datos
+plot(AP ,xlab = "Tiempo" ,ylab = "Pasajeros (1000's)")
+```
+
+\
+
+Al graficar los datos podemos observar que, en general, la cantidad de pasajeros aumenta con el tiempo y parece hacerlo con cierto patrón. Por lo anterior se propone un modelo de regresión con tendencia y factor estacional por meses.
+
+\newpage
+
+```{r}
+# Preparamos los datos de tendencia y estacinalidad mensual
+t <- time(AP)
+tendencia <- t
+estaciones <- factor(cycle(AP))
+
+# Modelo de regresión con tendencia y estacionalidad mensual
+lm_pasajeros <- lm(AP ~ tendencia + estaciones)
+summary(lm_pasajeros)
+```
+
+\newpage
+
+```{r}
+# Correlograma de residuos
+res <- resid(lm_pasajeros)
+acf(res, main = "ACF de los residuos del modelo de regresión")
+```
+
+\
+
+El comportamiento observado en el correlograma de los residuos sugiere que el modelo de regresión no ha capturado completamente la estructura temporal de la serie.
+Existen patrones sistemáticos en los residuos, lo que implica que son no daleatorios.
+
+\newpage
+
+- **b)**
+
+Se tomaran los siguientes valores para los ARMA: (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2)
+
+```{r}
+# Para ajustar los diferentes modelos ARMA(p, q) a la serie de residuos
+res_arma1 <- arima(res, order = c(0, 0, 1))
+res_arma2 <- arima(res, order = c(0, 0, 2))
+res_arma3 <- arima(res, order = c(1, 0, 0))
+res_arma4 <- arima(res, order = c(2, 0, 0))
+res_arma5 <- arima(res, order = c(1, 0, 1))
+res_arma6 <- arima(res, order = c(1, 0, 2))
+res_arma7 <- arima(res, order = c(2, 0, 1))
+res_arma8 <- arima(res, order = c(2, 0, 2))
+
+# Para comparar lo valores AIC y elegir el menor
+AIC(res_arma1)
+AIC(res_arma2)
+AIC(res_arma3)
+AIC(res_arma4)
+AIC(res_arma5)
+AIC(res_arma6)
+AIC(res_arma7)
+AIC(res_arma8)
+```
+Dados los valores obtenidos, podemos decir que el modelo `res_arma7` es la mejor elección de estos modelos, ta que tiene el valor **AIC** más bajo.
+
+\newpage
+
+```{r}
+# Correlograma de el modelo res_arma7
+acf(residuals(res_arma7), main = "ACF de los residuos del modelo res_arma7")
+```
+
+\newpage
+
+- **c)**
+
+```{r}
+# Crear nuevos valores de tiempo para 1961
+new_t <- seq(1961, by = 1/12, length.out = 12)
+new_data <- data.frame(
+  trend = new_t,
+  season = factor(1:12)
+)
+
+# Predicción con modelo de regresión
+pred_reg <- predict(lm_pasajeros, newdata = new_data)
+
+# Predicción con modelo ARMA ajustado a los residuos
+arma_pred <- predict(res_arma7, n.ahead = 12)$pred
+
+# Sumar ambas partes (transformar a escala original con exp)
+pred <- as.numeric(pred_reg) + as.numeric(arma_pred)
+pred_pasajeros <- ts(pred, start = c(1961, 1), frequency = 12)
+
+# Graficar
+ts.plot(AP, pred_pasajeros, col = c("black", "blue"), lty = c(1, 2))
+```
+
+\newpage
+
+## Ejercicio 5
+
+- **a)** Escribe una función en R que calcule la función de autocorrelación para un proceso ARMA(1,1). Tu función debe recibir como parámetros los valores de $\alpha$ y $\beta$ correspondientes a los componentes AR y MA, respectivamente.
+
+- **b)** Grafica la función de autocorrelación obtenida anteriormente para el caso $\alpha = 0.7$ y $\beta = -0.5$ para retardos (lags) de 0 a 20.
+
+- **c)** Simula $n = 100$ valores del modelo ARMA(1,1) con $\alpha = 0.7$ y $\beta = -0.5$, y compara el correlograma muestral con el correlograma teórico graficado en la parte (b). Repite el análisis para $n = 1000$.
+
+\newpage
+
+### Respuesta
+
+#### a)
+
+```{r}
+# Función para recibr parametros y calcular autocorrelación
+acf_arma11 <- function(alpha, beta, lag.max = 20) {
+  rho <- numeric(lag.max + 1)
+  rho[1] <- 1
+  rho[2] <- ((1 + alpha * beta) * (alpha + beta)) / (1 + 2 * alpha * beta + beta^2)
+  for (k in 3:(lag.max + 1)) {
+    rho[k] <- alpha^(k - 2) * rho[2]
+  }
+  return(rho)
+}
+
+# Parámetros
+alpha <- 0.7
+beta <- -0.5
+
+# Calcular ACF
+acf_theo <- acf_arma11(alpha, beta, lag.max = 20)
+
+# Graficar
+lags <- 0:20
+plot(lags, acf_theo, type = "h", lwd = 2,
+     xlab = "Lag", ylab = "ACF",
+     main = expression(paste("ACF para ARMA(1,1): ", alpha == 0.7, ", ", beta == -0.5)))
+abline(h = 0, lty = 2)
+```
+\newpage
+
+```{r}
+n <- 100
+x_100 <- arima.sim(n = n, model = list(ar = alpha, ma = beta))
+
+acf(x_100, main = "ACF muestral para n = 100")
+lines(lags, acf_theo, col = "red", lty = 2)  # opcional, sobreponer ACF teórica
+
+# Para n = 1000
+x_1000 <- arima.sim(n = 1000, model = list(ar = alpha, ma = beta))
+acf(x_1000, main = "ACF muestral para n = 1000")
+```
+
+
+\newpage
+
+## Ejercicio 6
+
+Sea $\{x_t : t = 1, \dots, n\}$ una serie temporal estacionaria con $E(x_t) = \mu$, $\text{Var}(x_t) = \sigma^2$, y $\text{Cor}(x_t, x_{t+k}) = \rho_k$. Usando la Ecuación (5.5) del Capítulo 5:
+
+- **a)** Calcula $\text{Var}(\bar{x})$ cuando $\{x_t\}$ es el proceso MA(1) dado por $x_t = w_t + \frac{1}{2}w_{t-1}$.
+
+- **b)** Calcula $\text{Var}(\bar{x})$ cuando $\{x_t\}$ es el proceso MA(1) dado por $x_t = w_t - \frac{1}{2}w_{t-1}$.
+
+- **c)** Compara cada uno de los anteriores con la varianza de la media muestral obtenida para el caso de ruido blanco, donde se cumple que $\rho_k = 0$ ($k > 0$). De los tres modelos, ¿cuál tendría la estimación más precisa de $\mu$ basada en las varianzas de sus medias muestrales?
+
+- **d)** Un ejemplo simulado que extrae la varianza de la media muestral para 100 series de ruido blanco gaussiano, cada una de longitud 20, se da por:
+
+```r
+set.seed(1)
+m <- rep(0, 100)
+for (i in 1:100) m[i] <- mean(rnorm(20))
+var(m)
+# [1] 0.0539
+```
+
+Para cada uno de los dos procesos MA(1), escribe el código en R que extrae la varianza de la media muestral de 100 realizaciones de longitud 20. Compara estos resultados con las varianzas calculadas en los incisos (a) y (b).
+
+\newpage
+### Respuestas
+\newpage
+
+#### d) Simulaciones
+
+```{r}
+# Ruido blanco
+m <- rep(0, 100)
+for (i in 1:100) m[i] <- mean(rnorm(20))
+var(m)
+
+# MA(1) con theta = 0.5
+m1 <- replicate(100, mean(arima.sim(n = 20, model = list(ma = 0.5))))
+var(m1)
+
+# MA(1) con theta = - 0.5
+m2 <- replicate(100, mean(arima.sim(n = 20, model = list(ma = -0.5))))
+var(m2)
+```
+
+\newpage
+
+# Capítulo 7
+
+En cada uno de los siguientes casos, $\{w_t\}$ es ruido blanco con media cero.
+
+## Ejercicio 1
+Identifica cada uno de los siguientes como modelos ARIMA específicos e indica si son o no estacionarios.
+
+- **a)** $z_t = z_{t-1} - 0.25z_{t-2} + w_t + 0.5w_{t-1}$  
+- **b)** $z_t = 2z_{t-1} - z_{t-2} + w_t$  
+- **c)** $z_t = 0.5z_{t-1} + 0.5z_{t-2} + w_t - 0.5w_{t-1} + 0.25w_{t-2}$
+
+\newpage
+
+### Respuestas
+
+#### a) \
+
+```{r}
+x.ma <- c(1, 0.5)
+x.ar <- c(1, -1, 0.25)
+
+roots_ar <- polyroot(x.ar)
+abs(roots_ar)
+
+roots_ma <- polyroot(x.ma)
+abs(roots_ma)
+```
+
+Este es un modelo ARMA(2, 1).
+
+\newpage
+
+#### b)
+\
+
+```{r}
+x.ma <- c(1, 0)
+x.ar <- c(1, -2, 1)
+
+roots_ar <- polyroot(x.ar)
+abs(roots_ar)
+
+roots_ma <- polyroot(x.ma)
+abs(roots_ma)
+```
+
+Como tiene dos raíces unitarias es un modelo ARIMA(0, 2, 0).
+
+\newpage
+
+#### c) 
+\
+
+```{r}
+x.ma <- c(1, -0.5, 0.25)
+x.ar <- c(1, -0.5, -0.5)
+
+roots_ar <- polyroot(x.ar)
+abs(roots_ar)
+
+roots_ma <- polyroot(x.ma)
+abs(roots_ma)
+```
+
+Es un modelo ARIMA(1, 1, 2).
+
+\newpage
+
+## Ejercicio 2
+
+Identifica los siguientes modelos como ciertos modelos ARIMA estacionales multiplicativos y determina si son invertibles y estacionarios.
+
+- **a)** $z_t = 0.5z_{t-1} + z_{t-4} - 0.5z_{t-5} + w_t - 0.3w_{t-1}$
+
+- **b)** $z_t = z_{t-1} + z_{t-12} - z_{t-13} + w_t - 0.5w_{t-1} - 0.5w_{t-12} + 0.25w_{t-13}$
+
+### Respuestas
+\newpage
+
+## Ejercicio 3
+
+Supón que $x_t = a + bt + w_t$. Define $y_t = \nabla x_t$.
+
+- **a)** Demuestra que $x_t = x_0 + \sum_{i=1}^{t} y_i$ e identifica $x_0$.
+
+- **b)** Supón ahora que se ajusta un modelo MA(1) a la serie $\{y_t\}$ y que el modelo ajustado es  $y_t = b + w_t + \beta w_{t-1}$. Demuestra que una serie $\{x_t\}$ simulada a partir de este modelo tendrá una varianza creciente alrededor de la línea $a + bt$ a menos que $\beta$ sea exactamente igual a $-1$.
+
+\newpage
+
+## Ejercicio 4
+
+Descarga el archivo `osvisit`, cárgalo en R y realiza el siguiente análisis. Tu solución debe incluir comandos en R, gráficas y comentarios. 
+
+$x_t$= el número de visitantes en el tiempo $t$ (en meses)
+
+$z_t = \ln(x_t)$.
+
+- **a)** Comenta sobre las características principales en el correlograma de $\{z_t\}$.
+
+- **b)** Ajusta un modelo ARIMA(1, 1, 0) a $\{z_t\}$, obteniendo el parámetro AR estimado y la desviación estándar de los residuos. Comenta sobre el correlograma de los residuos de este modelo ARIMA.
+
+- **c)** Ajusta un modelo ARIMA estacional (1, 1, 0)(0, 1, 0)\(_{12}\) a $\{z_t\}$ y grafica el correlograma de los residuos de este modelo. ¿Ha eliminado la diferenciación estacional el efecto estacional? Comenta.
+
+- **d)** Elige el mejor modelo ARIMA estacional de entre los siguientes:
+
+	- ARIMA(1, 1, 0)(1, 1, 0)\(_{12}\)
+	- ARIMA(0, 1, 1)(0, 1, 1)\(_{12}\)
+	- ARIMA(1, 1, 0)(0, 1, 1)\(_{12}\)
+	- ARIMA(0, 1, 1)(1, 1, 0)\(_{12}\)
+	- ARIMA(1, 1, 1)(0, 1, 1)\(_{12}\)
+	- ARIMA(1, 1, 1)(1, 1, 0)\(_{12}\)
+	- ARIMA(1, 1, 1)(0, 1, 0)\(_{12}\) \
+Basándote en el AIC, comenta sobre el correlograma de los residuos del mejor modelo.
+
+- **e)** Expresa el mejor modelo ajustado en el inciso (d) en términos de $z_t$, los componentes de ruido blanco y el operador de rezago (backward shift operator) (puedes escribirlo a mano, no es necesario expandir todos los factores).
+
+- **f)** Prueba los residuos del mejor modelo ARIMA estacional ajustado para determinar si son estacionarios.
+
+- **g)** Pronostica el número de visitantes extranjeros para cada mes del año 1996, y el número total de visitantes esperados en 1996. **\[Pista:** Para obtener los pronósticos, puedes usar el comando `predict()` en R para el modelo ARIMA estacional que seleccionaste, y sumar los pronósticos mensuales.]
+
+\newpage
+
+### Respuestas
+
+```{r}
+# Para cargar los datos osvisit (VisitasNuevaZelanda)
+vnz <- read.table("osvisit.dat",header=T) # x_t
+ln_vnz <- log(vnz) # z_t
+```
+
+#### a)
+
+```{r}
+# Para imprimir el correlograma de z_t
+acf(ln_vnz, main = "Autocorrelograma de z_t")
+```
+
+El correlograma muestra autocorrelaciones positivas y persistentes, lo que indica que la serie no es estacionaria. Además, se observan picos significativos en los rezagos múltiplos de 12, lo que indica la presencia de estacionalidad.
+
+\newpage
+
+#### b)
+
+```{r}
+# Convertimos z_t en una serie de tiempo
+zt <- ts(ln_vnz, start = 1997, freq = 12)
+
+# Aplicamos la funcion para un ARIMA(1,1,0)
+zt_ima <- arima(zt, order = c(1, 1, 0))
+zt_ima
+```
+
+- El parámetro AR(1) estimado es 0.0255
+
+- La desviación estándar de los residuos es 0.04985
+
+\newpage
+
+```{r}
+# Autocorrelograma de los residuos
+acf(residuals(zt_ima),main="Autocorrelograma de residuos del modelo")
+```
+
+Observando la función de autocorrelación anterior, podemos notar como el valor en cada 0.5 lags es significativamente alto, con un patrón incluso de valores menores y luego mayores a cero. Lo anterior indica que el modelo no ha capturado completamente la estructura temporal de la serie, y que aún persiste una componente estacional. 
+
+\newpage
+
+#### c)
+
+```{r}
+# Para ajustar zt a un ARIMA(1, 1, 0)(0, 1, 0)_12
+zt_aima <- arima(zt, order = c(1,1,0), seasonal = list(order = c(0,1,0), period = 12))
+zt_aima
+# Para analizar si la estacinalidad fue eliminada
+acf(residuals(zt_aima),main="Correlograma de residuos del modelo ARIMA(1, 1, 0)(0, 1, 0)12")
+```
+
+En el correlograma de residuos, a diferencia del correlograma original de $z_t$, ya no se observan picos significativos en rezagos de 0.5, lo que apunta a que se ha eliminado el efecto estacional del modelo.
+
+\newpage
+
+#### d)
+
+```{r}
+# Para ajustar lo 7 modelos ARIMA mencionados en d)
+arima1 <- arima(zt, order = c(1,1,0), seasonal = list(order = c(1,1,0), period = 12))
+arima2 <- arima(zt, order = c(0,1,1), seasonal = list(order = c(0,1,1), period = 12))
+arima3 <- arima(zt, order = c(1,1,0), seasonal = list(order = c(0,1,0), period = 12))
+arima4 <- arima(zt, order = c(0,1,1), seasonal = list(order = c(1,1,0), period = 12))
+arima5 <- arima(zt, order = c(1,1,1), seasonal = list(order = c(0,1,1), period = 12))
+arima6 <- arima(zt, order = c(1,1,1), seasonal = list(order = c(1,1,0), period = 12))
+arima7 <- arima(zt, order = c(1,1,1), seasonal = list(order = c(0,1,0), period = 12))
+
+# Para calcular el AIC de cada uno 
+AIC(arima1)
+AIC(arima2)
+AIC(arima3)
+AIC(arima4)
+AIC(arima5)
+AIC(arima6)
+AIC(arima7)
+```
+
+Al comparar los valores AIC se llega a la conclusión de que el modelo `arima5`, al tener un AIC menor al de lo demás, es la mejor elección de modelo
+
+\newpage
+
+```{r}
+# Para analizar el correlograma de residuos de arima5
+acf(residuals(arima5),main="Correlograma de residuos de arima5")
+```
+\
+El correlograma de los residuos del modelo `arima5` muestra que todas las autocorrelaciones están dentro de las bandas de confianza, lo cual indica que los residuos se comportan como ruido blanco. Por lo anterior podemos decir que el modelo `arima5` logra eliminar el factor estacional de el modelo $z_t$
+
+\newpage
+
+#### e)
+\
+El modelo ARIMA(1,1,1)(0,1,1)\(_{12}\) seleccionado puede expresarse en términos del operador de rezago \( B \) como:
+
+\[
+(1 - \phi_1 B)(1 - B)(1 - B^{12}) z_t = (1 + \theta_1 B)(1 + \Theta_1 B^{12}) w_t
+\]
+
+donde \( w_t \) representa un proceso de ruido blanco.
+
+\newpage
+
+#### g)
+
+```{r}
+# Obtener pronóstico para 12 meses
+pred <- predict(arima5, n.ahead = 12)
+
+# Transformar pronósticos de log(x_t) a escala original x_t
+pred_zt <- pred$pred
+pred_xt <- exp(pred_zt)
+
+# Graficar pronóstico
+ts.plot(pred_xt, main = "Pronóstico de visitantes para 1996")
+```
+
+
+
+

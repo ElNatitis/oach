@@ -1,0 +1,520 @@
+---
+title: "Tarea 1 Parcial 2"
+output: html_document
+author: "Natividad Oswaldo Pérez Medina"
+date: "`r Sys.Date()`"
+---
+
+# Ejercicio 2
+
+**a)** Simula series de tiempo de longitud 100 a partir de un modelo AR(1) con $\alpha$ igual a -0.9, -0.5, 0.5 y 0.9. Estima el parámetro de cada modelo y realiza predicciones de 1 a 10 pasos hacia adelante.
+
+**b)** Simula series de tiempo de longitud 100 a partir de un modelo AR(1) con $\alpha$ igual a 1.01, 1.02 y 1.05. Estima los parámetros de estos modelos.
+
+
+## Respuesta
+
+### a)
+
+``` {r}
+set.seed(1)	# Para fijar una semilla
+# Para los valores de alpha
+alpha1 <- -0.9
+alpha2 <- -0.5
+alpha3 <- 0.5
+alpha4 <- 0.9
+
+# Preparando los vectores para cada serie
+x1 <- x2 <- x3 <- x4 <- w <- rnorm(100)
+
+
+# Para simular la serie 1
+for (t in 3:100) 
+{
+  x1[t] <-  alpha1 * x1[t - 1]  + w[t] 
+}
+
+# Estimar el modelo AR(1)
+modelo1 <- ar(x1, method = "mle")
+para1 <- modelo1$ar # Parámetro 1
+para1
+
+# Predicciones manuales usando la fórmula AR(1)
+preds1 <- numeric(10)
+preds1[1] <- para1 * x1[100]
+for (h in 2:10) 
+{
+  preds1[h] <- para1 * preds1[h - 1]
+}
+
+# Para observar la serie 1 simulada y sus predicciones
+n <- 100
+Time <- 1:(n + 10)
+
+# Combinar serie real y predicciones
+serie_completa1 <- c(x1, preds1)
+
+# Gráfica 1
+plot(Time, serie_completa1, type = "l", col = "blue", ylim = range(serie_completa1),
+     main = "Serie 1 simulada y predicciones",
+     ylab = "x", xlab = "Tiempo")
+abline(v = n, col = "gray", lty = 2)  # Línea vertical que separa lo observado de lo predicho
+lines((n+1):(n+10), preds1, col = "red", lwd = 2)
+
+legend("topleft", legend = c("Serie 1", "Predicción"),
+       col = c("blue", "red"), lty = 1, lwd = 2)
+       
+# Para simular la serie 2
+for (t in 3:100) 
+{
+  x2[t] <-  alpha2 * x2[t - 1]  + w[t] 
+}
+
+# Estimar el modelo AR(1)
+modelo2 <- ar(x2, method = "mle")
+para2 <- modelo1$ar # Parámetro 2
+para2
+
+# Predicciones manuales usando la fórmula AR(1)
+preds2 <- numeric(10)
+preds2[1] <- para2 * x2[100]
+for (h in 2:10) 
+{
+  preds2[h] <- para2 * preds2[h - 1]
+}
+
+# Para observar la serie 2 simulada y sus predicciones
+n <- 100
+Time <- 1:(n + 10)
+
+# Combinar serie real y predicciones
+serie_completa2 <- c(x2, preds2)
+
+# Gráfica 2
+plot(Time, serie_completa2, type = "l", col = "blue", ylim = range(serie_completa2),
+     main = "Serie 2 simulada y predicciones",
+     ylab = "x", xlab = "Tiempo")
+abline(v = n, col = "gray", lty = 2)  # Línea vertical que separa lo observado de lo predicho
+lines((n+1):(n+10), preds2, col = "red", lwd = 2)
+
+legend("topleft", legend = c("Serie 2", "Predicción"),
+       col = c("blue", "red"), lty = 1, lwd = 2)
+       
+# Para simular la serie 3
+for (t in 3:100) 
+{
+  x3[t] <-  alpha3 * x3[t - 1]  + w[t] 
+}
+
+# Estimar el modelo AR(1)
+modelo3 <- ar(x3, method = "mle")
+para3 <- modelo3$ar # Parámetro 3
+para3
+
+# Predicciones manuales usando la fórmula AR(1)
+preds3 <- numeric(10)
+preds3[1] <- para3 * x3[100]
+for (h in 2:10) 
+{
+  preds3[h] <- para3 * preds3[h - 1]
+}
+
+# Para observar la serie 3 simulada y sus predicciones
+n <- 100
+Time <- 1:(n + 10)
+
+# Combinar serie real y predicciones
+serie_completa3 <- c(x3, preds3)
+
+# Gráfica 3
+plot(Time, serie_completa3, type = "l", col = "blue", ylim = range(serie_completa3),
+     main = "Serie 3 simulada y predicciones",
+     ylab = "x", xlab = "Tiempo")
+abline(v = n, col = "gray", lty = 2)  # Línea vertical que separa lo observado de lo predicho
+lines((n+1):(n+10), preds3, col = "red", lwd = 2)
+
+legend("topleft", legend = c("Serie 3", "Predicción"),
+       col = c("blue", "red"), lty = 1, lwd = 2)
+       
+# Para simular la serie 4
+for (t in 3:100) 
+{
+  x4[t] <-  alpha4 * x4[t - 1]  + w[t] 
+}
+
+# Estimar el modelo AR(1)
+modelo4 <- ar(x4, method = "mle")
+para4 <- modelo4$ar # Parámetro 4
+para4
+
+# Predicciones manuales usando la fórmula AR(1)
+preds4 <- numeric(10)
+preds4[1] <- para4 * x4[100]
+for (h in 2:10) 
+{
+  preds4[h] <- para4 * preds4[h - 1]
+}
+
+# Para observar la serie simulada y sus predicciones
+n <- 100
+Time <- 1:(n + 10)
+
+# Combinar serie real y predicciones
+serie_completa4 <- c(x4, preds4)
+
+# Gráfica 1
+plot(Time, serie_completa4, type = "l", col = "blue", ylim = range(serie_completa4),
+     main = "Serie 4 simulada y predicciones",
+     ylab = "x", xlab = "Tiempo")
+abline(v = n, col = "gray", lty = 2)  # Línea vertical que separa lo observado de lo predicho
+lines((n+1):(n+10), preds4, col = "red", lwd = 2)
+
+legend("topleft", legend = c("Serie 4", "Predicción"),
+       col = c("blue", "red"), lty = 1, lwd = 2)
+```
+
+
+### b)
+
+``` {r}
+# Valores de alpha
+alpha5 <- 1.01
+alpha6 <- 1.02
+alpha7 <- 1.05
+
+# Longitud de la serie
+n <- 100
+
+# Serie 5: alpha = 1.01
+x5 <- numeric(n)
+w5 <- rnorm(n)
+
+for (t in 3:n) {
+  x5[t] <- alpha5 * x5[t - 1] + w5[t]
+}
+plot(x5, type = "l", main = "Simulación 5 (α = 1.01)", ylab = "x5", xlab = "Tiempo")
+modelo5 <- ar(x5, method = "mle")
+para5 <- modelo5$ar
+para5
+
+# Serie 6: alpha = 1.02
+x6 <- numeric(n)
+w6 <- rnorm(n)
+
+for (t in 3:n) {
+  x6[t] <- alpha6 * x6[t - 1] + w6[t]
+}
+plot(x6, type = "l", main = "Simulación 6 (α = 1.02)", ylab = "x6", xlab = "Tiempo")
+modelo6 <- ar(x6, method = "mle")
+para6 <- modelo6$ar
+para6
+
+# Serie 7: alpha = 1.05
+x7 <- numeric(n)
+w7 <- rnorm(n)
+
+for (t in 3:n) {
+  x7[t] <- alpha7 * x7[t - 1] + w7[t]
+}
+plot(x7, type = "l", main = "Simulación 7 (α = 1.05)", ylab = "x7", xlab = "Tiempo")
+modelo7 <- ar(x7, method = "mle")
+para7 <- modelo7$ar
+para7
+
+
+```
+
+
+# Ejercicio 3
+
+Un modelo AR(1) con media no nula \( \mu \) puede expresarse de dos formas:
+
+\[
+x_t - \mu = \alpha (x_{t-1} - \mu) + w_t \quad \text{o bien} \quad x_t = \alpha_0 + \alpha_1 x_{t-1} + w_t
+\]
+
+**a)** ¿Cuál es la relación entre los parámetros \( \mu \) y \( \alpha \), y los parámetros \( \alpha_0 \) y \( \alpha_1 \)?  
+**b)** Deduce una relación similar para un proceso AR(2) con media \( \mu \).
+
+## Respuesta
+
+### a)
+
+Comparando ambas expresiones, se puede deducir que:
+
+\[
+\alpha_0 = \mu (1 - \alpha), \quad \alpha_1 = \alpha
+\]
+
+Esto significa que el intercepto \( \alpha_0 \) en la forma con regresión captura la parte constante necesaria para que el modelo tenga media \( \mu \).
+
+### b)
+
+Un modelo AR(2) con media \( \mu \) se puede escribir como:
+
+\[
+x_t - \mu = \alpha_1(x_{t-1} - \mu) + \alpha_2(x_{t-2} - \mu) + w_t
+\]
+
+Reorganizando, se obtiene:
+
+\[
+x_t = \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + \mu (1 - \alpha_1 - \alpha_2) + w_t
+\]
+
+Por lo tanto, en su forma con intercepto:
+
+\[
+x_t = \alpha_0 + \alpha_1 x_{t-1} + \alpha_2 x_{t-2} + w_t
+\]
+
+donde:
+
+\[
+\alpha_0 = \mu (1 - \alpha_1 - \alpha_2)
+\]
+
+# Ejercicio 4
+
+**a)** Simula una serie de tiempo de longitud 1000 para el siguiente modelo, proporcionando el código en R y colocando los datos simulados en un vector llamado `x`:
+
+\[
+x_t = \frac{5}{6}x_{t-1} - \frac{1}{6}x_{t-2} + w_t \tag{4.25}
+\]
+
+## Respuesta
+
+```{r}
+# Para simular (4.25)
+n <- 1000
+x8 <- numeric(n)
+w8 <- rnorm(n)
+
+# Simulación manual
+for (t in 3:n) {
+  x8[t] <- (5/6) * x8[t - 1] - (1/6) * x8[t - 2] + w8[t]
+}
+
+# Para observar la simulación
+plot(x8, type = "l", main = "Simulación", ylab = "x8", xlab = "Tiempo")
+```
+
+**b)** Grafica el correlograma y el correlograma parcial de los datos simulados. Comenta las gráficas.
+
+## Respuesta
+
+```{r}
+acf(x8, main = "Correlograma (ACF)")
+pacf(x8, main = "Correlograma Parcial (PACF)")
+```
+
+*Comentario:* La ACF muestra un decaimiento gradual característico de un AR(2). La PACF muestra dos rezagos claramente significativos, lo que concuerda con un modelo AR de orden 2.
+
+
+**c)** Ajusta un modelo autorregresivo a los datos contenidos en `x`, indicando los parámetros estimados y el orden del modelo AR ajustado.
+
+## Respuesta
+
+```{r}
+modelo8 <- ar(x8, method = "mle")
+modelo8$order       # Orden del modelo ajustado
+modelo8$ar          # Coeficientes estimados
+```
+
+**d)** Construye intervalos de confianza del 95% para los parámetros estimados del modelo ajustado. ¿Los parámetros verdaderos están dentro de estos intervalos? Explica tus resultados.
+
+## Respuesta
+
+```{r}
+est <- modelo8$ar
+se <- sqrt(diag(modelo8$asy.var.coef))
+
+ICs <- cbind(
+  est - 1.96 * se,
+  est + 1.96 * se
+)
+colnames(ICs) <- c("LI 95%", "LS 95%")
+ICs
+```
+
+*Comentario:* Podemos comparar estos intervalos con los valores reales del modelo: \( \alpha_1 = 5/6 \approx 0.833 \) y \( \alpha_2 = -1/6 \approx -0.167 \). Si estos valores están dentro de los intervalos, entonces el ajuste es coherente.
+
+
+**e)** ¿Es el modelo en la ecuación (4.25) estacionario o no estacionario? Justifica tu respuesta.
+
+## Respuesta
+
+El modelo es estacionario si las raíces del polinomio característico:
+\[
+1 - \frac{5}{6}B + \frac{1}{6}B^2 = 0
+\]
+tienen módulo mayor a 1. Esto puede comprobarse resolviendo la ecuación o aplicando `polyroot()`.
+
+```{r}
+raices <- polyroot(c(1, -5/6, 1/6))
+Mod(raices)  # Deben ser > 1
+```
+
+*Comentario:* Como ambas raíces tienen módulo mayor a 1, el modelo es estacionario.
+
+# Ejercicio 5
+
+## **a)** 
+
+Demuestra que la serie \( \{x_t\} \) dada por:
+
+\[
+x_t = \frac{3}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t
+\]
+
+es no estacionaria.
+
+### Respuesta
+
+Calculamos las raíces:
+
+```{r}
+raices <- polyroot(c(1, -3/2, 1/2))
+Mod(raices)
+```
+
+*Comentario:* Una de las raíces tiene módulo igual a 1, por lo tanto, el proceso no es estacionario.
+
+## **b)** 
+
+Escribe el modelo para la serie \( \{y_t\} \), donde \( y_t = \nabla x_t = x_t - x_{t-1} \). Demuestra que \( \{y_t\} \) es estacionaria.
+
+### Respuesta
+
+Aplicamos la primera diferencia:
+\[
+y_t = x_t - x_{t-1} = (\frac{3}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t) - x_{t-1} = \frac{1}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t
+\]
+
+Es decir:
+\[
+y_t = \frac{1}{2}x_{t-1} - \frac{1}{2}x_{t-2} + w_t
+\]
+
+Esto corresponde a un modelo estacionario ARMA porque las raíces de su ecuación característica:
+\[
+1 - \frac{1}{2}B + \frac{1}{2}B^2
+\]
+tienen módulo mayor que 1.
+
+```{r}
+raices_y <- polyroot(c(1, -1/2, 1/2))
+Mod(raices_y)
+```
+
+## **c)** 
+
+Simula una serie de 1000 valores para \( \{x_t\} \), y coloca los datos simulados en un vector llamado `x`. Usa estos valores para producir una serie de 999 valores para \( \{y_t\} \), y colócala en un vector llamado `y`.
+
+### Respuesta 
+
+```{r}
+n <- 1000
+x9 <- numeric(n)
+w9 <- rnorm(n)
+
+for (t in 3:n) {
+  x9[t] <- (3/2) * x9[t - 1] - (1/2) * x9[t - 2] + w9[t]
+}
+
+# Primera diferencia
+y <- diff(x9)
+```
+
+**d)** Ajusta un modelo AR a la serie `y`. Da los parámetros estimados del modelo ajustado y un intervalo de confianza del 95% para cada parámetro. Compara estos intervalos con los parámetros utilizados para simular los datos y explica los resultados.
+
+```{r}
+modelo_y <- ar(y, method = "mle")
+modelo_y$order      # Orden estimado
+modelo_y$ar         # Coeficientes estimados
+
+# Intervalos de confianza del 95%
+est <- modelo_y$ar
+se <- sqrt(diag(modelo_y$asy.var.coef))
+ICs <- cbind(est - 1.96 * se, est + 1.96 * se)
+colnames(ICs) <- c("LI 95%", "LS 95%")
+ICs
+```
+
+# Ejercicio 6
+
+
+
+## **a)** 
+
+Ajusta nuevamente el modelo AR(4) de la Sección 4.6.3 a la serie de temperaturas medias anuales globales, y utilizando el modelo ajustado, genera una serie de valores predichos desde \( t = 2 \) hasta el último valor de la serie (usando la Ecuación 4.24). Crea una serie de residuos como la diferencia entre los valores predichos y los observados, y verifica que, dentro de la precisión de máquina, esa serie de residuos es idéntica a la obtenida con el modelo ajustado en R.
+
+### Respuesta
+
+```{r}
+global <- read.table("global.dat", header = TRUE)
+
+temp <- ts(global[, 2], start = global[1, 1])  # Asume que la columna 1 es el año y la 2 la temperatura
+plot.ts(temp, main = "Temperatura media anual global", ylab = "Grados", xlab = "Año")
+```
+
+```{r}
+modelo_ar4 <- ar(temp, order.max = 4, method = "mle")
+coeficientes <- modelo_ar4$ar
+
+# Predicciones usando la ecuación del modelo ajustado
+n <- length(temp)
+pred <- numeric(n)
+for (t in 5:n) {
+  pred[t] <- sum(coeficientes * temp[(t-1):(t-4)])
+}
+
+# Residuos manuales
+residuos_manual <- temp - pred
+
+
+```
+
+
+## **b)** 
+
+Grafica el correlograma y el correlograma parcial de la serie de temperaturas medias anuales. Comenta las gráficas.
+
+### Respuesta
+
+```{r}
+acf(temp, main = "Correlograma de temperatura global")
+pacf(temp, main = "PACF de temperatura global")
+```
+
+*Comentario:* El correlograma parcial muestra un corte claro en el rezago 4, lo que es coherente con un modelo AR(4).
+
+
+## **c)** 
+
+Usa la función `predict()` en R para pronosticar 100 años futuros de la serie de temperaturas usando el modelo AR(4) ajustado (Ecuación 4.24 de la Sección 4.6.3).
+
+### Respuesta
+
+```{r}
+forecast <- predict(modelo_ar4, n.ahead = 100)
+pred_100 <- forecast$pred
+error_100 <- forecast$se
+```
+
+## **d)** 
+
+Genera un gráfico de la serie de temperaturas medias anuales y agrega los pronósticos a 100 años en el mismo gráfico (usa un color o símbolo diferente para los pronósticos).
+
+### Respuesta
+
+```{r}
+time_future <- (end(temp)[1] + 1):(end(temp)[1] + 100)
+
+plot(temp, xlim = c(start(temp)[1], end(temp)[1] + 100),
+     main = "Serie de temperatura con pronóstico a 100 años",
+     ylab = "Temperatura", xlab = "Año")
+
+lines(time_future, pred_100, col = "blue", lwd = 2)
+```
+

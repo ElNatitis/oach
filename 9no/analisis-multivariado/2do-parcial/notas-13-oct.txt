@@ -1,0 +1,9 @@
+# para hacer un closter
+
+necesitamos plantear una distancia
+
+calculamos la distancia entre los puntos planteados que presuntamente sean un grupo o closter
+
+el par de puntos con la distancia minima serán el cluster 1
+A,B,C,{D,F},G
+
