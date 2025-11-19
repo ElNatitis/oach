@@ -1,0 +1,21 @@
+## Entorno virtual
+python3 -m venv entorno
+
+## Activar entorno
+source entorno/bin/activate
+
+## Crear un archivo
+touch nombre_del_archivo.py
+
+## Para ejecutar en R un .Rmd
+Rscript -e "rmarkdown::render('documento.Rmd')"
+
+## Para ejecutar un programa en c
+
+# compilar
+gcc programa.c -o nombre-del-programa
+
+# ejecutar
+./nombre-del-programa
+
+
