@@ -1,0 +1,13 @@
+\babel@toc {spanish}{}\relax 
+\beamer@sectionintoc {1}{Contextualización}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Objetivo general}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Marco Teórico}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Antecedentes de la metología}{9}{0}{1}
+\beamer@sectionintoc {2}{Métodos y Materiales}{12}{0}{2}
+\beamer@subsectionintoc {2}{1}{Enfoque propuesto}{12}{0}{2}
+\beamer@subsectionintoc {2}{2}{Programas desarrollados}{15}{0}{2}
+\beamer@sectionintoc {3}{Resultados y discusión}{16}{0}{3}
+\beamer@subsectionintoc {3}{1}{Base de datos}{16}{0}{3}
+\beamer@subsectionintoc {3}{2}{Gráficas}{18}{0}{3}
+\beamer@subsectionintoc {3}{3}{Exponentes}{24}{0}{3}
+\beamer@subsectionintoc {3}{4}{Preguntas}{28}{0}{3}
