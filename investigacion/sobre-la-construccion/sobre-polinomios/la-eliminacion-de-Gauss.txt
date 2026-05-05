@@ -1,0 +1,17 @@
+En la eliminación de Gauss-Jordan sin pivoteo, solo se utiliza la segunda operación de la lista anterior. 
+
+
+La primera fila se divide por el elemento a₁₁ (que es una combinación lineal trivial de la primera fila con cualquier otra fila, con coeficiente cero para la otra fila). 
+
+Luego, se resta la cantidad correspondiente de la primera fila a cada una de las demás filas para que todos los a₁₁ restantes sean cero. 
+
+**La primera columna de A ahora coincide con la matriz identidad.** 
+
+Pasamos a la segunda columna y dividimos la segunda fila por a₂₂, luego restamos la cantidad correspondiente de la segunda fila a las filas 1, 3 y 4, para que sus entradas en la segunda columna sean cero. 
+
+**La segunda columna se reduce a la matriz identidad.** 
+
+Y así sucesivamente con la tercera y la cuarta columna. 
+
+
+Al realizar estas operaciones en A, también realizamos las operaciones correspondientes en las b y en la matriz 1 (que ahora ya no se parece en nada a la matriz identidad).

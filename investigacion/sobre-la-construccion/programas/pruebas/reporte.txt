@@ -1,0 +1,11805 @@
+Archivo encontrado y abierto: /home/natitis/oach/investigacion/sobre-la-construccion/programas/pruebas/frankie-ruiz---la-cura-(karaoplay.com)-norm.csv
+primera linea
+instrumento,nota,volumen,dura,empieza,termina
+
+iniciando el instrumento 0
+
+-1
+
+Finalizando el instrumento 0
+
+iniciando el instrumento 1
+
+0
+
+Finalizando el instrumento 1
+
+iniciando el instrumento 2
+
+1
+
+Finalizando el instrumento 2
+
+iniciando el instrumento 3
+
+33
+
+Finalizando el instrumento 3
+
+iniciando el instrumento 4
+
+56
+
+Finalizando el instrumento 4
+
+iniciando el instrumento 5
+
+57
+
+Finalizando el instrumento 5
+
+iniciando el instrumento 6
+
+108
+
+Finalizando el instrumento 6
+--------- Fin de la etapa de construir los instrumentos
+--------- Inicio de la etapa AFT
+
+	* instrumento -1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 0
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 0
+
+
+	* instrumento 0 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 1
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 1
+
+
+	* instrumento 1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 2
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 2
+
+
+	* instrumento 33 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 3
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 3
+
+
+	* instrumento 56 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 4
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 4
+
+
+	* instrumento 57 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 5
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 5
+
+
+	* instrumento 108 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 6
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 6
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 6
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 6
+
+Archivo encontrado y abierto: /home/natitis/oach/investigacion/sobre-la-construccion/programas/pruebas/the-latin-brothers---patrona-de-los-reclusos-(midi)-(karaoplay.com)-norm.csv
+primera linea
+instrumento,nota,volumen,dura,empieza,termina
+
+iniciando el instrumento 0
+
+-1
+
+Finalizando el instrumento 0
+
+iniciando el instrumento 1
+
+0
+
+Finalizando el instrumento 1
+
+iniciando el instrumento 2
+
+25
+
+Finalizando el instrumento 2
+
+iniciando el instrumento 3
+
+32
+
+Finalizando el instrumento 3
+
+iniciando el instrumento 4
+
+57
+
+Finalizando el instrumento 4
+--------- Fin de la etapa de construir los instrumentos
+--------- Inicio de la etapa AFT
+
+	* instrumento -1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 0
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 0
+
+
+	* instrumento 0 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 1
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 1
+
+
+	* instrumento 25 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 2
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 2
+
+
+	* instrumento 32 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 3
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 3
+
+
+	* instrumento 57 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 4
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 4
+
+Archivo encontrado y abierto: /home/natitis/oach/investigacion/sobre-la-construccion/programas/pruebas/comprendelo---luis-enrique-(karaoplay.com)-norm.csv
+primera linea
+instrumento,nota,volumen,dura,empieza,termina
+
+iniciando el instrumento 0
+
+-1
+
+Finalizando el instrumento 0
+
+iniciando el instrumento 1
+
+2
+
+Finalizando el instrumento 1
+
+iniciando el instrumento 2
+
+33
+
+Finalizando el instrumento 2
+
+iniciando el instrumento 3
+
+57
+
+Finalizando el instrumento 3
+
+iniciando el instrumento 4
+
+65
+
+Finalizando el instrumento 4
+
+iniciando el instrumento 5
+
+81
+
+Finalizando el instrumento 5
+--------- Fin de la etapa de construir los instrumentos
+--------- Inicio de la etapa AFT
+
+	* instrumento -1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 0
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 0
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 0
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 0
+
+
+	* instrumento 2 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 1
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 1
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 1
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 1
+
+
+	* instrumento 33 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 2
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 2
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 2
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 2
+
+
+	* instrumento 57 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 3
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 3
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 3
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 3
+
+
+	* instrumento 65 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 4
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 4
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 4
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 4
+
+
+	* instrumento 81 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 5
+
+
+------- SEGMENTACIÓN ------- 
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 8 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 8 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 16 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 16 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 32 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 32 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 64 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 64 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 128 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 128 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 256 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 256 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 512 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 512 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 1024 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 1024 del instrumento 5
+
+
+### PARA EL SEGMENTOS DE TAMAÑO 2048 ###
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 2 ###
+
+fin de simulacion de grado 2 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 3 ###
+
+fin de simulacion de grado 3 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 4 ###
+
+fin de simulacion de grado 4 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 5 ###
+
+fin de simulacion de grado 5 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 6 ###
+
+fin de simulacion de grado 6 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+------- SIMULADA ------- 
+
+
+### POLINOMIO DE GRADO 7 ###
+
+fin de simulacion de grado 7 del instrumento 5
+
+
+------- RESULTADOS ------- 
+
+
+fin de segmentación de tamaño 2048 del instrumento 5
+

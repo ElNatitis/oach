@@ -16,6 +16,7 @@ las primeras dos corresponden a numeros que se pueden consultar en el .txt que a
 mientras que archivo es el nombre del archivo con al estencion -norm, el cual se encuantra en la misma carpeta mencionada anteriormente
 (prometo redactarlo de mejor manera en un futuro no muy lejano)
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>

@@ -1,0 +1,24 @@
+Asunto: Interés en posible proyecto de Maestría en ciencia de datos / matemáticas aplicadas
+
+Dr. Moreles Vázquez:
+
+Mi nombre es Natividad Oswaldo Pérez Medina, soy estudiante de Ingeniería en Matemáticas en la Universidad Autónoma de Chihuahua y actualmente me encuentro en mi último semestre desarrollando mi tesis de licenciatura bajo la asesoría del Dr. José Luis Herrera, en el laboratorio de Sistemas Complejos de la Facultad de Ingeniería.
+
+Le escribo porque estoy interesado en realizar la Maestría en Ciencias con Orientación en Matemáticas Aplicadas en el CIMAT, y considero que sus líneas de investigación Análisis Aplicado y Sistemas Dinámicos se alinean de manera natural con mis intereses académicos y con la formación que he venido construyendo. Esto sería para inicios del 2027.
+
+Mi tesis aborda un análisis estadístico para caracterizar canciones pertenecientes a los géneros musicales: Salsa, Bachata y Cumbia. Este se desarrolla a partir de analizar series temporales de los tonos, volúmenes y duraciones de los instrumentos cuando están tocando estos géneros musicales. Estas series se construyen a partir de los archivos MIDI (Karaoke) de las canciones pertenecientes a estos generos. Aplicamos Análisis de Fluctuación sin Tendencia (DFA) con el objetivo de identificar correlaciones lineales y no lineales a distintas escalas temporales y caracterizar la dinámica de los instrumentos cuando están tocando esos géneros musicales. 
+
+A lo largo de mi formación me ha interesado tanto la base teórica como las herramientas computacionales. Durante mi Servicio Social, trabajé con el Dr. José Luis en su proyecto de Investigación de deserción escolar. Un modelo que, tomando en cuenta el historial academico y las condiciones socioeconomicas de los estudiantes, determina la probabilidad de deserción de los mismos. Esto me permitió desenvolverme en programación y desarrollar habilidades para incorporarme a un equipo y a un flujo de trabajo. Mi participación consistió en desarrollar ejecutables que permitieran una manipulación de datos más fluida a la vez que estructurada.     
+
+Mi intención es explorar la posibilidad de desarrollar un proyecto de maestría bajo su tutela, en caso de que considere que mi perfil pudiera integrarse de manera adecuada a alguna de sus líneas de trabajo.
+
+Agradezco mucho su tiempo y consideración.
+
+Quedo atento a sus comentarios.
+
+Atentamente,
+Natividad Oswaldo Pérez Medina
+
+Universidad Autónoma de Chihuahua
+Facultad de Ingeniería
+Ing. Matemática

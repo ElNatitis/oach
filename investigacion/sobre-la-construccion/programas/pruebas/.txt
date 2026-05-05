@@ -1,0 +1,82 @@
+Archivo encontrado y abierto: /home/natitis/oach/investigacion/sobre-la-construccion/programas/pruebas/frankie-ruiz---la-cura-(karaoplay.com)-norm.csv
+primera linea
+instrumento,nota,volumen,dura,empieza,termina
+
+iniciando el instrumento 0
+
+Finalizando el instrumento 0
+
+iniciando el instrumento 1
+
+Finalizando el instrumento 1
+
+iniciando el instrumento 2
+
+Finalizando el instrumento 2
+
+iniciando el instrumento 3
+
+Finalizando el instrumento 3
+
+iniciando el instrumento 4
+
+Finalizando el instrumento 4
+
+iniciando el instrumento 5
+
+Finalizando el instrumento 5
+
+iniciando el instrumento 6
+
+Finalizando el instrumento 6
+--------- Fin de la etapa de construir los instrumentos
+--------- Inicio de la etapa AFT
+
+	* instrumento -1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 0
+
+
+	* instrumento 0 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 1
+
+
+	* instrumento 1 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 2
+
+
+	* instrumento 33 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 3
+
+
+	* instrumento 56 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 4
+
+
+	* instrumento 57 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 5
+
+
+	* instrumento 108 *
+------- INTEGRACIÓN ------- 
+
+
+fin de integración del instrumento 6
+

@@ -34,3 +34,40 @@
 |    8   |    128   |     1024    |
 |    9   |    256   |     2048    |
 
+
+
+-------
+
+
+frankie-ruiz---la-cura-(karaoplay.com)-norm.csv                     		24573                  7
+the-latin-brothers---patrona-de-los-reclusos-(midi)-(karaoplay.com)-norm.csv    24303                  5
+comprendelo---luis-enrique-(karaoplay.com)-norm.csv                     	22589                  6
+richie-ray---aguzate-(karaoplay.com)-norm.csv                     		22200                  4
+the-latin-brothers---la-guayaba-(karaoplay.com)-norm.csv                     	20736                  3
+celia-cruz---toro-mata-(karaoplay.com)-norm.csv                     		19283                  5
+hector-lavoe---déjala-que-siga-(karaoplay.com)-norm.csv                     	18242                  6
+gran-combo---la-loma-del-tamarindo-(karaoplay.com)-norm.csv                     16847                  8
+orquesta-guayacán---un-vestido-bonito-(karaoplay.com)-norm.csv                  16257                  7
+rubén-blades---pedro-navaja-(karaoplay.com)-norm.csv                     	14490                  6
+jerry-rivera---amores-como-el-nuestro-(karaoplay.com)-norm.csv                  14458                  6
+frankie-ruiz---amor-de-un-momento-(karaoplay.com)-norm.csv                     	14348                  7
+el-gran-combo-de-puerto-rico---me-libere-(karaoplay.com)-norm.csv               13810                  6
+frankie-ruiz---quiero-llenarte-(karaoplay.com)-norm.csv                     	13751                  6
+the-latin-brothers---sobre-las-olas-(karaoplay.com)-norm.csv                    13744                  7
+el-gran-combo-de-puerto-rico---cupido-(karaoplay.com)-norm.csv                  12613                  5
+richie-ray---sonido-bestial-(karaoplay.com)-norm.csv                     	11835                  5
+el-gran-combo-de-puerto-rico---por-mas-que-yo-quiera-(karaoplay.com)-norm.csv   9735                  6
+gilberto-santa-rosa---vivir-sin-ella-(karaoplay.com)-norm.csv                   9008                  8
+the-latin-brothers---fuma-el-barco-(karaoplay.com)-norm.csv                     8656                  7
+grupo-niche---cali-aji-(karaoplay.com)-norm.csv                      		8561                  7
+el-gran-combo-de-puerto-rico---regresa-ya-(karaoplay.com)-norm.csv              8489                 10
+frankie-ruiz---tu-con-el-(karaoplay.com)-norm.csv                      		7584                  5
+grupo-niche---sin-sentimiento-(karaoplay.com)-norm.csv                      	6590                 10
+guayacan---como-una-hoguera-(karaoplay.com)-norm.csv                      	6240                  7
+luis-enrique---no-te-quites-la-ropa-(karaoplay.com)-norm.csv                    6199                  7
+héctor-lavoe---plazos-traicioneros-(karaoplay.com)-norm.csv                    	5872                  6
+the-latin-brothers---dime-que-paso-(karaoplay.com)-norm.csv                     5628                  7
+celia-cruz---vieja-luna-(karaoplay.com)-norm.csv                      		4743                  5
+héctor-lavoe---la-fama-(karaoplay.com)-norm.csv                      		3751                 11
+artista-desconocido---ceora-(karaoplay.com)-norm.csv                      	2304                  6
+
