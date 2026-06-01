@@ -1,0 +1,19 @@
+==============================
+RESUMEN DEL GÉNERO: bachata
+==============================
+
+Total de lanzamientos válidos:
+    283
+
+Lanzamientos sin fecha:
+    6
+
+Lanzamientos únicos:
+    99
+
+Distribución por tipo:
+    - Album: 221
+    - EP: 7
+    - Single: 55
+
+Proceso completado correctamente.

@@ -1,0 +1,10 @@
+[INFO] Consultando offset 0...
+[INFO] Archivo de entrada encontrado: cumbia/lanzamientos-unicos-cumbia.csv
+[INFO] Se cargaron 41 lanzamientos
+[INFO] [1/41] Procesando lanzamiento id=0cef72c6-a3a0-4ae0-af71-6c7814081415
+[INFO] El lanzamiento 0cef72c6-a3a0-4ae0-af71-6c7814081415 es una recopilación tipo Album
+[INFO] Revisando url correspondiente
+[INFO] La recopilación tipo Album tiene 12 canciones
+[INFO] [2/41] Procesando lanzamiento id=34d0f5fd-894b-4c09-8010-517f1d8c2812
+[INFO] El lanzamiento 34d0f5fd-894b-4c09-8010-517f1d8c2812 es una recopilación tipo Album
+[INFO] Revisando url correspondiente
